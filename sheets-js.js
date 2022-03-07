@@ -196,13 +196,9 @@ async function editSheet(arrIdx) {
   var shtObj = makeObj(vals, shtHdrs)
 
   $('#shtmProvider').val(shtObj['Provider'])
-  $('#shtmLogin').val(shtObj['Login'])
-  $('#shtmPassword').val(shtObj['Password'])
-  $('#shtmAccountNbr').val(shtObj['Account Nbr'])
-  $('#shtmPinNbr').val(shtObj['Pin Nbr'])
-  $('#shtmAutoPay').val(shtObj['Auto Pay'])
-  $('#shtmLoginUrl').val(shtObj['Login Url'])
-  $('#shtmSecurityQA').val(shtObj['Security Q/A'])
+  $('#shtmExpiry').val(shtObj['Expiry'])
+  $('#shtmImgFront').val(shtObj['Img Front'])
+  $('#shtmImgBack').val(shtObj['Account Nbr'])
   $('#shtmNotes').val(shtObj['Notes'])
   $('#shtmFavorite').val(shtObj['Favorite'])
 
@@ -221,13 +217,9 @@ async function btnShtmSubmitSheetHtml() {
     var vals = [...shtVals[arrIdx]]
 
     vals[shtHdrs.indexOf("Provider")] = $('#shtmProvider').val()
-    vals[shtHdrs.indexOf("Login")] = $('#shtmLogin').val()
-    vals[shtHdrs.indexOf("Password")] = $('#shtmPassword').val()
-    vals[shtHdrs.indexOf("Account Nbr")] = $('#shtmAccountNbr').val()
-    vals[shtHdrs.indexOf("Pin Nbr")] = $('#shtmPinNbr').val()
-    vals[shtHdrs.indexOf("Auto Pay")] = $('#shtmAutoPay').val()
-    vals[shtHdrs.indexOf("Login Url")] = $('#shtmLoginUrl').val()
-    vals[shtHdrs.indexOf("Security Q/A")] = $('#shtmSecurityQA').val()
+    vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
+    vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
+    vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
     vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
     vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
     vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
@@ -242,15 +234,10 @@ async function btnShtmSubmitSheetHtml() {
     var vals = []
 
     vals[shtHdrs.indexOf("Provider")] = $('#shtmProvider').val()
-    vals[shtHdrs.indexOf("Login")] = $('#shtmLogin').val()
-    vals[shtHdrs.indexOf("Password")] = $('#shtmPassword').val()
-    vals[shtHdrs.indexOf("Account Nbr")] = $('#shtmAccountNbr').val()
-    vals[shtHdrs.indexOf("Pin Nbr")] = $('#shtmPinNbr').val()
-    vals[shtHdrs.indexOf("Auto Pay")] = $('#shtmAutoPay').val()
-    vals[shtHdrs.indexOf("Login Url")] = $('#shtmLoginUrl').val()
-    vals[shtHdrs.indexOf("Security Q/A")] = $('#shtmSecurityQA').val()
+    vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
+    vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
+    vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
     vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
-    vals[shtHdrs.indexOf("Favorite")] = false
     vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
     vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
 
