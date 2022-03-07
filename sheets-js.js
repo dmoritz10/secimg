@@ -206,6 +206,29 @@ async function editSheet(arrIdx) {
 
 }
 
+function pasteImage() {
+
+
+  var item = pasteEvent.clipboardData.items[0];
+
+  console.log(item)
+ 
+  if (item.type.indexOf("image") === 0)
+  {
+      var blob = item.getAsFile();
+
+      var reader = new FileReader();
+      reader.onload = function(event) {
+          document.getElementById("shtmImgFront").src = event.target.result;
+      };
+
+      reader.readAsDataURL(blob);
+  }
+
+
+
+}
+
 async function btnShtmSubmitSheetHtml() {
 
   if (!$('#sheet-form').valid()) return
