@@ -1,10 +1,10 @@
 {
-	"name" : "secsht",
-	"short_name" : "secsht",
+	"name" : "secimg",
+	"short_name" : "secimg",
 	"description" : "",
 	"theme_color" : "#f9f9f9",
 	"background_color" : "#f9f9f9",
-	"start_url" : "https://dmoritz10.github.io/secsht/",
+	"start_url" : "https://dmoritz10.github.io/secimg/",
 	"display" : "standalone",
 	"splash_pages": null,
     "icons": [
