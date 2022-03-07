@@ -19,6 +19,8 @@ async function testEncrypted(title) {
 
     if (await decryptMessage(shtHdrs[0]) == "Provider") {
 
+        console.log('dec', await decryptMessage(shtHdrs[0])
+
         return {
             enc: true,
             isSecSht: true
