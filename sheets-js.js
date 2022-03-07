@@ -212,6 +212,8 @@ function pasteImage() {
   var item = pasteEvent.clipboardData.items[0];
 
   console.log(item)
+
+  return
  
   if (item.type.indexOf("image") === 0)
   {
