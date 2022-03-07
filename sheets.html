@@ -1,0 +1,197 @@
+
+<div class="">
+  <div class="  sticky-top border-bottom px-1 pt-2" style="background-color: #f9f9f9;">
+    <div class="row m-0 px-2 py-2">
+      <div class="col-2 mt-3">
+        <div class="label  text-center h1 mt-0 cursor-pointer" onclick="goHome()"><i class="material-icons">arrow_back_ios</i></div>
+      </div>
+      <div class="col mt-1">
+        <div id="shtTitle" class="label  text-center h1 divfullscreen">&nbsp;</div>
+        <div id="shtNbrProviders" class="text-success text-center h2 hpElem">&nbsp</div>
+      </div>
+      <div class="col-2"> 
+  
+        <div id="shtSelectDropDown" class="dropdown">
+          <button class="btn dropdown-toggle pl-0" type="button" data-bs-toggle="dropdown">
+            <i class="material-icons md-36" style="width:12px">more_vert</i>
+          </button>
+
+          <div class="dropdown-menu more-vert-menu">
+            <form class="px-4 py-3">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="shtSelectFav">
+                <label class="form-check-label" for="shtSelectFav">
+                  Select favorite Providers
+                </label>
+              </div>
+
+              <button type="button" class="btn btn-primary float-end mt-2" id="btnShtSelect">Go</button>
+            </form>
+            
+          </div>
+
+        </div>
+      </div>
+  
+    </div>
+
+    
+  </div>
+
+  <div class=clearfix></div>
+
+  <div class="row m-0 px-2 py-3">
+    <div class="col px-1 mt-2">
+      <input class="form-control" id="shtSearch" type="search"
+        placeholder="Search Providers">
+    </div>
+  </div>
+
+  <div id="shtContainer" class=" mt-0 pt-3 pb-4 px-2" style="background-color:lightblue;">
+    <div class="my-2 border d-none" style="border-radius: 25px; background:lightgoldenrodyellow;">
+
+      <div id="shtSrchProvider"  class="row m-2 p-0 my-3  align-items-center">
+        
+        <div class="col px-1">
+          <div id="shtProvider" class=" shtProvider label  text-start h5 pb-0 align-middle fw-bold"></div>
+        </div>
+
+        <div class="col-1 px-0 align-right">
+          <div class="align-center cursor-pointer" id="btnShtEdit" data-toggle="tooltip" title="Add / Change Course">
+              <i class="material-icons" style="color:purple;">edit</i></div>
+        </div>
+
+        <div class="col-1 px-2 align-right">
+            <div class="align-center cursor-pointer" id="btnShtFavorite" data-toggle="tooltip" title="Favorite">
+              <i id = "ScFavIcon" class="material-icons" style="color:black;">star</i></div>        
+        </div>
+
+        <div class="col-1 px-2">
+          <button id="btnShtShowSheet" class="border-0 bg-transparent"><i
+              class="material-icons">arrow_forward_ios</i></button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="fixed-bottom pb-3">
+    <div class="text-center">
+      <div class="btn-group" role="group">
+        <button class="btn btn-blue btn-lg btn-raised py-2" id="btnShtAddProvider">Add New</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="clearfix"></div>
+
+</div>
+
+<div id="editProvider">
+  <div class="modal fade" id="sheet-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title">
+            <div class="h5">Provider Maintenance</div>
+            <div  id="shtmSheetName"></div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body" style="background-color:lightskyblue;">
+          <form id="sheet-form" method="get" action=""  >
+
+            <fieldset>
+              <div class="row d-none">
+                <div class="col">
+                  <input type="text" class="form-control" id="shtmArrIdx" name="shtmArrIdx">
+                  <input type="text" class="form-control" id="shtmFavorite" name="shtmFavorite">
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="shtmProvider" class="col-form-label">Provider</label>
+                  <input type="text" class="form-control text-success h4" id="shtmProvider" autofocus name="shtmProvider" required>
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="shtmLogin" class="col-form-label">Login</label>
+                  <input type="text" class="form-control text-success h4" id="shtmLogin" name="shtmLogin">
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="shtmPassword" class="col-form-label">Password</label>
+                  <input type="text" class="form-control text-success h4" id="shtmPassword" name="shtmPassword">
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="shtmAccountNbr" class="col-form-label">Account Nbr</label>
+                  <input type="text" class="form-control text-success h4" id="shtmAccountNbr" name="shtmAccountNbr">
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="shtmPinNbr" class="col-form-label">Pin Nbr</label>
+                  <input type="text" class="form-control text-success h4" id="shtmPinNbr" name="shtmPinNbr">
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="shtmAutoPay" class="col-form-label">Auto Pay</label>
+                  <input type="text" class="form-control text-success h4" id="shtmAutoPay" name="shtmAutoPay">
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="shtmLoginUrl" class="col-form-label">Login Url</label>
+                  <input type="url" class="form-control text-success h4" id="shtmLoginUrl" name="shtmLoginUrl">
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="shtmSecurityQA" class="col-form-label">Security Q/A</label>
+                  <textarea class="form-control text-success h4" id="shtmSecurityQA" rows=2 name="shtmSecurityQA"></textarea>
+                </div>
+              </div>
+
+              <div class="row my-0">
+                <div class="col">
+                  <label for="shtmNotes" class="col-form-label">Notes</label>
+                  <textarea class="form-control text-success h4" id="shtmNotes" rows=4 name="shtmNotes"></textarea>
+                </div>
+              </div>
+
+           
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <input id="btnShtmSubmit" class="btn btn-primary" type="submit" value="Submit">
+          <button id="btnShtmDelete" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+  

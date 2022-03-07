@@ -1,0 +1,21 @@
+{
+	"name" : "secsht",
+	"short_name" : "secsht",
+	"description" : "",
+	"theme_color" : "#f9f9f9",
+	"background_color" : "#f9f9f9",
+	"start_url" : "https://dmoritz10.github.io/secsht/",
+	"display" : "standalone",
+	"splash_pages": null,
+    "icons": [
+		{
+		"src": "images/icons/secure 144x144.png",
+		"sizes": "144x144",
+		"type": "image/png"
+		},
+		{
+		"src": "images/icons/secure 512x512.png",
+		"sizes": "512x512",
+		"type": "image/png"
+	}]
+}

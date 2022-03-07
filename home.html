@@ -1,0 +1,75 @@
+<div id="home">
+
+  <div class="  sticky-top border-bottom px-1 pt-2" style="background-color: #f9f9f9;">
+    <div class="row m-0 px-2 pb-2">
+      <div class="col-2 px-1 mt-2">
+      </div>
+      <div class="col mt-2">
+        <div class="label  text-center h1 divfullscreen">Secure Sheet</div>
+      </div>
+      <div class="col-2 px-1"> 
+
+        <div id="hmSelectDropDown" class="dropdown">
+          <button class="btn dropdown-toggle pl-0" type="button" data-bs-toggle="dropdown">
+            <i class="material-icons md-36" style="width:12px">more_vert</i>
+          </button>
+
+          <div class="dropdown-menu more-vert-menu bg-light">
+
+            <div class="row m-0 px-2 pt-2 pb-2">
+              <div class="col px-1 mt-2">
+                <div class="h2 "><img class="img-thumbnail" width="40" height="40" src=  "images/icons/secure 144x144.png" />
+                Secure Sheet</div>
+                <hr>
+                <div class="h5 mt-4 cursor-pointer hover-shadow " onclick="btnNewSheetHtml()">New Sheet</div>
+                <div class="h5 mt-2 cursor-pointer hover-shadow " onclick="btnHMChangePwdHtml()">Change Password</div>
+                <hr>
+                <div class="h5 mt-2 cursor-pointer hover-shadow " onclick="btnSignoutHtml()">Sign out</div>
+              </div>
+            </div>
+            
+          </div>
+
+        </div>
+
+      </div>
+  
+    </div>
+  
+    <div class="row mb-0 m-1 p-3 border-top border-bottom  bg-white">
+      <div class="col px-1">
+        <div id="hmNbrSheets" class="text-success text-center h2 hpElem">&nbsp</div>
+        <div class="label text-center">Sheets</div>
+      </div>
+      <div class="col px-1">
+        <div id="hmNbrProviders" class="text-success text-center h2 hpElem">&nbsp</div>
+        <div class="label text-center">Providers</div>
+      </div>
+    </div>
+  </div>
+  <div class=clearfix></div>
+
+  <div id="hmContainer" class=" mt-0 py-3 px-2" style="background-color:lightblue;">
+    <div class=" my-2 border d-none" style="border-radius: 25px; background:lightgoldenrodyellow;">
+      
+      <div class="row m-2 p-0 my-3  align-items-center">
+        <div class="col px-1">
+          <div id="hmSheet" class="label  text-start h5 pb-0 align-middle fw-bold"></div>
+        </div>
+
+        <div class="col px-1">
+          <button class="btn btn-sm btn-raised py-2" id="btnCrypt"></button>
+        </div>
+
+        <div class="col-1 px-2">
+          <button id="hmShowSheet" class="border-0 bg-transparent"><i
+              class="material-icons">arrow_forward_ios</i></button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

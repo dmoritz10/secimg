@@ -1,0 +1,47 @@
+<style>
+
+  border-bottom {
+
+    border-bottom: 20px solid #f2f2f2;
+
+  }
+
+
+</style>
+
+<div class="">
+  <div class="  sticky-top border-bottom px-1" style="background-color: #f9f9f9;">
+    <div class="row m-1 pt-4 pb-3">
+      <div class="col-1 px-1 mt-2">
+        <div class="label  text-center h1 cursor-pointer" onclick="clearAndGotoTab('Sheets')"><i
+            class="material-icons">arrow_back_ios</i></div>
+      </div>
+      <div class="col px-1">
+        <div id="ssSheet" class="label text-success text-center h2 divfullscreen"></div>
+        <input type="text" class="form-control d-none" id="ssArrIdx" >
+      </div>
+      <div class="col-1 px-1 mt-3">
+        &nbsp;
+      </div>
+
+    </div>
+  </div>
+
+  <div class=clearfix></div>
+
+  <div id="tblSheet" style=" word-break: break-word" class="m-0 me-2 p-0 pt-3 text-center bg-white ">
+
+  </div>
+  <div class=clearfix></div>
+
+  <div class="fixed-bottom pb-3">
+    <div class="text-center">
+      <div class="btn-group" role="group">
+        <button class="btn btn-blue btn-lg btn-raised py-2 mx-2" id="btnSSPrev" onclick="browseProvider('prev')">Prev</button>
+        <button class="btn btn-blue btn-lg btn-raised py-2 mx-2" id="btnSSEdit" onclick="editFromShowSheet()">Edit</button>
+        <button class="btn btn-blue btn-lg btn-raised py-2 mx-2" id="btnSSNext" onclick="browseProvider('next')">Next</button>
+      </div>
+    </div>
+  </div>
+
+</div>
