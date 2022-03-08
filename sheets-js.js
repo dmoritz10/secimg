@@ -207,13 +207,22 @@ async function editSheet(arrIdx) {
 }
 
 function pasteImage() {
-
+  try {
+  	const clipboardItems = await navigator.clipboard.read();
+    console.log(clipboardItems);
+  	const blobOutput = await clipboardItems[0].getType('image/png');
+    document.getElementById('shtmImgFront').src =
+      window.URL.createObjectURL(blobOutput);
+    log('Image pasted.');
+  } catch(e) {
+  	log('Failed to read clipboard');
+  }
+  return
 
   var item = pasteEvent.clipboardData.items[0];
 
   console.log(item)
 
-  return
  
   if (item.type.indexOf("image") === 0)
   {
