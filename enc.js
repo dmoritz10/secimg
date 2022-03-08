@@ -191,6 +191,7 @@ async function encryptMessage(msg, password = currUser.pwd) {
 
     alert('encryptMessage')
     alert(msg)
+    alert(password)
 
     const encoder = new TextEncoder();
 
