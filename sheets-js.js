@@ -220,32 +220,21 @@ function showFile(input) {
 
 async function enc() {
 
-  alert('hi enc')
-  alert($('#shtmImgFront').val())
-  var x = $('shtmImgFront')
-  console.log(x)
-
-  console.log(document.getElementById("shtmImgFront"))
-  console.log(document.getElementById("shtmImgFront").src)
-
-  alert('wait')
-
-
 
   var img = document.getElementById("shtmImgFront").src.toString();
 
 
   alert (img)
 
-  var encimg = await encryptMessage('hi dan')
+  var encimg = await encryptMessage(img)
   document.getElementById("shtmImgFront").src = encimg
 
 }
 async function dec() {
   alert('hi dec')
 
-  var decimg = await decryptMessage($('#shtmImgFront').val())
-  $('#shtmImgFront').val(decimg)
+  var decimg = await decryptMessage(document.getElementById("shtmImgFront").src.toString())
+  document.getElementById("shtmImgFront").src = encimg = decimg
 
 }
 
