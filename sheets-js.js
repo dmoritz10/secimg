@@ -218,6 +218,18 @@ function showFile(input) {
 }
 }
 
+async function enc() {
+
+  var encimg = encryptMessage($('#shtmImgFront').val())
+  $('#shtmImgFront').val(encimg)
+
+}
+async function dec() {
+
+  var encimg = decryptMessage($('#shtmImgFront').val())
+  $('#shtmImgFront').val(decimg)
+
+}
 
 async function pasteImage() {
 
