@@ -211,7 +211,7 @@ async function encryptMessage(msg, password = currUser.pwd) {
             ['deriveKey']
         );
 
-        // alert('1')
+        console.log('1')
 
         return await window.crypto.subtle.deriveKey(
             {
@@ -227,7 +227,7 @@ async function encryptMessage(msg, password = currUser.pwd) {
         );
     }
 
-    // alert('2')
+    console.log('2')
 
     const salt = window.crypto.getRandomValues(new Uint8Array(16));
     const iv = window.crypto.getRandomValues(new Uint8Array(16));
