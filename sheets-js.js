@@ -225,6 +225,12 @@ async function enc() {
   var x = $('shtmImgFront')
   console.log(x)
 
+  console.log(document.getElementById("shtmImgFront"))
+  console.log(document.getElementById("shtmImgFront").src)
+
+  alert('wait')
+
+
 
   var img = $('shtmImgFront').attr('src');
 
