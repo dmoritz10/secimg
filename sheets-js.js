@@ -225,6 +225,8 @@ async function enc() {
 
   var img = $('shtmImgFront').attr('src');
 
+  console.log($('shtmImgFront'))
+
   alert (img)
 
   var encimg = await encryptMessage(img)
