@@ -232,13 +232,13 @@ async function enc() {
 
 
 
-  var img = $('shtmImgFront').attr('src');
+  var img = document.getElementById("shtmImgFront").src;
 
 
   alert (img)
 
   var encimg = await encryptMessage(img)
-  $('#shtmImgFront').attr('src', encimg)
+  document.getElementById("shtmImgFront").src = encimg
 
 }
 async function dec() {
