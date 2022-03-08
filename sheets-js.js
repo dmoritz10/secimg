@@ -206,21 +206,15 @@ async function editSheet(arrIdx) {
 
 }
 
+function showFile(input) {
+  let file = input.files[0];
+  alert(`File name: ${file.name}`); 
+  alert(`Last modified: ${file.lastModified}`);
+}
+
 async function pasteImage() {
 
-  console.log('pasteImage')
-
-  try {
-  	const clipboardItems = await navigator.clipboard.read();
-    console.log(clipboardItems);
-  	const blobOutput = await clipboardItems[0].getType('image/png');
-    document.getElementById('shtmImgFront').src =
-      window.URL.createObjectURL(blobOutput);
-    log('Image pasted.');
-  } catch(e) {
-  	log('Failed to read clipboard');
-  }
-  return
+  
 
   var item = pasteEvent.clipboardData.items[0];
 
@@ -369,18 +363,18 @@ async function btnDeleteSheetHtml() {
 
   if (!confirmOK) return
 
-  try {
-  	var clipboardItems = await navigator.clipboard.read();
-    console.log(clipboardItems);
-  	var blobOutput = await clipboardItems[0].getType('image/png');
-    console.log(blobOutput)
-    document.getElementById('shtmImgFront').src =
-      window.URL.createObjectURL(blobOutput);
-    console.log('Image pasted.');
-  } catch(e) {
-  	console.log('Failed to read clipboard', e);
-  }
-  return
+  // try {
+  // 	var clipboardItems = await navigator.clipboard.read();
+  //   console.log(clipboardItems);
+  // 	var blobOutput = await clipboardItems[0].getType('image/png');
+  //   console.log(blobOutput)
+  //   document.getElementById('shtmImgFront').src =
+  //     window.URL.createObjectURL(blobOutput);
+  //   console.log('Image pasted.');
+  // } catch(e) {
+  // 	console.log('Failed to read clipboard', e);
+  // }
+  // return
 
 
   var idx = shtIdxArr[$('#shtmArrIdx').val() * 1]
