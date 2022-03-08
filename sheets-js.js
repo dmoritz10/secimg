@@ -218,7 +218,6 @@ function showFile(input) {
 }
 }
 
-}
 
 async function pasteImage() {
 
