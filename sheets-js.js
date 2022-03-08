@@ -221,6 +221,7 @@ function showFile(input) {
 async function enc() {
 
   alert('hi enc')
+  alert($('#shtmImgFront').val())
 
   var encimg = await encryptMessage($('#shtmImgFront').val())
   $('#shtmImgFront').val(encimg)
