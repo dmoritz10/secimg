@@ -224,7 +224,7 @@ async function showFile(input) {
 async function enc() {
 
 
-  var img = document.getElementById("shtmImgFront").src.toString();
+  var img = document.getElementById("shtmImgFront").src;
 
   var pimg = img.substring(0,100000)
   var rimg = img.substring(100001)
@@ -246,9 +246,9 @@ alert('1')
 async function dec() {
 
   alert('1')
-  var decimg = await decryptMessage(document.getElementById("shtmImgFront").src.toString())
+  var decimg = await decryptMessage(document.getElementById("shtmImgFront"))
   alert('2')
-  var rdecimg = await decryptMessage(document.getElementById("shtmImgBack").src.toString())
+  var rdecimg = await decryptMessage(document.getElementById("shtmImgBack"))
   alert('3')
   document.getElementById("shtmImgFront").src = encimg + rdecimg
   alert('4')
