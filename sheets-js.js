@@ -256,7 +256,7 @@ async function dec() {
   // var rdecimg = await decryptMessage(document.getElementById("shtmImgBack"))
   var rdecimg = await decryptMessage(back)
   alert('3')
-  document.getElementById("shtmImgBack").src = decimg + rdecimg
+  document.getElementById("shtmImgBack").src = decimg 
   alert('4')
 
 }
