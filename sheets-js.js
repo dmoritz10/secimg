@@ -227,12 +227,15 @@ async function enc() {
   var img = document.getElementById("shtmImgFront").src.toString();
 
   var pimg = img.substring(0,100000)
+  var rimg = img.substring(100001)
 
 
   alert (img)
 
   var encimg = await encryptMessage(pimg)
-  document.getElementById("shtmImgFront").src = encimg
+  var rencimg = await encryptMessage(rimg)
+
+  document.getElementById("shtmImgFront").src = encimg + rencimg
 
 }
 async function dec() {
