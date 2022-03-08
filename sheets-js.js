@@ -223,7 +223,7 @@ async function enc() {
   alert('hi enc')
   alert($('#shtmImgFront').val())
 
-  var img = $('shtmImgFront').src;
+  var img = $('shtmImgFront').attr('src');
 
   alert (img)
 
