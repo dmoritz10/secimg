@@ -244,11 +244,14 @@ alert('1')
 
 }
 async function dec() {
-  alert('hi dec')
 
+  alert('1')
   var decimg = await decryptMessage(document.getElementById("shtmImgFront").src.toString())
+  alert('2')
   var rdecimg = await decryptMessage(document.getElementById("shtmImgBack").src.toString())
+  alert('3')
   document.getElementById("shtmImgFront").src = encimg + rdecimg
+  alert('4')
 
 }
 
