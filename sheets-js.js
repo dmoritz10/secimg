@@ -377,7 +377,7 @@ async function btnDeleteSheetHtml() {
       window.URL.createObjectURL(blobOutput);
     console.log('Image pasted.');
   } catch(e) {
-  	console.log('Failed to read clipboard');
+  	console.log('Failed to read clipboard', e);
   }
   return
 
