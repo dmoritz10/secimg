@@ -226,10 +226,12 @@ async function enc() {
 
   var img = document.getElementById("shtmImgFront").src.toString();
 
+  var pimg = substring(0,1000000)
+
 
   alert (img)
 
-  var encimg = await encryptMessage(img)
+  var encimg = await encryptMessage(pimg)
   document.getElementById("shtmImgFront").src = encimg
 
 }
