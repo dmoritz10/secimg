@@ -371,13 +371,13 @@ async function btnDeleteSheetHtml() {
 
   try {
   	var clipboardItems = await navigator.clipboard.read();
+    console.log(clipboardItems);
   	var blobOutput = await clipboardItems[0].getType('image/png');
+    console.log(blobOutput)
     document.getElementById('shtmImgFront').src =
       window.URL.createObjectURL(blobOutput);
     console.log('Image pasted.');
   } catch(e) {
-    console.log(clipboardItems());
-    console.log(blobOutput())
   	console.log('Failed to read clipboard', e);
   }
   return
