@@ -188,7 +188,6 @@ async function decryptArr(msg, pwd = currUser.pwd) {
 }
 
 async function encryptMessage(msg, password = currUser.pwd) {
-    msg = 'hi dan'
 
     console.log('encryptMessage')
     console.log(msg)

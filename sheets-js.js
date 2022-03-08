@@ -232,7 +232,7 @@ async function enc() {
 
 
 
-  var img = document.getElementById("shtmImgFront").src;
+  var img = document.getElementById("shtmImgFront").src.toString();
 
 
   alert (img)
