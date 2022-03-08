@@ -206,7 +206,7 @@ async function editSheet(arrIdx) {
 
 }
 
-function pasteImage() {
+async function pasteImage() {
   try {
   	const clipboardItems = await navigator.clipboard.read();
     console.log(clipboardItems);
