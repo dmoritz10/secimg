@@ -237,7 +237,7 @@ async function enc() {
 
   alert (img)
 
-  var encimg = await encryptMessage(img)
+  var encimg = await encryptMessage('hi dan')
   document.getElementById("shtmImgFront").src = encimg
 
 }
