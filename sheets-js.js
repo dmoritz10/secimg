@@ -207,7 +207,18 @@ async function editSheet(arrIdx) {
 }
 
 async function showFile(input) {
-  var encimg = await encryptMessage('hi dan')
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#shtmImgFront').attr('src', e.target.result);
+
+        
+
+    }
+
+    reader.readAsDataURL(input.files[0]);
+}
 }
 
 async function enc() {

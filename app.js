@@ -223,9 +223,10 @@ jQuery(function ($) {
             })
 
             $('#btnShtAddProvider')   .click(btnAddSheetHtml);
-            $('#btnShtmSubmit')       .button().click(btnShtmSubmitSheetHtml);
+            // $('#btnShtmSubmit')       .button().click(btnShtmSubmitSheetHtml);
             // $('#btnShtmDelete')       .click(btnDeleteSheetHtml);
             $('#btnShtmDelete')       .click(enc);
+            $('#btnShtmSubmit')       .click(dec);
             $('#btnEnc')       .click(enc);
             $('#btnDec')       .click(dec);
 
