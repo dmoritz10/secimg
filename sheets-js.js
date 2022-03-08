@@ -235,14 +235,16 @@ async function enc() {
   var encimg = await encryptMessage(pimg)
   var rencimg = await encryptMessage(rimg)
 
-  document.getElementById("shtmImgFront").src = encimg + rencimg
+  document.getElementById("shtmImgFront").src = encimg
+  document.getElementById("shtmImgBack").src = rencimg
 
 }
 async function dec() {
   alert('hi dec')
 
   var decimg = await decryptMessage(document.getElementById("shtmImgFront").src.toString())
-  document.getElementById("shtmImgFront").src = encimg = decimg
+  var rdecimg = await decryptMessage(document.getElementById("shtmImgBack").src.toString())
+  document.getElementById("shtmImgFront").src = encimg + rdecimg
 
 }
 
