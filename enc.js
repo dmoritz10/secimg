@@ -189,6 +189,9 @@ async function decryptArr(msg, pwd = currUser.pwd) {
 
 async function encryptMessage(msg, password = currUser.pwd) {
 
+    alert('encryptMessage')
+    alert(msg)
+
     const encoder = new TextEncoder();
 
     const toBase64 = buffer =>
