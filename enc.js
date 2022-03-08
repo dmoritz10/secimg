@@ -210,6 +210,7 @@ async function encryptMessage(msg, password = currUser.pwd) {
             ['deriveKey']
         );
 
+        alert('1')
 
         return await window.crypto.subtle.deriveKey(
             {
@@ -225,23 +226,29 @@ async function encryptMessage(msg, password = currUser.pwd) {
         );
     }
 
+    alert('2')
 
     const salt = window.crypto.getRandomValues(new Uint8Array(16));
     const iv = window.crypto.getRandomValues(new Uint8Array(16));
+    alert('3')
     const plain_text = encoder.encode(msg);
+    alert('4')
     const key = await PBKDF2(password, salt, 100000, 256, 'SHA-256');
+    alert('5')
 
     const encrypted = await window.crypto.subtle.encrypt(
         { name: "AES-CBC", iv },
         key,
         plain_text
     );
+    alert('6')
 
     var ciphertext = toBase64([
         ...salt,
         ...iv,
         ...new Uint8Array(encrypted)
     ])
+    alert('7')
 
     // console.log({
     //     salt: toBase64(salt),
