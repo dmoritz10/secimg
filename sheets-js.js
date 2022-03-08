@@ -234,9 +234,13 @@ async function enc() {
 
   var encimg = await encryptMessage(pimg)
   var rencimg = await encryptMessage(rimg)
-
+  console.log(encimg)
+  console.log(rencimg)
+alert('1')
   document.getElementById("shtmImgFront").src = encimg
+  alert('2')
   document.getElementById("shtmImgBack").src = rencimg
+  alert('3')
 
 }
 async function dec() {
