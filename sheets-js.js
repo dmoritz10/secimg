@@ -207,9 +207,15 @@ async function editSheet(arrIdx) {
 }
 
 function showFile(input) {
-  let file = input.files[0];
-  alert(`File name: ${file.name}`); 
-  alert(`Last modified: ${file.lastModified}`);
+  let file = input.files[0]; 
+        let fileReader = new FileReader(); 
+        fileReader.readAsText(file); 
+        fileReader.onload = function() {
+          alert(fileReader.result);
+        }; 
+        fileReader.onerror = function() {
+          alert(fileReader.error);
+        // }; 
 }
 
 async function pasteImage() {
