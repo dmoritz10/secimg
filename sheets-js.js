@@ -223,8 +223,12 @@ async function enc() {
   alert('hi enc')
   alert($('#shtmImgFront').val())
 
-  var encimg = await encryptMessage($('#shtmImgFront').val())
-  $('#shtmImgFront').val(encimg)
+  var img = $('shtmImgFront').src;
+
+  alert (img)
+
+  var encimg = await encryptMessage(img)
+  $('#shtmImgFront').attr('src', encimg)
 
 }
 async function dec() {
