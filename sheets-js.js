@@ -217,6 +217,7 @@ function showFile(input) {
           alert(fileReader.error);
         // }; 
 }
+}
 
 async function pasteImage() {
 
