@@ -25,6 +25,8 @@
     var templateSheetId
 
     var signin
+    var front
+    var back
 
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     var invalidPwdMsg = 

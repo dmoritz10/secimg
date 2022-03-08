@@ -237,20 +237,26 @@ async function enc() {
   console.log(encimg)
   console.log(rencimg)
 alert('1')
-  document.getElementById("shtmImgFront").src = encimg
+  // document.getElementById("shtmImgFront").src = encimg
   alert('2')
-  document.getElementById("shtmImgBack").src = rencimg
+  // document.getElementById("shtmImgBack").src = rencimg
+
+  front = encimg
+  back = rencimg
   alert('3')
 
 }
 async function dec() {
 
   alert('1')
-  var decimg = await decryptMessage(document.getElementById("shtmImgFront"))
+  // var decimg = await decryptMessage(document.getElementById("shtmImgFront"))
+  var decimg = await decryptMessage(front)
+
   alert('2')
-  var rdecimg = await decryptMessage(document.getElementById("shtmImgBack"))
+  // var rdecimg = await decryptMessage(document.getElementById("shtmImgBack"))
+  var rdecimg = await decryptMessage(back)
   alert('3')
-  document.getElementById("shtmImgFront").src = encimg + rdecimg
+  document.getElementById("shtmImgFront").src = decimg + rdecimg
   alert('4')
 
 }
