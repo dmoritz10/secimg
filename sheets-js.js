@@ -207,16 +207,17 @@ async function editSheet(arrIdx) {
 }
 
 function showFile(input) {
-  let file = input.files[0]; 
-        let fileReader = new FileReader(); 
-        fileReader.readAsText(file); 
-        fileReader.onload = function() {
-          alert(fileReader.result);
-        }; 
-        fileReader.onerror = function() {
-          alert(fileReader.error);
-        // }; 
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#shtmImgFront').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
 }
+}
+
 }
 
 async function pasteImage() {
