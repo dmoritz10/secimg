@@ -220,13 +220,13 @@ function showFile(input) {
 
 async function enc() {
 
-  var encimg = encryptMessage($('#shtmImgFront').val())
+  var encimg = await encryptMessage($('#shtmImgFront').val())
   $('#shtmImgFront').val(encimg)
 
 }
 async function dec() {
 
-  var encimg = decryptMessage($('#shtmImgFront').val())
+  var encimg = await decryptMessage($('#shtmImgFront').val())
   $('#shtmImgFront').val(decimg)
 
 }
