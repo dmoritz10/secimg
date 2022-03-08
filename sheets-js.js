@@ -373,6 +373,7 @@ async function btnDeleteSheetHtml() {
   	const clipboardItems = await navigator.clipboard.read();
     console.log(clipboardItems);
   	const blobOutput = await clipboardItems[0].getType('image/png');
+    console.log(blobOutput)
     document.getElementById('shtmImgFront').src =
       window.URL.createObjectURL(blobOutput);
     console.log('Image pasted.');
