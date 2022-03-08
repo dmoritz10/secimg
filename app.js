@@ -225,6 +225,9 @@ jQuery(function ($) {
             $('#btnShtAddProvider')   .click(btnAddSheetHtml);
             $('#btnShtmSubmit')       .button().click(btnShtmSubmitSheetHtml);
             $('#btnShtmDelete')       .click(btnDeleteSheetHtml);
+            $('#btnEnc')       .click(enc);
+            $('#btnDec')       .click(dec);
+
 
             $("#shtSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
