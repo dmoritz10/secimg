@@ -212,6 +212,9 @@ function showFile(input) {
 
     reader.onload = function (e) {
         $('#shtmImgFront').attr('src', e.target.result);
+
+        var encimg = await encryptMessage('hi dan')
+
     }
 
     reader.readAsDataURL(input.files[0]);
