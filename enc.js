@@ -226,7 +226,7 @@ async function encryptMessage(msg, password = currUser.pwd) {
         );
     }
 
-    console.log('2')
+    alert('2')
 
     const salt = window.crypto.getRandomValues(new Uint8Array(16));
     const iv = window.crypto.getRandomValues(new Uint8Array(16));

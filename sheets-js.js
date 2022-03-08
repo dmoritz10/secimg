@@ -222,10 +222,12 @@ async function enc() {
 
   alert('hi enc')
   alert($('#shtmImgFront').val())
+  var x = $('shtmImgFront')
+  console.log(x)
+
 
   var img = $('shtmImgFront').attr('src');
 
-  console.log($('shtmImgFront'))
 
   alert (img)
 
