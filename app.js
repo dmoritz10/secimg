@@ -225,8 +225,8 @@ jQuery(function ($) {
                 btnShtMoreVertHtml()
             })
 
-            // $('#btnShtAddProvider')   .click(btnAddSheetHtml);
-            $('#btnShtAddProvider')   .click(buildImageFile);
+            $('#btnShtAddProvider')   .click(btnAddSheetHtml);
+            // $('#btnShtAddProvider')   .click(buildImageFile);
 
 
             // $('#btnShtmSubmit')       .button().click(btnShtmSubmitSheetHtml);
