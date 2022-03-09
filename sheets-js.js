@@ -290,20 +290,19 @@ async function dec() {
   };
 
   var vals = await gapi.client.sheets.spreadsheets.values.get(params)
-  .then(function(response) {
-    console.timeLog("dec")
-    console.log(response.result);
-    return response.result.values
+    .then(function(response) {
+      
+      console.timeLog("dec")
+      console.log(response.result);
+      return response.result.values
 
-    
+    }, function(reason) {
+      console.error('error: ' + reason.result.error.message);
+    });
 
-  }, function(reason) {
-    console.error('error: ' + reason.result.error.message);
-  });
 
-  console.log(vals)
-
-  var decVals = vals[0].map(async function(ele) {return await decryptMessage(ele)})
+  var decVals = await vals[0].map(async function(ele) {return await decryptMessage(ele)})
+  console.log(decVals)
 
   document.getElementById("shtmImgBack").src = decVals.join('')
 
