@@ -201,139 +201,9 @@ async function editSheet(arrIdx) {
   $('#shtmImgBack').val(shtObj['Account Nbr'])
   $('#shtmNotes').val(shtObj['Notes'])
   $('#shtmFavorite').val(shtObj['Favorite'])
+  $('#shtmFileId').val(shtObj['File Id'])
 
   $('#btnDeleteSheet').removeClass('d-none')
-
-}
-
-async function showFile(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-        $('#shtmImgFront').attr('src', e.target.result);
-
-        
-
-    }
-
-    reader.readAsDataURL(input.files[0]);
-}
-}
-
-async function enc() {
-
-  console.time("enc")
-  var img = document.getElementById("shtmImgFront").src;
-
-  var idx = 0
-  var encPromiseArr = []
-
-  while (idx < img.length) {
-
-    encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000)))
-    idx = idx+25000
-
-  }
-
-  var encArr = await Promise.all(encPromiseArr)
-
-  console.timeLog("enc")
-
-
-  var shtTitle = "Sheet10"
-  var row = 2
-  var rng = calcRngA1(row, 1, 1, encArr.length)
-
-  var params = {
-    spreadsheetId: spreadsheetId,
-    range: "'" + shtTitle + "'!" + rng,
-    valueInputOption: 'RAW',
-    insertDataOption: 'INSERT_ROWS'
-  };
-
-  var resource = {
-    "majorDimension": "ROWS",
-    "values": [encArr]    
-  }
-
-  await gapi.client.sheets.spreadsheets.values.append(params, resource)
-    .then(async function (response) {
-
-      console.log('append successful')
-      console.timeEnd("enc")
-
-    },
-
-      function (reason) {
-
-        console.error('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
-        bootbox.alert('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
-        console.timeEnd("enc")
-
-      });
-
-
-
-}
-
-
-async function dec() {
-  console.time("dec")
-
-  var shtTitle = "Sheet10"
-  var row = await prompt("Enter row nbr to decrypt", "number");
-  var rng = calcRngA1(row*1, 1, 1, 1000)
-
-  var params = {
-    spreadsheetId: spreadsheetId,
-    range: "'" + shtTitle + "'!" + rng
-  };
-
-  var vals = await gapi.client.sheets.spreadsheets.values.get(params)
-    .then(function(response) {
-      
-      console.timeLog("dec")
-      console.log(response.result);
-      return response.result.values
-
-    }, function(reason) {
-      console.error('error: ' + reason.result.error.message);
-    });
-
-
-  var decVals = vals[0].map( ele =>  decryptMessage(ele))
-
-  var decArr = await Promise.all(decVals)
-
-  document.getElementById("shtmImgBack").src = decArr.join('')
-
-  console.timeEnd("dec")
-
-}
-
-async function pasteImage() {
-
-  
-
-  var item = pasteEvent.clipboardData.items[0];
-
-  console.log(item)
-
- 
-  if (item.type.indexOf("image") === 0)
-  {
-      var blob = item.getAsFile();
-
-      var reader = new FileReader();
-      reader.onload = function(event) {
-          document.getElementById("shtmImgFront").src = event.target.result;
-      };
-
-      reader.readAsDataURL(blob);
-  }
-
-
 
 }
 
@@ -354,6 +224,7 @@ async function btnShtmSubmitSheetHtml() {
     vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
     vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
     vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
+    vals[shtHdrs.indexOf("File Id")] = $('#shtmFileId').val()
 
   } else {
 
@@ -361,6 +232,8 @@ async function btnShtmSubmitSheetHtml() {
       toast("Provider already exists")
       return
     }
+
+    var fileId = await buildImageFile()
 
     var vals = []
 
@@ -371,6 +244,7 @@ async function btnShtmSubmitSheetHtml() {
     vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
     vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
     vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
+    vals[shtHdrs.indexOf("File Id")] = fileId
 
   }
 
@@ -383,6 +257,24 @@ async function btnShtmSubmitSheetHtml() {
   $("#sheet-modal").modal('hide');
 
   updateUI(valsEnc, arrIdx)
+
+}
+
+async function buildImageFile() {
+
+  // Create file in enc/img folder
+  // Rename title = sheetId
+  // Return sheetId
+
+  gapi.client.sheets.spreadsheets.create({
+    properties: {
+      title: title
+    }
+  }).then((response) => {
+
+console.log(response)
+
+  });
 
 }
 
@@ -526,3 +418,134 @@ function dupProvider(provider) {
   }
 
 }
+
+
+async function showFile(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        $('#shtmImgFront').attr('src', e.target.result);
+
+        
+
+    }
+
+    reader.readAsDataURL(input.files[0]);
+}
+}
+
+async function enc() {
+
+  console.time("enc")
+  var img = document.getElementById("shtmImgFront").src;
+
+  var idx = 0
+  var encPromiseArr = []
+
+  while (idx < img.length) {
+
+    encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000)))
+    idx = idx+25000
+
+  }
+
+  var encArr = await Promise.all(encPromiseArr)
+
+  console.timeLog("enc")
+
+
+  var shtTitle = "Sheet10"
+  var row = 2
+  var rng = calcRngA1(row, 1, 1, encArr.length)
+
+  var params = {
+    spreadsheetId: spreadsheetId,
+    range: "'" + shtTitle + "'!" + rng,
+    valueInputOption: 'RAW',
+    insertDataOption: 'INSERT_ROWS'
+  };
+
+  var resource = {
+    "majorDimension": "ROWS",
+    "values": [encArr]    
+  }
+
+  await gapi.client.sheets.spreadsheets.values.append(params, resource)
+    .then(async function (response) {
+
+      console.log('append successful')
+      console.timeEnd("enc")
+
+    },
+
+      function (reason) {
+
+        console.error('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
+        bootbox.alert('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
+        console.timeEnd("enc")
+
+      });
+
+
+
+}
+
+
+async function dec() {
+  console.time("dec")
+
+  var shtTitle = "Sheet10"
+  var row = await prompt("Enter row nbr to decrypt", "number");
+  var rng = calcRngA1(row*1, 1, 1, 1000)
+
+  var params = {
+    spreadsheetId: spreadsheetId,
+    range: "'" + shtTitle + "'!" + rng
+  };
+
+  var vals = await gapi.client.sheets.spreadsheets.values.get(params)
+    .then(function(response) {
+      
+      console.timeLog("dec")
+      console.log(response.result);
+      return response.result.values
+
+    }, function(reason) {
+      console.error('error: ' + reason.result.error.message);
+    });
+
+
+  var decVals = vals[0].map( ele =>  decryptMessage(ele))
+
+  var decArr = await Promise.all(decVals)
+
+  document.getElementById("shtmImgBack").src = decArr.join('')
+
+  console.timeEnd("dec")
+
+}
+
+async function pasteImage() {
+
+  
+
+  var item = pasteEvent.clipboardData.items[0];
+
+  console.log(item)
+
+ 
+  if (item.type.indexOf("image") === 0)
+  {
+      var blob = item.getAsFile();
+
+      var reader = new FileReader();
+      reader.onload = function(event) {
+          document.getElementById("shtmImgFront").src = event.target.result;
+      };
+
+      reader.readAsDataURL(blob);
+  }
+
+}
+

@@ -248,7 +248,7 @@ async function btnNewSheetHtml() {
     return
   }
 
-  // create new sheet by copying template sheet.  It has exactly 11 columns and 1 row.
+  // create new sheet by copying template sheet.  It has exactly 8 columns and 1 row.
   var params = {
     spreadsheetId: spreadsheetId,  
     sheetId: secSht['template'].id,  

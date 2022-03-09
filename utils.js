@@ -179,6 +179,7 @@ function parseDateISOString(s) {
 
 
 function calcRngA1(r, col, nbrRows, nbrCols) {
+
   const n2c = n => {
     // Column number to 26 radix. From 0 to p.
     // Column number starts from 1. Subtract 1.
@@ -199,39 +200,8 @@ function calcRngA1(r, col, nbrRows, nbrCols) {
 
   return rngA1
 
- 
 }
 
-function lettersFromIndex(index, curResult, i) {
-
-  if (i == undefined) i = 11; //enough for Number.MAX_SAFE_INTEGER
-  if (curResult == undefined) curResult = "";
-
-  var factor = Math.floor(index / Math.pow(26, i));
-
-  if (factor > 0 && i > 0) {
-    curResult += String.fromCharCode(64 + factor);
-    curResult = lettersFromIndex(index - Math.pow(26, i) * factor, curResult, i - 1);
-
-  } else if (factor == 0 && i > 0) {
-    curResult = lettersFromIndex(index, curResult, i - 1);
-
-  } else {
-    curResult += String.fromCharCode(64 + index % 26);
-
-  }
-  return curResult;
-}
-// function colNbrToLtr(n){
-//    if (n < 27){
-//       return String.fromCharCode(64 + n);
-//    }
-//   else {
-//       var first = Math.round(n / 26);
-//   var second = n % 26;
-//   return String.fromCharCode(64 + first) + String.fromCharCode(64 + second);
-//    }
-// }
 
 function toObject(arr) {
   var rv = { };
