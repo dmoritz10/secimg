@@ -289,7 +289,7 @@ async function dec() {
     range: "'" + shtTitle + "'!" + rng
   };
 
-  var request = gapi.client.sheets.spreadsheets.values.get(params);
+  var vals = gapi.client.sheets.spreadsheets.values.get(params);
   request.then(function(response) {
     console.timeLog("dec")
     console.log(response.result);
@@ -300,7 +300,7 @@ async function dec() {
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
-  var decVals = vals.map(async function(ele) {return await decryptMessage(ele)})
+  var decVals = vals[0].map(async function(ele) {return await decryptMessage(ele)})
 
   document.getElementById("shtmImgBack").src = decVals.join('')
 
