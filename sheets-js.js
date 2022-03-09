@@ -278,18 +278,26 @@ async function enc() {
 
 async function dec() {
 
-  // alert('1')
-  // var decimg = await decryptMessage(document.getElementById("shtmImgFront"))
-  var decimg = await decryptMessage(front)
+  var shtTitle = "Sheet10"
+  var row = 2
+  var rng = calcRngA1(row, 1, 1, 1000)
 
-  // alert('2')
-  // var rdecimg = await decryptMessage(document.getElementById("shtmImgBack"))
-  var rdecimg = await decryptMessage(back)
-  // alert('3', rdecimg.length +  rdecimg.length)
-  console.log('sum after dec', rdecimg.length +  rdecimg.length)
+  var params = {
+    spreadsheetId: spreadsheetId,
+    range: "'" + shtTitle + "'!" + rng,
+    valueInputOption: 'RAW',
+    insertDataOption: 'INSERT_ROWS'
+  };
 
-  document.getElementById("shtmImgBack").src = decimg + rdecimg
-  // alert('4')
+  var request = gapi.client.sheets.spreadsheets.values.get(params);
+  request.then(function(response) {
+    console.log(response.result);
+
+    document.getElementById("shtmImgBack").src = response.result.join('')
+
+  }, function(reason) {
+    console.error('error: ' + reason.result.error.message);
+  });
 
 }
 
