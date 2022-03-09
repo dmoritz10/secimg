@@ -289,8 +289,8 @@ async function dec() {
     range: "'" + shtTitle + "'!" + rng
   };
 
-  var vals = gapi.client.sheets.spreadsheets.values.get(params);
-  vals.then(function(response) {
+  var vals = await gapi.client.sheets.spreadsheets.values.get(params)
+  .then(function(response) {
     console.timeLog("dec")
     console.log(response.result);
     return response.result.values
