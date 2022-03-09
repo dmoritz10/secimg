@@ -223,7 +223,7 @@ async function showFile(input) {
 
 async function enc() {
 
-
+  console.time("enc")
   var img = document.getElementById("shtmImgFront").src;
 
   var idx = 0
@@ -238,7 +238,7 @@ async function enc() {
     idx = idx+25000
 
   }
-
+  console.timeLog("enc")
   console.log('encArr.length',encArr.length)
 
   var shtTitle = "Sheet10"
@@ -261,6 +261,7 @@ async function enc() {
     .then(async function (response) {
 
       console.log('append successful')
+      console.timeEnd("enc")
 
     },
 
@@ -277,6 +278,7 @@ async function enc() {
 
 
 async function dec() {
+  console.time("dec")
 
   var shtTitle = "Sheet10"
   var row = 2
@@ -291,8 +293,12 @@ async function dec() {
   request.then(function(response) {
     console.log(response.result);
     var vals = response.result.values[0]
+    console.timeLog("dec")
 
-    document.getElementById("shtmImgBack").src = vals.join('')
+    var decVals = vals.map( ele => await decryptMessage(ele))
+
+    document.getElementById("shtmImgBack").src = decVals.join('')
+    console.timeEnd("enc")
 
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
