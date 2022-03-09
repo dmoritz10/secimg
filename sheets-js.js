@@ -226,28 +226,49 @@ async function enc() {
 
   var img = document.getElementById("shtmImgFront").src;
 
-  var pimg = img.substring(0,100000)
-  var rimg = img.substring(100000)
-  console.log('sum before enc', pimg.length+rimg.length)
+  var idx = 0
+  var encArr = []
+
+  while (idx < img.length) {
+
+    var encimg = await encryptMessage(img.substring(idx, idx + 25000))
+
+    encArr.push(encimg)
+
+    idx = idx+25000
+
+  }
+
+  var shtTitle = "Sheet10"
+  var row = 2
+  var rng = calcRngA1(row, 1, 1, encArr.length)
+
+  var params = {
+    spreadsheetId: spreadsheetId,
+    range: "'" + shtTitle + "'!" + rng,
+    valueInputOption: 'RAW',
+    insertDataOption: 'INSERT_ROWS'
+  };
+
+  await gapi.client.sheets.spreadsheets.values.append(params, resource)
+    .then(async function (response) {
+
+      console.log('append successful')
+
+    },
+
+      function (reason) {
+
+        console.error('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
+        bootbox.alert('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
+
+      });
 
 
-  // alert (img)
-
-  var encimg = await encryptMessage(pimg)
-  var rencimg = await encryptMessage(rimg)
-  console.log('enc', encimg.length)
-  console.log('renc', rencimg.length)
-// alert('1')
-  // document.getElementById("shtmImgFront").src = encimg
-  // alert('2')
-  // document.getElementById("shtmImgBack").src = rencimg
-
-  front = encimg
-  back = rencimg
-  // alert('sum', encimg+rencimg)
-  console.log('sum after enc', encimg.length+rencimg.length)
 
 }
+
+
 async function dec() {
 
   // alert('1')
