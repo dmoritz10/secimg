@@ -294,7 +294,7 @@ const rq = {"requests" : [
     properties: {
      name: fileId,
     },
-    name: 'title'
+    name: 'name'
     }
    }]}
  ;
