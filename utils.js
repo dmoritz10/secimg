@@ -182,7 +182,7 @@ function calcRngA1(r, c, nbrRows, nbrCols) {
 
   const colNbrToLtr = c => {
     l = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    return n > 26 ? colToLetter(Math.floor((n-1)/26)) + colToLetter(n%26) : l[n-1]
+    return n > 26 ? colNbrToLtr(Math.floor((n-1)/26)) + colNbrToLtr(n%26) : l[n-1]
   }
 
   var rngA1 = colNbrToLtr(c) + r + ':' + colNbrToLtr(c + nbrCols - 1) + (r + nbrRows - 1)
@@ -192,16 +192,16 @@ function calcRngA1(r, c, nbrRows, nbrCols) {
  
 }
 
-function colNbrToLtr(n){
-   if (n < 27){
-      return String.fromCharCode(64 + n);
-   }
-  else {
-      var first = Math.round(n / 26);
-  var second = n % 26;
-  return String.fromCharCode(64 + first) + String.fromCharCode(64 + second);
-   }
-}
+// function colNbrToLtr(n){
+//    if (n < 27){
+//       return String.fromCharCode(64 + n);
+//    }
+//   else {
+//       var first = Math.round(n / 26);
+//   var second = n % 26;
+//   return String.fromCharCode(64 + first) + String.fromCharCode(64 + second);
+//    }
+// }
 
 function toObject(arr) {
   var rv = { };
