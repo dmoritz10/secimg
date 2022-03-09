@@ -266,7 +266,7 @@ async function buildImageFile() {
   // Rename title = sheetId
   // Return sheetId
 
-  var fileId = await gapi.client.drive.files.create({
+  var fileIdx = await gapi.client.drive.files.create({
 
     resource : {
                    
@@ -277,8 +277,14 @@ async function buildImageFile() {
 
 }).then(function(response) {
     console.log(response);
+    return response
     
 });
+
+console.log(fileIdx)
+
+var fileId = fileIdx.result.id
+
 
 // rename sheet to that provided by user
 
