@@ -295,7 +295,7 @@ async function dec() {
     var vals = response.result.values[0]
     console.timeLog("dec")
 
-    var decVals = vals.map( ele => await decryptMessage(ele))
+    var decVals = vals.map( function(ele) {return await decryptMessage(ele)})
 
     document.getElementById("shtmImgBack").src = decVals.join('')
     console.timeEnd("enc")
