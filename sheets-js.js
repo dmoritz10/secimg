@@ -266,7 +266,7 @@ async function buildImageFile() {
   // Rename title = sheetId
   // Return sheetId
 
-  gapi.client.drive.files.create({
+  var fileId = await gapi.client.drive.files.create({
 
     resource : {
                    
@@ -277,21 +277,37 @@ async function buildImageFile() {
 
 }).then(function(response) {
     console.log(response);
-    var fileId = response.result.id
-
-
-    gapi.client.drive.files.update({
-      resource : {
-                     id : fileId,
-                     name: fileId
-                   }
-  
-  }).then(function(response) {
-      console.log(response);
-  
-  })
-
+    
 });
+
+// rename sheet to that provided by user
+
+const rq = {"requests" : [
+  {
+   updateSheetProperties: {
+    properties: {
+     sheetId: fileId,
+     title: fileId,
+    },
+    fields: 'title'
+    }
+   }]}
+ ;
+ 
+await gapi.client.sheets.spreadsheets.batchUpdate({
+  spreadsheetId: spreadsheetId,
+  resource: rq})
+
+  .then(response => {
+
+    console.log('rename complete')
+    console.log(response)
+
+  }, function (reason) {
+    console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
+    alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
+  });
+
 
 
 
