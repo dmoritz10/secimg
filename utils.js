@@ -180,18 +180,33 @@ function parseDateISOString(s) {
 
 function calcRngA1(r, c, nbrRows, nbrCols) {
 
-  const colNbrToLtr = n => {
-    l = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    return n > 26 ? colNbrToLtr(Math.floor((n-1)/26)) + colNbrToLtr(n%26) : l[n-1]
-  }
-
-  var rngA1 = colNbrToLtr(c) + r + ':' + colNbrToLtr(c + nbrCols - 1) + (r + nbrRows - 1)
+  var rngA1 = lettersFromIndex(c) + r + ':' + lettersFromIndex(c + nbrCols - 1) + (r + nbrRows - 1)
 
   return rngA1
 
  
 }
 
+function lettersFromIndex(index, curResult, i) {
+
+  if (i == undefined) i = 11; //enough for Number.MAX_SAFE_INTEGER
+  if (curResult == undefined) curResult = "";
+
+  var factor = Math.floor(index / Math.pow(26, i));
+
+  if (factor > 0 && i > 0) {
+    curResult += String.fromCharCode(64 + factor);
+    curResult = lettersFromIndex(index - Math.pow(26, i) * factor, curResult, i - 1);
+
+  } else if (factor == 0 && i > 0) {
+    curResult = lettersFromIndex(index, curResult, i - 1);
+
+  } else {
+    curResult += String.fromCharCode(64 + index % 26);
+
+  }
+  return curResult;
+}
 // function colNbrToLtr(n){
 //    if (n < 27){
 //       return String.fromCharCode(64 + n);
