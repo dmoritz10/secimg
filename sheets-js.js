@@ -270,9 +270,10 @@ async function buildImageFile() {
 
     resource : {                  
                   name : 'Sheet',
-                   mimeType: 'application/vnd.google-apps.spreadsheet',
-                   parents: ['1bfxCnqEtl78MI9UbbE87LpHYGJTwu-x7']
-                 }
+                  mimeType: 'application/vnd.google-apps.spreadsheet',
+                  parents: ['1eAwbR_yzsEaEpBEpFA0Pqp8KGP2XszDY']
+
+                }
 
 }).then(function(response) {
     console.log(response);
@@ -283,7 +284,6 @@ async function buildImageFile() {
 console.log(fileIdx)
 
 var fileId = fileIdx.result.id
-return
 
 // rename sheet to that provided by user
 
