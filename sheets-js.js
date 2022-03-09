@@ -226,8 +226,12 @@ async function enc() {
   console.time("enc")
   var img = document.getElementById("shtmImgFront").src;
 
+  console.log('unc size', img.length)
+
   var idx = 0
   var encArr = []
+  var encSize = 0
+
 
   while (idx < img.length) {
 
@@ -235,11 +239,15 @@ async function enc() {
 
     encArr.push(encimg)
 
+    encSize += encimg.length
+
     idx = idx+25000
 
   }
   console.timeLog("enc")
-  console.log('encArr.length',encArr.length)
+  console.log('encArr.length',encSize)
+  console.log('enc size', )
+
 
   var shtTitle = "Sheet10"
   var row = 2
