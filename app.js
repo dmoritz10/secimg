@@ -25,8 +25,9 @@
     var templateSheetId
 
     var signin
-    var front
-    var back
+
+    var newShtHdrs = ['Provider','Expiry','Favorite','Notes','Img Front','Img Back', 'File Id', 'Last Change']
+
 
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     var invalidPwdMsg = 

@@ -48,7 +48,7 @@ async function loadSheets() {
 
         var ele = $tblSheets.clone();
 
-        if (sht.gridProperties.columnCount == arrOptions['Nbr Columns per Sheet']
+        if (sht.gridProperties.columnCount == newShtHdrs.length
               && sht.title != 'template'
             ) {
 
@@ -299,7 +299,7 @@ async function btnNewSheetHtml() {
 
   // Put encrypted header row in new sheet
   
-  var hdrs = ['Provider','Expiry','Favorite','Notes','Img Front','Img Back','Last Change']
+  var hdrs = newShtHdrs
   var encHdrs = await encryptArr(hdrs)
   var resource = {
     "majorDimension": "ROWS",
