@@ -178,9 +178,24 @@ function parseDateISOString(s) {
 }
 
 
-function calcRngA1(r, c, nbrRows, nbrCols) {
+function calcRngA1(r, col, nbrRows, nbrCols) {
+  const n2c = col => {
+    // Column number to 26 radix. From 0 to p.
+    // Column number starts from 1. Subtract 1.
+    return [...(n-1).toString(26)]
+      // to ascii number
+      .map(c=>c.charCodeAt())
+      // Subtract 1 except last digit.
+      // Look at 10. This should be AA not BA.
+      .map((c,i,arr)=>i<arr.length-1?c-1:c)
+      // Convert with the ascii table. [0-9]->[A-J] and [a-p]->[K-Z]
+      .map(a=>a>96?a-22:a+17)
+      // to char
+      .map(a=>String.fromCharCode(a))
+      .join('');
+  };
 
-  var rngA1 = lettersFromIndex(c) + r + ':' + lettersFromIndex(c + nbrCols - 1) + (r + nbrRows - 1)
+  var rngA1 = n2c(col) + r + ':' + n2c(col + nbrCols - 1) + (r + nbrRows - 1)
 
   return rngA1
 
