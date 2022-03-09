@@ -227,7 +227,7 @@ async function enc() {
   var img = document.getElementById("shtmImgFront").src;
 
   var pimg = img.substring(0,100000)
-  var rimg = img.substring(100001)
+  var rimg = img.substring(100000)
 
 
   alert (img)
