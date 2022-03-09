@@ -284,9 +284,8 @@ async function buildImageFile() {
 
 const rq = {"requests" : [
   {
-   updateSheetProperties: {
+    updateSpreadsheetProperties: {
     properties: {
-     sheetId: fileId,
      title: fileId,
     },
     fields: 'title'
@@ -295,7 +294,7 @@ const rq = {"requests" : [
  ;
  
 await gapi.client.sheets.spreadsheets.batchUpdate({
-  spreadsheetId: spreadsheetId,
+  spreadsheetId: fileId,
   resource: rq})
 
   .then(response => {
@@ -309,7 +308,7 @@ await gapi.client.sheets.spreadsheets.batchUpdate({
   });
 
 
-
+  return fileId
 
 }
 
