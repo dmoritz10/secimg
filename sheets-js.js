@@ -270,8 +270,7 @@ async function buildImageFile() {
 
     resource : {
                    name : 'mySpreadSheet',
-                   mimeType: 'application/vnd.google-apps.spreadsheet',
-                   parents: ['enc']
+                   mimeType: 'application/vnd.google-apps.spreadsheet'
                  }
 
 }).then(function(response) {
