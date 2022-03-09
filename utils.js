@@ -179,7 +179,7 @@ function parseDateISOString(s) {
 
 
 function calcRngA1(r, col, nbrRows, nbrCols) {
-  const n2c = col => {
+  const n2c = n => {
     // Column number to 26 radix. From 0 to p.
     // Column number starts from 1. Subtract 1.
     return [...(n-1).toString(26)]
