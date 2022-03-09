@@ -313,11 +313,10 @@ async function dec() {
   var decVals = vals[0].map( ele =>  decryptMessage(ele))
   console.log(decVals)
 
-  Promise.all(decVals).then((values) => {
-    console.log(values);
-    document.getElementById("shtmImgBack").src = values.join('')
+  var decArr = await Promise.all(decVals)
 
-  });
+  document.getElementById("shtmImgBack").src = decArr.join('')
+
 
   
   console.timeEnd("dec")

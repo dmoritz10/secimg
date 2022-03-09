@@ -1,14 +1,26 @@
 # sceimg
 
-Ways to put image/png on clipboard
+Todo;  
+    include display support for .pdf
+    <!-- use PromiseAll to enc -->
 
-.pdf
-    Copy File to Clipboard
-    Take Snapshot
 
-paint.net
-    paste anything in (i think) and copy it clipboard
+Add New Document:
 
-can't access file system (i think)
-better to interface to camera (not sure if possible)
+    Create new ss in img folder
+    Change name of ss to its sheetId
+    Make sheetId part of Doc entry
+
+Edit Doc
+
+    If Front or Back changes
+    Chunk, Enc and update SS:
+        Row 1 for Front
+        Row 2 for Back
+
+        Can't support arbitrary nbr of images per doc because ss will fail at ~> 15Mb
+
+Delete Doc
+
+    Remove corresponding img file
 
