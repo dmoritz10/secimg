@@ -180,9 +180,15 @@ function parseDateISOString(s) {
 
 function calcRngA1(r, c, nbrRows, nbrCols) {
 
+  const colNbrToLtr = c => {
+    l = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    return n > 26 ? colToLetter(Math.floor((n-1)/26)) + colToLetter(n%26) : l[n-1]
+  }
+
   var rngA1 = colNbrToLtr(c) + r + ':' + colNbrToLtr(c + nbrCols - 1) + (r + nbrRows - 1)
 
   return rngA1
+
  
 }
 
