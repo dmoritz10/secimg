@@ -266,15 +266,19 @@ async function buildImageFile() {
   // Rename title = sheetId
   // Return sheetId
 
-  gapi.client.sheets.spreadsheets.create({
-    properties: {
-      title: title
-    }
-  }).then((response) => {
+  gapi.client.drive.files.create({
 
-console.log(response)
+    resource : {
+                   name : 'mySpreadSheet',
+                   mimeType: 'application/vnd.google-apps.spreadsheet',
+                   parents: ['enc']
+                 }
 
-  });
+}).then(function(response) {
+    console.log(response);
+});
+
+
 
 }
 
