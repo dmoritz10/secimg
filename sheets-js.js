@@ -228,6 +228,7 @@ async function enc() {
 
   var pimg = img.substring(0,100000)
   var rimg = img.substring(100000)
+  console.log('sum before enc', pimg.length+rimg.length)
 
 
   // alert (img)
@@ -244,7 +245,7 @@ async function enc() {
   front = encimg
   back = rencimg
   // alert('sum', encimg+rencimg)
-  console.log('sum before', encimg+rencimg)
+  console.log('sum after enc', encimg.length+rencimg.length)
 
 }
 async function dec() {
@@ -257,7 +258,7 @@ async function dec() {
   // var rdecimg = await decryptMessage(document.getElementById("shtmImgBack"))
   var rdecimg = await decryptMessage(back)
   // alert('3', rdecimg.length +  rdecimg.length)
-  console.log('sum after', rdecimg.length +  rdecimg.length)
+  console.log('sum after dec', rdecimg.length +  rdecimg.length)
 
   document.getElementById("shtmImgBack").src = decimg + rdecimg
   // alert('4')
