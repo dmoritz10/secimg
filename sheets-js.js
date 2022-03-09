@@ -290,7 +290,7 @@ async function dec() {
   };
 
   var vals = gapi.client.sheets.spreadsheets.values.get(params);
-  request.then(function(response) {
+  vals.then(function(response) {
     console.timeLog("dec")
     console.log(response.result);
     return response.result.values
@@ -300,6 +300,7 @@ async function dec() {
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
   });
+
   var decVals = vals[0].map(async function(ele) {return await decryptMessage(ele)})
 
   document.getElementById("shtmImgBack").src = decVals.join('')
