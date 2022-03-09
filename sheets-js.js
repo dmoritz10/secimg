@@ -239,6 +239,8 @@ async function enc() {
 
   }
 
+  console.log('encArr.length',encArr.length)
+
   var shtTitle = "Sheet10"
   var row = 2
   var rng = calcRngA1(row, 1, 1, encArr.length)
