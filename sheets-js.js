@@ -229,7 +229,7 @@ async function enc() {
   console.log('unc size', img.length)
 
   var idx = 0
-  var encArr = []
+  var encPromiseArr = []
   var encSize = 0
 
 
@@ -237,13 +237,17 @@ async function enc() {
 
     var encimg = await encryptMessage(img.substring(idx, idx + 25000))
 
-    encArr.push(encimg)
+    encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000)))
 
     encSize += encimg.length
 
     idx = idx+25000
 
   }
+
+  var encArr = await Promise.all(encPromiseArr)
+
+  // document.getElementById("shtmImgBack").src = encArr.join('')
   console.timeLog("enc")
   console.log('encArr.length',encSize)
   console.log('enc size', )
