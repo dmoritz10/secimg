@@ -269,6 +269,7 @@ async function enc() {
 
         console.error('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
         bootbox.alert('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
+        console.timeEnd("enc")
 
       });
 
@@ -301,7 +302,7 @@ async function dec() {
     });
 
 
-  var decVals = vals[0].map( function(ele) {return decryptMessage(ele)})
+  var decVals = vals[0].map( ele =>  decryptMessage(ele))
   console.log(decVals)
 
   Promise.all(decVals).then((values) => {
