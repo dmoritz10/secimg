@@ -252,7 +252,7 @@ async function enc() {
 
   var resource = {
     "majorDimension": "ROWS",
-    "values": [vals]    
+    "values": [encArr]    
   }
 
   await gapi.client.sheets.spreadsheets.values.append(params, resource)
