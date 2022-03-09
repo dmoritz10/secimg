@@ -250,6 +250,11 @@ async function enc() {
     insertDataOption: 'INSERT_ROWS'
   };
 
+  var resource = {
+    "majorDimension": "ROWS",
+    "values": [vals]    
+  }
+
   await gapi.client.sheets.spreadsheets.values.append(params, resource)
     .then(async function (response) {
 
