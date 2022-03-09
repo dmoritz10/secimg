@@ -301,12 +301,17 @@ async function dec() {
     });
 
 
-  var decVals = await vals[0].map(async function(ele) {return await decryptMessage(ele)})
+  var decVals = vals[0].map(async function(ele) {return await decryptMessage(ele)})
   console.log(decVals)
 
-  document.getElementById("shtmImgBack").src = decVals.join('')
+  Promise.all(decVals).then((values) => {
+    console.log(values);
+    document.getElementById("shtmImgBack").src = values.join('')
 
-  console.timeEnd("enc")
+  });
+
+  
+  console.timeEnd("dec")
 
 }
 
