@@ -230,34 +230,37 @@ async function enc() {
   var rimg = img.substring(100000)
 
 
-  alert (img)
+  // alert (img)
 
   var encimg = await encryptMessage(pimg)
   var rencimg = await encryptMessage(rimg)
-  console.log(encimg)
-  console.log(rencimg)
-alert('1')
+  console.log('enc', encimg.length)
+  console.log('renc', rencimg.length)
+// alert('1')
   // document.getElementById("shtmImgFront").src = encimg
-  alert('2')
+  // alert('2')
   // document.getElementById("shtmImgBack").src = rencimg
 
   front = encimg
   back = rencimg
-  alert('3')
+  // alert('sum', encimg+rencimg)
+  console.log('sum before', encimg+rencimg)
 
 }
 async function dec() {
 
-  alert('1')
+  // alert('1')
   // var decimg = await decryptMessage(document.getElementById("shtmImgFront"))
   var decimg = await decryptMessage(front)
 
-  alert('2')
+  // alert('2')
   // var rdecimg = await decryptMessage(document.getElementById("shtmImgBack"))
   var rdecimg = await decryptMessage(back)
-  alert('3')
-  document.getElementById("shtmImgBack").src = decimg 
-  alert('4')
+  // alert('3', rdecimg.length +  rdecimg.length)
+  console.log('sum after', rdecimg.length +  rdecimg.length)
+
+  document.getElementById("shtmImgBack").src = decimg + rdecimg
+  // alert('4')
 
 }
 
