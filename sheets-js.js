@@ -223,10 +223,7 @@ async function showFile(input) {
 
 async function enc() {
 
-  console.time("enc")
   var img = document.getElementById("shtmImgFront").src;
-
-  console.log('unc size', img.length)
 
   var idx = 0
   var encPromiseArr = []
@@ -234,8 +231,6 @@ async function enc() {
 
 
   while (idx < img.length) {
-
-    var encimg = await encryptMessage(img.substring(idx, idx + 25000))
 
     encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000)))
 
