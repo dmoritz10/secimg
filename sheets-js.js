@@ -226,17 +226,12 @@ async function enc() {
   console.time("enc")
   var img = document.getElementById("shtmImgFront").src;
 
-  console.log('unc size', img.length)
-
   var idx = 0
   var encPromiseArr = []
-  var encSize = 0
-
 
   while (idx < img.length) {
 
     encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000)))
-    encSize += encimg.length
     idx = idx+25000
 
   }
@@ -244,8 +239,6 @@ async function enc() {
   var encArr = await Promise.all(encPromiseArr)
 
   console.timeLog("enc")
-  console.log('encArr.length',encSize)
-  console.log('enc size', )
 
 
   var shtTitle = "Sheet10"
