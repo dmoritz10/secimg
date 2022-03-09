@@ -293,8 +293,7 @@ const rq = {"requests" : [
     updateSpreadsheetProperties: {
     properties: {
      name: fileId,
-    },
-    name: 'name'
+    }
     }
    }]}
  ;
