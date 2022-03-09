@@ -269,15 +269,27 @@ async function buildImageFile() {
   gapi.client.drive.files.create({
 
     resource : {
-                  id: '123435' ,
-                  name : '123435',                 
-                  mimeType: 'application/vnd.google-apps.spreadsheet',
-                  parents: ['1bfxCnqEtl78MI9UbbE87LpHYGJTwu-x7']
+                   
+                    name : 'Sheet',
+                   mimeType: 'application/vnd.google-apps.spreadsheet',
+                   parents: ['1bfxCnqEtl78MI9UbbE87LpHYGJTwu-x7']
                  }
 
 }).then(function(response) {
     console.log(response);
-    
+    var fileId = response.result.id
+
+
+    gapi.client.drive.files.update({
+      resource : {
+                     id : fileId,
+                     name: fileId
+                   }
+  
+  }).then(function(response) {
+      console.log(response);
+  
+  })
 
 });
 
