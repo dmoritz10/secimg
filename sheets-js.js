@@ -268,9 +268,8 @@ async function buildImageFile() {
 
   var fileIdx = await gapi.client.drive.files.create({
 
-    resource : {
-                   
-                    name : 'Sheet',
+    resource : {                  
+                  name : 'Sheet',
                    mimeType: 'application/vnd.google-apps.spreadsheet',
                    parents: ['1bfxCnqEtl78MI9UbbE87LpHYGJTwu-x7']
                  }
@@ -284,7 +283,7 @@ async function buildImageFile() {
 console.log(fileIdx)
 
 var fileId = fileIdx.result.id
-
+return
 
 // rename sheet to that provided by user
 
