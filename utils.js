@@ -180,7 +180,7 @@ function parseDateISOString(s) {
 
 function calcRngA1(r, c, nbrRows, nbrCols) {
 
-  const colNbrToLtr = c => {
+  const colNbrToLtr = n => {
     l = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     return n > 26 ? colNbrToLtr(Math.floor((n-1)/26)) + colNbrToLtr(n%26) : l[n-1]
   }
