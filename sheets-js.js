@@ -284,9 +284,7 @@ async function dec() {
 
   var params = {
     spreadsheetId: spreadsheetId,
-    range: "'" + shtTitle + "'!" + rng,
-    valueInputOption: 'RAW',
-    insertDataOption: 'INSERT_ROWS'
+    range: "'" + shtTitle + "'!" + rng
   };
 
   var request = gapi.client.sheets.spreadsheets.values.get(params);
