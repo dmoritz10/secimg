@@ -290,7 +290,7 @@ async function dec() {
   };
 
   var request = gapi.client.sheets.spreadsheets.values.get(params);
-  request.then(function(response) {
+  request.then(async function(response) {
     console.log(response.result);
     var vals = response.result.values[0]
     console.timeLog("dec")
