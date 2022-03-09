@@ -281,8 +281,8 @@ async function dec() {
   console.time("dec")
 
   var shtTitle = "Sheet10"
-  var row = 2
-  var rng = calcRngA1(row, 1, 1, 1000)
+  var row = await prompt("Enter row nbr to decrypt", "text");
+  var rng = calcRngA1(row*1, 1, 1, 1000)
 
   var params = {
     spreadsheetId: spreadsheetId,
