@@ -229,10 +229,10 @@ jQuery(function ($) {
             // $('#btnShtAddProvider')   .click(buildImageFile);
 
 
-            // $('#btnShtmSubmit')       .button().click(btnShtmSubmitSheetHtml);
-            // $('#btnShtmDelete')       .click(btnDeleteSheetHtml);
-            $('#btnShtmDelete')       .click(enc);
-            $('#btnShtmSubmit')       .click(dec);
+            $('#btnShtmSubmit')       .button().click(btnShtmSubmitSheetHtml);
+            $('#btnShtmDelete')       .click(btnDeleteSheetHtml);
+            // $('#btnShtmDelete')       .click(enc);
+            // $('#btnShtmSubmit')       .click(dec);
             $('#btnEnc')       .click(enc);
             $('#btnDec')       .click(dec);
 
