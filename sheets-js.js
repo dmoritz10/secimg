@@ -290,8 +290,9 @@ async function dec() {
   var request = gapi.client.sheets.spreadsheets.values.get(params);
   request.then(function(response) {
     console.log(response.result);
+    var vals = response.result.values[0]
 
-    document.getElementById("shtmImgBack").src = response.result.join('')
+    document.getElementById("shtmImgBack").src = vals.join('')
 
   }, function(reason) {
     console.error('error: ' + reason.result.error.message);
