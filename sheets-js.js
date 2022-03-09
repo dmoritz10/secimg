@@ -301,6 +301,8 @@ async function dec() {
     console.error('error: ' + reason.result.error.message);
   });
 
+  console.log(vals)
+
   var decVals = vals[0].map(async function(ele) {return await decryptMessage(ele)})
 
   document.getElementById("shtmImgBack").src = decVals.join('')
