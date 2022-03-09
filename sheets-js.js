@@ -301,7 +301,7 @@ async function dec() {
     });
 
 
-  var decVals = vals[0].map(async function(ele) {return await decryptMessage(ele)})
+  var decVals = vals[0].map( function(ele) {return decryptMessage(ele)})
   console.log(decVals)
 
   Promise.all(decVals).then((values) => {
