@@ -269,12 +269,16 @@ async function buildImageFile() {
   gapi.client.drive.files.create({
 
     resource : {
-                   name : 'mySpreadSheet',
-                   mimeType: 'application/vnd.google-apps.spreadsheet'
+                  id: '123435' ,
+                  name : '123435',                 
+                  mimeType: 'application/vnd.google-apps.spreadsheet',
+                  parents: ['1bfxCnqEtl78MI9UbbE87LpHYGJTwu-x7']
                  }
 
 }).then(function(response) {
     console.log(response);
+    
+
 });
 
 
