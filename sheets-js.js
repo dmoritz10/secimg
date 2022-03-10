@@ -587,7 +587,7 @@ async function fetchImages(shtEnc, shtTitle) {
 
 
     rtn = []
-    vals.forEach( val => {
+    vals.forEach( async val => {
 
       if (shtEnc) {
         var decVals = vals.map( ele =>  decryptMessage(ele))
