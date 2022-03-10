@@ -408,14 +408,7 @@ async function btnDeleteSheetHtml() {
               "endIndex": idx + 2
             }
           }
-        },
-        {
-          "deleteSpreadsheet": {
-            
-              "sheetId": $('#shtmFileId').val()
-            }
-          }
-        
+        }
       ]
   }
 
@@ -432,6 +425,20 @@ async function btnDeleteSheetHtml() {
     console.log(response)
 
   })
+
+  var fileIdx = await gapi.client.drive.files.delete({
+
+    resource : {                  
+                  fileId : $('#shtmFileId').val()
+
+                }
+
+}).then(function(response) {
+    console.log(response);
+    return response
+    
+});
+
 
   $("#sheet-modal").modal('hide');
 
