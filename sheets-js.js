@@ -468,7 +468,7 @@ console.log(type)
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      if (input.id == "shtmImgFront")  $('#shtmImgFront').attr('src', e.target.result);
+      if (input.id == "shtmInputFront")  $('#shtmImgFront').attr('src', e.target.result);
       else                $('#shtmImgBack').attr('src', e.target.result);
     }
 
