@@ -394,20 +394,6 @@ async function btnDeleteSheetHtml() {
 
   if (!confirmOK) return
 
-  // try {
-  // 	var clipboardItems = await navigator.clipboard.read();
-  //   console.log(clipboardItems);
-  // 	var blobOutput = await clipboardItems[0].getType('image/png');
-  //   console.log(blobOutput)
-  //   document.getElementById('shtmImgFront').src =
-  //     window.URL.createObjectURL(blobOutput);
-  //   console.log('Image pasted.');
-  // } catch(e) {
-  // 	console.log('Failed to read clipboard', e);
-  // }
-  // return
-
-
   var idx = shtIdxArr[$('#shtmArrIdx').val() * 1]
 
   var request = {
@@ -422,7 +408,14 @@ async function btnDeleteSheetHtml() {
               "endIndex": idx + 2
             }
           }
-        }
+        },
+        {
+          "deleteSpreadsheet": {
+            
+              "sheetId": $('#shtmFileId').val()
+            }
+          }
+        
       ]
   }
 
