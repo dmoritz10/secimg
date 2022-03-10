@@ -459,7 +459,7 @@ function dupDocument(Document) {
 
 async function showFile(input, type) {
 
-console.log('type', type)
+console.log('input', input)
 
   if (input.files && input.files[0]) {
     var reader = new FileReader();
