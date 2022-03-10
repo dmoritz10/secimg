@@ -8,7 +8,7 @@ async function testEncrypted(title) {
 
     var shtHdrs = objSht[title].colHdrs
 
-    if (shtHdrs[0] == 'Provider') {
+    if (shtHdrs[0] == 'Document') {
 
         return {
             enc: false,
@@ -17,7 +17,7 @@ async function testEncrypted(title) {
 
     }
 
-    if (await decryptMessage(shtHdrs[0]) == "Provider") {
+    if (await decryptMessage(shtHdrs[0]) == "Document") {
 
         console.log('dec', await decryptMessage(shtHdrs[0]))
 
@@ -53,12 +53,12 @@ async function encryptSheet(title) {
 
     var decHdrs = await decryptMessage(shtHdrs[0])
 
-    if (decHdrs == "Provider") {
+    if (decHdrs == "Document") {
         bootbox.alert('Sheet "' + shtTitle + '" is already encrypted.');
         return
     }
 
-    if (shtHdrs[0] != 'Provider') {
+    if (shtHdrs[0] != 'Document') {
         bootbox.alert('Sheet "' + shtTitle + '" not a valid Secure Sheet.');
         return
     }
@@ -105,7 +105,7 @@ async function decryptSheet(title) {
 
     console.log('decHdrs', decHdrs)
 
-    if (decHdrs != "Provider") {
+    if (decHdrs != "Document") {
         bootbox.alert('Sheet "' + shtTitle + '" is not an encrtpted Secure Sheet.');
         return
     }

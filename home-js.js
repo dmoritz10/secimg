@@ -29,7 +29,7 @@ async function loadSheets() {
       x.appendTo("#hmContainer");
 
       var nbrSheets = 0
-      var nbrProviders = 0
+      var nbrDocuments = 0
 
     
       for (var j = 0; j < sheets.length; j++) {
@@ -82,7 +82,7 @@ async function loadSheets() {
             ele.appendTo("#hmContainer");
 
             nbrSheets++
-            nbrProviders += sht.gridProperties.rowCount - 1
+            nbrDocuments += sht.gridProperties.rowCount - 1
 
           }
 
@@ -91,7 +91,7 @@ async function loadSheets() {
       }
 
       $('#hmNbrSheets').html(nbrSheets)
-      $('#hmNbrProviders').html(nbrProviders)
+      $('#hmNbrDocument').html(nbrDocuments)
 
       console.log('secSht', secSht)
 

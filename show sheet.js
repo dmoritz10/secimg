@@ -1,12 +1,12 @@
 async function showSheet(idx) {
 
-  if (idx === null) return                  // null is from browseProvider
+  if (idx === null) return                  // null is from browseDocument
 
   var sht = []
 
   var vals = shtEnc ? await decryptArr(shtVals[idx]) : shtVals[idx]
   
-  $("#ssSheet")[0].innerHTML = vals[shtHdrs.indexOf('Provider')]
+  $("#ssSheet")[0].innerHTML = vals[shtHdrs.indexOf('Document')]
   $("#ssArrIdx").val(idx)
 
   for (var i=1; i<shtHdrs.length;i++) {
@@ -49,7 +49,7 @@ async function showSheet(idx) {
 
 } 
 
-function browseProvider(dir) {
+function browseDocument(dir) {
 
   var idx   = $("#ssArrIdx").val()*1       
   var title = $('#shtTitle').text()

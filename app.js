@@ -26,7 +26,7 @@
 
     var signin
 
-    var newShtHdrs = ['Provider','Expiry','Favorite','Notes','Img Front','Img Back', 'File Id', 'Last Change']
+    var newShtHdrs = ['Document','Expiry','Favorite','Notes','Img Front','Img Back', 'File Id', 'Last Change']
 
 
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
@@ -225,9 +225,8 @@ jQuery(function ($) {
                 btnShtMoreVertHtml()
             })
 
-            $('#btnShtAddProvider')   .click(btnAddSheetHtml);
-            // $('#btnShtAddProvider')   .click(buildImageFile);
-
+            $('#btnShtAddDocument')   .click(btnAddSheetHtml);
+            // $('#btnShtAddPDocument
 
             $('#btnShtmSubmit')       .button().click(btnShtmSubmitSheetHtml);
             $('#btnShtmDelete')       .click(btnDeleteSheetHtml);
@@ -240,14 +239,14 @@ jQuery(function ($) {
             $("#shtSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
 
-                $("#shtContainer #shtProvider").filter(function() {
+                $("#shtContainer #shtDocument").filter(function() {
                   $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
                 
             });
 
             // clear form of unencrypted data after closing
-            $('#editProvider').on('hidden.bs.modal', function(e) {
+            $('#editDocument').on('hidden.bs.modal', function(e) {
                 $(this).find('#sheet-form')[0].reset();
             });
 

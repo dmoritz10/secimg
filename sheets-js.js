@@ -44,7 +44,7 @@ async function listSheet(title) {
   
 
   $("#shtTitle").html(shtTitle)
-  $("#shtNbrProviders").html(vals.length)
+  $("#shtNbrDocuments").html(vals.length)
 
   var $tblSheets = $("#shtContainer > .d-none").eq(0)  // the 1st one is a template which is always d-none
 
@@ -64,16 +64,16 @@ async function listSheet(title) {
 
     if (shtEnc) {
       var fav = await decryptMessage(shtObj['Favorite'])
-      var provider = await decryptMessage(shtObj['Provider'])
+      var Document = await decryptMessage(shtObj['Document'])
     } else {
       var fav = shtObj['Favorite']
-      var provider = shtObj['Provider']
+      var Document = shtObj['Document']
     }
 
 
     var ele = $tblSheets.clone();
 
-    ele.find('#shtProvider')[0].innerHTML = provider
+    ele.find('#shtDocument')[0].innerHTML = Document
 
     ele.find('#btnShtEdit')[0].setAttribute("onclick", "editSheet(" + j + ")");
 
@@ -109,7 +109,7 @@ async function listSheet(title) {
 
   if (srchVal) {
 
-      $("#shtContainer #shtProvider").filter(function() {
+      $("#shtContainer #shtDocument").filter(function() {
         $(this).parent().parent().parent().toggle($(this).text().toLowerCase().indexOf(srchVal.toLowerCase()) > -1)
       });
    
@@ -195,7 +195,7 @@ async function editSheet(arrIdx) {
 
   var shtObj = makeObj(vals, shtHdrs)
 
-  $('#shtmProvider').val(shtObj['Provider'])
+  $('#shtmDocument').val(shtObj['Document'])
   $('#shtmExpiry').val(shtObj['Expiry'])
   $('#shtmImgFront').val(shtObj['Img Front'])
   $('#shtmImgBack').val(shtObj['Account Nbr'])
@@ -217,7 +217,7 @@ async function btnShtmSubmitSheetHtml() {
 
     var vals = [...shtVals[arrIdx]]
 
-    vals[shtHdrs.indexOf("Provider")] = $('#shtmProvider').val()
+    vals[shtHdrs.indexOf("Document")] = $('#shtmDocument').val()
     vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
     vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
     vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
@@ -228,8 +228,8 @@ async function btnShtmSubmitSheetHtml() {
 
   } else {
 
-    if (dupProvider($('#shtmProvider').val())) {
-      toast("Provider already exists")
+    if (dupDocument($('#shtmDocument').val())) {
+      toast("Document already exists")
       return
     }
 
@@ -237,7 +237,7 @@ async function btnShtmSubmitSheetHtml() {
 
     var vals = []
 
-    vals[shtHdrs.indexOf("Provider")] = $('#shtmProvider').val()
+    vals[shtHdrs.indexOf("Document")] = $('#shtmDocument').val()
     vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
     vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
     vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
@@ -342,9 +342,9 @@ async function updateUI (valsEnc, arrIdx) {
   // update. Update ui directly w/o listSheet
   shtVals[arrIdx] = valsEnc
 
-  var providerDec = shtEnc ? await decryptMessage(valsEnc[0]) : valsEnc[0]
-  var $provider = $('#shtContainer > div').find('#shtProvider').eq(arrIdx+1) // first ele is template d-none
-  $provider.html(providerDec)
+  var DocumentDec = shtEnc ? await decryptMessage(valsEnc[0]) : valsEnc[0]
+  var $Document = $('#shtContainer > div').find('#shtDocument').eq(arrIdx+1) // first ele is template d-none
+  $Document.html(DocumentDec)
 
   var fav = valsEnc[shtHdrs.indexOf('Favorite')]
 
@@ -390,7 +390,7 @@ async function btnAddSheetHtml() {
 
 async function btnDeleteSheetHtml() {
 
-  var confirmOK = await confirm("Are you sure you want to delete this provider ?")
+  var confirmOK = await confirm("Are you sure you want to delete this Document ?")
 
   if (!confirmOK) return
 
@@ -425,13 +425,11 @@ async function btnDeleteSheetHtml() {
     console.log(response)
 
   })
+console.log($('#shtmFileId').val())
 
   await gapi.client.drive.files.delete({
-
-                    
-                  fileId : $('#shtmFileId').val()
-
-           
+                
+        fileId : $('#shtmFileId').val()
 
 }).then(function(response) {
     console.log(response);
@@ -446,11 +444,11 @@ async function btnDeleteSheetHtml() {
 
 }
 
-function dupProvider(provider) {
+function dupDocument(Document) {
 
-  let arrProviders = shtVals.map(a => a[shtHdrs.indexOf('Provider')]);
+  let arrDocuments = shtVals.map(a => a[shtHdrs.indexOf('Document')]);
 
-  if (arrProviders.indexOf(provider) > -1) {
+  if (arrDocuments.indexOf(Document) > -1) {
     return true
   } else {
     return false
