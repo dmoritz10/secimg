@@ -536,7 +536,7 @@ async function updateImages(fileId, imgIdx, vals) {
   var rng = calcRngA1(row, 1, 1, vals.length)
 
   var params = {
-    spreadsheetId: spreadsheetId,
+    spreadsheetId: fileId,
     range: "'" + shtTitle + "'!" + rng,
     valueInputOption: 'RAW',
     insertDataOption: 'INSERT_ROWS'
@@ -572,7 +572,7 @@ async function fetchImages(shtEnc, shtTitle) {
   var rng = calcRngA1(1, 1, 2, 100)
 
   var params = {
-    spreadsheetId: spreadsheetId,
+    spreadsheetId: shtTitle,
     range: "'" + shtTitle + "'!" + rng
   };
 
