@@ -458,19 +458,19 @@ function dupDocument(Document) {
 
 
 async function showFile(input, type) {
+
+console.log('type', type)
+
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      if (type=="front") $('#shtmImgFront').attr('src', e.target.result);
-      else $('#shtmImgBack').attr('src', e.target.result);
-
-        
-
+      if (type=="front")  $('#shtmImgFront').attr('src', e.target.result);
+      else                $('#shtmImgBack').attr('src', e.target.result);
     }
 
     reader.readAsDataURL(input.files[0]);
-}
+  }
 }
 
 async function enc() {
