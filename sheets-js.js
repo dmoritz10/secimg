@@ -537,7 +537,7 @@ async function updateImages(fileId, imgIdx, vals) {
 
   var params = {
     spreadsheetId: fileId,
-    range: "'" + shtTitle + "'!" + rng,
+    range: "'" + "Sheet1" + "'!" + rng,
     valueInputOption: 'RAW',
     insertDataOption: 'INSERT_ROWS'
   };
@@ -573,7 +573,7 @@ async function fetchImages(shtEnc, shtTitle) {
 
   var params = {
     spreadsheetId: shtTitle,
-    range: "'" + shtTitle + "'!" + rng
+    range: "'" + "Sheet1" + "'!" + rng
   };
 
   var vals = await gapi.client.sheets.spreadsheets.values.get(params)
