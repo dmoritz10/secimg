@@ -580,7 +580,7 @@ async function fetchImages(shtEnc, shtTitle) {
     .then(function(response) {
       
       console.timeLog("dec")
-      console.log(response.result);
+      console.log(response);
       return response.result.values
 
     }, function(reason) {
