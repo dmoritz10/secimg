@@ -426,12 +426,12 @@ async function btnDeleteSheetHtml() {
 
   })
 
-  var fileIdx = await gapi.client.drive.files.delete({
+  await gapi.client.drive.files.delete({
 
-    resource : {                  
+                    
                   fileId : $('#shtmFileId').val()
 
-                }
+           
 
 }).then(function(response) {
     console.log(response);
