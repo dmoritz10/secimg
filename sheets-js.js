@@ -193,6 +193,8 @@ async function editSheet(arrIdx) {
 
   var vals = shtEnc ? await decryptArr(shtVals[arrIdx]) : shtVals[arrIdx]
 
+  var imgs = await fetchImages(shtEnc, shtObj['File Id'])
+
   var shtObj = makeObj(vals, shtHdrs)
 
   $('#shtmDocument').val(shtObj['Document'])
@@ -202,6 +204,10 @@ async function editSheet(arrIdx) {
   $('#shtmNotes').val(shtObj['Notes'])
   $('#shtmFavorite').val(shtObj['Favorite'])
   $('#shtmFileId').val(shtObj['File Id'])
+  $('#shtmImgFront').attr('src', imgs[0])
+  $('#shtmImgBack').attr('src', imgs[1])
+  $('#shtmSaveImgFront').attr('src', imgs[0])
+  $('#shtmSaveImgBack').attr('src', imgs[1])
 
   $('#btnDeleteSheet').removeClass('d-none')
 
@@ -225,6 +231,9 @@ async function btnShtmSubmitSheetHtml() {
     vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
     vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
     vals[shtHdrs.indexOf("File Id")] = $('#shtmFileId').val()
+
+    var fileId = $('#shtmFileId').val()
+
 
   } else {
 
@@ -253,6 +262,8 @@ async function btnShtmSubmitSheetHtml() {
   var valsEnc = shtEnc ? await encryptArr(vals) : vals
 
   await updateSheetRow(valsEnc, shtIdx)
+
+  await postImages(shtEnc, fileId)
 
   $("#sheet-modal").modal('hide');
 
@@ -457,13 +468,9 @@ function dupDocument(Document) {
 }
 
 
-async function showFile(input, type) {
+async function showFile(input) {
 
-console.log('input', $(input))
-console.log(input.id)
-console.log(input.files)
-console.log(type)
-// 
+
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
@@ -474,31 +481,57 @@ console.log(type)
 
     reader.readAsDataURL(input.files[0]);
   }
+
 }
 
-async function enc() {
+async function postImages(shtEnc, fileId) {
 
   console.time("enc")
-  var img = document.getElementById("shtmImgFront").src;
 
-  var idx = 0
-  var encPromiseArr = []
+  var imgs = []
+  var savImgs = []
 
-  while (idx < img.length) {
+  imgs[0] = document.getElementById("shtmImgFront").src;
+  imgs[1] = document.getElementById("shtmImgBack").src;
+  savImgs[0] = document.getElementById("shtmSaveImgFront").src;
+  savImgs[1] = document.getElementById("shtmSaveImgBack").src;
 
-    encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000)))
-    idx = idx+25000
 
-  }
+  imgs.forEach( (img, imgIdx) => {
 
-  var encArr = await Promise.all(encPromiseArr)
+    if (img != savImgs[imgIdx]) {
+
+      var idx = 0
+      var encPromiseArr = []
+
+      while (idx < img.length) {
+
+        if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000)))
+        else        encPromiseArr.push(img.substring(idx, idx + 25000))
+
+        idx = idx+25000
+
+      }
+
+      if (shtEnc) var encArr = await Promise.all(encPromiseArr)
+      else        var encArr = encPromiseArr
+
+      updateImages(fileId, imgIdx+1, encArr)
+
+    }
+
+  })
+
+}
+
+async function updateImages(fileId, imgIdx, vals) {
 
   console.timeLog("enc")
 
 
-  var shtTitle = "Sheet10"
-  var row = 2
-  var rng = calcRngA1(row, 1, 1, encArr.length)
+  var shtTitle = fileId
+  var row = imgIdx
+  var rng = calcRngA1(row, 1, 1, vals.length)
 
   var params = {
     spreadsheetId: spreadsheetId,
@@ -509,36 +542,32 @@ async function enc() {
 
   var resource = {
     "majorDimension": "ROWS",
-    "values": [encArr]    
+    "values": [vals]    
   }
 
-  await gapi.client.sheets.spreadsheets.values.append(params, resource)
+  await gapi.client.sheets.spreadsheets.values.update(params, resource)
     .then(async function (response) {
 
-      console.log('append successful')
+      console.log('update successful')
       console.timeEnd("enc")
 
     },
 
       function (reason) {
 
-        console.error('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
-        bootbox.alert('error appending sheet "' + shtTitle + '": ' + reason.result.error.message);
+        console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+        bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
         console.timeEnd("enc")
 
       });
 
-
-
 }
 
 
-async function dec() {
+async function fetchImages(shtEnc, shtTitle) {
   console.time("dec")
 
-  var shtTitle = "Sheet10"
-  var row = await prompt("Enter row nbr to decrypt", "number");
-  var rng = calcRngA1(row*1, 1, 1, 1000)
+  var rng = calcRngA1(1, 1, 2, 1000)
 
   var params = {
     spreadsheetId: spreadsheetId,
@@ -557,11 +586,17 @@ async function dec() {
     });
 
 
-  var decVals = vals[0].map( ele =>  decryptMessage(ele))
+    rtn = []
+    vals.forEach( val => {
 
-  var decArr = await Promise.all(decVals)
+      if (shtEnc) {
+        var decVals = vals.map( ele =>  decryptMessage(ele))
+        var decArr = await Promise.all(decVals)
+      } else
+        var decArr = val
 
-  document.getElementById("shtmImgBack").src = decArr.join('')
+      rtn.push(decArr.join(''))
+  })
 
   console.timeEnd("dec")
 
