@@ -497,7 +497,7 @@ async function postImages(shtEnc, fileId) {
   savImgs[1] = document.getElementById("shtmSaveImgBack").src;
 
 
-  imgs.forEach( (img, imgIdx) => {
+  imgs.forEach( async (img, imgIdx) => {
 
     if (img != savImgs[imgIdx]) {
 
@@ -516,7 +516,7 @@ async function postImages(shtEnc, fileId) {
       if (shtEnc) var encArr = await Promise.all(encPromiseArr)
       else        var encArr = encPromiseArr
 
-      updateImages(fileId, imgIdx+1, encArr)
+      await updateImages(fileId, imgIdx+1, encArr)
 
     }
 
