@@ -461,6 +461,7 @@ async function showFile(input, type) {
 
 console.log('input', $(input))
 console.log(input.files)
+console.log(e)
 
   if (input.files && input.files[0]) {
     var reader = new FileReader();
