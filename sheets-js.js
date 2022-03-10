@@ -569,7 +569,7 @@ async function updateImages(fileId, imgIdx, vals) {
 async function fetchImages(shtEnc, shtTitle) {
   console.time("dec")
 
-  var rng = calcRngA1(1, 1, 2, 1000)
+  var rng = calcRngA1(1, 1, 2, 100)
 
   var params = {
     spreadsheetId: spreadsheetId,
