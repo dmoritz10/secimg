@@ -232,8 +232,7 @@ jQuery(function ($) {
             $('#btnShtmDelete')       .click(btnDeleteSheetHtml);
             // $('#btnShtmDelete')       .click(enc);
             // $('#btnShtmSubmit')       .click(dec);
-            $('#btnEnc')       .click(enc);
-            $('#btnDec')       .click(dec);
+        
 
 
             $("#shtSearch").on("input", function() {

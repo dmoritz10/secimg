@@ -193,9 +193,11 @@ async function editSheet(arrIdx) {
 
   var vals = shtEnc ? await decryptArr(shtVals[arrIdx]) : shtVals[arrIdx]
 
-  var imgs = await fetchImages(shtEnc, shtObj['File Id'])
 
   var shtObj = makeObj(vals, shtHdrs)
+
+  var imgs = await fetchImages(shtEnc, shtObj['File Id'])
+
 
   $('#shtmDocument').val(shtObj['Document'])
   $('#shtmExpiry').val(shtObj['Expiry'])
