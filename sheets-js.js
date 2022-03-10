@@ -460,14 +460,15 @@ function dupDocument(Document) {
 async function showFile(input, type) {
 
 console.log('input', $(input))
+console.log(input.id)
 console.log(input.files)
-console.log(e)
-
+console.log(type)
+// 
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      if (type=="front")  $('#shtmImgFront').attr('src', e.target.result);
+      if (input.id == "shtmImgFront")  $('#shtmImgFront').attr('src', e.target.result);
       else                $('#shtmImgBack').attr('src', e.target.result);
     }
 
