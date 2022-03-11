@@ -502,7 +502,12 @@ async function postImages(shtEnc, fileId, imgs, savImgs) {
 
   imgs.forEach( async (img, imgIdx) => {
 
+    console.log("postImages". img)
+    console.log("savImgs". savImgs[imgIdx] == img)
+
     if (img != savImgs[imgIdx]) {
+
+      console.log("img", img)
 
       var idx = 0
       var encPromiseArr = []
@@ -518,6 +523,8 @@ async function postImages(shtEnc, fileId, imgs, savImgs) {
 
       if (shtEnc) var encArr = await Promise.all(encPromiseArr)
       else        var encArr = encPromiseArr
+
+      console.log('encArr', encArr)
 
       await updateImages(fileId, imgIdx+1, encArr)
 

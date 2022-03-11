@@ -69,8 +69,8 @@ async function encryptSheet(title) {
 
     encryptImageSheets(objSht[title])
 
-    secSht.enc = false
-    shtEnc = false
+    secSht.enc = true
+    shtEnc = true
 
     // var et = ts - new Date()
     // alert(et)
