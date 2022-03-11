@@ -198,9 +198,7 @@ async function editSheet(arrIdx) {
 
   var imgs = await fetchImages(shtEnc, shtObj['File Id'])
 
-  showFile(imgs[0])
-  showFile(imgs[1])
-
+  console.log('edit imgs', imgs)
 
   $('#shtmDocument').val(shtObj['Document'])
   $('#shtmExpiry').val(shtObj['Expiry'])
@@ -211,8 +209,8 @@ async function editSheet(arrIdx) {
   $('#shtmFileId').val(shtObj['File Id'])
   $('#shtmImgFront').attr('src', imgs[0])
   $('#shtmImgBack').attr('src', imgs[1])
-  // $('#shtmSaveImgFront').attr('src', imgs[0])
-  // $('#shtmSaveImgBack').attr('src', imgs[1])
+  $('#shtmSaveImgFront').attr('src', imgs[0])
+  $('#shtmSaveImgBack').attr('src', imgs[1])
 
   $('#btnDeleteSheet').removeClass('d-none')
 
