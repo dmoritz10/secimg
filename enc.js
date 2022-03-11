@@ -153,7 +153,7 @@ async function encryptImageSheets(objSht) {
 
         var imgs = await fetchImages(false, fileId) 
 
-        await postImages(true, fileId, imgs, imgs)
+        await postImages(true, fileId, imgs, [null, null])
 
     })
 }
