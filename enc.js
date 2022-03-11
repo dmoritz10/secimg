@@ -122,8 +122,8 @@ async function decryptSheet(title) {
 
     var decObjSht = {
 
-        cols:   decHdrs,
-        vals:   decShtArr
+        colHdrs:    decHdrs,
+        vals:       decShtArr
 
     }
 
