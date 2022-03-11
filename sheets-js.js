@@ -501,15 +501,15 @@ async function showFile(input) {
 async function postImages(shtEnc, fileId, imgs, savImgs) {
 
   console.time("postImages")
-  console.log("postImages", [...imgs])
-  console.log("postImages", imgs[0] = savImgs[0])
-  console.log("postImages", imgs[1] = savImgs[1])
+  console.log("postImages1", [...imgs])
+  console.log("postImages2", imgs[0] = savImgs[0])
+  console.log("postImages3", imgs[1] = savImgs[1])
 
 
   imgs.forEach( async (img, imgIdx) => {
     
 
-    console.log("postImages", img)
+    console.log("postImages4", img)
     console.log("savImgs", savImgs[imgIdx] == img)
 
     if (img != savImgs[imgIdx]) {
