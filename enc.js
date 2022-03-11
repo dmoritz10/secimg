@@ -118,6 +118,8 @@ async function decryptSheet(title) {
 
     await updateSheet(title, decShtArr)
 
+    var decHdrs = decShtArr.shift()
+
     var decObjSht = {
 
         cols:   decHdrs,
