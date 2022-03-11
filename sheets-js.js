@@ -538,8 +538,7 @@ async function updateImages(fileId, imgIdx, vals) {
   var params = {
     spreadsheetId: fileId,
     range: "'" + "Sheet1" + "'!" + rng,
-    valueInputOption: 'RAW',
-    insertDataOption: 'INSERT_ROWS'
+    valueInputOption: 'RAW'
   };
 
   var resource = {
