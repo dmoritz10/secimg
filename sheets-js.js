@@ -274,6 +274,9 @@ async function btnShtmSubmitSheetHtml() {
   savImgs[0] = document.getElementById("shtmSaveImgFront").src;
   savImgs[1] = document.getElementById("shtmSaveImgBack").src;
 
+  console.log('submit', imgs)
+  console.log('submit', savImgs)
+
   await postImages(shtEnc, fileId, imgs, savImgs)
 
   $("#sheet-modal").modal('hide');
