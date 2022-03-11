@@ -37,7 +37,7 @@ async function testEncrypted(title) {
 
 async function encryptSheet(title) {
 
-    // var ts = new Date()
+    console.log('encryptSheet')
 
     modal(true)
 
@@ -136,9 +136,16 @@ async function decryptSheet(title) {
 
 async function encryptImageSheets(objSht) {
 
+    console.log('encryptImageSheets')
+
     var vals = objSht.vals
 
+    console.log(vals)
+
     vals.forEach( async val => {
+
+        console.log('forEach')
+        console.log(val)
 
         var shtObj = makeObj(val, objSht.colHdrs)
 

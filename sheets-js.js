@@ -584,17 +584,21 @@ async function fetchImages(shtEnc, shtTitle) {
     .then(function(response) {
       
       console.timeLog("fetchImages")
-      console.log(response);
+      console.log("fetchImages", response);
       return response.result.values
 
     }, function(reason) {
       console.error('error: ' + reason.result.error.message);
     });
 
+    console.log("fetchImages", vals)
+
     if (!vals) return [null, null]
 
     rtn = []
     vals.forEach( async val => {
+
+      console.log("fetchImages", 'foreach')
 
       if (val.length == 0 ) rtn.push(null)
       else {
@@ -608,6 +612,8 @@ async function fetchImages(shtEnc, shtTitle) {
         rtn.push(decArr.join(''))
       }
   })
+
+  console.log("fetchImages", rtn)
 
   console.timeEnd("fetchImages")
 
