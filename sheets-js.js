@@ -489,6 +489,9 @@ async function showFile(input) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
+
+console.log('showFile', e.target.result)
+
       if (input.id == "shtmInputFront")  $('#shtmImgFront').attr('src', e.target.result);
       else                $('#shtmImgBack').attr('src', e.target.result);
     }
