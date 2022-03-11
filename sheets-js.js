@@ -265,7 +265,15 @@ async function btnShtmSubmitSheetHtml() {
 
   await updateSheetRow(valsEnc, shtIdx)
 
-  await postImages(shtEnc, fileId)
+  var imgs = []
+  var savImgs = []
+
+  imgs[0] = document.getElementById("shtmImgFront").src;
+  imgs[1] = document.getElementById("shtmImgBack").src;
+  savImgs[0] = document.getElementById("shtmSaveImgFront").src;
+  savImgs[1] = document.getElementById("shtmSaveImgBack").src;
+
+  await postImages(shtEnc, fileId, imgs, savImgs)
 
   $("#sheet-modal").modal('hide');
 
@@ -486,18 +494,10 @@ async function showFile(input) {
 
 }
 
-async function postImages(shtEnc, fileId) {
+async function postImages(shtEnc, fileId, imgs, savImgs) {
 
   console.time("postImages")
   console.log("postImages")
-
-  var imgs = []
-  var savImgs = []
-
-  imgs[0] = document.getElementById("shtmImgFront").src;
-  imgs[1] = document.getElementById("shtmImgBack").src;
-  savImgs[0] = document.getElementById("shtmSaveImgFront").src;
-  savImgs[1] = document.getElementById("shtmSaveImgBack").src;
 
 
   imgs.forEach( async (img, imgIdx) => {

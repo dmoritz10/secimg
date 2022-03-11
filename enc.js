@@ -98,6 +98,8 @@ async function decryptSheet(title) {
             { title: title, type: "all" }
         ])
 
+    decryptImageSheets(objSht[title])
+
     var shtHdrs = objSht[title].colHdrs
     var shtArr = [shtHdrs].concat(objSht[title].vals)
 
@@ -114,7 +116,12 @@ async function decryptSheet(title) {
 
     await updateSheet(title, decShtArr)
 
+    var imgs = fetchImages(shtEnc, shtTitle)
+
     secSht.enc = false
+    shtEnc = false
+
+    postImages(shtEnc, fileId)
 
     // var et = ts - new Date()
     // alert(et)
@@ -127,6 +134,39 @@ async function decryptSheet(title) {
 
 }
 
+async function encryptImageSheets(objSht[title]) {
+
+    var vals = objSht[title].vals
+
+    vals.forEach( val => {
+
+        var shtObj = makeObj(val, objSht[title].colHdrs)
+
+        var fileId = shtObj['File Id']
+
+        var imgs = await fetchImages(false, fileId) 
+
+        postImages(true, fileId, imgs, imgs)
+
+    })
+}
+
+async function decryptImageSheets(objSht[title]) {
+
+    var vals = objSht[title].vals
+
+    vals.forEach( val => {
+
+        var shtObj = makeObj(val, objSht[title].colHdrs)
+
+        var fileId = shtObj['File Id']
+
+        var imgs = await fetchImages(true, fileId) 
+
+        postImages(false, fileId, imgs, imgs)
+
+    })
+}
 
 async function encryptArr(msg, pwd = currUser.pwd) {
 
