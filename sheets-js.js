@@ -274,8 +274,8 @@ async function btnShtmSubmitSheetHtml() {
   savImgs[0] = document.getElementById("shtmSaveImgFront").src;
   savImgs[1] = document.getElementById("shtmSaveImgBack").src;
 
-  console.log('submit', imgs)
-  console.log('submit', savImgs)
+  console.log('submit', [...imgs])
+  console.log('submit', [...savImgs])
 
   await postImages(shtEnc, fileId, imgs, savImgs)
 
@@ -501,7 +501,7 @@ async function showFile(input) {
 async function postImages(shtEnc, fileId, imgs, savImgs) {
 
   console.time("postImages")
-  console.log("postImages", imgs)
+  console.log("postImages", [...imgs])
   console.log("postImages", imgs[0] = savImgs[0])
   console.log("postImages", imgs[1] = savImgs[1])
 
