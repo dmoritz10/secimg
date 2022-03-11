@@ -67,7 +67,7 @@ async function encryptSheet(title) {
 
     await updateSheet(title, encShtArr)
 
-    secSht.enc = false
+    secSht.enc = true
 
     // var et = ts - new Date()
     // alert(et)

@@ -488,7 +488,8 @@ async function showFile(input) {
 
 async function postImages(shtEnc, fileId) {
 
-  console.time("enc")
+  console.time("postImages")
+  console.log("postImages")
 
   var imgs = []
   var savImgs = []
@@ -524,11 +525,14 @@ async function postImages(shtEnc, fileId) {
 
   })
 
+  console.timeEnd("postImages")
+
 }
 
 async function updateImages(fileId, imgIdx, vals) {
 
-  console.timeLog("enc")
+  console.timeLog("updateImages")
+  console.log("updateImages")
 
 
   var shtTitle = fileId
@@ -550,7 +554,7 @@ async function updateImages(fileId, imgIdx, vals) {
     .then(async function (response) {
 
       console.log('update successful')
-      console.timeEnd("enc")
+      console.timeEnd("updateImages")
 
     },
 
@@ -558,7 +562,7 @@ async function updateImages(fileId, imgIdx, vals) {
 
         console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
         bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-        console.timeEnd("enc")
+        console.timeEnd("updateImages")
 
       });
 
@@ -566,7 +570,8 @@ async function updateImages(fileId, imgIdx, vals) {
 
 
 async function fetchImages(shtEnc, shtTitle) {
-  console.time("dec")
+  console.time("fetchImages")
+  console.log("fetchImages")
 
   var rng = calcRngA1(1, 1, 2, 1000)
 
@@ -578,7 +583,7 @@ async function fetchImages(shtEnc, shtTitle) {
   var vals = await gapi.client.sheets.spreadsheets.values.get(params)
     .then(function(response) {
       
-      console.timeLog("dec")
+      console.timeLog("fetchImages")
       console.log(response);
       return response.result.values
 
@@ -604,7 +609,7 @@ async function fetchImages(shtEnc, shtTitle) {
       }
   })
 
-  console.timeEnd("dec")
+  console.timeEnd("fetchImages")
 
   return rtn
 
