@@ -67,7 +67,10 @@ async function encryptSheet(title) {
 
     await updateSheet(title, encShtArr)
 
-    secSht.enc = true
+    encryptImageSheets(objSht[title])
+
+    secSht.enc = false
+    shtEnc = false
 
     // var et = ts - new Date()
     // alert(et)
@@ -98,7 +101,6 @@ async function decryptSheet(title) {
             { title: title, type: "all" }
         ])
 
-    decryptImageSheets(objSht[title])
 
     var shtHdrs = objSht[title].colHdrs
     var shtArr = [shtHdrs].concat(objSht[title].vals)
@@ -116,12 +118,10 @@ async function decryptSheet(title) {
 
     await updateSheet(title, decShtArr)
 
-    var imgs = fetchImages(shtEnc, shtTitle)
+    decryptImageSheets(objSht[title])
 
     secSht.enc = false
     shtEnc = false
-
-    postImages(shtEnc, fileId)
 
     // var et = ts - new Date()
     // alert(et)
