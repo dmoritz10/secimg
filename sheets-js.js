@@ -569,7 +569,7 @@ async function updateImages(fileId, imgIdx, vals) {
 async function fetchImages(shtEnc, shtTitle) {
   console.time("dec")
 
-  var rng = calcRngA1(1, 1, 2, 100)
+  var rng = calcRngA1(1, 1, 2, 1000)
 
   var params = {
     spreadsheetId: shtTitle,
@@ -587,20 +587,27 @@ async function fetchImages(shtEnc, shtTitle) {
       console.error('error: ' + reason.result.error.message);
     });
 
+    if (!vals) return [null, null]
 
     rtn = []
     vals.forEach( async val => {
 
-      if (shtEnc) {
-        var decVals = vals.map( ele =>  decryptMessage(ele))
-        var decArr = await Promise.all(decVals)
-      } else
-        var decArr = val
+      if (val.length == 0 ) rtn.push(null)
+      else {
 
-      rtn.push(decArr.join(''))
+        if (shtEnc) {
+          var decVals = vals.map( ele =>  decryptMessage(ele))
+          var decArr = await Promise.all(decVals)
+        } else
+          var decArr = val
+
+        rtn.push(decArr.join(''))
+      }
   })
 
   console.timeEnd("dec")
+
+  return rtn
 
 }
 
