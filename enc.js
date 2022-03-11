@@ -160,15 +160,27 @@ async function encryptImageSheets(objSht) {
 
 async function decryptImageSheets(objSht) {
 
+    console.log('decryptImageSheets')
+
     var vals = objSht.vals
 
+    console.log('decryptImageSheets', vals)
+
+
     vals.forEach( async val => {
+
+    console.log('decryptImageSheets foreach', val)
+
 
         var shtObj = makeObj(val, objSht.colHdrs)
 
         var fileId = shtObj['File Id']
 
+        console.log('fileid', fileId)
+
         var imgs = await fetchImages(true, fileId) 
+
+        console.log('imgs', imgs)
 
         await postImages(false, fileId, imgs, [null, null])
 
