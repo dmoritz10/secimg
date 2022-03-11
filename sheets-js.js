@@ -502,8 +502,8 @@ async function postImages(shtEnc, fileId, imgs, savImgs) {
 
   imgs.forEach( async (img, imgIdx) => {
 
-    console.log("postImages". img)
-    console.log("savImgs". savImgs[imgIdx] == img)
+    console.log("postImages", img)
+    console.log("savImgs", savImgs[imgIdx] == img)
 
     if (img != savImgs[imgIdx]) {
 
