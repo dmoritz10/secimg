@@ -499,8 +499,8 @@ async function postImages(shtEnc, fileId, imgs, savImgs) {
 
   console.time("postImages")
   console.log("postImages", imgs)
-  console.log("postImages", img[0] = savImgs[0])
-  console.log("postImages", img[1] = savImgs[1])
+  console.log("postImages", imgs[0] = savImgs[0])
+  console.log("postImages", imgs[1] = savImgs[1])
 
 
   imgs.forEach( async (img, imgIdx) => {
