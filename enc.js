@@ -138,7 +138,7 @@ async function encryptImageSheets(objSht) {
 
     var vals = objSht.vals
 
-    vals.forEach( val => {
+    vals.forEach( async val => {
 
         var shtObj = makeObj(val, objSht.colHdrs)
 
@@ -146,7 +146,7 @@ async function encryptImageSheets(objSht) {
 
         var imgs = await fetchImages(false, fileId) 
 
-        postImages(true, fileId, imgs, imgs)
+        await postImages(true, fileId, imgs, imgs)
 
     })
 }
@@ -155,7 +155,7 @@ async function decryptImageSheets(objSht) {
 
     var vals = objSht.vals
 
-    vals.forEach( val => {
+    vals.forEach( async val => {
 
         var shtObj = makeObj(val, objSht.colHdrs)
 
@@ -163,7 +163,7 @@ async function decryptImageSheets(objSht) {
 
         var imgs = await fetchImages(true, fileId) 
 
-        postImages(false, fileId, imgs, imgs)
+        await postImages(false, fileId, imgs, imgs)
 
     })
 }
