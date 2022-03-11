@@ -134,13 +134,13 @@ async function decryptSheet(title) {
 
 }
 
-async function encryptImageSheets(objSht[title]) {
+async function encryptImageSheets(objSht) {
 
-    var vals = objSht[title].vals
+    var vals = objSht.vals
 
     vals.forEach( val => {
 
-        var shtObj = makeObj(val, objSht[title].colHdrs)
+        var shtObj = makeObj(val, objSht.colHdrs)
 
         var fileId = shtObj['File Id']
 
@@ -151,13 +151,13 @@ async function encryptImageSheets(objSht[title]) {
     })
 }
 
-async function decryptImageSheets(objSht[title]) {
+async function decryptImageSheets(objSht) {
 
-    var vals = objSht[title].vals
+    var vals = objSht.vals
 
     vals.forEach( val => {
 
-        var shtObj = makeObj(val, objSht[title].colHdrs)
+        var shtObj = makeObj(val, objSht.colHdrs)
 
         var fileId = shtObj['File Id']
 
