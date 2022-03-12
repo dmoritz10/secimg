@@ -198,7 +198,8 @@ async function editSheet(arrIdx) {
 
   var imgs = await fetchImages(shtEnc, shtObj['File Id'])
 
-  console.log('edit imgs', imgs)
+  console.log('edit imgs', [...imgs])
+  console.log('edit imgs', [...imgs].length)
   console.log('edit imgs', imgs[0])
   console.log('edit imgs', imgs[1])
 
