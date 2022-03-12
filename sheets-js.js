@@ -623,9 +623,11 @@ async function fetchImages(shtEnc, shtTitle) {
     rtn = []
     // await vals.forEach( async val => {
 
-    for (let val in vals) {
+    for (let i in vals) {
 
       console.log("fetchImages", 'foreach')
+
+      var val = vals[i]
 
       if (val.length == 0 ) rtn.push(null)
       else {
