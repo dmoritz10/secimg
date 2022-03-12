@@ -623,7 +623,7 @@ async function fetchImages(shtEnc, shtTitle) {
     rtn = []
     // await vals.forEach( async val => {
 
-    for (let val in vals) "{"
+    for (let val in vals) {
 
       console.log("fetchImages", 'foreach')
 
@@ -643,7 +643,7 @@ async function fetchImages(shtEnc, shtTitle) {
 
         rtn.push(decArr.join(''))
       }
-  })
+  }
   
 
   console.log("fetchImages", [...rtn])
