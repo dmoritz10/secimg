@@ -33,12 +33,14 @@ async function showSheet(idx) {
 
   var imgs = await fetchImages(shtEnc, vals[shtHdrs.indexOf('File Id')])
 
+  var viewImgTemplate = '<div class="label cursor-pointer" onClick="copyToClpbrd(window.open("#img#", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");'
+
   imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></img></span>" : val=''
-  icon = '<div class="label cursor-pointer" onClick="copyToClpbrd(' + "" + val + "" + ')"><span class="material-icons">content_copy</span></div>'
+  icon =  viewImgTemplate.replace("#img#", val)
   sht.push(['Front', val, icon])
 
   imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></img></span>" : val=''
-  icon = '<div class="label cursor-pointer" onClick="copyToClpbrd(' + "" + val + "" + ')"><span class="material-icons">content_copy</span></div>'
+  icon =  viewImgTemplate.replace("#img#", val)
   sht.push(['Back', val, icon])
   
   var tbl = new Table();
