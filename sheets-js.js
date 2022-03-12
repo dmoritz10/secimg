@@ -601,7 +601,7 @@ async function fetchImages(shtEnc, shtTitle) {
     });
 
 
-    if (!vals) return ['', '']
+    if (!vals) return ['#', '#']
 
     rtn = []
 
@@ -609,7 +609,7 @@ async function fetchImages(shtEnc, shtTitle) {
 
       var val = vals[i]
 
-      if (val.length == 0 ) rtn.push('')
+      if (val.length == 0 ) rtn.push('#')
       else {
 
         if (shtEnc) {
