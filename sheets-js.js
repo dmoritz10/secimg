@@ -198,11 +198,6 @@ async function editSheet(arrIdx) {
 
   var imgs = await fetchImages(shtEnc, shtObj['File Id'])
 
-  console.log('edit imgs', [...imgs])
-  console.log('edit imgs', [...imgs].length)
-  console.log('edit imgs', imgs[0])
-  console.log('edit imgs', imgs[1])
-
   $('#shtmDocument').val(shtObj['Document'])
   $('#shtmExpiry').val(shtObj['Expiry'])
   $('#shtmImgFront').val(shtObj['Img Front'])
@@ -492,13 +487,10 @@ function dupDocument(Document) {
 
 async function showFile(input) {
 
-
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-
-console.log('showFile', e.target.result)
 
       if (input.id == "shtmInputFront")  $('#shtmImgFront').attr('src', e.target.result);
       else                $('#shtmImgBack').attr('src', e.target.result);
@@ -511,18 +503,8 @@ console.log('showFile', e.target.result)
 
 async function postImages(shtEnc, fileId, imgs, savImgs) {
 
-  console.time("postImages")
-  console.log("postImages1", [...imgs])
-  console.log("postImages2", imgs[0] == savImgs[0])
-  console.log("postImages3", imgs[1] == savImgs[1])
-
-
   imgs.forEach( async (img, imgIdx) => {
     
-
-    console.log("postImages4", img)
-    console.log("savImgs", savImgs[imgIdx] == img)
-
     if (img != savImgs[imgIdx]) {
 
       console.log("img", img)
@@ -616,39 +598,29 @@ async function fetchImages(shtEnc, shtTitle) {
       console.error('error: ' + reason.result.error.message);
     });
 
-    console.log("fetchImages", vals)
 
     if (!vals) return [null, null]
 
     rtn = []
-    // await vals.forEach( async val => {
 
     for (let i in vals) {
 
-      console.log("fetchImages", 'foreach')
-
       var val = vals[i]
 
-      if (val.length == 0 ) rtn.push(null)
+      if (val.length == 0 ) rtn.push('')
       else {
 
         if (shtEnc) {
           var decVals = val.map( ele => decryptMessage(ele))
 
-          console.log('decVals', decVals)
           var decArr = await Promise.all(decVals)
-          console.log('decArr 1', decArr)
         } else
           var decArr = val
-
-          console.log('decArr', decArr)
 
         rtn.push(decArr.join(''))
       }
   }
   
-
-  console.log("fetchImages", [...rtn])
 
   console.timeEnd("fetchImages")
 
