@@ -38,16 +38,15 @@ async function showSheet(idx) {
   // var viewImgTemplate = `<div class="label cursor-pointer" onClick="window.open('https://www.w3schools.com', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');`
   console.log('viewImgTemplate', viewImgTemplate)
   var val
-  var icon  =  '<div class="label cursor-pointer "><a target="_blank"  href=' + val + '><span class="material-icons">open_in_new</span></a></div>'
+  var icon
         
   imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></img></span>" : val=''
-  // icon =  viewImgTemplate.replace("#img#", imgs[0])
-  // icon =  viewImgTemplate
+  icon  =  '<div class="label cursor-pointer "><a target="_blank"  href=' + imgs[0] + '><span class="material-icons">open_in_new</span></a></div>'
   sht.push(['Front', val, icon])
 
   imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></img></span>" : val=''
-  // icon =  viewImgTemplate.replace("#img#", imgs[1])
-  // icon =  viewImgTemplate
+  icon  =  '<div class="label cursor-pointer "><a target="_blank"  href=' + imgs[0] + '><span class="material-icons">open_in_new</span></a></div>'
+
   sht.push(['Back', val, icon])
   
   var tbl = new Table();
