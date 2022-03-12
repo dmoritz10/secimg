@@ -621,7 +621,7 @@ async function fetchImages(shtEnc, shtTitle) {
     if (!vals) return [null, null]
 
     rtn = []
-    vals.forEach( async val => {
+    await vals.forEach( async val => {
 
       console.log("fetchImages", 'foreach')
 
@@ -629,7 +629,7 @@ async function fetchImages(shtEnc, shtTitle) {
       else {
 
         if (shtEnc) {
-          var decVals = val.map( async ele =>  await decryptMessage(ele))
+          var decVals = val.map( ele => decryptMessage(ele))
 
           console.log('decVals', decVals)
           var decArr = await Promise.all(decVals)
