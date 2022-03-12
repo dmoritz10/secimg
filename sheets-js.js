@@ -213,9 +213,9 @@ async function editSheet(arrIdx) {
   $('#shtmSaveImgBack').attr('src', imgs[1])
 
   if (img[0]) $('#shtmImgFront').attr('src', imgs[0])
-  else        $('#shtmImgFront').removeAttr('src');​
+  else        $('#shtmImgFront').removeAttr('src');
   if (img[1]) $('#shtmImgBack').attr('src', imgs[1])
-  else        $('#shtmImgBack').removeAttr('src');​
+  else        $('#shtmImgBack').removeAttr('src');
   // document.getElementById("shtmImgFront").src = imgs[0];
   // document.getElementById("shtmImgBack").src = imgs[1];
   // document.getElementById("shtmSaveImgFront").src = imgs[0];
