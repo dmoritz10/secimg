@@ -422,9 +422,12 @@ function fixUrl(url) {
 
 async function btnAddSheetHtml() {
 
-  $("#sheet-modal").modal('show');
+  $('#shtmImgFront').removeAttr('src').addClass('d-none')
+  $('#shtmImgBack').removeAttr('src').addClass('d-none')
+
   $("#sheet-form")[0].reset();
   $('#shtmModalTitle').html('')
+  $("#sheet-modal").modal('show');
 
    $('#btnDeleteSheet').addClass('d-none')
 
