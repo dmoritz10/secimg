@@ -198,6 +198,8 @@ async function editSheet(arrIdx) {
 
   var imgs = await fetchImages(shtEnc, shtObj['File Id'])
 
+  console.log('imgs', imgs)
+
   $('#shtmDocument').val(shtObj['Document'])
   $('#shtmExpiry').val(shtObj['Expiry'])
   $('#shtmImgFront').val(shtObj['Img Front'])
@@ -205,15 +207,15 @@ async function editSheet(arrIdx) {
   $('#shtmNotes').val(shtObj['Notes'])
   $('#shtmFavorite').val(shtObj['Favorite'])
   $('#shtmFileId').val(shtObj['File Id'])
-  // $('#shtmImgFront').attr('src', imgs[0])
-  // $('#shtmImgBack').attr('src', imgs[1])
-  // $('#shtmSaveImgFront').attr('src', imgs[0])
-  // $('#shtmSaveImgBack').attr('src', imgs[1])
+  $('#shtmImgFront').attr('src', imgs[0])
+  $('#shtmImgBack').attr('src', imgs[1])
+  $('#shtmSaveImgFront').attr('src', imgs[0])
+  $('#shtmSaveImgBack').attr('src', imgs[1])
 
-  document.getElementById("shtmImgFront").src = imgs[0];
-  document.getElementById("shtmImgBack").src = imgs[1];
-  document.getElementById("shtmSaveImgFront").src = imgs[0];
-  document.getElementById("shtmSaveImgBack").src = imgs[1];
+  // document.getElementById("shtmImgFront").src = imgs[0];
+  // document.getElementById("shtmImgBack").src = imgs[1];
+  // document.getElementById("shtmSaveImgFront").src = imgs[0];
+  // document.getElementById("shtmSaveImgBack").src = imgs[1];
 
   $('#btnDeleteSheet').removeClass('d-none')
 
@@ -599,7 +601,7 @@ async function fetchImages(shtEnc, shtTitle) {
     });
 
 
-    if (!vals) return [null, null]
+    if (!vals) return ['', '']
 
     rtn = []
 
