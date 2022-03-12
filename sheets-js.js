@@ -629,10 +629,10 @@ async function fetchImages(shtEnc, shtTitle) {
       else {
 
         if (shtEnc) {
-          var decVals = val.map( ele =>  decryptMessage(ele))
+          var decVals = val.map( async ele =>  await decryptMessage(ele))
 
           console.log('decVals', decVals)
-          var decArr = await Promise.all(decVals)
+          var decArr = c(decVals)
           console.log('decArr 1', decArr)
         } else
           var decArr = val
