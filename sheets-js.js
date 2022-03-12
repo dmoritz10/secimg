@@ -207,15 +207,15 @@ async function editSheet(arrIdx) {
   $('#shtmNotes').val(shtObj['Notes'])
   $('#shtmFavorite').val(shtObj['Favorite'])
   $('#shtmFileId').val(shtObj['File Id'])
-  // $('#shtmImgFront').attr('src', imgs[0])
-  // $('#shtmImgBack').attr('src', imgs[1])
+  $('#shtmImgFront').attr('src', imgs[0])
+  $('#shtmImgBack').attr('src', imgs[1])
   $('#shtmSaveImgFront').attr('src', imgs[0])
   $('#shtmSaveImgBack').attr('src', imgs[1])
 
-  if (imgs[0])  $('#shtmImgFront').attr('src', imgs[0])
-  else          $('#shtmImgFront').removeAttr('src');
-  if (imgs[1])  $('#shtmImgBack').attr('src', imgs[1])
-  else          $('#shtmImgBack').removeAttr('src');
+  if (imgs[0])  $('#shtmImgFront').removeClass('d-none')
+  else          $('#shtmImgFront').addClass('d-none');
+  if (imgs[1])  $('#shtmImgBack').removeClass('d-none')
+  else          $('#shtmImgBack').addClass('d-none');
   // document.getElementById("shtmImgFront").src = imgs[0];
   // document.getElementById("shtmImgBack").src = imgs[1];
   // document.getElementById("shtmSaveImgFront").src = imgs[0];
