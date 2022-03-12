@@ -34,6 +34,7 @@ async function showSheet(idx) {
 
   var imgs = await fetchImages(shtEnc, vals[shtHdrs.indexOf('File Id')])
 
+  // var viewImgTemplate = `<div class="label cursor-pointer" onClick="window.open('https://www.w3schools.com', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400')></div>`
   var viewImgTemplate = `<div class="label cursor-pointer" onClick="window.open('https://www.w3schools.com', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');`
   console.log('viewImgTemplate', viewImgTemplate)
   var val
