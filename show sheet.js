@@ -35,11 +35,10 @@ async function showSheet(idx) {
 
   var imgs = await fetchImages(shtEnc, vals[shtHdrs.indexOf('File Id')])
 
-  val = "<img src=" + imgs[0]
-
+  val = "<img src=" + imgs[0] + "></img>"
   sht.push(['Front', val, icon])
-  val = "<img src=" + imgs[1]
 
+  val = "<img src=" + imgs[1] + "></img>"
   sht.push(['Back', val, icon])
   
   var tbl = new Table();
