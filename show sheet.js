@@ -31,6 +31,7 @@ async function showSheet(idx) {
 
   }
 
+  
   var imgs = await fetchImages(shtEnc, vals[shtHdrs.indexOf('File Id')])
 
   var viewImgTemplate = '<div class="label cursor-pointer" onClick="copyToClpbrd(window.open("#img#", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");'
