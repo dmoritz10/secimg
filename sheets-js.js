@@ -638,7 +638,7 @@ async function fetchImages(shtEnc, shtTitle) {
       }
   })
 
-  console.log("fetchImages", rtn)
+  console.log("fetchImages", [...rtn])
 
   console.timeEnd("fetchImages")
 
