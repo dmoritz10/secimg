@@ -501,8 +501,14 @@ async function showFile(input) {
 
     reader.onload = function (e) {
 
-      if (input.id == "shtmInputFront")   $('#shtmImgFront').attr('src', e.target.result);
-      else                                $('#shtmImgBack').attr('src', e.target.result);
+      if (input.id == "shtmInputFront")   {
+        $('#shtmImgFront').attr('src', e.target.result);
+        $('#shtmImgFront').removeClass('d-none');
+      } else {
+        $('#shtmImgBack').attr('src', e.target.result);
+        $('#shtmImgBack').removeClass('d-none');
+      }
+                                      
     }
 
     reader.readAsDataURL(input.files[0]);
