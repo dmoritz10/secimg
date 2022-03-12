@@ -288,6 +288,9 @@ async function btnShtmSubmitSheetHtml() {
 
   await postImages(shtEnc, fileId, imgs, savImgs)
 
+  $('#shtmImgFront').removeAttr('src').addClass('d-none')
+  $('#shtmImgBack').removeAttr('src').addClass('d-none')
+
   $("#sheet-modal").modal('hide');
 
   updateUI(valsEnc, arrIdx)
@@ -498,8 +501,8 @@ async function showFile(input) {
 
     reader.onload = function (e) {
 
-      if (input.id == "shtmInputFront")  $('#shtmImgFront').attr('src', e.target.result);
-      else                $('#shtmImgBack').attr('src', e.target.result);
+      if (input.id == "shtmInputFront")   $('#shtmImgFront').attr('src', e.target.result);
+      else                                $('#shtmImgBack').attr('src', e.target.result);
     }
 
     reader.readAsDataURL(input.files[0]);
