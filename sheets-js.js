@@ -184,10 +184,15 @@ async function setFavorite(arrIdx) {
 async function editSheet(arrIdx) {
 
 
-  $("#sheet-modal").modal('show');
   $("#sheet-form")[0].reset();
 
+  $('#shtmImgFront').removeAttr('src').addClass('d-none')
+  $('#shtmImgBack').removeAttr('src').addClass('d-none')
+
   $('#shtmSheetName').html(shtTitle)
+
+  $("#sheet-modal").modal('show');
+
 
   $('#shtmArrIdx').val(arrIdx)
 

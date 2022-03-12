@@ -30,6 +30,17 @@ async function showSheet(idx) {
     sht.push([shtHdrs[i], val, icon])
 
   }
+
+  icon = '<div class="label cursor-pointer" onClick="copyToClpbrd(' + "'" + val + "'" + ')"><span class="material-icons">content_copy</span></div>'
+
+  var imgs = await fetchImages(shtEnc, vals[shtHdrs.indexOf('File Id')])
+
+  val = "<img src=" + imgs[0]
+
+  sht.push(['Front', val, icon])
+  val = "<img src=" + imgs[1]
+
+  sht.push(['Back', val, icon])
   
   var tbl = new Table();
   
