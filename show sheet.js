@@ -41,12 +41,12 @@ async function showSheet(idx) {
   imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></img></span>" : val=''
   // icon =  viewImgTemplate.replace("#img#", imgs[0])
   icon =  viewImgTemplate
-  sht.push(['Front', val, icon])
+  sht.push(['Front', val, viewImgTemplate])
 
   imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></img></span>" : val=''
   // icon =  viewImgTemplate.replace("#img#", imgs[1])
   icon =  viewImgTemplate
-  sht.push(['Back', val, icon])
+  sht.push(['Back', val, viewImgTemplate])
   
   var tbl = new Table();
   
