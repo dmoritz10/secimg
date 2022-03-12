@@ -212,6 +212,11 @@ async function editSheet(arrIdx) {
   $('#shtmSaveImgFront').attr('src', imgs[0])
   $('#shtmSaveImgBack').attr('src', imgs[1])
 
+  if (img[0]) $('#shtmImgFront').removeClass('d-none')
+  else        $('#shtmImgFront').addClass('d-none')
+  if (img[1]) $('#shtmImgBack').removeClass('d-none')
+  else        $('#shtmImgBack').addClass('d-none')
+  
   // document.getElementById("shtmImgFront").src = imgs[0];
   // document.getElementById("shtmImgBack").src = imgs[1];
   // document.getElementById("shtmSaveImgFront").src = imgs[0];
@@ -601,7 +606,7 @@ async function fetchImages(shtEnc, shtTitle) {
     });
 
 
-    if (!vals) return ['#', '#']
+    if (!vals) return [null, null]
 
     rtn = []
 
@@ -609,7 +614,7 @@ async function fetchImages(shtEnc, shtTitle) {
 
       var val = vals[i]
 
-      if (val.length == 0 ) rtn.push('#')
+      if (val.length == 0 ) rtn.push(null)
       else {
 
         if (shtEnc) {
