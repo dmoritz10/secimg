@@ -34,17 +34,14 @@ async function showSheet(idx) {
 
   var imgs = await fetchImages(shtEnc, vals[shtHdrs.indexOf('File Id')])
 
-  var viewImgTemplate = `<div class="label cursor-pointer" onClick="window.open('https://www.w3schools.com', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400')></div>`
-  // var viewImgTemplate = `<div class="label cursor-pointer" onClick="window.open('https://www.w3schools.com', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');`
-  console.log('viewImgTemplate', viewImgTemplate)
   var val
   var icon
         
-  imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></img></span>" : val=''
+  imgs[0] ? val = '<span><embed class="showImg" src=' + imgs[0] + "></embed></span>" : val=''
   icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
   sht.push(['Front', val, icon])
 
-  imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></img></span>" : val=''
+  imgs[1] ? val = '<span><embed class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
   icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
 
   sht.push(['Back', val, icon])
