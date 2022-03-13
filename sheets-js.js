@@ -524,7 +524,7 @@ async function showFile(input) {
 
 }
 
-async function postImages(shtEnc, fileId, imgs, savImgs) {
+async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
   imgs.forEach( async (img, imgIdx) => {
     
@@ -537,7 +537,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs) {
 
       while (idx < img.length) {
 
-        if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000)))
+        if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000), pwd))
         else        encPromiseArr.push(img.substring(idx, idx + 25000))
 
         idx = idx+25000
@@ -599,7 +599,7 @@ async function updateImages(fileId, imgIdx, vals) {
 }
 
 
-async function fetchImages(shtEnc, shtTitle) {
+async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
   console.time("fetchImages")
   console.log("fetchImages")
 
@@ -634,7 +634,7 @@ async function fetchImages(shtEnc, shtTitle) {
       else {
 
         if (shtEnc) {
-          var decVals = val.map( ele => decryptMessage(ele))
+          var decVals = val.map( ele => decryptMessage(ele, pwd))
 
           var decArr = await Promise.all(decVals)
         } else

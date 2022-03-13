@@ -35,7 +35,7 @@ async function testEncrypted(title) {
 
 }
 
-async function encryptSheet(title) {
+async function encryptSheet(title, pwd = currUser.pwd) {
 
     console.log('encryptSheet')
 
@@ -51,7 +51,7 @@ async function encryptSheet(title) {
     var shtHdrs = objSht[title].colHdrs
     var shtArr = [shtHdrs].concat(objSht[title].vals)
 
-    var decHdrs = await decryptMessage(shtHdrs[0])
+    var decHdrs = await decryptMessage(shtHdrs[0], pwd)
 
     if (decHdrs == "Document") {
         bootbox.alert('Sheet "' + shtTitle + '" is already encrypted.');
@@ -63,11 +63,11 @@ async function encryptSheet(title) {
         return
     }
 
-    var encShtArr = await encryptArr(shtArr)
+    var encShtArr = await encryptArr(shtArr, pwd)
 
     await updateSheet(title, encShtArr)
 
-    encryptImageSheets(objSht[title])
+    encryptImageSheets(objSht[title], pwd)
 
     secSht.enc = true
     shtEnc = true
@@ -85,7 +85,7 @@ async function encryptSheet(title) {
 
 }
 
-async function decryptSheet(title) {
+async function decryptSheet(title, pwd = currUser.pwd) {
 
     // var ts = new Date()
 
@@ -105,7 +105,7 @@ async function decryptSheet(title) {
     var shtHdrs = objSht[title].colHdrs
     var shtArr = [shtHdrs].concat(objSht[title].vals)
 
-    var decHdrs = await decryptMessage(shtHdrs[0])
+    var decHdrs = await decryptMessage(shtHdrs[0], pwd)
 
     console.log('decHdrs', decHdrs)
 
@@ -114,7 +114,7 @@ async function decryptSheet(title) {
         return
     }
 
-    var decShtArr = await decryptArr(shtArr)
+    var decShtArr = await decryptArr(shtArr, pwd)
 
     await updateSheet(title, decShtArr)
 
@@ -129,7 +129,7 @@ async function decryptSheet(title) {
 
     console.log('decObjSht', decObjSht)
 
-    decryptImageSheets(decObjSht)
+    decryptImageSheets(decObjSht, pwd)
 
     secSht.enc = false
     shtEnc = false
@@ -145,7 +145,7 @@ async function decryptSheet(title) {
 
 }
 
-async function encryptImageSheets(objSht) {
+async function encryptImageSheets(objSht, pwd = currUser.pwd) {
 
     console.log('encryptImageSheets')
 
@@ -162,14 +162,14 @@ async function encryptImageSheets(objSht) {
 
         var fileId = shtObj['File Id']
 
-        var imgs = await fetchImages(false, fileId) 
+        var imgs = await fetchImages(false, fileId, pwd) 
 
-        await postImages(true, fileId, imgs, [null, null])
+        await postImages(true, fileId, imgs, [null, null], pwd)
 
     })
 }
 
-async function decryptImageSheets(objSht) {
+async function decryptImageSheets(objSht, pwd = currUser.pwd) {
 
     console.log('decryptImageSheets')
 
@@ -189,11 +189,11 @@ async function decryptImageSheets(objSht) {
 
         console.log('fileid', fileId)
 
-        var imgs = await fetchImages(true, fileId) 
+        var imgs = await fetchImages(true, fileId, pwd) 
 
         console.log('imgs', imgs)
 
-        await postImages(false, fileId, imgs, [null, null])
+        await postImages(false, fileId, imgs, [null, null], pwd)
 
     })
 }
