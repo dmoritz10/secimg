@@ -37,11 +37,11 @@ async function showSheet(idx) {
   var val
   var icon
         
-  imgs[0] ? val = '<span><iframe class="showImg" src=' + imgs[0] + "></embed></span>" : val=''
+  imgs[0] ? val = '<span><object class="showImg" data=' + imgs[0] + "></embed></span>" : val=''
   icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
   sht.push(['Front', val, icon])
 
-  imgs[1] ? val = '<span><iframe class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
+  imgs[1] ? val = '<span><object class="showImg" data=' + imgs[1] + "></embed></span>" : val=''
   icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
 
   sht.push(['Back', val, icon])
@@ -69,7 +69,7 @@ function openImg(img) {
   // console.log('openImg',img)
 
   var newTab = window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
-  newTab.document.body.innerHTML = '<iframe src=' + img + '>'
+  newTab.document.body.innerHTML = '<object data=' + img + '>'
 
   // window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
 
