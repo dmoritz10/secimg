@@ -37,7 +37,7 @@ async function showSheet(idx) {
   var val
   var icon
         
-  imgs[0] ? val = '<span><img class="showImg" src=https://drive.google.com/viewerng/viewer?embedded=true&url=' + imgs[0] + "'></embed></span>" : val=''
+  imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></embed></span>" : val=''
   icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
   sht.push(['Front', val, icon])
 
