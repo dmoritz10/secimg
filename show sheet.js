@@ -41,7 +41,7 @@ async function showSheet(idx) {
   var icon
         
   imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></img></span>" : val=''
-  icon  =  '<div class="label cursor-pointer "><a href="#"><img itemprop="image" style="height: 90px;" src="http://www.google.com" alt="picture">  </a></div>'
+  icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + val + "'" + ')"><span class="material-icons">content_copy</span></div>'
   sht.push(['Front', val, icon])
 
   imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></img></span>" : val=''
@@ -66,6 +66,12 @@ async function showSheet(idx) {
   $('#shtContainer > div').eq(idx+1).trigger( "click" )
 
 } 
+
+function openImg(img) {
+
+  window.open(img);
+
+}
 
 function browseDocument(dir) {
 
