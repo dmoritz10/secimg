@@ -69,7 +69,7 @@ async function showSheet(idx) {
 
 function openImg(img) {
 
-  console.log('openImg',img)
+  // console.log('openImg',img)
 
   var newTab = window.open();
 newTab.document.body.innerHTML = '<img src=' + img + '>'
