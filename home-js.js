@@ -138,7 +138,7 @@ async function btnHMChangePwdHtml() {
         ])
     
       toast("Decrypting sheet " + sht, 5000)
-      var decSht = await decryptSheet(sht, cPwd)
+      var decSht = await decryptSheet(sht, cPwd, false)
 
       toast("Updating sheet " + sht, 5000)
       await updateSheet(sht, decSht)

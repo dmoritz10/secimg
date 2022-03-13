@@ -85,12 +85,13 @@ async function encryptSheet(title, pwd = currUser.pwd) {
 
 }
 
-async function decryptSheet(title, pwd = currUser.pwd) {
+async function decryptSheet(title, pwd = currUser.pwd,warn = true) {
 
     // var ts = new Date()
-
+    if (warn) {
     var confirmOK = await confirm("Warning !  Decrypting sheet can expose passwords and other sensitive data to others with access to your account.")
     if (!confirmOK) return
+    }
   
     modal(true)
 
