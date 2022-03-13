@@ -470,7 +470,7 @@ async function btnDeleteSheetHtml() {
     console.log(response)
 
   })
-console.log($('#shtmFileId').val())
+console.log('delete file id', $('#shtmFileId').val())
 
   await gapi.client.drive.files.delete({
                 
