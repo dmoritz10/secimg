@@ -41,7 +41,7 @@ async function showSheet(idx) {
   var icon
         
   imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></img></span>" : val=''
-  icon  =  '<div class="label cursor-pointer "><a target="_blank"  href=' + imgs[0] + '><span class="material-icons">open_in_new</span></a></div>'
+  icon  =  '<div class="label cursor-pointer "><a href="#"><img itemprop="image" style="height: 90px;" src="http://www.chatbot.chat/assets/images/header-bg_y.jpg" alt="picture">  </a></div>'
   sht.push(['Front', val, icon])
 
   imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></img></span>" : val=''
