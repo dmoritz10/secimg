@@ -71,7 +71,10 @@ function openImg(img) {
 
   console.log('openImg',img)
 
-  window.open(img, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+  var newTab = window.open();
+newTab.document.body.innerHTML = '<img src=' + img + '>'
+
+  // window.open(img, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
 
 
   // window.open(img);
