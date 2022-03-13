@@ -528,7 +528,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
   imgs.forEach( async (img, imgIdx) => {
     
-    if (img != savImgs[imgIdx]) {
+    if (img && img != savImgs[imgIdx]) {
 
       console.log("img", img)
 
