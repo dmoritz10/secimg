@@ -87,7 +87,7 @@ async function encryptSheet(title, pwd = currUser.pwd) {
 
 }
 
-async function decryptSheet(title, pwd = currUser.pwd,warn = true) {
+async function decryptSheet(title, pwd = currUser.pwd, warn = true) {
 
     // var ts = new Date()
     if (warn) {
