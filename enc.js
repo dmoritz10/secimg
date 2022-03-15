@@ -59,7 +59,7 @@ async function encryptSheet(title, pwd = currUser.pwd) {
     }
 
     if (shtHdrs[0] != 'Document') {
-        bootbox.alert('Sheet "' + shtTitle + '" not a valid Secure Sheet.');
+        bootbox.alert('Sheet "' + shtTitle + '" not a valid Sheet.');
         return
     }
 
@@ -111,7 +111,7 @@ async function decryptSheet(title, pwd = currUser.pwd,warn = true) {
     console.log('decHdrs', decHdrs)
 
     if (decHdrs != "Document") {
-        bootbox.alert('Sheet "' + shtTitle + '" is not an encrtpted Secure Sheet.');
+        bootbox.alert('Sheet "' + shtTitle + '" is not an encrtpted Sheet.');
         return
     }
 

@@ -17,10 +17,10 @@ async function getSSId(currUser) {
 
       // files = files.filter(item => item.ownedByMe);    // remove files that are shared with me
       if (!files || files.length == 0)
-          return { fileId: null, msg: "'Secure Sheet' not found" }
+          return { fileId: null, msg: "'Secure Document' not found" }
 
       if (files.length > 1)
-          return { fileId: null, msg: "'Secure Sheet' not unique" }
+          return { fileId: null, msg: "'Secure Document' not unique" }
 
       return { fileId: files[0].id, msg: 'ok' }
 
