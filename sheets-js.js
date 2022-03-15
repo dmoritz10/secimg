@@ -437,11 +437,11 @@ async function btnAddSheetHtml() {
 
 async function btnDeleteSheetHtml() {
 
-  console.log('arridx', $('#shtmArrIdx'))
+  // console.log('arridx', $('#shtmArrIdx'))
 
-  var confirmOK = await confirm("Are you sure you want to delete this Document ?")
+  // var confirmOK = await confirm("Are you sure you want to delete this Document ?")
 
-  if (!confirmOK) return
+  // if (!confirmOK) return
 
 
   var idx = shtIdxArr[$('#shtmArrIdx').val() * 1]
