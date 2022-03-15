@@ -91,7 +91,7 @@ async function loadSheets() {
       }
 
       $('#hmNbrSheets').html(nbrSheets)
-      $('#hmNbrDocument').html(nbrDocuments)
+      $('#hmNbrDocuments').html(nbrDocuments)
 
       console.log('secSht', secSht)
 
