@@ -457,7 +457,7 @@ async function updateSheet(title, vals) {
 
   var resource = {
     "majorDimension": "ROWS",
-    "values": [vals]   
+    "values": vals   
   }
 
 

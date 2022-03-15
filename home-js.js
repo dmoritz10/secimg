@@ -143,7 +143,7 @@ async function btnHMChangePwdHtml() {
       console.log('update sheet', sht, decSht)
 
       toast("Updating sheet " + sht, 5000)
-      await updateSheet(sht, decSht)
+      await updateSheet(sht, [decSht])
 
       encShts.push(sht)
 
