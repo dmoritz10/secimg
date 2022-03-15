@@ -437,8 +437,6 @@ async function btnAddSheetHtml() {
 
 async function btnDeleteSheetHtml() {
 
-  console.log('arridx', $('#shtmArrIdx'))
-
   var confirmOK = await confirm("Are you sure you want to delete this Document ?")
 
   if (!confirmOK) return
