@@ -226,7 +226,7 @@ async function editSheet(arrIdx) {
   // document.getElementById("shtmSaveImgFront").src = imgs[0];
   // document.getElementById("shtmSaveImgBack").src = imgs[1];
 
-  $('#btnDeleteSheet').removeClass('d-none')
+  $('#btnShtmDelete').removeClass('d-none')
 
 }
 
@@ -290,6 +290,8 @@ async function btnShtmSubmitSheetHtml() {
 
   console.log('submit', [...imgs])
   console.log('submit', [...savImgs])
+
+  console.log('fileId', fileId)
 
   await postImages(shtEnc, fileId, imgs, savImgs)
 
@@ -429,7 +431,7 @@ async function btnAddSheetHtml() {
   $('#shtmModalTitle').html('')
   $("#sheet-modal").modal('show');
 
-   $('#btnDeleteSheet').addClass('d-none')
+   $('#btnShtmDelete').addClass('d-none')
 
 }
 
@@ -439,7 +441,10 @@ async function btnDeleteSheetHtml() {
 
   if (!confirmOK) return
 
+
   var idx = shtIdxArr[$('#shtmArrIdx').val() * 1]
+
+  console.log('btnShtmDelete',idx,$('#shtmArrIdx').val(), shtIdxArr)
 
   var request = {
     "requests":
