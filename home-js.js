@@ -140,6 +140,8 @@ async function btnHMChangePwdHtml() {
       toast("Decrypting sheet " + sht, 5000)
       var decSht = await decryptSheet(sht, cPwd, false)
 
+      console.log('update sheet', sht, decSht)
+
       toast("Updating sheet " + sht, 5000)
       await updateSheet(sht, decSht)
 
@@ -154,7 +156,7 @@ async function btnHMChangePwdHtml() {
   currUser.pwd = nPwd
   var encPwd = await encryptMessage(pwdText, nPwd)
   await updateOption('shtList', encPwd)
-  toast("New Password now in effet " + sht, 5000)
+  toast("New Password now in effect " + sht, 5000)
 
   console.log('encShts', encShts)
 
