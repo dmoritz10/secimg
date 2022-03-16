@@ -89,7 +89,6 @@ async function encryptSheet(title, pwd = currUser.pwd) {
 
 async function decryptSheet(title, pwd = currUser.pwd, warn = true) {
 
-    // var ts = new Date()
     if (warn) {
     var confirmOK = await confirm("Warning !  Decrypting sheet can expose passwords and other sensitive data to others with access to your account.")
     if (!confirmOK) return
@@ -137,8 +136,6 @@ async function decryptSheet(title, pwd = currUser.pwd, warn = true) {
     secSht.enc = false
     shtEnc = false
 
-    // var et = ts - new Date()
-    // alert(et)
     
     toast("Decryption complete", 3000)
 
@@ -218,7 +215,8 @@ async function encryptArr(msg, pwd = currUser.pwd) {
             var r = msg[i]
             var row = []
             for (var j = 0; j < r.length; j++) {
-                row.push(await encryptMessage(r[j], pwd))
+                var m = await encryptMessage(r[j], pwd)
+                row.push(m)
             }
             rtn.push(row)
         }
@@ -227,7 +225,8 @@ async function encryptArr(msg, pwd = currUser.pwd) {
         console.log('msg 1d', msg)
 
         for (var i = 0; i < msg.length; i++) {
-            rtn.push(await encryptMessage(msg[i], pwd))
+            var m = await encryptMessage(msg[i], pwd)
+            rtn.push(m)
         }
 
     }
@@ -248,7 +247,8 @@ async function decryptArr(msg, pwd = currUser.pwd) {
             var r = msg[i]
             var row = []
             for (var j = 0; j < r.length; j++) {
-                row.push(await decryptMessage(r[j], pwd))
+                var m = await decryptMessage(r[j], pwd)
+                row.push(m)
             }
             rtn.push(row)
         }
@@ -256,7 +256,8 @@ async function decryptArr(msg, pwd = currUser.pwd) {
     } else {
 
         for (var i = 0; i < msg.length; i++) {
-            rtn.push(await decryptMessage(msg[i], pwd))
+            var m = await decryptMessage(msg[i], pwd)
+            rtn.push(m)
         }
 
     }

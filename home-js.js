@@ -188,6 +188,8 @@ async function btnHMChangePwdHtml() {
 
   toast("Finalizing ...", 5000)
 
+  console.log('change pwd complete' )
+
 
   modal(false)
 
