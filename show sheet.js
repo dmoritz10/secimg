@@ -1,5 +1,7 @@
 async function showSheet(idx) {
 
+  modal(true)
+
   if (idx === null) return                  // null is from browseDocument
 
   var sht = []
@@ -61,6 +63,9 @@ async function showSheet(idx) {
   gotoTab('ShowSheet')
 
   $('#shtContainer > div').eq(idx+1).trigger( "click" )
+
+  modal(false)
+
 
 } 
 

@@ -274,6 +274,8 @@ async function btnShtmSubmitSheetHtml() {
 
   }
 
+  modal(true)
+
   var shtIdx = arrIdx == -1 ? -1 : shtIdxArr[arrIdx]  // get the row nbr on the sheet from shtIdxArr
 
   var valsEnc = shtEnc ? await encryptArr(vals) : vals
@@ -303,6 +305,7 @@ async function btnShtmSubmitSheetHtml() {
 
   updateUI(valsEnc, arrIdx)
 
+  modal(false)
 }
 
 async function buildImageFile() {
@@ -442,6 +445,8 @@ async function btnDeleteSheetHtml() {
 
   if (!confirmOK) return
 
+  modal(true)
+
 
   var idx = shtIdxArr[$('#shtmArrIdx').val() * 1]
 
@@ -490,6 +495,8 @@ console.log('delete file id', $('#shtmFileId').val())
 
   $("#sheet-modal").modal('hide');
   // $("#sheet-modal").modal('dispose');
+
+  modal(false)
 
   listSheet(shtTitle)
 
