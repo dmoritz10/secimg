@@ -285,8 +285,8 @@ async function btnShtmSubmitSheetHtml() {
   var imgs = []
   var savImgs = []
 
-  imgs[0] = document.getElementById("shtmImgFront").src;
-  imgs[1] = document.getElementById("shtmImgBack").src;
+  imgs[0] = document.getElementById("shtmImgFront") ? document.getElementById("shtmImgFront").src : null
+  imgs[1] = document.getElementById("shtmImgBack") ? document.getElementById("shtmImgBack").src : null
   savImgs[0] = document.getElementById("shtmSaveImgFront").src;
   savImgs[1] = document.getElementById("shtmSaveImgBack").src;
 
@@ -565,7 +565,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
         if (shtEnc) var encArr = await Promise.all(encPromiseArr)
         else        var encArr = encPromiseArr
 
-    } else var encArr = Array(savImgs[i].length).fill('0');
+    } else var encArr = Array(savImgs[i].length).fill('0');   // User has removed an image
 
       console.log('encArr', encArr.length)
 
