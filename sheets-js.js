@@ -628,7 +628,7 @@ async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
       console.error('error: ' + reason.result.error.message);
     });
 
-    console.log("fetchImages pre return", vals);
+    console.log("fetchImages pre return", shtTitle, "'" + "Sheet1" + "'!" + rng, vals);
 
 
     if (!vals) return [null, null]
