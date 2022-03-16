@@ -141,11 +141,15 @@
               </div>
          
               <div class="row my-3">
-                <div class="col-3">
-                  <button id="shtmInputFrontBtn" type="button" class="btn btn-secondary" onclick="triggerInputFront()">Choose File</button>
+                <div class="col-6">
+                  <button id="shtmInputFrontBtn" type="button" class="btn btn-outline-primary" onclick="triggerInputFront()">Choose File</button>
                   <input id="shtmInputFront" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputFront">
                 </div>
-                <div class="col">
+                <div class="col-6 text-right">
+                  <button id="shtmDeleteFrontBtn" type="button" class="btn btn-outline-secondary" >Remove File</button>
+              </div>
+              <div class="row my-3">
+                </div><div class="col">
                   <img  id="shtmImgFront" name="shtmImgFront" width="300">
                 </div>
               </div>
