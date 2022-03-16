@@ -156,9 +156,11 @@ async function encryptImageSheets(objSht, pwd = currUser.pwd) {
 
     console.log(vals)
 
-    vals.forEach( async val => {
+    for (var i in vals) {
 
-        console.log('forEach')
+        var val = vals[i]
+
+        console.log('for in')
         console.log(val)
 
         var shtObj = makeObj(val, objSht.colHdrs)
@@ -181,9 +183,12 @@ async function decryptImageSheets(objSht, pwd = currUser.pwd) {
     console.log('decryptImageSheets', vals)
 
 
-    vals.forEach( async val => {
 
-    console.log('decryptImageSheets foreach', val)
+    for (var i in vals) {
+
+        var val = vals[i]
+
+    console.log('decryptImageSheets for in', val)
 
 
         var shtObj = makeObj(val, objSht.colHdrs)
