@@ -627,8 +627,11 @@ async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
       console.error('error: ' + reason.result.error.message);
     });
 
+    console.log("fetchImages pre return", vals);
+
 
     if (!vals) return [null, null]
+    console.log("fetchImages post return", vals);
 
     rtn = []
 
