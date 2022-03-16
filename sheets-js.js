@@ -539,28 +539,33 @@ async function showFile(input) {
 
 async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
-  for (var i=0;i<2;i++) {
+  for (var i=0;i<2;i++) {             // 0 = front image, 1 = back image
 
     var img = imgs[i]
     
-    if (img && img != savImgs[i]) {
+    // if (img && img != savImgs[i]) {
+    if (img != savImgs[i]) {
 
-      console.log("img", img.length)
+      // console.log("img", img.length)
 
       var idx = 0
       var encPromiseArr = []
 
-      while (idx < img.length) {
+      if (img) {
 
-        if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000), pwd))
-        else        encPromiseArr.push(img.substring(idx, idx + 25000))
+        while (idx < img.length) {
 
-        idx = idx+25000
+          if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000), pwd))
+          else        encPromiseArr.push(img.substring(idx, idx + 25000))
 
-      }
+          idx = idx+25000
 
-      if (shtEnc) var encArr = await Promise.all(encPromiseArr)
-      else        var encArr = encPromiseArr
+        }
+
+        if (shtEnc) var encArr = await Promise.all(encPromiseArr)
+        else        var encArr = encPromiseArr
+
+    } else var encArr = []
 
       console.log('encArr', encArr.length)
 
@@ -689,11 +694,3 @@ async function pasteImage() {
   }
 
 }
-
-function triggerInputFront() {
-
-  $("#shtmInputFront").click();
-
-
-}
-
