@@ -171,7 +171,7 @@ async function encryptImageSheets(objSht, pwd = currUser.pwd) {
 
         await postImages(true, fileId, imgs, [null, null], pwd)
 
-    })
+    }
 }
 
 async function decryptImageSheets(objSht, pwd = currUser.pwd) {
@@ -203,7 +203,7 @@ async function decryptImageSheets(objSht, pwd = currUser.pwd) {
 
         await postImages(false, fileId, imgs, [null, null], pwd)
 
-    })
+    }
 }
 
 async function encryptArr(msg, pwd = currUser.pwd) {
