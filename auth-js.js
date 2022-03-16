@@ -34,7 +34,7 @@ async function submitLogin() {
   var pwdCfrm = $('#liConfirmPassword').val()
 
   usr = "attics212"
-  pwd = "Tempdm10!"
+  pwd = "Tempdm101!"
 
   var rtn = await getSSId(usr)
   
