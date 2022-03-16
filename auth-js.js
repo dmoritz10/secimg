@@ -85,7 +85,7 @@ async function submitLogin() {
 
   await loadSheets()
 
-  $("#login-modal").modal('dispose');
+  $("#login-modal").modal('hide');
   $("#liDisplayConfirmPassword").addClass('d-none')
 
   console.log('post loadsheets')

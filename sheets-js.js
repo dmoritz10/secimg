@@ -299,7 +299,7 @@ async function btnShtmSubmitSheetHtml() {
   $('#shtmImgBack').removeAttr('src').addClass('d-none')
 
   $("#sheet-modal").modal('hide');
-  $("#sheet-modal").modal('dispose');
+  // $("#sheet-modal").modal('dispose');
 
   updateUI(valsEnc, arrIdx)
 
@@ -489,7 +489,7 @@ console.log('delete file id', $('#shtmFileId').val())
 });
 
   $("#sheet-modal").modal('hide');
-  $("#sheet-modal").modal('dispose');
+  // $("#sheet-modal").modal('dispose');
 
   listSheet(shtTitle)
 
