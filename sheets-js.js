@@ -565,7 +565,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
         if (shtEnc) var encArr = await Promise.all(encPromiseArr)
         else        var encArr = encPromiseArr
 
-    } else var encArr = []
+    } else var encArr = Array(savImgs[i].length).fill('0');
 
       console.log('encArr', encArr.length)
 
