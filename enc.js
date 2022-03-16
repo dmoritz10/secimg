@@ -81,7 +81,7 @@ async function encryptSheet(title, pwd = currUser.pwd) {
 
     modal(false)
 
-    loadSheets()
+    await loadSheets()
 
     
 
@@ -139,7 +139,7 @@ async function decryptSheet(title, pwd = currUser.pwd, warn = true) {
     
     toast("Decryption complete", 3000)
 
-    loadSheets()
+    await loadSheets()
 
     modal(false)
 
