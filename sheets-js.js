@@ -532,8 +532,7 @@ async function showFile(input) {
 
 async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
-  // imgs.forEach( async (img, imgIdx) => {
-  for (var i in imgs) {
+  for (var i=0;i<2;i++) {
 
     var img = imgs[i]
     
