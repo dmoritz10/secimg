@@ -194,7 +194,7 @@ async function decryptImageSheets(objSht, pwd = currUser.pwd) {
 
         var imgs = await fetchImages(true, fileId, pwd) 
 
-        console.log('imgs', imgs)
+        console.log('decrupt imgs', imgs.length)
 
         await postImages(false, fileId, imgs, [null, null], pwd)
 

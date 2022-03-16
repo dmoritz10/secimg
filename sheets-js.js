@@ -567,7 +567,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
 async function updateImages(fileId, imgIdx, vals) {
 
-  console.timeLog("updateImages")
+  console.time("updateImages")
   console.log("updateImages")
 
 
