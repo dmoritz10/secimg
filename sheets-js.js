@@ -532,11 +532,14 @@ async function showFile(input) {
 
 async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
-  imgs.forEach( async (img, imgIdx) => {
+  // imgs.forEach( async (img, imgIdx) => {
+  for (i in imgs) {
+
+    var img = imgs[i]
     
     if (img && img != savImgs[imgIdx]) {
 
-      console.log("img", img)
+      console.log("img", img.length)
 
       var idx = 0
       var encPromiseArr = []
@@ -559,9 +562,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
     }
 
-  })
-
-  console.timeEnd("postImages")
+  }
 
 }
 
