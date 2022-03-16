@@ -203,7 +203,7 @@ async function editSheet(arrIdx) {
 
   var imgs = await fetchImages(shtEnc, shtObj['File Id'])
 
-  console.log('imgs', imgs)
+  console.log('imgs', imgs.length)
 
   $('#shtmDocument').val(shtObj['Document'])
   $('#shtmExpiry').val(shtObj['Expiry'])
@@ -553,7 +553,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
       if (shtEnc) var encArr = await Promise.all(encPromiseArr)
       else        var encArr = encPromiseArr
 
-      console.log('encArr', encArr)
+      console.log('encArr', encArr.length)
 
       await updateImages(fileId, imgIdx+1, encArr)
 
