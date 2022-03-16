@@ -537,7 +537,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
     var img = imgs[i]
     
-    if (img && img != savImgs[imgIdx]) {
+    if (img && img != savImgs[i]) {
 
       console.log("img", img.length)
 
@@ -558,7 +558,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
       console.log('encArr', encArr.length)
 
-      await updateImages(fileId, imgIdx+1, encArr)
+      await updateImages(fileId, i+1, encArr)
 
     }
 
