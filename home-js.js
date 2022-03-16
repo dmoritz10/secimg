@@ -139,14 +139,8 @@ async function btnHMChangePwdHtml() {
     
       toast("Decrypting sheet " + sht, 5000)
 
-      var decSht = await decryptSheet(sht, cPwd, false)
-      // var decSht = await decryptSheet(sht, cPwd, false)
-
-      // console.log('update sheet', sht, decSht)
-
-      // toast("Updating sheet " + sht, 5000)
-      // await updateSheet(sht, [decSht])
-
+      var decSht = await decryptSheet(sht, cPwd, true)
+      
       encShts.push(sht)
 
       secSht[sht].enc = false
@@ -176,10 +170,7 @@ async function btnHMChangePwdHtml() {
       toast("Encrypting sheet " + sht, 5000)
       var shtHdrs = objSht[sht].colHdrs
       var shtArr = [shtHdrs].concat(objSht[sht].vals)
-      var decSht = await encryptSheet(sht, nPwd)
-
-      // toast("Updating sheet " + sht, 5000)
-      // await updateSheet(sht, encSht)
+      var decSht = await encryptSheet(sht, nPwd, true)
 
       secSht[sht].enc = true
 

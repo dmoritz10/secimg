@@ -35,11 +35,11 @@ async function testEncrypted(title) {
 
 }
 
-async function encryptSheet(title, pwd = currUser.pwd) {
+async function encryptSheet(title, pwd = currUser.pwd, called = false) {
 
     console.log('encryptSheet')
 
-    modal(true)
+    if (!called) modal(true)
 
     toast("Encrypting sheet " + title, 5000)
 
@@ -79,7 +79,8 @@ async function encryptSheet(title, pwd = currUser.pwd) {
 
     toast("Encryption complete", 0)
 
-    modal(false)
+    if (!called) modal(false)
+
 
     await loadSheets()
 
@@ -87,14 +88,16 @@ async function encryptSheet(title, pwd = currUser.pwd) {
 
 }
 
-async function decryptSheet(title, pwd = currUser.pwd, warn = true) {
+async function decryptSheet(title, pwd = currUser.pwd, called = false) {
 
-    if (warn) {
-    var confirmOK = await confirm("Warning !  Decrypting sheet can expose passwords and other sensitive data to others with access to your account.")
-    if (!confirmOK) return
+    if (!called) {
+
+        var confirmOK = await confirm("Warning !  Decrypting sheet can expose passwords and other sensitive data to others with access to your account.")
+        if (!confirmOK) return
+        modal(true)
+
     }
   
-    modal(true)
 
     toast("Decrypting sheet " + title, 5000)
 
@@ -141,7 +144,8 @@ async function decryptSheet(title, pwd = currUser.pwd, warn = true) {
 
     await loadSheets()
 
-    modal(false)
+    if (!called) modal(false)
+
 
 }
 
