@@ -69,7 +69,7 @@ async function encryptSheet(title, pwd = currUser.pwd) {
 
     await updateSheet(title, encShtArr)
 
-    encryptImageSheets(objSht[title], pwd)
+    await encryptImageSheets(objSht[title], pwd)
 
     secSht.enc = true
     shtEnc = true
@@ -131,7 +131,7 @@ async function decryptSheet(title, pwd = currUser.pwd, warn = true) {
 
     console.log('decObjSht', decObjSht)
 
-    decryptImageSheets(decObjSht, pwd)
+    await decryptImageSheets(decObjSht, pwd)
 
     secSht.enc = false
     shtEnc = false
