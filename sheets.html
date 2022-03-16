@@ -133,10 +133,17 @@
                 </div>
               </div>
 
-
               <div class="row my-0">
+                <div class="col">
+                  <label for="shtmNotes" class="col-form-label">Notes</label>
+                  <textarea class="form-control text-success h4" id="shtmNotes" rows=4 name="shtmNotes"></textarea>
+                </div>
+              </div>
+         
+              <div class="row my-3">
                 <div class="col-3">
-                  <input id="shtmInputFront" class="form-control" onchange="showFile(this)" type="file"  name="shtmInputFront">
+                  <button id="shtmInputFrontBtn" type="button" class="btn btn-secondary" onclick="triggerInputFront()">Choose File</button>
+                  <input id="shtmInputFront" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputFront">
                 </div>
                 <div class="col">
                   <img  id="shtmImgFront" name="shtmImgFront" width="300">
@@ -152,13 +159,7 @@
                 </div>
               </div>
 
-              <div class="row my-0">
-                <div class="col">
-                  <label for="shtmNotes" class="col-form-label">Notes</label>
-                  <textarea class="form-control text-success h4" id="shtmNotes" rows=4 name="shtmNotes"></textarea>
-                </div>
-              </div>
-         
+              
             </fieldset>
           </form>
         </div>

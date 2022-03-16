@@ -690,3 +690,10 @@ async function pasteImage() {
 
 }
 
+function triggerInputFront() {
+
+  $("#shtmInputFront").click();
+
+
+}
+
