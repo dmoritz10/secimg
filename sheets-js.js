@@ -565,7 +565,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
         if (shtEnc) var encArr = await Promise.all(encPromiseArr)
         else        var encArr = encPromiseArr
 
-    } else var encArr = Array(500).fill('0');   // User has removed an image
+    } else var encArr = Array(500).fill('');   // User has removed an image
 
       console.log('encArr', encArr.length)
 
