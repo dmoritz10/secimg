@@ -285,8 +285,8 @@ async function btnShtmSubmitSheetHtml() {
   var imgs = []
   var savImgs = []
 
-  imgs[0] = document.getElementById("shtmImgFront") ? document.getElementById("shtmImgFront").src : null
-  imgs[1] = document.getElementById("shtmImgBack") ? document.getElementById("shtmImgBack").src : null
+  imgs[0] = document.getElementById("shtmImgFront").src
+  imgs[1] = document.getElementById("shtmImgBack").src
   savImgs[0] = document.getElementById("shtmSaveImgFront").src;
   savImgs[1] = document.getElementById("shtmSaveImgBack").src;
 
@@ -543,29 +543,25 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
     var img = imgs[i]
     
-    // if (img && img != savImgs[i]) {
-    if (img != savImgs[i]) {
+    if (img && img != savImgs[i]) {
 
       // console.log("img", img.length)
 
       var idx = 0
       var encPromiseArr = []
 
-      if (img) {
 
-        while (idx < img.length) {
+      while (idx < img.length) {
 
-          if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000), pwd))
-          else        encPromiseArr.push(img.substring(idx, idx + 25000))
+        if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000), pwd))
+        else        encPromiseArr.push(img.substring(idx, idx + 25000))
 
-          idx = idx+25000
+        idx = idx+25000
 
-        }
+      }
 
-        if (shtEnc) var encArr = await Promise.all(encPromiseArr)
-        else        var encArr = encPromiseArr
-
-    } else var encArr = Array(500).fill('');   // User has removed an image
+      if (shtEnc) var encArr = await Promise.all(encPromiseArr)
+      else        var encArr = encPromiseArr
 
       console.log('encArr', encArr.length)
 
@@ -579,7 +575,6 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
 async function updateImages(fileId, imgIdx, vals) {
 
-  console.time("updateImages")
   console.log("updateImages")
 
 
@@ -600,18 +595,12 @@ async function updateImages(fileId, imgIdx, vals) {
 
   await gapi.client.sheets.spreadsheets.values.update(params, resource)
     .then(async function (response) {
-
       console.log('update successful')
-      console.timeEnd("updateImages")
-
     },
 
       function (reason) {
-
         console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
         bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-        console.timeEnd("updateImages")
-
       });
 
 }
