@@ -585,7 +585,7 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 
   console.log('updateImages vals', vals)
 
-  clearImage(shtTitle, row)         // always clear existing image
+  await clearImage(shtTitle, row)         // always clear existing image
 
 
   if (!removeImage) {               // user has elected to add an image
@@ -696,7 +696,7 @@ async function pasteImage() {
 
 }
 
-function clearImage(shtTitle, row) {
+async function clearImage(shtTitle, row) {
 
   var shtTitle = fileId
   var row = imgIdx
