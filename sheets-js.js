@@ -580,28 +580,54 @@ async function updateImages(fileId, imgIdx, vals) {
 
   var shtTitle = fileId
   var row = imgIdx
-  var rng = calcRngA1(row, 1, 1, vals.length)
 
-  var params = {
-    spreadsheetId: fileId,
-    range: "'" + "Sheet1" + "'!" + rng,
-    valueInputOption: 'RAW'
-  };
 
-  var resource = {
-    "majorDimension": "ROWS",
-    "values": [vals]    
+  if (vals == '#') {
+    
+    var rng = calcRngA1(row, 1, 1, 500)
+
+    var params = {
+      spreadsheetId: fileId,
+      clearedRange: "'" + "Sheet1" + "'!" + rng
+    };
+
+    await gapi.client.sheets.spreadsheets.values.clear(params)
+      .then(async function (response) {
+        console.log('update successful')
+      },
+
+        function (reason) {
+          console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+          bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+        });
+
+
+  } else {
+
+    var rng = calcRngA1(row, 1, 1, vals.length)
+
+    var params = {
+      spreadsheetId: fileId,
+      range: "'" + "Sheet1" + "'!" + rng,
+      valueInputOption: 'RAW'
+    };
+
+    var resource = {
+      "majorDimension": "ROWS",
+      "values": [vals]    
+    }
+
+    await gapi.client.sheets.spreadsheets.values.update(params, resource)
+      .then(async function (response) {
+        console.log('update successful')
+      },
+
+        function (reason) {
+          console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+          bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+        });
+
   }
-
-  await gapi.client.sheets.spreadsheets.values.update(params, resource)
-    .then(async function (response) {
-      console.log('update successful')
-    },
-
-      function (reason) {
-        console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-        bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-      });
 
 }
 
