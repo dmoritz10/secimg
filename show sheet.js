@@ -27,7 +27,7 @@ async function showSheet(idx) {
     
     }
 
-    if (shtHdrs[i].indexOf(['Img Front', 'Img Back'] == -1)) {
+    if (['Img Front', 'Img Back'].indexOf(shtHdrs[i]) == -1) {
 
       sht.push([shtHdrs[i], val, icon])
 
