@@ -585,28 +585,10 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 
   console.log('updateImages vals', vals)
 
-
-  if (removeImage) {   // user has elected to Remove Image
-
-    var rng = calcRngA1(row, 1, 1, 500)
-
-    var params = {
-      spreadsheetId: fileId,
-      range: "'" + "Sheet1" + "'!" + rng
-    };
-
-    await gapi.client.sheets.spreadsheets.values.clear(params)
-      .then(async function (response) {
-        console.log('update successful')
-      },
-
-        function (reason) {
-          console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-          bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-        });
+  clearImage(shtTitle, row)
 
 
-  } else {
+  if (!removeImage) {   // user has elected to Remove Image
 
     var rng = calcRngA1(row, 1, 1, vals.length)
 
@@ -711,5 +693,29 @@ async function pasteImage() {
 
       reader.readAsDataURL(blob);
   }
+
+}
+
+function clearImage(shtTitle, row) {
+
+  var shtTitle = fileId
+  var row = imgIdx
+
+  var rng = calcRngA1(row, 1, 1, 500)
+
+  var params = {
+    spreadsheetId: fileId,
+    range: "'" + "Sheet1" + "'!" + rng
+  };
+
+  await gapi.client.sheets.spreadsheets.values.clear(params)
+    .then(async function (response) {
+      console.log('update successful')
+    },
+
+      function (reason) {
+        console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+        bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+      });
 
 }
