@@ -581,9 +581,11 @@ async function updateImages(fileId, imgIdx, vals) {
   var shtTitle = fileId
   var row = imgIdx
 
+  console.log('updateImages vals', vals)
+
 
   if (vals == '#') {
-    
+
     var rng = calcRngA1(row, 1, 1, 500)
 
     var params = {
