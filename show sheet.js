@@ -18,12 +18,13 @@ async function showSheet(idx) {
 
     console.log(shtHdrs[i], val)
 
-    var boolFav = val.toLowerCase() === 'true'
-    if (boolFav) val = "Yes"
-    var boolFav = val.toLowerCase() === 'false'
-    if (boolFav) val = "No"
-    console.log(shtHdrs[i], val)
-    
+    if (shtHdrs[i] == 'Favorite') {
+      var boolFav = val.toLowerCase() === 'true'
+      if (boolFav) val = "Yes"
+      var boolFav = val.toLowerCase() === 'false' || val.length == 0
+      if (boolFav) val = "No"
+      console.log(shtHdrs[i], val)
+    }
     var icon = ''
 
     if (val) {
