@@ -40,6 +40,8 @@ async function showSheet(idx) {
 
   var val
   var icon
+
+  console.log('showSheet', imgs)
         
   imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></embed></span>" : val=''
   icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
