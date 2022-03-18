@@ -16,8 +16,10 @@ async function showSheet(idx) {
 
     var val = vals[i].replace(/\n|\r\n|\r/g, '<br/>');
 
-    if (val === true) val = "Yes"
-    if (val === false) val = "No"
+    var boolFav = val.toLowerCase() === 'true'
+    if (boolFav) val = "Yes"
+    var boolFav = val.toLowerCase() === 'false'
+    if (boolFav) val = "No"
     
     var icon = ''
 
