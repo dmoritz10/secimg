@@ -20,6 +20,7 @@ async function showSheet(idx) {
     if (val === false) val = "No"
     
     var icon = ''
+    var val
 
     if (val) {
 
@@ -34,7 +35,7 @@ async function showSheet(idx) {
     if (shtHdrs[i] == "File Id") {
       val = val.length < 17 ? val : val.substring(0,14) + "..."
     }
-    
+
   }
 
 
