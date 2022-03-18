@@ -584,7 +584,7 @@ async function updateImages(fileId, imgIdx, vals) {
   console.log('updateImages vals', vals)
 
 
-  if (vals == '#') {
+  if (vals.length == 1 && vals[0].slice(-1) == '#') {   // user has elected to Remove Image
 
     var rng = calcRngA1(row, 1, 1, 500)
 
