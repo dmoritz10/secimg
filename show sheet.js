@@ -1,8 +1,6 @@
 async function showSheet(idx) {
 
 
-  console.log('showSheet', idx, idx === null, idx == null)
-
   if (idx === null) return                  // null is from browseDocument
 
   modal(true)

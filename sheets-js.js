@@ -183,6 +183,7 @@ async function setFavorite(arrIdx) {
 
 async function editSheet(arrIdx) {
 
+  modal(true)
 
   $("#sheet-form")[0].reset();
 
@@ -227,6 +228,8 @@ async function editSheet(arrIdx) {
   // document.getElementById("shtmSaveImgBack").src = imgs[1];
 
   $('#btnShtmDelete').removeClass('d-none')
+
+  modal(false)
 
 }
 
