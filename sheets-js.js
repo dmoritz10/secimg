@@ -590,7 +590,7 @@ async function updateImages(fileId, imgIdx, vals) {
 
     var params = {
       spreadsheetId: fileId,
-      clearedRange: "'" + "Sheet1" + "'!" + rng
+      range: "'" + "Sheet1" + "'!" + rng
     };
 
     await gapi.client.sheets.spreadsheets.values.clear(params)
