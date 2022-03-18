@@ -1,11 +1,12 @@
 async function showSheet(idx) {
 
-  modal(true)
 
   console.log('showSheet', idx, idx === null, idx == null)
 
   if (idx === null) return                  // null is from browseDocument
 
+  modal(true)
+  
   var sht = []
 
   var vals = shtEnc ? await decryptArr(shtVals[idx]) : shtVals[idx]
