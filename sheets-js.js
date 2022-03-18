@@ -585,10 +585,10 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 
   console.log('updateImages vals', vals)
 
-  clearImage(shtTitle, row)
+  clearImage(shtTitle, row)         // always clear existing image
 
 
-  if (!removeImage) {   // user has elected to Remove Image
+  if (!removeImage) {               // user has elected to add an image
 
     var rng = calcRngA1(row, 1, 1, vals.length)
 
