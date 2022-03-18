@@ -28,11 +28,13 @@ async function showSheet(idx) {
     }
 
     if (['Img Front', 'Img Back'].indexOf(shtHdrs[i]) == -1) {
-
       sht.push([shtHdrs[i], val, icon])
-
     }
 
+    if (shtHdrs[i] == "File Id") {
+      val = val.length < 17 ? val : val.substring(0,14) + "..."
+    }
+    
   }
 
 
