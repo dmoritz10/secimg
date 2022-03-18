@@ -208,7 +208,6 @@ async function editSheet(arrIdx) {
 
   $('#shtmDocument').val(shtObj['Document'])
   $('#shtmExpiry').val(shtObj['Expiry'])
-  $('#shtmImgFront').val(shtObj['Img Front'])
   $('#shtmImgBack').val(shtObj['Account Nbr'])
   $('#shtmNotes').val(shtObj['Notes'])
   $('#shtmFavorite').val(shtObj['Favorite'])

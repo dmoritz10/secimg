@@ -15,22 +15,23 @@ async function showSheet(idx) {
   for (var i=1; i<shtHdrs.length;i++) {
 
     var val = vals[i].replace(/\n|\r\n|\r/g, '<br/>');
+
+    if (val === true) val = "Yes"
+    if (val === false) val = "No"
+    
     var icon = ''
 
     if (val) {
-      if (validateUrl(val)) {
 
-        icon =  '<div class="label cursor-pointer "><a target="_blank"  href=' + val + '><span class="material-icons">open_in_new</span></a></div>'
-        val = val.length < 17 ? val : val.substring(0,14) + "..."
-
-      } else {
-
-        icon = '<div class="label cursor-pointer" onClick="copyToClpbrd(' + "'" + val + "'" + ')"><span class="material-icons">content_copy</span></div>'
+      icon = '<div class="label cursor-pointer" onClick="copyToClpbrd(' + "'" + val + "'" + ')"><span class="material-icons">content_copy</span></div>'
     
-      }
     }
 
-    sht.push([shtHdrs[i], val, icon])
+    if (shtHdrs[i].indexOf(['Img Front', 'Img Back'] == -1) {
+
+      sht.push([shtHdrs[i], val, icon])
+
+    }
 
   }
 
