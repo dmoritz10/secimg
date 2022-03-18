@@ -2,6 +2,8 @@ async function showSheet(idx) {
 
   modal(true)
 
+  console.log('showSheet', idx)
+
   if (idx === null) return                  // null is from browseDocument
 
   var sht = []
