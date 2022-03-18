@@ -551,6 +551,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
       var idx = 0
       var encPromiseArr = []
 
+      var removeImage = img.slice(-1) == '#'
 
       while (idx < img.length) {
 
@@ -566,7 +567,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
       console.log('postImage encArr', i, img.length, encArr[0].length, encArr.length)
 
-      await updateImages(fileId, i*1+1, encArr)
+      await updateImages(fileId, i*1+1, encArr, removeImage)
 
     }
 
@@ -574,7 +575,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
 }
 
-async function updateImages(fileId, imgIdx, vals) {
+async function updateImages(fileId, imgIdx, vals, removeImage) {
 
   console.log("updateImages")
 
@@ -585,7 +586,7 @@ async function updateImages(fileId, imgIdx, vals) {
   console.log('updateImages vals', vals)
 
 
-  if (vals.length == 1 && vals[0].slice(-1) == '#') {   // user has elected to Remove Image
+  if (removeImage) {   // user has elected to Remove Image
 
     var rng = calcRngA1(row, 1, 1, 500)
 
