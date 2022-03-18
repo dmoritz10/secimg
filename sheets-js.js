@@ -696,15 +696,12 @@ async function pasteImage() {
 
 }
 
-async function clearImage(shtTitle, row) {
-
-  var shtTitle = fileId
-  var row = imgIdx
+async function clearImage(shtTitle, row) {        // recall that the sheet title is the same as the sheet id for image files
 
   var rng = calcRngA1(row, 1, 1, 500)
 
   var params = {
-    spreadsheetId: fileId,
+    spreadsheetId: shtTitle,
     range: "'" + "Sheet1" + "'!" + rng
   };
 
