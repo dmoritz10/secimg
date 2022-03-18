@@ -545,25 +545,23 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
     
     if (img && img != savImgs[i]) {
 
-      // console.log("img", img.length)
-
       var idx = 0
       var encPromiseArr = []
 
 
       while (idx < img.length) {
 
-        if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 25000), pwd))
-        else        encPromiseArr.push(img.substring(idx, idx + 25000))
+        if (shtEnc) encPromiseArr.push(encryptMessage(img.substring(idx, idx + 35000), pwd))
+        else        encPromiseArr.push(img.substring(idx, idx + 35000))
 
-        idx = idx+25000
+        idx = idx+35000
 
       }
 
       if (shtEnc) var encArr = await Promise.all(encPromiseArr)
       else        var encArr = encPromiseArr
 
-      console.log('encArr', encArr.length)
+      console.log('postImage encArr', i, img.length, encArr[0].length, encArr.length)
 
       await updateImages(fileId, i*1+1, encArr)
 
