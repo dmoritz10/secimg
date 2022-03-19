@@ -65,17 +65,6 @@ jQuery(function ($) {
         handleClientLoad: function() {
             gapi.load('client:auth2', this.initClient);
             console.log('initClient')
-
-            google.accounts.id.initialize({
-                client_id: signin.CLIENT_ID,
-                callback: showLogin
-              });
-              google.accounts.id.renderButton(
-                document.getElementById("btnAuthDiv"),
-                { theme: "outline", size: "large" }  // customization attributes
-              );
-              google.accounts.id.prompt(); // also display the One Tap dialog
-
         },
 
 
