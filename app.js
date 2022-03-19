@@ -63,8 +63,19 @@ jQuery(function ($) {
          *  On load, called to load the auth2 library and API client library.
          */
         handleClientLoad: function() {
-            gapi.load('client:auth2', this.initClient);
-            console.log('initClient')
+            // gapi.load('client:auth2', this.initClient);
+            // console.log('initClient')
+
+            google.accounts.id.initialize({
+                client_id: "signin.CLIENT_ID",
+                callback: showLogin
+              });
+              google.accounts.id.renderButton(
+                document.getElementById("buttonDiv"),
+                { theme: "outline", size: "large" }  // customization attributes
+              );
+              google.accounts.id.prompt(); // also display the One Tap dialog
+
         },
 
 
@@ -76,27 +87,29 @@ jQuery(function ($) {
 
             console.log('initClient start')
 
-            await gapi.client.init({
-                apiKey:                 signin.API_KEY,
-                clientId:               signin.CLIENT_ID,
-                discoveryDocs:          signin.DISCOVERY_DOCS,
-                fetch_basic_profile:    true,
-                scope:                  signin.SCOPES
+           
 
-            }).then(function () {
-                // Listen for sign-in state changes.
+            // await gapi.client.init({
+            //     apiKey:                 signin.API_KEY,
+            //     clientId:               signin.CLIENT_ID,
+            //     discoveryDocs:          signin.DISCOVERY_DOCS,
+            //     fetch_basic_profile:    true,
+            //     scope:                  signin.SCOPES
 
-                console.log('initClient then')
-                console.log(this)
+            // }).then(function () {
+            //     // Listen for sign-in state changes.
 
-                gapi.auth2.getAuthInstance().isSignedIn.listen(signin.updateSigninStatus);
+            //     console.log('initClient then')
+            //     console.log(this)
 
-                // Handle the initial sign-in state.
-                signin.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            //     gapi.auth2.getAuthInstance().isSignedIn.listen(signin.updateSigninStatus);
 
-            }, function(error) {
-                console.log(JSON.stringify(error, null, 2));
-            });
+            //     // Handle the initial sign-in state.
+            //     signin.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+
+            // }, function(error) {
+            //     console.log(JSON.stringify(error, null, 2));
+            // });
 
             console.log("initClient end")
         
@@ -106,57 +119,57 @@ jQuery(function ($) {
          *  Called when the signed in status changes, to update the UI
          *  appropriately. After a sign-in, the API is called.
          */
-        updateSigninStatus: async function  (isSignedIn) {
+        // updateSigninStatus: async function  (isSignedIn) {
 
-            if (isSignedIn) { 
+        //     if (isSignedIn) { 
 
-                console.log('signed in')
+        //         console.log('signed in')
 
-                var currUserObj = await gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+        //         var currUserObj = await gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
 
-                signin.currUser['email']     = currUserObj.getEmail()
-                signin.currUser['firstName'] = currUserObj.getGivenName()
-                signin.currUser['lastName']  = currUserObj.getFamilyName()
-                signin.currUser['fullName']  = currUserObj.getName()
-                signin.currUser['emailName'] = signin.currUser['email'].split('@')[0]
+        //         signin.currUser['email']     = currUserObj.getEmail()
+        //         signin.currUser['firstName'] = currUserObj.getGivenName()
+        //         signin.currUser['lastName']  = currUserObj.getFamilyName()
+        //         signin.currUser['fullName']  = currUserObj.getName()
+        //         signin.currUser['emailName'] = signin.currUser['email'].split('@')[0]
 
-                if (signin.currUser.firstName) {
-                    $('#authSigninStatus').html('Hi ' + signin.currUser.firstName + '.<br>You are Authorized.')
-                } else {
-                    $('#authSigninStatus').html('Hi ' + signin.currUser.emailName + '.<br>You are Authorized.')
-                }
+        //         if (signin.currUser.firstName) {
+        //             $('#authSigninStatus').html('Hi ' + signin.currUser.firstName + '.<br>You are Authorized.')
+        //         } else {
+        //             $('#authSigninStatus').html('Hi ' + signin.currUser.emailName + '.<br>You are Authorized.')
+        //         }
 
-                console.log('showLogin')
+        //         console.log('showLogin')
 
-                await showLogin()
+        //         await showLogin()
 
-            } else {
+        //     } else {
 
-                console.log('NOT Authorized')
+        //         console.log('NOT Authorized')
 
-                $('#authSigninStatus').html('You are signed out.  Authorization is required.')
+        //         $('#authSigninStatus').html('You are signed out.  Authorization is required.')
 
-                signin.currUser = {}
+        //         signin.currUser = {}
 
-                gotoTab('Auth')
-            }
-        },
+        //         gotoTab('Auth')
+        //     }
+        // },
 
-        /**
-         *  Sign in the user upon button click.
-         */
-        handleAuthClick: function (event) {
+        // /**
+        //  *  Sign in the user upon button click.
+        //  */
+        // handleAuthClick: function (event) {
         
-            gapi.auth2.getAuthInstance().signIn();
-        },
+        //     gapi.auth2.getAuthInstance().signIn();
+        // },
 
-        /**
-         *  Sign out the user upon button click.
-         */
-        handleSignoutClick: function (event) {
+        // /**
+        //  *  Sign out the user upon button click.
+        //  */
+        // handleSignoutClick: function (event) {
         
-            gapi.auth2.getAuthInstance().signOut();
-        }
+        //     gapi.auth2.getAuthInstance().signOut();
+        // }
 
     }
 
