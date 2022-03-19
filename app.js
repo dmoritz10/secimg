@@ -68,13 +68,10 @@ jQuery(function ($) {
 
             google.accounts.id.initialize({
                 client_id: signin.CLIENT_ID,
-                callback: showLogin,
-                key: signin.API_KEY, 
-                scopes: signin.SCOPES,
-                discovery_docs: signin.DISCOVERY_DOCS
+                callback: showLogin
               });
               google.accounts.id.renderButton(
-                document.getElementById("buttonDiv"),
+                document.getElementById("btnAuthDiv"),
                 { theme: "outline", size: "large" }  // customization attributes
               );
               google.accounts.id.prompt(); // also display the One Tap dialog
