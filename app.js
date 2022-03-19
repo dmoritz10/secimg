@@ -67,7 +67,7 @@ jQuery(function ($) {
             // console.log('initClient')
 
             google.accounts.id.initialize({
-                client_id: "signin.CLIENT_ID",
+                client_id: signin.CLIENT_ID,
                 callback: showLogin
               });
               google.accounts.id.renderButton(
