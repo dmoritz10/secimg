@@ -33,9 +33,6 @@ async function submitLogin() {
   var pwd     = $('#liPassword').val()
   var pwdCfrm = $('#liConfirmPassword').val()
 
-  usr = "attics212"
-  pwd = "Tempdm10!"
-
   var rtn = await getSSId(usr)
   
   if (rtn.fileId) {spreadsheetId = rtn.fileId}
