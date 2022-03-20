@@ -16,18 +16,14 @@
     var shtEnc 
     var shtIdxArr
     
-    var suSht = null
     var arrOptions
     var optionsIdx
   
     var timerStart
 
-    var templateSheetId
-
     var signin
 
     var newShtHdrs = ['Document','Expiry','Favorite','Notes','Img Front','Img Back', 'File Id', 'Last Change']
-
 
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     var invalidPwdMsg = 
@@ -38,8 +34,6 @@
     1 special character<br>
     8 characters
     `
-
- 
 
 /*global jQuery */
 jQuery(function ($) {
