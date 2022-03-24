@@ -22,8 +22,10 @@
     var timerStart
 
     var signin
+    
+    // var newShtHdrs = ['Document','Expiry','Favorite','Notes','Img Front','Img Back', 'File Id', 'Last Change']
 
-    var newShtHdrs = ['Document','Expiry','Favorite','Notes','Img Front','Img Back', 'File Id', 'Last Change']
+    var newShtHdrs = ['Document','Expiry','Favorite','Notes','File Id', 'Last Change']
 
     var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     var invalidPwdMsg = 
