@@ -244,8 +244,8 @@ async function btnShtmSubmitSheetHtml() {
 
     vals[shtHdrs.indexOf("Document")] = $('#shtmDocument').val()
     vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
-    vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
-    vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
+    // vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
+    // vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
     vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
     vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
     vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
@@ -267,8 +267,8 @@ async function btnShtmSubmitSheetHtml() {
 
     vals[shtHdrs.indexOf("Document")] = $('#shtmDocument').val()
     vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
-    vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
-    vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
+    // vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
+    // vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
     vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
     vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
     vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
