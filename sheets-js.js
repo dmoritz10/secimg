@@ -718,6 +718,8 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 async function startCamera() {
 
+let video = document.querySelector("#video");
+
   let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
 	video.srcObject = stream;
 
@@ -725,6 +727,7 @@ async function startCamera() {
 
 async function clickPhoto() {
 
+  let canvas = document.querySelector("#canvas");
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
    	let image_data_url = canvas.toDataURL('image/jpeg');
 
