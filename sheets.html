@@ -145,6 +145,9 @@
                   <button type="button" class="btn btn-primary" onclick="document.getElementById('shtmInputFront').click()">Choose File</button>
                   <input id="shtmInputFront" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputFront">
                 </div>
+                <div class="col">
+                  <button id="start-camera" class="btn btn-primary" onclick="startCamera">Start Camera</button>
+                </div>
                 <div class="col text-end">
                   <button  type="button" class="btn btn-secondary" onclick="$('#shtmImgFront').attr('src', '#').addClass('d-none')">Remove File</button>
                 </div>
@@ -153,6 +156,7 @@
               <div class="row my-3">
                 <div class="col text-center">
                   <img  id="shtmImgFront" name="shtmImgFront" width="300">
+                  <canvas id="canvas" width="320" height="240"></canvas>
                 </div>
               </div>
               
@@ -175,16 +179,6 @@
               </div>
               
 
-              <!-- <div class="row my-0">
-                <div class="col-3">
-                  <input id="shtmInputBack" class="form-control" onchange="showFile(this)" type="file"  name="shtmInputFront">
-                </div>
-                <div class="col">
-                  <img  id="shtmImgBack" name="shtmInputBack" width="300">
-                </div>
-              </div> -->
-
-              
             </fieldset>
           </form>
         </div>

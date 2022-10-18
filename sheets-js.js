@@ -715,3 +715,20 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
       });
 
 }
+
+async function startCamera() {
+
+  let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+	video.srcObject = stream;
+
+}
+
+async function clickPhoto() {
+
+    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+   	let image_data_url = canvas.toDataURL('image/jpeg');
+
+     $('#shtmImgFront').attr('src', image_data_url);
+     $('#shtmImgFront').removeClass('d-none');
+
+}
