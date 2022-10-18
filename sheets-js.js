@@ -720,7 +720,9 @@ async function startCamera() {
 
 let video = document.querySelector("#video");
 
-  let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+  let stream = await navigator.mediaDevices.getUserMedia({ video: {
+    facingMode: 'environment'
+      }, audio: false });
 	video.srcObject = stream;
 
 }
