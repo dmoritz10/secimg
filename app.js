@@ -50,7 +50,7 @@ jQuery(function ($) {
 
         CLIENT_ID : '764306262696-esbdj8daoee741d44fdhrh5fehjtjjm5.apps.googleusercontent.com',  // TODO: Update placeholder with desired client ID.
 
-        SCOPES : "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive.metadata.readonly",
+        SCOPES : "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/drive",
 
         DISCOVERY_DOCS : ["https://sheets.googleapis.com/$discovery/rest?version=v4", 
                            "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"],
