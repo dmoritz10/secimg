@@ -739,14 +739,35 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 // }
 
 function startCamera() {
-  navigator.mediaDevices.getUserMedia({ video: {facingMode: 'environment'}, audio: false })
+  navigator.mediaDevices.getUserMedia({ 
+    video: {facingMode: 'environment'}, 
+    audio: false 
+  })
   .then(mediaStream => {
     document.querySelector('video').srcObject = mediaStream;
 
     const track = mediaStream.getVideoTracks()[0];
     imageCapture = new ImageCapture(track);
+  
+    return imageCapture.getPhotoCapabilities();
   })
-  .catch(error => ChromeSamples.log(error));
+  .then(photoCapabilities => {
+    const settings = imageCapture.track.getSettings();
+
+    console.log('settings', settings)
+    console.log('photoCapabilities', photoCapabilities)
+  
+    // input.min = photoCapabilities.imageWidth.min;
+    // input.max = photoCapabilities.imageWidth.max;
+    // input.step = photoCapabilities.imageWidth.step;
+  
+    return imageCapture.getPhotoSettings();
+  })
+  .then(photoSettings => {
+    input.value = photoSettings.imageWidth;
+  })
+  .catch(error => ChromeSamples.log('Argh!', error.name || error));
+  
 }
 
 // function clickPhoto() {
@@ -759,6 +780,7 @@ function startCamera() {
 // }
 
 var imageCapture;
+var input
 
 function clickPhoto() {
   imageCapture.takePhoto()
