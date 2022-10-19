@@ -793,6 +793,8 @@ function clickPhoto() {
   console.log('input', input )
 
   console.log('imageCapture', imageCapture )
+
+  alert('input.value', input.value)
   imageCapture.takePhoto({imageWidth: input.value})
   .then(blob => createImageBitmap(blob))
   .then(imageBitmap => {
@@ -807,6 +809,10 @@ function clickPhoto() {
 /* Utils */
 
 function drawCanvas(canvas, img) {
+
+console.log('width', img.width)
+console.log('height', img.height)
+
   canvas.width = getComputedStyle(canvas).width.split('px')[0];
   canvas.height = getComputedStyle(canvas).height.split('px')[0];
   let ratio  = Math.min(canvas.width / img.width, canvas.height / img.height);
