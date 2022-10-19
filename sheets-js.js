@@ -757,16 +757,17 @@ function startCamera() {
     console.log('settings', settings)
     console.log('photoCapabilities', photoCapabilities)
   
-    // input.min = photoCapabilities.imageWidth.min;
-    // input.max = photoCapabilities.imageWidth.max;
-    // input.step = photoCapabilities.imageWidth.step;
+     input.min = photoCapabilities.imageWidth.min;
+     input.max = photoCapabilities.imageWidth.max;
+     input.step = photoCapabilities.imageWidth.step;
   
     return imageCapture.getPhotoSettings();
   })
   .then(photoSettings => {
-    input.value = photoSettings.imageWidth;
+    // input.value = photoSettings.imageWidth;
+    input.value = input.max
   })
-  .catch(error => ChromeSamples.log('Argh!', error.name || error));
+  .catch(error => console.log('Argh!', error.name || error));
   
 }
 
@@ -783,7 +784,7 @@ var imageCapture;
 var input
 
 function clickPhoto() {
-  imageCapture.takePhoto()
+  imageCapture.takePhoto({imageWidth: input.value})
   .then(blob => createImageBitmap(blob))
   .then(imageBitmap => {
     const canvas = document.querySelector('#canvas');
@@ -791,7 +792,7 @@ function clickPhoto() {
          $('#shtmImgFront').attr('src', canvas.toDataURL('image/jpeg'));
      $('#shtmImgFront').removeClass('d-none');
   })
-  .catch(error => ChromeSamples.log(error));
+  .catch(error => console.log(error));
 }
 
 /* Utils */
