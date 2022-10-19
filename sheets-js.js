@@ -739,9 +739,7 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 // }
 
 function startCamera() {
-  navigator.mediaDevices.getUserMedia({ video: {
-        facingMode: 'environment'
-          }, audio: false });
+  navigator.mediaDevices.getUserMedia({ video: {facingMode: 'environment'}, audio: false })
   .then(mediaStream => {
     document.querySelector('video').srcObject = mediaStream;
 
