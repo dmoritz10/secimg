@@ -760,12 +760,13 @@ function startCamera() {
      input.min = photoCapabilities.imageWidth.min;
      input.max = photoCapabilities.imageWidth.max;
      input.step = photoCapabilities.imageWidth.step;
-  
+     input.value = input.max
+     
     return imageCapture.getPhotoSettings();
   })
   .then(photoSettings => {
     // input.value = photoSettings.imageWidth;
-    input.value = input.max
+    
   })
   .catch(error => console.log('Argh!', error.name || error));
   
