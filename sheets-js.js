@@ -766,6 +766,8 @@ function onTakePhotoButtonClick() {
   .then(imageBitmap => {
     const canvas = document.querySelector('#takePhotoCanvas');
     drawCanvas(canvas, imageBitmap);
+         $('#shtmImgFront').attr('src', canvas.toDataURL('image/jpeg'););
+     $('#shtmImgFront').removeClass('d-none');
   })
   .catch(error => ChromeSamples.log(error));
 }
