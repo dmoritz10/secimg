@@ -716,47 +716,47 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 }
 
-async function startCamera() {
+// async function startCamera() {
 
-let video = document.querySelector("#video");
+// let video = document.querySelector("#video");
 
-  let stream = await navigator.mediaDevices.getUserMedia({ video: {
-    facingMode: 'environment'
-      }, audio: false });
-	video.srcObject = stream;
+//   let stream = await navigator.mediaDevices.getUserMedia({ video: {
+//     facingMode: 'environment'
+//       }, audio: false });
+// 	video.srcObject = stream;
 
-}
-
-async function clickPhoto() {
-
-  let canvas = document.querySelector("#canvas");
-    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-   	let image_data_url = canvas.toDataURL('image/jpeg');
-
-     $('#shtmImgFront').attr('src', image_data_url);
-     $('#shtmImgFront').removeClass('d-none');
-
-}
-
-// function startCamera() {
-//   navigator.mediaDevices.getUserMedia({video: true})
-//   .then(mediaStream => {
-//     document.querySelector('video').srcObject = mediaStream;
-
-//     const track = mediaStream.getVideoTracks()[0];
-//     imageCapture = new ImageCapture(track);
-//   })
-//   .catch(error => ChromeSamples.log(error));
 // }
 
-// function clickPhoto() {
-//   imageCapture.grabFrame()
-//   .then(imageBitmap => {
-//     const canvas = document.querySelector('#canvas');
-//     drawCanvas(canvas, imageBitmap);
-//   })
-//   .catch(error => ChromeSamples.log(error));
+// async function clickPhoto() {
+
+//   let canvas = document.querySelector("#canvas");
+//     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+//    	let image_data_url = canvas.toDataURL('image/jpeg');
+
+//      $('#shtmImgFront').attr('src', image_data_url);
+//      $('#shtmImgFront').removeClass('d-none');
+
 // }
+
+function startCamera() {
+  navigator.mediaDevices.getUserMedia({video: true})
+  .then(mediaStream => {
+    document.querySelector('video').srcObject = mediaStream;
+
+    const track = mediaStream.getVideoTracks()[0];
+    imageCapture = new ImageCapture(track);
+  })
+  .catch(error => ChromeSamples.log(error));
+}
+
+function clickPhoto() {
+  imageCapture.grabFrame()
+  .then(imageBitmap => {
+    const canvas = document.querySelector('#canvas');
+    drawCanvas(canvas, imageBitmap);
+  })
+  .catch(error => ChromeSamples.log(error));
+}
 
 var imageCapture;
 
