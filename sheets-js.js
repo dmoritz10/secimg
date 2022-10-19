@@ -796,8 +796,8 @@ function clickPhoto() {
 
   console.log('imageCapture', imageCapture )
 
-  alert('input.value', input.value)
-  alert('input.max', input.max )
+  alert('input.value ' + input.value)
+  alert('input.max ' + input.max )
   imageCapture.takePhoto({imageWidth: input.value})
   .then(blob => createImageBitmap(blob))
   .then(imageBitmap => {
