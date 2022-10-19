@@ -813,8 +813,8 @@ function clickPhoto() {
 
 function drawCanvas(canvas, img) {
 
-console.log('width', img.width)
-console.log('height', img.height)
+alert('width '+ img.width)
+alert('height '+ img.height)
 
   canvas.width = getComputedStyle(canvas).width.split('px')[0];
   canvas.height = getComputedStyle(canvas).height.split('px')[0];
