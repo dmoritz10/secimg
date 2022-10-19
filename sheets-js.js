@@ -764,7 +764,7 @@ function clickPhoto() {
   imageCapture.takePhoto()
   .then(blob => createImageBitmap(blob))
   .then(imageBitmap => {
-    const canvas = document.querySelector('#takePhotoCanvas');
+    const canvas = document.querySelector('#canvas');
     drawCanvas(canvas, imageBitmap);
          $('#shtmImgFront').attr('src', canvas.toDataURL('image/jpeg'););
      $('#shtmImgFront').removeClass('d-none');
