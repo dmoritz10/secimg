@@ -766,7 +766,7 @@ function clickPhoto() {
   .then(imageBitmap => {
     const canvas = document.querySelector('#canvas');
     drawCanvas(canvas, imageBitmap);
-         $('#shtmImgFront').attr('src', canvas.toDataURL('image/jpeg'););
+         $('#shtmImgFront').attr('src', canvas.toDataURL('image/jpeg'));
      $('#shtmImgFront').removeClass('d-none');
   })
   .catch(error => ChromeSamples.log(error));
