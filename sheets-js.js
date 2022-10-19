@@ -738,6 +738,9 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 // }
 
+var imageCapture;
+var input
+
 function startCamera() {
   navigator.mediaDevices.getUserMedia({ 
     video: {facingMode: 'environment'}, 
@@ -761,7 +764,9 @@ function startCamera() {
      input.max = photoCapabilities.imageWidth.max;
      input.step = photoCapabilities.imageWidth.step;
      input.value = input.max
-     
+
+     console.log(input)
+
     return imageCapture.getPhotoSettings();
   })
   .then(photoSettings => {
@@ -781,10 +786,12 @@ function startCamera() {
 //   .catch(error => ChromeSamples.log(error));
 // }
 
-var imageCapture;
-var input
+
 
 function clickPhoto() {
+  console.log('input', input )
+
+  console.log('imageCapture', imageCapture )
   imageCapture.takePhoto({imageWidth: input.value})
   .then(blob => createImageBitmap(blob))
   .then(imageBitmap => {
