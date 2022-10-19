@@ -786,4 +786,4 @@ function drawCanvas(canvas, img) {
 // document.querySelector('video').addEventListener('play', function() {
 //   document.querySelector('#grabFrameButton').disabled = false;
 //   document.querySelector('#takePhotoButton').disabled = false;
-});
+// });
