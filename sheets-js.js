@@ -791,10 +791,13 @@ function startCamera() {
 
 function clickPhoto() {
   console.log('input', input )
+  console.log('input.value', input.value )
+  console.log('input.max', input.max )
 
   console.log('imageCapture', imageCapture )
 
   alert('input.value', input.value)
+  alert('input.max', input.max )
   imageCapture.takePhoto({imageWidth: input.value})
   .then(blob => createImageBitmap(blob))
   .then(imageBitmap => {
