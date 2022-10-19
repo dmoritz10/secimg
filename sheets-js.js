@@ -739,7 +739,7 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 // }
 
 var imageCapture;
-var input
+var input;
 
 function startCamera() {
   navigator.mediaDevices.getUserMedia({ 
