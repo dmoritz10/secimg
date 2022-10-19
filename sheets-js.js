@@ -749,18 +749,18 @@ function startCamera() {
   .catch(error => ChromeSamples.log(error));
 }
 
-function clickPhoto() {
-  imageCapture.grabFrame()
-  .then(imageBitmap => {
-    const canvas = document.querySelector('#canvas');
-    drawCanvas(canvas, imageBitmap);
-  })
-  .catch(error => ChromeSamples.log(error));
-}
+// function clickPhoto() {
+//   imageCapture.grabFrame()
+//   .then(imageBitmap => {
+//     const canvas = document.querySelector('#canvas');
+//     drawCanvas(canvas, imageBitmap);
+//   })
+//   .catch(error => ChromeSamples.log(error));
+// }
 
 var imageCapture;
 
-function onTakePhotoButtonClick() {
+function clickPhoto() {
   imageCapture.takePhoto()
   .then(blob => createImageBitmap(blob))
   .then(imageBitmap => {
