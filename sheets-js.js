@@ -759,6 +759,7 @@ function startCamera() {
 
     console.log('settings', settings)
     console.log('photoCapabilities', photoCapabilities)
+    console.log(input)
   
      input.min = photoCapabilities.imageWidth.min;
      input.max = photoCapabilities.imageWidth.max;
