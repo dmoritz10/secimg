@@ -753,6 +753,8 @@ function startCamera() {
     const capabilities = trk.getCapabilities();
     const settings = trk.getSettings();
 
+    trk.applyConstraints({advanced: [ {zoom: 10} ]});
+
     alert(settings.zoom)
 
     console.log('cap', capabilities)
