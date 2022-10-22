@@ -753,7 +753,7 @@ function startCamera() {
     const capabilities = trk.getCapabilities();
     const settings = trk.getSettings();
 
-    alert(setting.zoom)
+    alert(settings.zoom)
 
     console.log('cap', capabilities)
     console.log('set', settings)
