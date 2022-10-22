@@ -798,6 +798,7 @@ function clickPhoto() {
 
   alert('input.value ' + input.value)
   alert('input.max ' + input.max )
+  
   imageCapture.takePhoto({imageWidth: 1280})
   .then(blob => createImageBitmap(blob))
   .then(imageBitmap => {
