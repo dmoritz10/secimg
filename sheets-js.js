@@ -800,8 +800,8 @@ function clickPhoto() {
   alert('input.max ' + input.max )
 
 
-  
-  imageCapture.takePhoto({imageWidth: 1280})
+
+  imageCapture.takePhoto({imageWidth: 640})
   .then(blob => createImageBitmap(blob))
   .then(imageBitmap => {
     const canvas = document.querySelector('#canvas');
