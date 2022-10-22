@@ -749,6 +749,14 @@ function startCamera() {
   .then(mediaStream => {
     document.querySelector('video').srcObject = mediaStream;
 
+    const [trk] = mediaStream.getVideoTracks();
+    const capabilities = trk.getCapabilities();
+    const settings = trk.getSettings();
+
+    console.log('cap', capabilities)
+    console.log('set', settings)
+
+
     const track = mediaStream.getVideoTracks()[0];
     imageCapture = new ImageCapture(track);
   
@@ -757,16 +765,10 @@ function startCamera() {
   .then(photoCapabilities => {
     const settings = imageCapture.track.getSettings();
 
-    console.log('settings', settings)
-    console.log('photoCapabilities', photoCapabilities)
-    console.log(input)
-  
      input.min = photoCapabilities.imageWidth.min;
      input.max = photoCapabilities.imageWidth.max;
      input.step = photoCapabilities.imageWidth.step;
      input.value = input.max
-
-     console.log(input)
 
     return imageCapture.getPhotoSettings();
   })
@@ -790,15 +792,6 @@ function startCamera() {
 
 
 function clickPhoto() {
-  console.log('input', input )
-  console.log('input.value', input.value )
-  console.log('input.max', input.max )
-
-  console.log('imageCapture', imageCapture )
-
-  alert('input.value ' + input.value)
-  alert('input.max ' + input.max )
-
 
 
   imageCapture.takePhoto({imageWidth: 640})
