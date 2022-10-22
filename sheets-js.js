@@ -753,7 +753,7 @@ function startCamera() {
     const capabilities = trk.getCapabilities();
     const settings = trk.getSettings();
 
-    trk.applyConstraints({advanced: [ {zoom: 10} ]});
+    trk.applyConstraints({advanced: [ {zoom: .5} ]});
 
     alert(settings.zoom)
 
