@@ -756,6 +756,9 @@ function startCamera() {
     trk.applyConstraints({advanced: [ {zoom: .5} ]});
 
     alert(settings.zoom)
+    alert(capabilities.zoom.min)
+      alert(capabilities.zoom.max)
+        alert(capabilities.zoom.step)
 
     console.log('cap', capabilities)
     console.log('set', settings)
