@@ -769,16 +769,9 @@ function clickPhoto() {
 
   if (enhancer) {
     let frame = enhancer.getFrame();
+    let image_data_url = frame.canvas.toDataURL('image/jpeg');
+    $('#shtmImgFront').attr('src', image_data_url);
+     $('#shtmImgFront').removeClass('d-none');
 
-    let width = screen.availWidth;
-    let height = screen.availHeight;
-    let popW = 640, popH = 640;
-    let left = (width - popW) / 2;
-    let top = (height - popH) / 2;
-
-    popWindow = window.open('', 'popup', 'width=' + popW + ',height=' + popH +
-        ',top=' + top + ',left=' + left + ', scrollbars=yes');
-
-    popWindow.document.body.appendChild(frame.canvas);
   }
 }
