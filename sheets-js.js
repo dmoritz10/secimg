@@ -738,10 +738,10 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 // }
 
-
+let enhancer = null;
 
 async function startCamera() {
-  let enhancer = null;
+  
 
      enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
     //  await enhancer.setUIElement(Dynamsoft.DCE.CameraEnhancer.defaultUIElementURL);
