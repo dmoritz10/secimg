@@ -185,6 +185,8 @@ async function editSheet(arrIdx) {
 
   modal(true)
 
+  enhancerClose()
+
   $("#sheet-form")[0].reset();
 
   $('#shtmImgFront').removeAttr('src').addClass('d-none')
@@ -750,12 +752,13 @@ async function startCamera() {
      const d = enhancer.getUIElement()
      $( d ).css( {position: 'relative'} );
      $(".dce-btn-close").click(enhancerClose())
-     
+
     // clear UI
      $("#enhancerUIContainer").empty();
 
     // set UI
      document.getElementById("enhancerUIContainer").appendChild(d);
+     $("#enhancerUIContainer").removeClass('d-none')
 
 }
 
@@ -780,6 +783,7 @@ function enhancerClose() {
 
   enhancer = null
   $("#enhancerUIContainer").empty();
+  $("#enhancerUIContainer").addClass('d-none')
 
 
 
