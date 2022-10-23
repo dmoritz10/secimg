@@ -744,13 +744,17 @@ async function startCamera() {
   let enhancer = null;
 
      enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+     await enhancer.setUIElement(Dynamsoft.DCE.CameraEnhancer.defaultUIElementURL);
+
      console.log('Dynamsoft.DCE.CameraEnhancer', Dynamsoft.DCE.CameraEnhancer)
 
      console.log('enhancer', enhancer)
      console.log("enhancerUIContainer", document.getElementById("enhancerUIContainer"))
      console.log("enhancer.getUIElement()", enhancer.getUIElement())
      console.log("enhancer.setUIElement()", enhancer.setUIElement())
+
      document.getElementById("enhancerUIContainer").appendChild(enhancer.getUIElement());
+
      await enhancer.open(true);
 
 }
