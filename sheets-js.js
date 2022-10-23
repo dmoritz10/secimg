@@ -773,7 +773,7 @@ function clickPhoto() {
 console.log('frame', frame)
 console.log('frame.data', frame.data)
 
-    let image_data_url = frame.data('image/jpeg');
+    let image_data_url = frame.data.toDataURL('image/jpeg');
 
     $('#shtmImgFront').attr('src', image_data_url);
      $('#shtmImgFront').removeClass('d-none');
