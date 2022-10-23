@@ -749,6 +749,8 @@ async function startCamera() {
      const d = enhancer.getUIElement()
      $( d ).css( {position: 'relative'} );
 
+     $("#enhancerUIContainer").empty();
+
      document.getElementById("enhancerUIContainer").appendChild(d);
 
 }
@@ -765,6 +767,7 @@ function clickPhoto() {
     $('#shtmImgFront').removeClass('d-none');
 
      enhancer = null
+     $("#enhancerUIContainer").empty();
 
   }
 
