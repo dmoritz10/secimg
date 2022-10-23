@@ -738,98 +738,32 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 // }
 
-var imageCapture;
-var input = {};
-
-function startCamera() {
-  navigator.mediaDevices.getUserMedia({ 
-    video: {facingMode: 'environment'}, 
-    audio: false 
-  })
-  .then(mediaStream => {
-    document.querySelector('video').srcObject = mediaStream;
-
-    const [trk] = mediaStream.getVideoTracks();
-    const capabilities = trk.getCapabilities();
-    const settings = trk.getSettings();
-
-    trk.applyConstraints({advanced: [ {zoom: 4} ]});
-
-    alert(settings.zoom)
-    alert(capabilities.zoom.min)
-      alert(capabilities.zoom.max)
-        alert(capabilities.zoom.step)
-
-    console.log('cap', capabilities)
-    console.log('set', settings)
 
 
-    const track = mediaStream.getVideoTracks()[0];
-    imageCapture = new ImageCapture(track);
-  
-    return imageCapture.getPhotoCapabilities();
-  })
-  .then(photoCapabilities => {
-    const settings = imageCapture.track.getSettings();
+async function startCamera() {
+  let enhancer = null;
 
-     input.min = photoCapabilities.imageWidth.min;
-     input.max = photoCapabilities.imageWidth.max;
-     input.step = photoCapabilities.imageWidth.step;
-     input.value = input.max
+     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+     document.getElementById("enhancerUIContainer").appendChild(enhancer.getUIElement());
+     await enhancer.open(true);
 
-    return imageCapture.getPhotoSettings();
-  })
-  .then(photoSettings => {
-    // input.value = photoSettings.imageWidth;
-    
-  })
-  .catch(error => console.log('Argh!', error.name || error));
-  
 }
-
-// function clickPhoto() {
-//   imageCapture.grabFrame()
-//   .then(imageBitmap => {
-//     const canvas = document.querySelector('#canvas');
-//     drawCanvas(canvas, imageBitmap);
-//   })
-//   .catch(error => ChromeSamples.log(error));
-// }
-
-
 
 function clickPhoto() {
 
 
-  imageCapture.takePhoto({imageWidth: 640})
-  .then(blob => createImageBitmap(blob))
-  .then(imageBitmap => {
-    const canvas = document.querySelector('#canvas');
-    drawCanvas(canvas, imageBitmap);
-         $('#shtmImgFront').attr('src', canvas.toDataURL('image/jpeg'));
-     $('#shtmImgFront').removeClass('d-none');
-  })
-  .catch(error => console.log(error));
+  if (enhancer) {
+    let frame = enhancer.getFrame();
+
+    let width = screen.availWidth;
+    let height = screen.availHeight;
+    let popW = 640, popH = 640;
+    let left = (width - popW) / 2;
+    let top = (height - popH) / 2;
+
+    popWindow = window.open('', 'popup', 'width=' + popW + ',height=' + popH +
+        ',top=' + top + ',left=' + left + ', scrollbars=yes');
+
+    popWindow.document.body.appendChild(frame.canvas);
+  }
 }
-
-/* Utils */
-
-function drawCanvas(canvas, img) {
-
-alert('width '+ img.width)
-alert('height '+ img.height)
-
-  canvas.width = getComputedStyle(canvas).width.split('px')[0];
-  canvas.height = getComputedStyle(canvas).height.split('px')[0];
-  let ratio  = Math.min(canvas.width / img.width, canvas.height / img.height);
-  let x = (canvas.width - img.width * ratio) / 2;
-  let y = (canvas.height - img.height * ratio) / 2;
-  canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-  canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height,
-      x, y, img.width * ratio, img.height * ratio);
-}
-
-// document.querySelector('video').addEventListener('play', function() {
-//   document.querySelector('#grabFrameButton').disabled = false;
-//   document.querySelector('#takePhotoButton').disabled = false;
-// });
