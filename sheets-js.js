@@ -746,11 +746,15 @@ async function startCamera() {
      enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
      await enhancer.open(true);
 
+    // modify UI
      const d = enhancer.getUIElement()
      $( d ).css( {position: 'relative'} );
-
+     $(".dce-btn-close").click(enhancerClose())
+     
+    // clear UI
      $("#enhancerUIContainer").empty();
 
+    // set UI
      document.getElementById("enhancerUIContainer").appendChild(d);
 
 }
@@ -766,10 +770,17 @@ function clickPhoto() {
     $('#shtmImgFront').attr('src', image_data_url);
     $('#shtmImgFront').removeClass('d-none');
 
-     enhancer = null
-     $("#enhancerUIContainer").empty();
+    enhancerClose()
 
   }
+
+}
+
+function enhancerClose() {
+
+  enhancer = null
+  $("#enhancerUIContainer").empty();
+
 
 
 }
