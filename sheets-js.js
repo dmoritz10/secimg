@@ -782,7 +782,13 @@ function clickPhoto() {
 function enhancerClose() {
 
   enhancer = null
+
+console.log('enhancerUIContainer', $("#enhancerUIContainer"))
+
   $("#enhancerUIContainer").empty();
+
+console.log('enhancerUIContainer', $("#enhancerUIContainer"))
+
   $("#enhancerUIContainer").addClass('d-none')
 
 
