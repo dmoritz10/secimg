@@ -770,13 +770,14 @@ function clickPhoto() {
   if (enhancer) {
     let frame = enhancer.getFrame();
 
-console.log('frame', frame)
-console.log('frame.toCanvas', frame.toCanvas())
-
     let image_data_url = frame.toCanvas().toDataURL('image/jpeg');
 
     $('#shtmImgFront').attr('src', image_data_url);
-     $('#shtmImgFront').removeClass('d-none');
+    $('#shtmImgFront').removeClass('d-none');
+
+     enhancer = null
 
   }
+
+
 }
