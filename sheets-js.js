@@ -753,11 +753,11 @@ async function startCamera() {
      console.log("enhancer.setUIElement()", enhancer.setUIElement())
      await enhancer.open(true);
      const d = enhancer.getUIElement()
-
+     $( d ).first().css( {position: 'relative'} );
      console.log('const d', d)
 
-     document.getElementById("enhancerUIContainer").appendChild(enhancer.getUIElement());
-     $( "#enhancerUIContainer" ).first().css( {position: 'relative'} );
+     document.getElementById("enhancerUIContainer").appendChild(d);
+    //  $( "#enhancerUIContainer" ).first().css( {position: 'relative'} );
 
 
     //  await enhancer.open(true);
