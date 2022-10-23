@@ -771,10 +771,9 @@ function clickPhoto() {
     let frame = enhancer.getFrame();
 
 console.log('frame', frame)
-console.log('frame.canvas', frame.canvas)
+console.log('frame.data', frame.data)
 
-    // let image_data_url = frame.canvas.toDataURL('image/jpeg');
-    let image_data_url = frame.canvas;
+    let image_data_url = frame.data('image/jpeg');
 
     $('#shtmImgFront').attr('src', image_data_url);
      $('#shtmImgFront').removeClass('d-none');
