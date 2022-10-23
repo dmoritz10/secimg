@@ -746,6 +746,7 @@ async function startCamera() {
      enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
 
      console.log('enhancer', enhancer)
+     console.log("enhancerUIContainer", document.getElementById("enhancerUIContainer"))
      document.getElementById("enhancerUIContainer").appendChild(enhancer.getUIElement());
      await enhancer.open(true);
 
