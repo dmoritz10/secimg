@@ -744,6 +744,7 @@ let enhancer = null;
 
 async function startCamera() {
   
+  console.log('enhancer', enhancer)
 
      enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
      await enhancer.open(true);
@@ -764,6 +765,7 @@ async function startCamera() {
 
 function clickPhoto() {
 
+  console.log('enhancer', enhancer)
 
   if (enhancer) {
     let frame = enhancer.getFrame();
