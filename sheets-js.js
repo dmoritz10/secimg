@@ -791,7 +791,6 @@ function clickPhoto() {
 
 function enhancerClose() {
 
-  enhancer = null
 
 console.log('enhancerUIContainer', $("#enhancerUIContainer"))
 
@@ -801,6 +800,7 @@ console.log('enhancerUIContainer', $("#enhancerUIContainer"))
 
   $("#enhancerUIContainer").addClass('d-none')
 
+  enhancer = null
 
 
 }
