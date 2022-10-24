@@ -718,42 +718,25 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 }
 
-// async function startCamera() {
-
-// let video = document.querySelector("#video");
-
-//   let stream = await navigator.mediaDevices.getUserMedia({ video: {
-//     facingMode: 'environment'
-//       }, audio: false });
-// 	video.srcObject = stream;
-
-// }
-
-// async function clickPhoto() {
-
-//   let canvas = document.querySelector("#canvas");
-//     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-//    	let image_data_url = canvas.toDataURL('image/jpeg');
-
-//      $('#shtmImgFront').attr('src', image_data_url);
-//      $('#shtmImgFront').removeClass('d-none');
-
-// }
-
 var enhancer = null;
 
 async function startCamera() {
   
+  alert('1')
   enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+  alert('2')
   await enhancer.open(true);
+  alert('3')
 
 // modify UI
   const d = enhancer.getUIElement()
   $( d ).css( {position: 'relative'} );
   $(".dce-btn-close").click(enhancerClose)
+  alert('4')
 
   // clear UI
   $("#enhancerUIContainer").empty();
+  alert('5')
 
 // set UI
   document.getElementById("enhancerUIContainer").appendChild(d);
@@ -761,6 +744,7 @@ async function startCamera() {
   $("#enhancerUIContainer").removeClass('d-none')
   $('#shtmImgFront').addClass('d-none');
 
+  alert('6')
 
 }
 
