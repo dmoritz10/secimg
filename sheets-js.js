@@ -744,38 +744,30 @@ var enhancer = null;
 
 async function startCamera() {
   
-  console.log('enhancer', enhancer)
-   // clear UI
-   $("#enhancerUIContainer").empty();
-   console.log('enhancer', enhancer)
+  enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+  await enhancer.open(true);
 
+// modify UI
+  const d = enhancer.getUIElement()
+  $( d ).css( {position: 'relative'} );
+  $(".dce-btn-close").click(enhancerClose)
 
-     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
-     await enhancer.open(true);
-     console.log('enhancer1', enhancer)
+  // clear UI
+  $("#enhancerUIContainer").empty();
 
-    // modify UI
-     const d = enhancer.getUIElement()
-     $( d ).css( {position: 'relative'} );
-     $(".dce-btn-close").click(enhancerClose)
-     console.log('enhancer2', enhancer)
+// set UI
+  document.getElementById("enhancerUIContainer").appendChild(d);
 
-   
-    // set UI
-     document.getElementById("enhancerUIContainer").appendChild(d);
-   console.log('enhancer3', enhancer)
-
-     $("#enhancerUIContainer").removeClass('d-none')
-   console.log('enhancer4', enhancer)
+  $("#enhancerUIContainer").removeClass('d-none')
+  $('#shtmImgFront').addClass('d-none');
 
 
 }
 
 function clickPhoto() {
 
-  console.log('enhancer', enhancer)
-
   if (enhancer) {
+
     let frame = enhancer.getFrame();
 
     let image_data_url = frame.toCanvas().toDataURL('image/jpeg');
@@ -791,13 +783,7 @@ function clickPhoto() {
 
 function enhancerClose() {
 
-
-console.log('enhancerUIContainer', $("#enhancerUIContainer"))
-
   $("#enhancerUIContainer").empty();
-
-console.log('enhancerUIContainer', $("#enhancerUIContainer"))
-
   $("#enhancerUIContainer").addClass('d-none')
 
   enhancer = null
