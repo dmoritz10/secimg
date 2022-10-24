@@ -745,6 +745,10 @@ let enhancer = null;
 async function startCamera() {
   
   console.log('enhancer', enhancer)
+   // clear UI
+   $("#enhancerUIContainer").empty();
+   console.log('enhancer', enhancer)
+
 
      enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
      await enhancer.open(true);
@@ -754,9 +758,7 @@ async function startCamera() {
      $( d ).css( {position: 'relative'} );
      $(".dce-btn-close").click(enhancerClose())
 
-    // clear UI
-     $("#enhancerUIContainer").empty();
-
+   
     // set UI
      document.getElementById("enhancerUIContainer").appendChild(d);
      $("#enhancerUIContainer").removeClass('d-none')
