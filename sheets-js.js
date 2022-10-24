@@ -757,7 +757,7 @@ async function startCamera() {
     // modify UI
      const d = enhancer.getUIElement()
      $( d ).css( {position: 'relative'} );
-     $(".dce-btn-close").click(enhancerClose())
+    //  $(".dce-btn-close").click(enhancerClose())
      console.log('enhancer2', enhancer)
 
    
