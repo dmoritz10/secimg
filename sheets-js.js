@@ -740,7 +740,7 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 // }
 
-let enhancer = null;
+var enhancer = null;
 
 async function startCamera() {
   
