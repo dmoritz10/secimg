@@ -749,8 +749,11 @@ async function startCamera() {
 }
 
 function clickPhoto() {
+  alert('1')
 
   if (enhancer) {
+  alert('2')
+
 
     let frame = enhancer.getFrame();
 
@@ -762,6 +765,7 @@ function clickPhoto() {
     enhancerClose()
 
   }
+  alert('3')
 
 }
 
