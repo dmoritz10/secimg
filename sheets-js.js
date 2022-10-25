@@ -732,8 +732,7 @@ async function startCamera() {
     await enhancer.open(true);
     
   }
-  $( "body" ).off( "click", ".dce-btn-close" )
-  $(".dce-btn-close").click(enhancerClose)
+  
 
 // modify UI
   const d = enhancer.getUIElement()
@@ -746,6 +745,10 @@ async function startCamera() {
   document.getElementById("enhancerUIContainer").appendChild(d);
 
   $("#enhancerUIContainer").removeClass('d-none').focus()
+
+  $( "body" ).off( "click", ".dce-btn-close" )
+  $(".dce-btn-close").click(enhancerClose)
+  
   $("#start-camera")[0].scrollIntoView();
 
   $('#shtmImgFront').addClass('d-none');
