@@ -1,4 +1,20 @@
+<style>
 
+#cameraOverlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+</style>
 <div class="">
   <div class="  sticky-top border-bottom px-1 pt-2" style="background-color: #f9f9f9;">
     <div class="row m-0 px-2 py-2">
@@ -161,7 +177,7 @@
                 <div class="col text-center">
                   <img  id="shtmImgFront" name="shtmImgFront" width="100%">
                   <!-- <div id="enhancerUIContainer" width="100%"></div> -->
-                  <div id="enhancerUIContainer" class="d-none" style="height: 400px;"></div>
+                  <!-- <div id="enhancerUIContainer" class="d-none" style="height: 400px;"></div> -->
                 </div>
               </div>
 
@@ -186,7 +202,11 @@
             </fieldset>
           </form>
         </div>
+        <div id="cameraOverlay" class="d-none">
 
+          <div id="enhancerUIContainer" style="height: 400px;"></div>
+
+        </div>
         <div class="modal-footer">
           <button id="btnShtmSubmit" class="btn btn-primary" type="submit">Submit</button>
           <button id="btnShtmDelete" type="button" class="btn btn-primary">Delete</button>
@@ -194,6 +214,7 @@
         </div>
 
       </div>
+
     </div>
   </div>
 </div>
