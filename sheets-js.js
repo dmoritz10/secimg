@@ -190,15 +190,16 @@ async function editSheet(arrIdx) {
   
   $("#sheet-form")[0].reset();
 
-  var validator = $( "#sheet-form" ).validate();
-  validator.resetForm();
-
   $('#shtmImgFront').removeAttr('src').addClass('d-none')
   $('#shtmImgBack').removeAttr('src').addClass('d-none')
 
   $('#shtmSheetName').html(shtTitle)
 
   $("#sheet-modal").modal('show');
+
+  
+  var validator = $( "#sheet-form" ).validate();
+  validator.resetForm();
 
 
   $('#shtmArrIdx').val(arrIdx)
@@ -745,12 +746,12 @@ async function startCamera() {
   document.getElementById("enhancerUIContainer").appendChild(d);
 
   $("#enhancerUIContainer").removeClass('d-none').focus()
-  $("#enhancerUIContainer")[0].scrollIntoView();
+  $("#start-camera")[0].scrollIntoView();
 
   $('#shtmImgFront').addClass('d-none');
 
-  // var validator = $( "#sheet-form" ).validate();
-  // validator.resetForm();
+  var validator = $( "#sheet-form" ).validate();
+  validator.resetForm();
   
 }
 
