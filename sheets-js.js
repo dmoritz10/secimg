@@ -737,7 +737,8 @@ async function startCamera() {
     document.getElementById("enhancerUIContainer").appendChild(d);
 
   }
-  await enhancer.open(true);
+
+  $("#enhancerUIContainer").removeClass('d-none')
   
   console.log('enhancer2', enhancer)
 
@@ -787,7 +788,7 @@ function enhancerClose() {
   // $("#enhancerUIContainer").empty();
   $("#enhancerUIContainer").addClass('d-none')
 
-  enhancer.close()
+  // enhancer.close()
 
   console.log('"#enhancerUIContainer"', enhancerUIContainer)
 
