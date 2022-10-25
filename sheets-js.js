@@ -737,6 +737,7 @@ async function startCamera() {
     document.getElementById("enhancerUIContainer").appendChild(d);
 
   }
+  await enhancer.open(true);
   
   console.log('enhancer2', enhancer)
 
