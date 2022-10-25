@@ -732,7 +732,7 @@ async function startCamera() {
     await enhancer.open(true);
     
   }
-
+  $( "body" ).off( "click", ".dce-btn-close" )
   $(".dce-btn-close").click(enhancerClose)
 
 // modify UI
