@@ -732,15 +732,12 @@ async function startCamera() {
 
   }
 
-  alert('2')
 // modify UI
   const d = enhancer.getUIElement()
   $( d ).css( {position: 'relative'} );
-  alert('3')
 
   // clear UI
   $("#enhancerUIContainer").empty();
-  alert('4')
 
 // set UI
   document.getElementById("enhancerUIContainer").appendChild(d);
@@ -748,9 +745,9 @@ async function startCamera() {
 
   $("#enhancerUIContainer").removeClass('d-none')
   $('#shtmImgFront').addClass('d-none');
-  alert('6')
 
-
+  var validator = $( "#sheet-form" ).validate();
+  validator.resetForm();
 }
 
 function clickPhoto() {
