@@ -248,6 +248,7 @@ jQuery(function ($) {
             // clear form of unencrypted data after closing
             $('#editDocument').on('hidden.bs.modal', function(e) {
                 $(this).find('#sheet-form')[0].reset();
+                enhancerClose();
             });
 
             
