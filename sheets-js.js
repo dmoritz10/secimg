@@ -185,9 +185,7 @@ async function editSheet(arrIdx) {
 
   modal(true)
 
-  // start camera
-
-  
+ 
   $("#sheet-form")[0].reset();
 
   $('#shtmImgFront').removeAttr('src').addClass('d-none')
@@ -197,15 +195,9 @@ async function editSheet(arrIdx) {
 
   $("#sheet-modal").modal('show');
 
-  
-  var validator = $( "#sheet-form" ).validate();
-  validator.resetForm();
-
-
   $('#shtmArrIdx').val(arrIdx)
 
   var vals = shtEnc ? await decryptArr(shtVals[arrIdx]) : shtVals[arrIdx]
-
 
   var shtObj = makeObj(vals, shtHdrs)
 
@@ -526,6 +518,8 @@ function dupDocument(Document) {
 
 async function showFile(input) {
 
+  enhancerClose()
+
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
@@ -726,8 +720,6 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 async function startCamera() {
 
-  console.log('enhancer1', enhancer)
-
   if (!enhancer) {
 
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
@@ -735,15 +727,13 @@ async function startCamera() {
     const d = enhancer.getUIElement()
     $( d ).css( {position: 'relative'} );
     document.getElementById("enhancerUIContainer").appendChild(d);
-    $(".dce-btn-close").addClass('d-none')
+    // $(".dce-btn-close").addClass('d-none')
+    $(".dce-btn-close").click(enhancerClose)
 
   }
 
   $("#enhancerUIContainer").removeClass('d-none')
-  
-  console.log('enhancer2', enhancer)
-
-
+ 
   // clear UI
   // $("#enhancerUIContainer").empty();
 
@@ -784,13 +774,6 @@ function clickPhoto() {
 
 function enhancerClose() {
 
-  alert('enhancerClose')
-
-  // $("#enhancerUIContainer").empty();
   $("#enhancerUIContainer").addClass('d-none')
-
-  // enhancer.close()
-
-  console.log('"#enhancerUIContainer"', enhancerUIContainer)
 
 }
