@@ -187,15 +187,7 @@ async function editSheet(arrIdx) {
 
   // start camera
 
-  if (!enhancer) {
-    
-    enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
-    await enhancer.open(true);
-    $(".dce-btn-close").click(enhancerClose)
-
-  }
-
-
+  
   $("#sheet-form")[0].reset();
 
   $('#shtmImgFront').removeAttr('src').addClass('d-none')
@@ -729,8 +721,15 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 
 async function startCamera() {
-  
-  
+
+  if (!enhancer) {
+    
+    enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+    await enhancer.open(true);
+    $(".dce-btn-close").click(enhancerClose)
+
+  }
+
 // modify UI
   const d = enhancer.getUIElement()
   $( d ).css( {position: 'relative'} );
