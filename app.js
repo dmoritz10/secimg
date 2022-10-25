@@ -259,19 +259,19 @@ jQuery(function ($) {
 
 
             // All tabs
-            $('.divfullscreen').click(function(){
-              document.documentElement.requestFullscreen();
-            });
+            // $('.divfullscreen').click(function(){
+            //   document.documentElement.requestFullscreen();
+            // });
           
-            var whiteList = $.fn.tooltip.Constructor.Default.allowList
+            // var whiteList = $.fn.tooltip.Constructor.Default.allowList
           
-                whiteList.table = []
-                whiteList.td = []
-                whiteList.th = []
-                whiteList.thead = []
-                whiteList.tr = []
-                whiteList.tbody = []
-                whiteList.button = []
+            //     whiteList.table = []
+            //     whiteList.td = []
+            //     whiteList.th = []
+            //     whiteList.thead = []
+            //     whiteList.tr = []
+            //     whiteList.tbody = []
+            //     whiteList.button = []
           
             setupFormValidation()
           
