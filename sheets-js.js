@@ -785,7 +785,7 @@ function enhancerClose() {
   alert('enhancerClose')
 
   // $("#enhancerUIContainer").empty();
-  // $("#enhancerUIContainer").addClass('d-none')
+  $("#enhancerUIContainer").addClass('d-none')
 
   enhancer.close()
 
