@@ -723,6 +723,8 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 async function startCamera() {
 
   if (!enhancer) {
+
+    alert('!enhancer')
     
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
     await enhancer.open(true);
@@ -730,18 +732,23 @@ async function startCamera() {
 
   }
 
+  alert('2')
 // modify UI
   const d = enhancer.getUIElement()
   $( d ).css( {position: 'relative'} );
+  alert('3')
 
   // clear UI
   $("#enhancerUIContainer").empty();
+  alert('4')
 
 // set UI
   document.getElementById("enhancerUIContainer").appendChild(d);
+  alert('5')
 
   $("#enhancerUIContainer").removeClass('d-none')
   $('#shtmImgFront').addClass('d-none');
+  alert('6')
 
 
 }
