@@ -730,25 +730,25 @@ async function startCamera() {
 
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
     await enhancer.open(true);
-    
+    const d = enhancer.getUIElement()
+    $( d ).css( {position: 'relative'} );
+    document.getElementById("enhancerUIContainer").appendChild(d);
+
   }
   
 
-// modify UI
-  const d = enhancer.getUIElement()
-  $( d ).css( {position: 'relative'} );
 
   // clear UI
-  $("#enhancerUIContainer").empty();
+  // $("#enhancerUIContainer").empty();
 
 // set UI
-  document.getElementById("enhancerUIContainer").appendChild(d);
+  // document.getElementById("enhancerUIContainer").appendChild(d);
 
-  $("#enhancerUIContainer").removeClass('d-none').focus()
+  // $("#enhancerUIContainer").removeClass('d-none').focus()
 
-  $( "body" ).off( "click", ".dce-btn-close" )
-  $(".dce-btn-close").click(enhancerClose)
-  
+  // $( "body" ).off( "click", ".dce-btn-close" )
+  // $(".dce-btn-close").click(enhancerClose)
+
   $("#start-camera")[0].scrollIntoView();
 
   $('#shtmImgFront').addClass('d-none');
@@ -769,6 +769,7 @@ function clickPhoto() {
     $('#shtmImgFront').attr('src', image_data_url);
     $('#shtmImgFront').removeClass('d-none');
 
+  
     enhancerClose()
 
   }
@@ -779,8 +780,10 @@ function enhancerClose() {
 
   alert('enhancerClose')
 
-  $("#enhancerUIContainer").empty();
-  $("#enhancerUIContainer").addClass('d-none')
+  // $("#enhancerUIContainer").empty();
+  // $("#enhancerUIContainer").addClass('d-none')
+
+  enhancer.close()
 
   console.log('"#enhancerUIContainer"', enhancerUIContainer)
 
