@@ -727,12 +727,12 @@ async function startCamera() {
     const d = enhancer.getUIElement()
     $( d ).css( {position: 'relative'} );
     document.getElementById("enhancerUIContainer").appendChild(d);
-    // $(".dce-btn-close").addClass('d-none')
-    $(".dce-btn-close").click(enhancerClose)
+    // // $(".dce-btn-close").addClass('d-none')
+    // $(".dce-btn-close").click(enhancerClose)
 
   }
 
-  $("#enhancerUIContainer").removeClass('d-none')
+  $("#cameraOverlay").removeClass('d-none')
  
   // clear UI
   // $("#enhancerUIContainer").empty();
@@ -776,6 +776,6 @@ function enhancerClose() {
 
   alert('enhancerClose')
 
-  $("#enhancerUIContainer").addClass('d-none')
+  $("#cameraOverlay").addClass('d-none')
 
 }
