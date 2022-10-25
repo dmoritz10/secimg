@@ -732,7 +732,6 @@ async function startCamera() {
 
   }
 
-  $("#cameraOverlay").removeClass('d-none')
  
   // clear UI
   // $("#enhancerUIContainer").empty();
@@ -745,12 +744,14 @@ async function startCamera() {
   // $( "body" ).off( "click", ".dce-btn-close" )
   // $(".dce-btn-close").click(enhancerClose)
 
-  $("#start-camera")[0].scrollIntoView();
+  // $("#start-camera")[0].scrollIntoView();
 
   $('#shtmImgFront').addClass('d-none');
+  $("#cameraOverlay").removeClass('d-none')
 
-  var validator = $( "#sheet-form" ).validate();
-  validator.resetForm();
+
+  // var validator = $( "#sheet-form" ).validate();
+  // validator.resetForm();
   
 }
 
