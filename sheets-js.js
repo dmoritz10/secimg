@@ -190,6 +190,9 @@ async function editSheet(arrIdx) {
   
   $("#sheet-form")[0].reset();
 
+  var validator = $( "#sheet-form" ).validate();
+  validator.resetForm();
+
   $('#shtmImgFront').removeAttr('src').addClass('d-none')
   $('#shtmImgBack').removeAttr('src').addClass('d-none')
 
@@ -743,8 +746,8 @@ async function startCamera() {
   $("#enhancerUIContainer").removeClass('d-none').focus()
   $('#shtmImgFront').addClass('d-none');
 
-  // var validator = $( "#sheet-form" ).validate();
-  // validator.resetForm();
+  var validator = $( "#sheet-form" ).validate();
+  validator.resetForm();
 }
 
 function clickPhoto() {
