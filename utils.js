@@ -304,7 +304,7 @@ function formatDate(d) {
 
 function setupFormValidation() {
 
-    $.validator.setDefaults({
+    jQuery.validator.setDefaults({
       highlight: function (element) {
         $(element).parent().addClass('text-danger');
       },
