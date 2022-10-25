@@ -729,9 +729,10 @@ async function startCamera() {
 
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
     await enhancer.open(true);
-    $(".dce-btn-close").click(enhancerClose)
-
+    
   }
+  
+  $(".dce-btn-close").click(enhancerClose)
 
 // modify UI
   const d = enhancer.getUIElement()
