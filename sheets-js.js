@@ -185,7 +185,16 @@ async function editSheet(arrIdx) {
 
   modal(true)
 
-  enhancerClose()
+  // start camera
+
+  if (!enhancer) {
+    
+    enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+    await enhancer.open(true);
+    $(".dce-btn-close").click(enhancerClose)
+
+  }
+
 
   $("#sheet-form")[0].reset();
 
@@ -718,25 +727,16 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 }
 
-var enhancer = null;
 
 async function startCamera() {
   
-  alert('1')
-  enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
-  alert('2')
-  await enhancer.open(true);
-  alert('3')
-
+  
 // modify UI
   const d = enhancer.getUIElement()
   $( d ).css( {position: 'relative'} );
-  $(".dce-btn-close").click(enhancerClose)
-  alert('4')
 
   // clear UI
   $("#enhancerUIContainer").empty();
-  alert('5')
 
 // set UI
   document.getElementById("enhancerUIContainer").appendChild(d);
@@ -744,16 +744,12 @@ async function startCamera() {
   $("#enhancerUIContainer").removeClass('d-none')
   $('#shtmImgFront').addClass('d-none');
 
-  alert('6')
 
 }
 
 function clickPhoto() {
-  alert('1')
 
   if (enhancer) {
-  alert('2')
-
 
     let frame = enhancer.getFrame();
 
@@ -765,7 +761,6 @@ function clickPhoto() {
     enhancerClose()
 
   }
-  alert('3')
 
 }
 
@@ -773,8 +768,5 @@ function enhancerClose() {
 
   $("#enhancerUIContainer").empty();
   $("#enhancerUIContainer").addClass('d-none')
-
-  enhancer = null
-
 
 }

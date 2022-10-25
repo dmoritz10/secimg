@@ -22,6 +22,9 @@
     var timerStart
 
     var signin
+
+    var enhancer = null;   // used to capture photos
+
     
     // var newShtHdrs = ['Document','Expiry','Favorite','Notes','Img Front','Img Back', 'File Id', 'Last Change']
 
