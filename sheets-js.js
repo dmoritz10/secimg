@@ -190,8 +190,8 @@ async function editSheet(arrIdx) {
   
   $("#sheet-form")[0].reset();
 
-  // var validator = $( "#sheet-form" ).validate();
-  // validator.resetForm();
+  var validator = $( "#sheet-form" ).validate();
+  validator.resetForm();
 
   $('#shtmImgFront').removeAttr('src').addClass('d-none')
   $('#shtmImgBack').removeAttr('src').addClass('d-none')
@@ -731,7 +731,7 @@ async function startCamera() {
     await enhancer.open(true);
     
   }
-  
+
   $(".dce-btn-close").click(enhancerClose)
 
 // modify UI
@@ -773,7 +773,11 @@ function clickPhoto() {
 
 function enhancerClose() {
 
+  alert('enhancerClose')
+
   $("#enhancerUIContainer").empty();
   $("#enhancerUIContainer").addClass('d-none')
+
+  console.log('"#enhancerUIContainer"', #enhancerUIContainer)
 
 }
