@@ -724,8 +724,6 @@ async function startCamera() {
 
   if (!enhancer) {
 
-    alert('!enhancer')
-    
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
     await enhancer.open(true);
     $(".dce-btn-close").click(enhancerClose)
@@ -741,13 +739,12 @@ async function startCamera() {
 
 // set UI
   document.getElementById("enhancerUIContainer").appendChild(d);
-  alert('5')
 
-  $("#enhancerUIContainer").removeClass('d-none')
+  $("#enhancerUIContainer").removeClass('d-none').focus()
   $('#shtmImgFront').addClass('d-none');
 
-  var validator = $( "#sheet-form" ).validate();
-  validator.resetForm();
+  // var validator = $( "#sheet-form" ).validate();
+  // validator.resetForm();
 }
 
 function clickPhoto() {
