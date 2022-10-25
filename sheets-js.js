@@ -726,6 +726,8 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 async function startCamera() {
 
+  console.log('enhancer1', enhancer)
+
   if (!enhancer) {
 
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
@@ -736,6 +738,7 @@ async function startCamera() {
 
   }
   
+  console.log('enhancer2', enhancer)
 
 
   // clear UI
