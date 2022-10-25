@@ -167,9 +167,7 @@
                 <div class="col">
                   <button id="start-camera" class="btn btn-primary" onclick="startCamera()">Start Camera</button>
                 </div>
-                <div class="col">
-                  <button id="click-photo" class="btn btn-primary" onclick="clickPhoto()">Take Picture</button>
-                </div>
+                
                 <div class="col text-end">
                   <button  type="button" class="btn btn-secondary" onclick="$('#shtmImgFront').attr('src', '#').addClass('d-none')">Remove File</button>
                 </div>
@@ -208,8 +206,11 @@
         <div id="cameraOverlay" class="d-none">
 
           <div id="enhancerUIContainer" class="m-2" style="height: 500px;"></div>
-
+          <div class="m-2">
+            <button id="click-photo" class="btn btn-primary" onclick="clickPhoto()">Take Picture</button>
+          </div>
         </div>
+        
         <div class="modal-footer">
           <button id="btnShtmSubmit" class="btn btn-primary" type="submit">Submit</button>
           <button id="btnShtmDelete" type="button" class="btn btn-primary">Delete</button>
