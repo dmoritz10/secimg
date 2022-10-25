@@ -774,6 +774,8 @@ function clickPhoto() {
 
 function enhancerClose() {
 
+  alert('enhancerClose')
+
   $("#enhancerUIContainer").addClass('d-none')
 
 }
