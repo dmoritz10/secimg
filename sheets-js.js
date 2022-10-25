@@ -775,7 +775,7 @@ function clickPhoto() {
 
 function enhancerClose() {
 
-  alert('enhancerClose')
+  // alert('enhancerClose')
 
   $("#cameraOverlay").addClass('d-none')
 
