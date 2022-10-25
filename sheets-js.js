@@ -778,6 +778,6 @@ function enhancerClose() {
   $("#enhancerUIContainer").empty();
   $("#enhancerUIContainer").addClass('d-none')
 
-  console.log('"#enhancerUIContainer"', #enhancerUIContainer)
+  console.log('"#enhancerUIContainer"', enhancerUIContainer)
 
 }
