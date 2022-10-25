@@ -748,6 +748,8 @@ async function startCamera() {
 
   var validator = $( "#sheet-form" ).validate();
   validator.resetForm();
+
+  $("#enhancerUIContainer")[0].scrollIntoView();
 }
 
 function clickPhoto() {
