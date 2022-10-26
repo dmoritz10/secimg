@@ -1,6 +1,7 @@
 <style>
 
 #cameraOverlay {
+
   position: absolute;
 
   width: 95%;
@@ -11,9 +12,10 @@
   transform: translate(-50%, -50%);
   border: 5px solid black;
   
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgb(221,221,221);
   z-index: 99999999999;
   cursor: pointer;
+
 }
 
 </style>
@@ -206,8 +208,11 @@
         <div id="cameraOverlay" class="d-none">
 
           <div id="enhancerUIContainer" class="m-2" style="height: 500px;"></div>
-          <div class="m-2">
-            <button id="click-photo" class="btn btn-primary" onclick="clickPhoto()">Take Picture</button>
+          
+          <div class="row align-bottom">
+            <div class="col m-2">
+              <button id="click-photo" class="btn btn-primary" onclick="clickPhoto()">Take Picture</button>
+          </div>
           </div>
         </div>
 
