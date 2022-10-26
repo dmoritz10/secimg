@@ -726,8 +726,12 @@ async function startCamera(frntBack) {
     await enhancer.open(true);
     const d = enhancer.getUIElement()
     $( d ).css( {position: 'relative'} );
-    document.getElementById("enhancerUIContainer").appendChild(d).dataset.frntBack = frntBack;
+    let ui = document.getElementById("enhancerUIContainer")
+    ui.appendChild(d)
+    ui.dataset.frntBack = frntBack;
     $(".dce-btn-close").addClass('d-none')
+
+    console.log('ui', ui)
 
   }
 
