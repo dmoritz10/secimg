@@ -728,13 +728,14 @@ async function startCamera(frntBack) {
     $( d ).css( {position: 'relative'} );
     let ui = document.getElementById("enhancerUIContainer")
     ui.appendChild(d)
-    ui.dataset.frntback = frntBack;
     $(".dce-btn-close").addClass('d-none')
 
     console.log('ui', ui)
 
   }
 
+  let ui = document.getElementById("enhancerUIContainer")
+  ui.dataset.frntback = frntBack;
  
   // clear UI
   // $("#enhancerUIContainer").empty();
