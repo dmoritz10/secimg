@@ -728,7 +728,7 @@ async function startCamera(frntBack) {
     $( d ).css( {position: 'relative'} );
     let ui = document.getElementById("enhancerUIContainer")
     ui.appendChild(d)
-    ui.dataset.frntBack = frntBack;
+    ui.dataset.frntback = frntBack;
     $(".dce-btn-close").addClass('d-none')
 
     console.log('ui', ui)
@@ -768,9 +768,9 @@ function clickPhoto() {
 
     let image_data_url = frame.toCanvas().toDataURL('image/jpeg');
 
-    var frntBack = document.getElementById("enhancerUIContainer").dataset.frntBack;
+    var frntback = document.getElementById("enhancerUIContainer").dataset.frntback;
 
-    if (frntBack == 'front') {
+    if (frntback == 'front') {
       $('#shtmImgFront').attr('src', image_data_url);
       $('#shtmImgFront').removeClass('d-none');
     } else {
