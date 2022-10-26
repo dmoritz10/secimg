@@ -718,7 +718,7 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 }
 
 
-async function startCamera() {
+async function startCamera(frntBack) {
 
   if (!enhancer) {
 
@@ -726,7 +726,7 @@ async function startCamera() {
     await enhancer.open(true);
     const d = enhancer.getUIElement()
     $( d ).css( {position: 'relative'} );
-    document.getElementById("enhancerUIContainer").appendChild(d);
+    document.getElementById("enhancerUIContainer").appendChild(d).dataset.frntBack = frntBack;
     $(".dce-btn-close").addClass('d-none')
 
   }
@@ -745,7 +745,9 @@ async function startCamera() {
 
   // $("#start-camera")[0].scrollIntoView();
 
-  $('#shtmImgFront').addClass('d-none');
+  if (frntBack = 'front')   $('#shtmImgFront').addClass('d-none');
+  else                      $('#shtmImgBack').addClass('d-none');
+
   $("#cameraOverlay").removeClass('d-none')
 
 
@@ -762,9 +764,15 @@ function clickPhoto() {
 
     let image_data_url = frame.toCanvas().toDataURL('image/jpeg');
 
-    $('#shtmImgFront').attr('src', image_data_url);
-    $('#shtmImgFront').removeClass('d-none');
+    var frntBack = document.getElementById("enhancerUIContainer").dataset.frntBack;
 
+    if (frntBack = 'front') {
+      $('#shtmImgFront').attr('src', image_data_url);
+      $('#shtmImgFront').removeClass('d-none');
+    } else {
+      $('#shtmImgBack').attr('src', image_data_url);
+      $('#shtmImgBack').removeClass('d-none');
+    }
   
     enhancerClose()
 

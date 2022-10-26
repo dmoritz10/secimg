@@ -167,7 +167,7 @@
                   <input id="shtmInputFront" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputFront">
                 </div>
                 <div class="col">
-                  <button id="start-camera" class="btn btn-primary" onclick="startCamera()">Start Camera</button>
+                  <button class="btn btn-primary" onclick="startCamera('front')">Start Camera</button>
                 </div>
                 
                 <div class="col text-end">
@@ -179,8 +179,6 @@
               <div class="row my-3">
                 <div class="col text-center">
                   <img  id="shtmImgFront" name="shtmImgFront" width="100%">
-                  <!-- <div id="enhancerUIContainer" width="100%"></div> -->
-                  <!-- <div id="enhancerUIContainer" class="d-none" style="height: 400px;"></div> -->
                 </div>
               </div>
 
@@ -189,7 +187,9 @@
                   <button type="button" class="btn btn-primary" onclick="document.getElementById('shtmInputBack').click()">Choose File</button>
                   <input id="shtmInputBack" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputBack">
                 </div>
-
+                <div class="col">
+                  <button class="btn btn-primary" onclick="startCamera('back')">Start Camera</button>
+                </div>
                 <div class="col text-end">
                   <button  type="button" class="btn btn-secondary" onclick="$('#shtmImgBack').attr('src', '#').addClass('d-none')">Remove File</button>
                 </div>
@@ -215,7 +215,7 @@
               <button id="close-photo" class="btn btn-secondary" onclick="enhancerClose()">Close</button>
           </div>
         </div>
-        
+
         <div class="modal-footer">
           <button id="btnShtmSubmit" class="btn btn-primary" type="submit">Submit</button>
           <button id="btnShtmDelete" type="button" class="btn btn-primary">Delete</button>
