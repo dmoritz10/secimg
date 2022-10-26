@@ -745,7 +745,7 @@ async function startCamera(frntBack) {
 
   // $("#start-camera")[0].scrollIntoView();
 
-  if (frntBack = 'front')   $('#shtmImgFront').addClass('d-none');
+  if (frntBack == 'front')  $('#shtmImgFront').addClass('d-none');
   else                      $('#shtmImgBack').addClass('d-none');
 
   $("#cameraOverlay").removeClass('d-none')
@@ -766,7 +766,7 @@ function clickPhoto() {
 
     var frntBack = document.getElementById("enhancerUIContainer").dataset.frntBack;
 
-    if (frntBack = 'front') {
+    if (frntBack == 'front') {
       $('#shtmImgFront').attr('src', image_data_url);
       $('#shtmImgFront').removeClass('d-none');
     } else {
