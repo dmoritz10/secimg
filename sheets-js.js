@@ -727,8 +727,7 @@ async function startCamera() {
     const d = enhancer.getUIElement()
     $( d ).css( {position: 'relative'} );
     document.getElementById("enhancerUIContainer").appendChild(d);
-    // // $(".dce-btn-close").addClass('d-none')
-    // $(".dce-btn-close").click(enhancerClose)
+    $(".dce-btn-close").addClass('d-none')
 
   }
 
