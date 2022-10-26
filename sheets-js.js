@@ -770,6 +770,8 @@ function clickPhoto() {
 
     var frntback = document.getElementById("enhancerUIContainer").dataset.frntback;
 
+    console.log('frntback',frntback)
+
     if (frntback == 'front') {
       $('#shtmImgFront').attr('src', image_data_url);
       $('#shtmImgFront').removeClass('d-none');
