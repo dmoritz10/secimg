@@ -723,6 +723,8 @@ async function startCamera(frntBack) {
   if (!enhancer) {
 
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+    enhancer.setResolution(640, 480)
+    console.log(enhancer.getresolutions())
     await enhancer.open(true);
     const d = enhancer.getUIElement()
     $( d ).css( {position: 'relative'} );
