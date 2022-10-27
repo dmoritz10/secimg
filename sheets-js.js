@@ -777,6 +777,8 @@ function enhancerClose() {
 
 }
 
+var angleInDegrees=0;
+
 function clockwise(frntback) { 
   angleInDegrees= (angleInDegrees + 90) % 360;
   drawRotated(angleInDegrees, frntback);
