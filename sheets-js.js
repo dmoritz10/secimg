@@ -738,8 +738,6 @@ async function startCamera(frntBack) {
 
   document.getElementById("enhancerUIContainer").dataset.frntback = frntBack;
   
-  scrollIntoView();
-
   if (frntBack == 'front')  $('#shtmImgFront').addClass('d-none');
   else                      $('#shtmImgBack').addClass('d-none');
 
