@@ -723,21 +723,23 @@ async function startCamera(frntBack) {
   if (!enhancer) {
 
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
-    enhancer.setResolution(640, 480)
-    console.log(enhancer.getResolutions())
+    enhancer.setResolution(1280, 720)
+    console.log(await enhancer.getResolutions())
     await enhancer.open(true);
     const d = enhancer.getUIElement()
     $( d ).css( {position: 'relative'} );
-    let ui = document.getElementById("enhancerUIContainer")
-    ui.appendChild(d)
+    document.getElementById("enhancerUIContainer").appendChild(d)
     $(".dce-btn-close").addClass('d-none')
+    $(".dce-msg-poweredby").addClass('d-none')
+
+    
 
     console.log('ui', ui)
 
   }
 
-  let ui = document.getElementById("enhancerUIContainer")
-  ui.dataset.frntback = frntBack;
+  document.getElementById("enhancerUIContainer").dataset.frntback = frntBack;
+  
  
   // clear UI
   // $("#enhancerUIContainer").empty();
