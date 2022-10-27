@@ -726,15 +726,13 @@ async function startCamera(frntBack) {
     enhancer.setResolution(1280, 720)
     console.log(await enhancer.getResolutions())
     await enhancer.open(true);
+    
     const d = enhancer.getUIElement()
     $( d ).css( {position: 'relative'} );
     document.getElementById("enhancerUIContainer").appendChild(d)
+    
     $(".dce-btn-close").addClass('d-none')
     $(".dce-msg-poweredby").addClass('d-none')
-
-    
-
-    console.log('ui', ui)
 
   }
 
