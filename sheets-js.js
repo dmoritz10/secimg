@@ -738,29 +738,13 @@ async function startCamera(frntBack) {
 
   document.getElementById("enhancerUIContainer").dataset.frntback = frntBack;
   
- 
-  // clear UI
-  // $("#enhancerUIContainer").empty();
-
-// set UI
-  // document.getElementById("enhancerUIContainer").appendChild(d);
-
-  // $("#enhancerUIContainer").removeClass('d-none').focus()
-
-  // $( "body" ).off( "click", ".dce-btn-close" )
-  // $(".dce-btn-close").click(enhancerClose)
-
-  // $("#start-camera")[0].scrollIntoView();
+  scrollIntoView();
 
   if (frntBack == 'front')  $('#shtmImgFront').addClass('d-none');
   else                      $('#shtmImgBack').addClass('d-none');
 
   $("#cameraOverlay").removeClass('d-none')
 
-
-  // var validator = $( "#sheet-form" ).validate();
-  // validator.resetForm();
-  
 }
 
 function clickPhoto() {
@@ -791,8 +775,58 @@ function clickPhoto() {
 
 function enhancerClose() {
 
-  // alert('enhancerClose')
-
   $("#cameraOverlay").addClass('d-none')
 
+}
+
+function clockwise(frntback) { 
+  angleInDegrees= (angleInDegrees + 90) % 360;
+  drawRotated(angleInDegrees, frntback);
+};
+
+function counterclockwise(frntback) { 
+  if(angleInDegrees == 0)
+      angleInDegrees = 270;
+  else
+      angleInDegrees= (angleInDegrees - 90) % 360;
+  drawRotated(angleInDegrees, frntback);
+};
+
+function drawRotated(degrees, frntback){
+
+  if (frntback == "front")  var image = document.getElementById("shtmImgFront")
+  else                      var image = document.getElementById("shtmImgBack")
+
+
+  if(canvas) document.body.removeChild(canvas);
+  
+  var canvas = document.createElement("canvas");
+  var ctx=canvas.getContext("2d");
+  canvas.style.width="20%";
+  
+  if(degrees == 90 || degrees == 270) {
+  canvas.width = image.height;
+  canvas.height = image.width;
+  } else {
+  canvas.width = image.width;
+  canvas.height = image.height;
+  }
+  
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  if(degrees == 90 || degrees == 270) {
+  ctx.translate(image.height/2,image.width/2);
+  } else {
+    ctx.translate(image.width/2,image.height/2);
+ }
+  ctx.rotate(degrees*Math.PI/180);
+  ctx.drawImage(image,-image.width/2,-image.height/2);
+
+  let image_data_url = canvas.toDataURL('image/jpeg');
+
+    if (frntback == 'front') {
+      $('#shtmImgFront').attr('src', image_data_url);
+    } else {
+      $('#shtmImgBack').attr('src', image_data_url);
+    }
+  
 }

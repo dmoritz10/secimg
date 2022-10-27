@@ -200,6 +200,13 @@
                   <img  id="shtmImgBack" name="shtmImgBack" width="100%">
                 </div>
               </div>
+
+              <div class="row my-3">
+                <div class="col text-center">
+                  <button class="btn btn-primary" onclick="clockwise('back')">Rotate Right</button>
+                  <button class="btn btn-primary" onclick="counterclockwise('back')">Rotate Left</button>
+                </div>
+              </div>
               
             </fieldset>
           </form>
@@ -209,9 +216,9 @@
 
           <div id="enhancerUIContainer" class="m-2" style="height: 300px;"></div>
 
-          <div class="modal-footer fixed-bottom">
-              <button id="click-photo" class="btn btn-primary" onclick="clickPhoto()">Take Picture</button>
-              <button id="close-photo" class="btn btn-secondary" onclick="enhancerClose()">Close</button>
+          <div class="modal-footer">
+              <button class="btn btn-primary" onclick="clickPhoto()">Take Picture</button>
+              <button class="btn btn-secondary" onclick="enhancerClose()">Close</button>
           </div>
         </div>
 
