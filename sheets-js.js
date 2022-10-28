@@ -802,7 +802,7 @@ function drawRotated(degrees, frntback){
   
   var canvas = document.createElement("canvas");
   var ctx=canvas.getContext("2d");
-  canvas.style.width="20%";
+  // canvas.style.width="20%";
   
   if(degrees == 90 || degrees == 270) {
   canvas.width = image.height;
