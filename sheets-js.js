@@ -778,23 +778,24 @@ function enhancerClose() {
 }
 
 let maxSize = { width: 800, height: 600 }
-let rotationDegrees = 0
 
 let img = document.getElementById("shtmImgBack")
 let canvas = document.getElementById("canvasBack")
 
 function clockwise(frntback) { 
   let img = document.getElementById("shtmImgBack")
-let canvas = document.getElementById("canvasBack")
-drawOptimizedImage(canvas, img, maxSize, 'clockwise')
-    updateImgPreview(canvas, img)
+  if(canvas) document.body.removeChild(canvas);
+  let canvas = document.createElement("canvas");
+  drawOptimizedImage(canvas, img, maxSize, 'clockwise')
+  updateImgPreview(canvas, img)
 };
 
 function counterclockwise(frntback) { 
   let img = document.getElementById("shtmImgBack")
-let canvas = document.getElementById("canvasBack")
-drawOptimizedImage(canvas, img, maxSize, 'anticlockwise')
-    updateImgPreview(canvas, img)
+  if(canvas) document.body.removeChild(canvas);
+  let canvas = document.createElement("canvas");
+  drawOptimizedImage(canvas, img, maxSize, 'anticlockwise')
+  updateImgPreview(canvas, img)
 };
 
 let drawOptimizedImage = function (canvas, image, maxSize, rotationDirection) {
