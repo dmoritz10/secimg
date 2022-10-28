@@ -797,10 +797,10 @@ function drawRotated(degrees, frntback){
   if (frntback == "front")  var image = document.getElementById("shtmImgFront")
   else                      var image = document.getElementById("shtmImgBack")
 
+  var canvas = document.getElementById("canvasBack");
 
-  if(canvas) document.body.removeChild(canvas);
+  // if(canvas) document.body.removeChild(canvas);
   
-  var canvas = document.createElement("canvas");
   var ctx=canvas.getContext("2d");
   // canvas.style.width="20%";
   
