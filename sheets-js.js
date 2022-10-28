@@ -784,7 +784,7 @@ let canvas = document.getElementById("canvasBack")
 
 function clockwise(frntback) { 
   let img = document.getElementById("shtmImgBack")
-  var canvas = document.getElementById("canvas");
+  // var canvas = document.getElementById("canvas");
   // if(canvas) {
   //   document.body.removeChild(canvas);
   // }
@@ -795,11 +795,11 @@ function clockwise(frntback) {
 
 function counterclockwise(frntback) { 
   let img = document.getElementById("shtmImgBack")
-  var canvas = document.getElementById("canvas");
-  if(canvas) {
-    document.body.removeChild(canvas);
-  }
-  var canvas = document.createElement("canvas");
+  // var canvas = document.getElementById("canvas");
+  // if(canvas) {
+  //   document.body.removeChild(canvas);
+  // }
+  // var canvas = document.createElement("canvas");
 
   drawOptimizedImage(canvas, img, maxSize, 'anticlockwise')
   updateImgPreview(canvas, img)
