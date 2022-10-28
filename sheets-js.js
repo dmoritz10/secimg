@@ -725,7 +725,7 @@ async function startCamera(frntBack) {
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
     enhancer.setResolution(1280, 720)
     // enhancer.setViewDecorator("focus")
-    console.log('getallcameras', enhancer.getAllCameras())
+    console.log('getallcameras', await enhancer.getAllCameras())
     await enhancer.open(true);
     
     const d = enhancer.getUIElement()
