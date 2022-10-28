@@ -829,6 +829,7 @@ let drawOptimizedImage = function (canvas, image, maxSize, rotationDirection) {
 let updateRotationDegrees = function (rotationDirection) {
   // if (rotationDirection === 'clockwise') { rotationDegrees += 90 }
   // else if (rotationDirection === 'anticlockwise') { rotationDegrees -= 90 }
+  let rotationDegrees = 0 
   if (rotationDirection === 'clockwise') { rotationDegrees = 90 }
   else if (rotationDirection === 'anticlockwise') { rotationDegrees = 90 }
   if (Math.abs(rotationDegrees) === 360) { rotationDegrees = 0 }
