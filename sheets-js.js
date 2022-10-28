@@ -784,16 +784,23 @@ let canvas = document.getElementById("canvasBack")
 
 function clockwise(frntback) { 
   let img = document.getElementById("shtmImgBack")
-  if(canvas) document.body.removeChild(canvas);
-  let canvas = document.createElement("canvas");
+  var canvas = document.getElementById("canvas");
+  if(canvas) {
+    document.body.removeChild(canvas);
+  }
+  var canvas = document.createElement("canvas");
   drawOptimizedImage(canvas, img, maxSize, 'clockwise')
   updateImgPreview(canvas, img)
 };
 
 function counterclockwise(frntback) { 
   let img = document.getElementById("shtmImgBack")
-  if(canvas) document.body.removeChild(canvas);
-  let canvas = document.createElement("canvas");
+  var canvas = document.getElementById("canvas");
+  if(canvas) {
+    document.body.removeChild(canvas);
+  }
+  var canvas = document.createElement("canvas");
+
   drawOptimizedImage(canvas, img, maxSize, 'anticlockwise')
   updateImgPreview(canvas, img)
 };
