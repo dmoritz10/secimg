@@ -731,6 +731,7 @@ async function startCamera(frntBack) {
     // enhancer.setViewDecorator("focus")
     alert('4')
     console.log('getallcameras', await enhancer.getAllCameras())
+    alert('4.1')
     await enhancer.open(true);
     alert('5')
     
