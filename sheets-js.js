@@ -784,12 +784,16 @@ let img = document.getElementById("shtmImgBack")
 let canvas = document.getElementById("canvasBack")
 
 function clockwise(frntback) { 
-  drawOptimizedImage(canvas, img, maxSize, 'clockwise')
+  let img = document.getElementById("shtmImgBack")
+let canvas = document.getElementById("canvasBack")
+drawOptimizedImage(canvas, img, maxSize, 'clockwise')
     updateImgPreview(canvas, img)
 };
 
 function counterclockwise(frntback) { 
-  drawOptimizedImage(canvas, img, maxSize, 'anticlockwise')
+  let img = document.getElementById("shtmImgBack")
+let canvas = document.getElementById("canvasBack")
+drawOptimizedImage(canvas, img, maxSize, 'anticlockwise')
     updateImgPreview(canvas, img)
 };
 
@@ -823,8 +827,10 @@ let drawOptimizedImage = function (canvas, image, maxSize, rotationDirection) {
 }
 
 let updateRotationDegrees = function (rotationDirection) {
-  if (rotationDirection === 'clockwise') { rotationDegrees += 90 }
-  else if (rotationDirection === 'anticlockwise') { rotationDegrees -= 90 }
+  // if (rotationDirection === 'clockwise') { rotationDegrees += 90 }
+  // else if (rotationDirection === 'anticlockwise') { rotationDegrees -= 90 }
+  if (rotationDirection === 'clockwise') { rotationDegrees = 90 }
+  else if (rotationDirection === 'anticlockwise') { rotationDegrees = 90 }
   if (Math.abs(rotationDegrees) === 360) { rotationDegrees = 0 }
   return rotationDegrees
 }
