@@ -720,22 +720,30 @@ async function clearImage(shtTitle, row) {        // recall that the sheet title
 
 async function startCamera(frntBack) {
 
+  alert('1')
+
   if (!enhancer) {
+    alert('2')
 
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+    alert('3')
     enhancer.setResolution(1280, 720)
     // enhancer.setViewDecorator("focus")
+    alert('4')
     console.log('getallcameras', await enhancer.getAllCameras())
     await enhancer.open(true);
+    alert('5')
     
     const d = enhancer.getUIElement()
     $( d ).css( {position: 'relative'} );
     document.getElementById("enhancerUIContainer").appendChild(d)
+    alert('6')
     
     $(".dce-btn-close").addClass('d-none')
     $(".dce-msg-poweredby").addClass('d-none')
 
   }
+  alert('7')
 
   document.getElementById("enhancerUIContainer").dataset.frntback = frntBack;
   
