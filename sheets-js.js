@@ -785,12 +785,12 @@ let canvas = document.getElementById("canvasBack")
 
 function clockwise(frntback) { 
   drawOptimizedImage(canvas, img, maxSize, 'clockwise')
-    // updateImgPreview(canvas, imgPreview)
+    updateImgPreview(canvas, img)
 };
 
 function counterclockwise(frntback) { 
   drawOptimizedImage(canvas, img, maxSize, 'anticlockwise')
-    // updateImgPreview(canvas, imgPreview)
+    updateImgPreview(canvas, img)
 };
 
 let drawOptimizedImage = function (canvas, image, maxSize, rotationDirection) {
@@ -853,4 +853,17 @@ let determineSize = function (width, height, maxW, maxH, degrees) {
       }
   }
   return { width: w, height: h }
+}
+
+let updateImgPreview = function (canvas, div) {
+
+  div.src = canvas.toDataURL()
+
+  // if (canvas.width < div.clientWidth && canvas.height < div.clientHeight) {
+  //     div.style.backgroundSize = 'auto'
+  // }
+  // else {
+  //     div.style.backgroundSize = 'contain'
+  // }
+  // div.style.backgroundImage = 'url(' + canvas.toDataURL() + ')'
 }
