@@ -777,58 +777,80 @@ function enhancerClose() {
 
 }
 
-var angleInDegrees=0;
+let maxSize = { width: 800, height: 600 }
+let rotationDegrees = 0
+
+let img = document.getElementById("shtmImgBack")
+let canvas = document.getElementById("canvasBack")
 
 function clockwise(frntback) { 
-  angleInDegrees= (angleInDegrees + 90) % 360;
-  drawRotated(90, frntback);
+  drawOptimizedImage(canvas, img, maxSize, 'clockwise')
+    // updateImgPreview(canvas, imgPreview)
 };
 
 function counterclockwise(frntback) { 
-  if(angleInDegrees == 0)
-      angleInDegrees = 270;
-  else
-      angleInDegrees= (angleInDegrees - 90) % 360;
-  drawRotated(-90, frntback);
+  drawOptimizedImage(canvas, img, maxSize, 'anticlockwise')
+    // updateImgPreview(canvas, imgPreview)
 };
 
-function drawRotated(degrees, frntback){
+let drawOptimizedImage = function (canvas, image, maxSize, rotationDirection) {
+  let degrees = updateRotationDegrees(rotationDirection)
+  let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, degrees)
 
-  if (frntback == "front")  var image = document.getElementById("shtmImgFront")
-  else                      var image = document.getElementById("shtmImgBack")
+  canvas.width = newSize.width
+  canvas.height = newSize.height
 
-  var canvas = document.getElementById("canvasBack");
+  let ctx = canvas.getContext('2d')
+  ctx.save()
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-  // if(canvas) document.body.removeChild(canvas);
-  
-  var ctx=canvas.getContext("2d");
-  // canvas.style.width="20%";
-  
-  if(degrees == 90 || degrees == 270) {
-  canvas.width = image.height;
-  canvas.height = image.width;
-  } else {
-  canvas.width = image.width;
-  canvas.height = image.height;
+  if (degrees === 0) {
+      ctx.drawImage(image, 0, 0, newSize.width, newSize.height)
+  } 
+  else {
+      ctx.translate(canvas.width / 2, canvas.height / 2)
+      ctx.rotate(degrees * Math.PI / 180)
+
+      if (Math.abs(degrees) === 180) {
+          ctx.drawImage(image, -newSize.width / 2, -newSize.height / 2, newSize.width, newSize.height)
+      }
+      else { // 90 or 270 degrees (values for width and height are swapped for these rotation positions)
+          ctx.drawImage(image, -newSize.height / 2, -newSize.width / 2, newSize.height, newSize.width)
+      }
   }
-  
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  if(degrees == 90 || degrees == 270) {
-  ctx.translate(image.height/2,image.width/2);
-  } else {
-    ctx.translate(image.width/2,image.height/2);
- }
-  ctx.rotate(degrees*Math.PI/180);
-  ctx.drawImage(image,-image.width/2,-image.height/2);
 
-  let image_data_url = canvas.toDataURL('image/jpeg');
+  ctx.restore()
+}
 
-    if (frntback == 'front') {
-      $('#shtmImgFront').attr('src', image_data_url);
-    } else {
-      $('#shtmImgBack').attr('src', image_data_url);
-    }
+let updateRotationDegrees = function (rotationDirection) {
+  if (rotationDirection === 'clockwise') { rotationDegrees += 90 }
+  else if (rotationDirection === 'anticlockwise') { rotationDegrees -= 90 }
+  if (Math.abs(rotationDegrees) === 360) { rotationDegrees = 0 }
+  return rotationDegrees
+}
 
-    console.log('canvas', canvas)
-  
+let determineSize = function (width, height, maxW, maxH, degrees) {
+  let w, h;
+  degrees = Math.abs(degrees)
+  if (degrees === 90 || degrees === 270) { // values for width and height are swapped for these rotation positions
+      w = height
+      h = width
+  }
+  else {
+      w = width
+      h = height
+  }
+  if (w > h) {
+      if (w > maxW) {
+          h = h * maxW / w
+          w = maxW
+      }
+  }
+  else {
+      if (h > maxH) {
+          w = w * maxH / h
+          h = maxH
+      }
+  }
+  return { width: w, height: h }
 }
