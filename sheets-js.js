@@ -785,10 +785,10 @@ let canvas = document.getElementById("canvasBack")
 function clockwise(frntback) { 
   let img = document.getElementById("shtmImgBack")
   var canvas = document.getElementById("canvas");
-  if(canvas) {
-    document.body.removeChild(canvas);
-  }
-  var canvas = document.createElement("canvas");
+  // if(canvas) {
+  //   document.body.removeChild(canvas);
+  // }
+  // var canvas = document.createElement("canvas");
   drawOptimizedImage(canvas, img, maxSize, 'clockwise')
   updateImgPreview(canvas, img)
 };
