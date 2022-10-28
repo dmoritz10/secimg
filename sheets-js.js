@@ -781,7 +781,7 @@ var angleInDegrees=0;
 
 function clockwise(frntback) { 
   angleInDegrees= (angleInDegrees + 90) % 360;
-  drawRotated(angleInDegrees, frntback);
+  drawRotated(90, frntback);
 };
 
 function counterclockwise(frntback) { 
@@ -789,7 +789,7 @@ function counterclockwise(frntback) {
       angleInDegrees = 270;
   else
       angleInDegrees= (angleInDegrees - 90) % 360;
-  drawRotated(angleInDegrees, frntback);
+  drawRotated(-90, frntback);
 };
 
 function drawRotated(degrees, frntback){
