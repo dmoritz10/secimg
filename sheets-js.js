@@ -736,7 +736,7 @@ async function startCamera(frntBack) {
     alert('4.1')
     try {
     await enhancer.open(true);
-    } catch(err) {alert("4.2";console.log('err', err)}
+    } catch(err) {alert("4.2");console.log('err', err)}
     alert('5')
     
     const d = enhancer.getUIElement()
