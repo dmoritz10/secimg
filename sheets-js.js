@@ -233,7 +233,7 @@ async function editSheet(arrIdx) {
 
 async function btnShtmSubmitSheetHtml() {
 
-  if (!$('#sheet-form').valid()) return
+  // if (!$('#sheet-form').valid()) return
 
   var arrIdx = $('#shtmArrIdx').val() ? $('#shtmArrIdx').val()*1 : -1
 
