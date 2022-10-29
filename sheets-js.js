@@ -780,10 +780,10 @@ function enhancerClose() {
 
 }
 
-let maxSize = { width: 800, height: 600 }
+var maxSize = { width: 800, height: 600 }
 
-let img = document.getElementById("shtmImgBack")
-let canvas = document.getElementById("shtmCanvas")
+var img = document.getElementById("shtmImgBack")
+var canvas = document.getElementById("shtmCanvas")
 
 function clockwise(frntback) { 
 

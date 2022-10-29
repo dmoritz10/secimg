@@ -233,7 +233,7 @@ jQuery(function ($) {
             $('#btnShtmDelete')       .click(btnDeleteSheetHtml);
             // $('#btnShtmDelete')       .click(enc);
             // $('#btnShtmSubmit')       .click(dec);
-            $('#shtmClockWise')       .button().click(clockwise);
+            $('#shtmClockWise')       .click(clockwise);
         
 
 
