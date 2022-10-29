@@ -787,17 +787,15 @@ var canvas = document.getElementById("shtmCanvas")
 
 function clockwise(frntback) { 
 
-  alert('1')
-  // let img = document.getElementById("shtmImgBack")
+  
+  let img = document.getElementById("shtmImgBack")
   // var canvas = document.getElementById("canvas");
   // if(canvas) {
   //   document.body.removeChild(canvas);
   // }
   // var canvas = document.createElement("canvas");
-  alert('2')
-  // drawOptimizedImage(canvas, img, maxSize, 'clockwise')
-  alert('3')
-  // updateImgPreview(canvas, img)
+  drawOptimizedImage(canvas, img, maxSize, 'clockwise')
+  updateImgPreview(canvas, img)
 
 };
 
@@ -880,12 +878,7 @@ function determineSize(width, height, maxW, maxH, degrees) {
 
 function updateImgPreview(canvas, img) {
 
-  alert('4')
-
   img.src = canvas.toDataURL()
-
-  alert('4')
-
 
   // if (canvas.width < div.clientWidth && canvas.height < div.clientHeight) {
   //     div.style.backgroundSize = 'auto'
