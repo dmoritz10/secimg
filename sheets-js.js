@@ -727,7 +727,7 @@ async function startCamera(frntBack) {
 
     enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
     alert('3')
-    await enhancer.setUIElement(Dynamsoft.DCE.CameraEnhancer.defaultUIElementURL);
+    // await enhancer.setUIElement(Dynamsoft.DCE.CameraEnhancer.defaultUIElementURL);
     alert('3.1')
     // enhancer.setResolution(1280, 720)
     // enhancer.setViewDecorator("focus")
