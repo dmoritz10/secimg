@@ -735,7 +735,7 @@ async function startCamera(frntBack) {
     // console.log('getallcameras', await enhancer.getAllCameras())
     alert('4.1')
     try {
-    await enhancer.open(true);
+    await enhancer.open();
     } catch(err) {alert("4.2");console.log('err', err)}
     alert('5')
     
