@@ -788,7 +788,7 @@ let canvas = document.getElementById("shtmCanvas")
 function clockwise(frntback) { 
 
   alert('1')
-  let img = document.getElementById("shtmImgBack")
+  // let img = document.getElementById("shtmImgBack")
   // var canvas = document.getElementById("canvas");
   // if(canvas) {
   //   document.body.removeChild(canvas);
@@ -797,7 +797,7 @@ function clockwise(frntback) {
   alert('2')
   // drawOptimizedImage(canvas, img, maxSize, 'clockwise')
   alert('3')
-  updateImgPreview(canvas, img)
+  // updateImgPreview(canvas, img)
 };
 
 function counterclockwise(frntback) { 
