@@ -25,6 +25,7 @@ async function listSheet(title) {
     
     $(".dce-btn-close").addClass('d-none')
     $(".dce-msg-poweredby").addClass('d-none')
+    $("#cameraOverlay").removeClass('d-none')
 
   }
 
