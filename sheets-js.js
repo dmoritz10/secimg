@@ -879,6 +879,8 @@ let determineSize = function (width, height, maxW, maxH, degrees) {
 
 let updateImgPreview = function (canvas, div) {
 
+  alert('4')
+
   // div.src = canvas.toDataURL()
 
   // if (canvas.width < div.clientWidth && canvas.height < div.clientHeight) {
