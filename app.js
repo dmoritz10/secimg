@@ -273,7 +273,7 @@ jQuery(function ($) {
             //     whiteList.tbody = []
             //     whiteList.button = []
           
-            setupFormValidation()
+            // setupFormValidation()
           
           
             // $("#myToast").on("show.bs.toast", function() {
