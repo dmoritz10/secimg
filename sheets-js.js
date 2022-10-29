@@ -730,11 +730,11 @@ async function startCamera(frntBack) {
     enhancer.setResolution(1280, 720)
     // enhancer.setViewDecorator("focus")
     alert('4')
-    console.log('getallcameras', await enhancer.getAllCameras())
+    // console.log('getallcameras', await enhancer.getAllCameras())
     alert('4.1')
     try {
     await enhancer.open(true);
-    } catch(err) {console.log('err', err)}
+    } catch(err) {alert("4.2";console.log('err', err)}
     alert('5')
     
     const d = enhancer.getUIElement()
