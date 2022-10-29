@@ -1,8 +1,32 @@
 
 async function listSheet(title) {
 
-  enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
-  await enhancer.open();
+  if (!enhancer) {
+    alert('2')
+
+    enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+    alert('3')
+    // await enhancer.setUIElement(Dynamsoft.DCE.CameraEnhancer.defaultUIElementURL);
+    alert('3.1')
+    // enhancer.setResolution(1280, 720)
+    // enhancer.setViewDecorator("focus")
+    alert('4')
+    // console.log('getallcameras', await enhancer.getAllCameras())
+    alert('4.1')
+    try {
+    await enhancer.open();
+    } catch(err) {alert("4.2");console.log('err', err)}
+    alert('5')
+    
+    const d = enhancer.getUIElement()
+    $( d ).css( {position: 'relative'} );
+    document.getElementById("enhancerUIContainer").appendChild(d)
+    alert('6')
+    
+    $(".dce-btn-close").addClass('d-none')
+    $(".dce-msg-poweredby").addClass('d-none')
+
+  }
 
   modal(true)
 
@@ -754,11 +778,14 @@ async function startCamera(frntBack) {
   alert('7')
 
   document.getElementById("enhancerUIContainer").dataset.frntback = frntBack;
+  alert('8')
   
   if (frntBack == 'front')  $('#shtmImgFront').addClass('d-none');
   else                      $('#shtmImgBack').addClass('d-none');
+  alert('9')
 
   $("#cameraOverlay").removeClass('d-none')
+  alert('10')
 
 }
 
