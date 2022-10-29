@@ -190,7 +190,6 @@
                   <input id="shtmInputBack" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputBack">
                 </div>
                 <div class="col">
-                  <button class="btn btn-primary" onclick="startCamera('back')">Start Camera</button>
                 </div>
                 <div class="col text-end">
                   <button  type="button" class="btn btn-secondary" onclick="$('#shtmImgBack').attr('src', '#').addClass('d-none')">Remove File</button>
@@ -220,7 +219,8 @@
        
 
         <div class="modal-footer">
-          <!-- <button id="btnShtmSubmit" class="btn btn-primary" type="submit">Submit</button> -->
+          <button id="btnShtmSubmit" class="btn btn-primary" type="submit">Submit</button>
+          <button class="btn btn-primary" onclick="startCamera('back')">Start Camera</button>
           <button id="shtmClockWise" class="btn btn-primary">Rotate Right</button>
           <button class="btn btn-primary" onclick="counterclockwise()">Rotate Left</button>
  <button id="btnShtmDelete" type="button" class="btn btn-primary">Delete</button>
