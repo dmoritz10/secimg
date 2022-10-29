@@ -233,7 +233,7 @@ async function editSheet(arrIdx) {
 
 async function btnShtmSubmitSheetHtml() {
 
-  // if (!$('#sheet-form').valid()) return
+  if (!$('#sheet-form').valid()) return
 
   var arrIdx = $('#shtmArrIdx').val() ? $('#shtmArrIdx').val()*1 : -1
 
@@ -795,7 +795,7 @@ function clockwise(frntback) {
   // }
   // var canvas = document.createElement("canvas");
   alert('2')
-  drawOptimizedImage(canvas, img, maxSize, 'clockwise')
+  // drawOptimizedImage(canvas, img, maxSize, 'clockwise')
   alert('3')
   updateImgPreview(canvas, img)
 };
@@ -877,11 +877,14 @@ let determineSize = function (width, height, maxW, maxH, degrees) {
   return { width: w, height: h }
 }
 
-let updateImgPreview = function (canvas, div) {
+let updateImgPreview = function (canvas, img) {
 
   alert('4')
 
-  // div.src = canvas.toDataURL()
+  img.src = canvas.toDataURL()
+
+  alert('4')
+
 
   // if (canvas.width < div.clientWidth && canvas.height < div.clientHeight) {
   //     div.style.backgroundSize = 'auto'
