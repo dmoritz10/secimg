@@ -785,7 +785,7 @@ let maxSize = { width: 800, height: 600 }
 let img = document.getElementById("shtmImgBack")
 let canvas = document.getElementById("shtmCanvas")
 
-function clockwise(event) { 
+function clockwise(frntback) { 
 
   alert('1')
   // let img = document.getElementById("shtmImgBack")
@@ -799,7 +799,6 @@ function clockwise(event) {
   alert('3')
   // updateImgPreview(canvas, img)
 
-  event.preventDefault();
 };
 
 function counterclockwise(frntback) { 
