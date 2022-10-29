@@ -1,6 +1,9 @@
 
 async function listSheet(title) {
 
+  enhancer = await Dynamsoft.DCE.CameraEnhancer.createInstance();
+  await enhancer.open();
+
   modal(true)
 
   var shtOptions = readOption('shtFilter')
