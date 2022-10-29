@@ -813,7 +813,7 @@ function counterclockwise(frntback) {
   updateImgPreview(canvas, img)
 };
 
-let drawOptimizedImage = function (canvas, image, maxSize, rotationDirection) {
+function drawOptimizedImage (canvas, image, maxSize, rotationDirection) {
   let degrees = updateRotationDegrees(rotationDirection)
   let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, degrees)
 
@@ -842,7 +842,7 @@ let drawOptimizedImage = function (canvas, image, maxSize, rotationDirection) {
   ctx.restore()
 }
 
-let updateRotationDegrees = function (rotationDirection) {
+function updateRotationDegrees(rotationDirection) {
   // if (rotationDirection === 'clockwise') { rotationDegrees += 90 }
   // else if (rotationDirection === 'anticlockwise') { rotationDegrees -= 90 }
   let rotationDegrees = 0 
@@ -852,7 +852,7 @@ let updateRotationDegrees = function (rotationDirection) {
   return rotationDegrees
 }
 
-let determineSize = function (width, height, maxW, maxH, degrees) {
+function determineSize(width, height, maxW, maxH, degrees) {
   let w, h;
   degrees = Math.abs(degrees)
   if (degrees === 90 || degrees === 270) { // values for width and height are swapped for these rotation positions
@@ -878,7 +878,7 @@ let determineSize = function (width, height, maxW, maxH, degrees) {
   return { width: w, height: h }
 }
 
-let updateImgPreview = function (canvas, img) {
+function updateImgPreview(canvas, img) {
 
   alert('4')
 
