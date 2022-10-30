@@ -786,8 +786,6 @@ var canvas = document.getElementById("shtmCanvas")
 
 function clockwise(frntback) { 
 
-  alert('frntback', frntback)
-
   if (frntback == 'front') {
     var img = document.getElementById("shtmImgFront")
   } else {
@@ -805,7 +803,6 @@ function clockwise(frntback) {
 };
 
 function counterclockwise(frntback) { 
-  alert('frntback', frntback)
 
   if (frntback == 'front') {
     var img = document.getElementById("shtmImgFront")
