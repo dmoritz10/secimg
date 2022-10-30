@@ -243,8 +243,6 @@ async function btnShtmSubmitSheetHtml() {
 
     vals[shtHdrs.indexOf("Document")] = $('#shtmDocument').val()
     vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
-    // vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
-    // vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
     vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
     vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
     vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
@@ -266,8 +264,6 @@ async function btnShtmSubmitSheetHtml() {
 
     vals[shtHdrs.indexOf("Document")] = $('#shtmDocument').val()
     vals[shtHdrs.indexOf("Expiry")] = $('#shtmExpiry').val()
-    // vals[shtHdrs.indexOf("Img Front")] = $('#shtmImgFront').val()
-    // vals[shtHdrs.indexOf("Img Back")] = $('#shtmImgBack').val()
     vals[shtHdrs.indexOf("Notes")] = $('#shtmNotes').val()
     vals[shtHdrs.indexOf("Last Change")] = formatDate(new Date())
     vals[shtHdrs.indexOf("Favorite")] = $('#shtmFavorite').val()
@@ -290,6 +286,9 @@ async function btnShtmSubmitSheetHtml() {
   imgs[1] = document.getElementById("shtmImgBack").src
   savImgs[0] = document.getElementById("shtmSaveImgFront").src;
   savImgs[1] = document.getElementById("shtmSaveImgBack").src;
+
+  console.log('imgFront.src', document.getElementById("shtmImgFront").src.substring(0,100))
+  console.log('imgBack.src', document.getElementById("shtmImgBack").src.substring(0,100))
 
   // console.log('submit', [...imgs])
   // console.log('submit', [...savImgs])
@@ -755,9 +754,9 @@ function clickPhoto() {
 
     let image_data_url = frame.toCanvas().toDataURL('image/png');
 
-    var frntback = document.getElementById("enhancerUIContainer").dataset.frntback;
+    console.log('image', image_data_url.substring(0, 100))
 
-    console.log('frntback',frntback)
+    var frntback = document.getElementById("enhancerUIContainer").dataset.frntback;
 
     if (frntback == 'front') {
       $('#shtmImgFront').attr('src', image_data_url);
