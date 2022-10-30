@@ -753,7 +753,7 @@ function clickPhoto() {
 
     let frame = enhancer.getFrame();
 
-    let image_data_url = frame.toCanvas().toDataURL('image/jpeg');
+    let image_data_url = frame.toCanvas().toDataURL('image/png');
 
     var frntback = document.getElementById("enhancerUIContainer").dataset.frntback;
 
