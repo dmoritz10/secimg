@@ -896,3 +896,11 @@ function updateImgPreview(canvas, img) {
   // }
   // div.style.backgroundImage = 'url(' + canvas.toDataURL() + ')'
 }
+
+function cropImage(frntback) {
+
+
+
+
+
+}
