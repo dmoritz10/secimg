@@ -745,7 +745,6 @@ async function startCamera(frntBack) {
 
   $("#cameraOverlay").removeClass('d-none')
   
-  frntBack.preventDefault();
 }
 
 function clickPhoto() {
