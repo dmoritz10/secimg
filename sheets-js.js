@@ -886,7 +886,7 @@ function determineSize(width, height, maxW, maxH, degrees) {
 
 function updateImgPreview(canvas, img) {
 
-  img.src = canvas.toDataURL()
+  img.src = canvas.toDataURL('image/jpeg')
 
   // if (canvas.width < div.clientWidth && canvas.height < div.clientHeight) {
   //     div.style.backgroundSize = 'auto'
