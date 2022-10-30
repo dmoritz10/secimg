@@ -752,7 +752,7 @@ function clickPhoto() {
 
     let frame = enhancer.getFrame();
 
-    let image_data_url = frame.toCanvas().toDataURL('image/jpeg');
+    let image_data_url = frame.toCanvas().toDataURL('image/jpeg', 1);
 
     console.log('image', image_data_url.substring(0, 100))
 
@@ -886,7 +886,7 @@ function determineSize(width, height, maxW, maxH, degrees) {
 
 function updateImgPreview(canvas, img) {
 
-  img.src = canvas.toDataURL('image/jpeg')
+  img.src = canvas.toDataURL('image/jpeg', 1)
 
   // if (canvas.width < div.clientWidth && canvas.height < div.clientHeight) {
   //     div.style.backgroundSize = 'auto'
