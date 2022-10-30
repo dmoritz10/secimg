@@ -233,9 +233,6 @@ jQuery(function ($) {
             $('#btnShtmDelete')       .click(btnDeleteSheetHtml);
             // $('#btnShtmDelete')       .click(enc);
             // $('#btnShtmSubmit')       .click(dec);
-            $('#shtmClockWise')       .click(clockwise);
-        
-
 
             $("#shtSearch").on("input", function() {
                 var value = $(this).val().toLowerCase();
