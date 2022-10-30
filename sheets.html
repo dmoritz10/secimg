@@ -192,6 +192,16 @@
               </div>
 
               <div class="row my-3">
+                <div class="col text-center">
+                  <div class="btn btn-primary cursor-pointer" onclick="clockwise('front')"><i class="material-icons">rotate_right</i></div>
+                </div>
+                <div class="col text-center">    
+                  <div class="btn btn-primary cursor-pointer" onclick="counterclockwise('front')"><i class="material-icons-outlined">rotate_left</i></div>
+                </div>
+              </div>
+              
+
+              <div class="row my-3">
                 <div class="col">
                   <button type="button" class="btn btn-primary" onclick="document.getElementById('shtmInputBack').click()">Choose File</button>
                   <input id="shtmInputBack" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputBack">
@@ -213,7 +223,7 @@
 
               <div class="row my-3">
                 <div class="col text-center">
-                  <div class="cursor-pointer" onclick="clockwise('front')"><i class="material-icons-outlined">rotate_right</i></div>
+                  <div class="btn btn-primary cursor-pointer" onclick="clockwise('back')"><i class="material-icons">rotate_right</i></div>
                 </div>
                 <div class="col text-center">    
                   <div class="btn btn-primary cursor-pointer" onclick="counterclockwise('back')"><i class="material-icons-outlined">rotate_left</i></div>
