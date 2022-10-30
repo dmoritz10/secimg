@@ -167,13 +167,9 @@
             
           </form>
         </div>
-
-       
-
-
-
         
-        <div class="modal-footer">
+        <div class="modal-footer" style="background-color:lightskyblue;">
+
               <div class="row my-3">
                 <div class="col">
                   <button type="button" class="btn btn-primary" onclick="document.getElementById('shtmInputFront').click()">Choose File</button>
@@ -200,7 +196,9 @@
                   <button type="button" class="btn btn-primary" onclick="document.getElementById('shtmInputBack').click()">Choose File</button>
                   <input id="shtmInputBack" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputBack">
                 </div>
+                
                 <div class="col">
+                  <button class="btn btn-primary" onclick="startCamera('back')">Start Camera</button>
                 </div>
                 <div class="col text-end">
                   <button  type="button" class="btn btn-secondary" onclick="$('#shtmImgBack').attr('src', '#').addClass('d-none')">Remove File</button>
@@ -215,16 +213,17 @@
 
               <div class="row my-3">
                 <div class="col text-center">
+                  <button id="shtmClockWise" class="btn btn-primary">Rotate Right</button>
+                  <button class="btn btn-primary" onclick="counterclockwise()">Rotate Left</button>
                  </div>
               </div>
 
-           
-          <button id="btnShtmSubmit" class="btn btn-primary" type="submit">Submit</button>
-          <button class="btn btn-primary" onclick="startCamera('back')">Start Camera</button>
-          <button id="shtmClockWise" class="btn btn-primary">Rotate Right</button>
-          <button class="btn btn-primary" onclick="counterclockwise()">Rotate Left</button>
-          <button id="btnShtmDelete" type="button" class="btn btn-primary">Delete</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <div class="row my-3" style="background-color:white;">
+                <button id="btnShtmSubmit" class="btn btn-primary" type="submit">Submit</button>
+                <button id="btnShtmDelete" type="button" class="btn btn-primary">Delete</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+
         </div>
 
 
