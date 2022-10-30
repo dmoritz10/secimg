@@ -752,7 +752,7 @@ function clickPhoto() {
 
     let frame = enhancer.getFrame();
 
-    let image_data_url = frame.toCanvas().toDataURL('image/png');
+    let image_data_url = frame.toCanvas().toDataURL('image/jpeg');
 
     console.log('image', image_data_url.substring(0, 100))
 
