@@ -790,6 +790,7 @@ function clockwise(frntback) {
     let img = document.getElementById("shtmImgFront")
   } else {
     let img = document.getElementById("shtmImgBack")
+  }
   
   // var canvas = document.getElementById("canvas");
   // if(canvas) {
@@ -806,7 +807,8 @@ function counterclockwise(frntback) {
     let img = document.getElementById("shtmImgFront")
   } else {
     let img = document.getElementById("shtmImgBack")
-  
+  }
+
   // var canvas = document.getElementById("canvas");
   // if(canvas) {
   //   document.body.removeChild(canvas);
