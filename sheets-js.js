@@ -781,17 +781,17 @@ function enhancerClose() {
 
 var maxSize = { width: 800, height: 600 }
 
-// var img = document.getElementById("shtmImgBack")
+var img 
 var canvas = document.getElementById("shtmCanvas")
 
 function clockwise(frntback) { 
 
-  alert('frntback')
+  alert('frntback', frntback)
 
   if (frntback == 'front') {
-    var img = document.getElementById("shtmImgFront")
+    img = document.getElementById("shtmImgFront")
   } else {
-    var img = document.getElementById("shtmImgBack")
+    img = document.getElementById("shtmImgBack")
   }
 
   // var canvas = document.getElementById("canvas");
@@ -808,9 +808,9 @@ function counterclockwise(frntback) {
   alert('frntback')
 
   if (frntback == 'front') {
-    let img = document.getElementById("shtmImgFront")
+    img = document.getElementById("shtmImgFront")
   } else {
-    let img = document.getElementById("shtmImgBack")
+    img = document.getElementById("shtmImgBack")
   }
 
   // var canvas = document.getElementById("canvas");
