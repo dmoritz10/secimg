@@ -282,7 +282,7 @@ jQuery(function ($) {
             //   $(this).addClass("d-none");
             //       })
 
-            document.getElementById(shtmImgFront).addEventListener('click', function (event) {
+            document.getElementById('shtmImgFront').addEventListener('click', function (event) {
                 // https://stackoverflow.com/a/288731/1497139
                 bounds=this.getBoundingClientRect();
                 var left=bounds.left;
