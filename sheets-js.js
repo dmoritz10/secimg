@@ -781,7 +781,7 @@ function enhancerClose() {
 
 var maxSize = { width: 800, height: 600 }
 
-var img 
+// var img 
 var canvas = document.getElementById("shtmCanvas")
 
 function clockwise(frntback) { 
@@ -789,9 +789,9 @@ function clockwise(frntback) {
   alert('frntback', frntback)
 
   if (frntback == 'front') {
-    img = document.getElementById("shtmImgFront")
+    var img = document.getElementById("shtmImgFront")
   } else {
-    img = document.getElementById("shtmImgBack")
+    var img = document.getElementById("shtmImgBack")
   }
 
   // var canvas = document.getElementById("canvas");
@@ -805,12 +805,12 @@ function clockwise(frntback) {
 };
 
 function counterclockwise(frntback) { 
-  alert('frntback')
+  alert('frntback', frntback)
 
   if (frntback == 'front') {
-    img = document.getElementById("shtmImgFront")
+    var img = document.getElementById("shtmImgFront")
   } else {
-    img = document.getElementById("shtmImgBack")
+    var img = document.getElementById("shtmImgBack")
   }
 
   // var canvas = document.getElementById("canvas");
