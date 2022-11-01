@@ -909,15 +909,26 @@ function cropImage(frntback) {
   let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, 0)
 
   
-  let canvas = document.createElement("canvas");
-
-  canvas.width = 670
-  canvas.height = 418
-
-  let ctx = canvas.getContext('2d')
+ 
   // ctx.save()
   // ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      ctx.drawImage(image, 14, 382, 670, 418, 0, 0, 670);
-      image.src = canvas.toDataURL('image/jpeg', 1)
+  if (cropImg.length != 2) return
+
+    let tx = cropImg[0][0]
+    let ty = cropImg[0][1]
+    let width = cropImg[1][0] - cropImg[0][0]
+    let height = cropImg[1][1] - cropImg[0][1]
+
+    let canvas = document.createElement("canvas");
+
+    let ctx = canvas.getContext('2d')
+
+    canvas.width = width
+    canvas.height = height
+
+    ctx.drawImage(image, tx, ty, width, height, 0, 0, width, height);
+
+    image.src = canvas.toDataURL('image/jpeg', 1)
+    
 }
