@@ -905,7 +905,7 @@ function cropImage(frntback) {
     var image = document.getElementById("shtmImgBack")
   }
 
-  cropImg
+  // cropImg
   let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, 0)
 
   canvas.width = newSize.width
