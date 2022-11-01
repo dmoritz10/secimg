@@ -908,14 +908,16 @@ function cropImage(frntback) {
   // cropImg
   let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, 0)
 
-  // canvas.width = newSize.width
-  // canvas.height = newSize.height
-
+  
   let canvas = document.createElement("canvas");
+
+  canvas.width = 670
+  canvas.height = 418
+
   let ctx = canvas.getContext('2d')
   // ctx.save()
   // ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      ctx.drawImage(image, 14, 382, 670, 418, 0, 0, 300, 150);
+      ctx.drawImage(image, 14, 382, 670, 418, 0, 0, 670, 418);
       image.src = canvas.toDataURL('image/jpeg', 1)
 }
