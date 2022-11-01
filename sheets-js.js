@@ -915,6 +915,6 @@ function cropImage(frntback) {
   ctx.save()
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      ctx.drawImage(image, 0, 0, newSize.width, newSize.height)
-
+      ctx.drawImage(image, 100, 200, 300, 400)
+      img.src = canvas.toDataURL('image/jpeg', 1)
 }
