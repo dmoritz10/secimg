@@ -298,8 +298,9 @@ jQuery(function ($) {
                 var px=x/cw*iw
                 var py=y/ch*ih
 
-                // cropImg.shift().push([px, py])
-                alert("click on "+this.tagName+" at pixel ("+px+","+py+") mouse pos ("+x+"," + y+ ") relative to boundingClientRect at ("+left+","+top+") client image size: "+cw+" x "+ch+" natural image size: "+iw+" x "+ih );
+                cropImg.push([px, py])
+                if (cropImg.length > 2) cropImg = []
+                // alert("click on "+this.tagName+" at pixel ("+px+","+py+") mouse pos ("+x+"," + y+ ") relative to boundingClientRect at ("+left+","+top+") client image size: "+cw+" x "+ch+" natural image size: "+iw+" x "+ih );
               });
  
             $('.modal').on('shown.bs.modal', function () {
