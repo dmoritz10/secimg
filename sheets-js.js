@@ -911,7 +911,7 @@ function cropImage(frntback) {
   // canvas.width = newSize.width
   // canvas.height = newSize.height
 
-  let canvas = document.createElement("div");
+  let canvas = document.createElement("canvas");
   let ctx = canvas.getContext('2d')
   // ctx.save()
   // ctx.clearRect(0, 0, canvas.width, canvas.height)
