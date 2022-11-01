@@ -24,6 +24,7 @@
     var signin
 
     var enhancer = null;   // used to capture photos
+    var cropImg = []        // used to crop images in sheets-js
 
     
     // var newShtHdrs = ['Document','Expiry','Favorite','Notes','Img Front','Img Back', 'File Id', 'Last Change']
@@ -282,7 +283,7 @@ jQuery(function ($) {
             //   $(this).addClass("d-none");
             //       })
 
-            var cropImg
+            
 
             document.getElementById('shtmImgFront').addEventListener('click', function (event) {
                 // https://stackoverflow.com/a/288731/1497139
