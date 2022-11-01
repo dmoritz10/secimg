@@ -778,7 +778,7 @@ function enhancerClose() {
 
 }
 
-var maxSize = { width: 800, height: 600 }
+var maxSize = { width: 1980, height: 1980 }
 
 // var img 
 var canvas = document.getElementById("shtmCanvas")
@@ -899,8 +899,22 @@ function updateImgPreview(canvas, img) {
 
 function cropImage(frntback) {
 
+  if (frntback == 'front') {
+    var image = document.getElementById("shtmImgFront")
+  } else {
+    var image = document.getElementById("shtmImgBack")
+  }
 
+  cropImg
+  let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, 0)
 
+  canvas.width = newSize.width
+  canvas.height = newSize.height
 
+  let ctx = canvas.getContext('2d')
+  ctx.save()
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      ctx.drawImage(image, 0, 0, newSize.width, newSize.height)
 
 }
