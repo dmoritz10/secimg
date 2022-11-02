@@ -960,11 +960,11 @@ function cropImage(frntback) {
 }
 
 
-function setupCrop(canvas, image) {
+function setupCrop(canvas, img) {
 
   var proportion = .8; // you may change the proportion for the cropped image.
 
-  var output = image;
+  var output = document.getElementById("output");;
   var c1 = canvas;
   var ctx1 = c1.getContext("2d");
   var c2 = document.createElement("canvas");;
@@ -1102,7 +1102,7 @@ function setupCrop(canvas, image) {
   Output(Imgo, output); // text: "drawImage(img,130,10,200,220,150,145,100,110)";
 
   // if (frntback == 'front') {
-    var image = document.getElementById("shtmImgFront")
+    var img = document.getElementById("shtmImgFront")
   // } else {
   //   var image = document.getElementById("shtmImgBack")
   // }
@@ -1110,7 +1110,7 @@ function setupCrop(canvas, image) {
   // var img = new Image();
   // img.src = image.src;
   // img.onload = function() {
-    c1.style.backgroundImage = image.src;
+    c1.style.backgroundImage = img.src;
     drawCroppedImage(imgo);
   // }
   
