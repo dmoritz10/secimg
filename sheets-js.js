@@ -1145,6 +1145,8 @@ function setupCrop(canvas, img) {
   
     
     mousePos1 = oTouchPos(c1, evt);
+
+    console.log(mousePos1)
     for (k in o) {
       ctx1.beginPath();
       ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
