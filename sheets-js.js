@@ -1110,7 +1110,7 @@ function setupCrop(canvas, img) {
   // var img = new Image();
   // img.src = image.src;
   // img.onload = function() {
-    c1.style.backgroundImage = img.src;
+    c1.style.backgroundImage = url('"' + img.src + '"')
     drawCroppedImage(imgo);
   // }
   
