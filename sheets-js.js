@@ -1255,7 +1255,7 @@ function setupCrop(canvas, img) {
 
   function oTouchPos(canvas, evt) {
 
-    var touchLocation = e.targetTouches[0];
+    var touchLocation = evt.targetTouches[0];
     
     var rect = canvas.getBoundingClientRect();
     return {
