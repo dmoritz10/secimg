@@ -916,7 +916,10 @@ function enableCropImage(frntback) {
 
   $(canvas).removeClass('d-none')
   $(image).addClass('d-none')
+  $(document.getElementById("enableCropImage")).addClass('d-none')
+  $(document.getElementById("cropImage")).removeClass('d-none')
 
+  
 
 }
 

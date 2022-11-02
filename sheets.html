@@ -215,7 +215,7 @@ and left sides of the text */
               <div class="row my-3">
                 <div class="col text-center">
                   <img  id="shtmImgFront" name="shtmImgFront" width="100%" >
-                  <canvas  id="shtmCanvasFront" class="d-none">hi dan</canvas>
+                  <canvas  id="shtmCanvasFront" class="d-none"></canvas>
                 </div>
               </div>
 
@@ -228,11 +228,11 @@ and left sides of the text */
                 </div>
 
                 <div class="col">    
-                  <div class="cursor-pointer" onclick="enableCropImage('front')">Crop Image</div>
+                  <div id="enableCropImage" class="cursor-pointer" onclick="enableCropImage('front')">Crop Image</div>
                 </div>
 
                 <div class="col text-begin">    
-                  <div class="cursor-pointer d-none" onclick="cropImage('front')">Crop</div>
+                  <div id="cropImage" class="cursor-pointer d-none" onclick="cropImage('front')">Crop</div>
                 </div>
 
 <!-- 
@@ -243,7 +243,7 @@ lets add some more stuff to forfce the update
 
 
 
-                 -->
+-->
               <div class="row my-3">
                 <div class="col">
                   <div class="divider">Back</div>
