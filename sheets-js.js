@@ -961,11 +961,13 @@ function cropImage(frntback) {
 
 
 function setupCrop(canvas, image) {
+  
+  var proportion = .8; // you may change the proportion for the cropped image.
 
   var output = image;
   var c1 = canvas;
   var ctx1 = c1.getContext("2d");
-  var c2 = document.getElementById("c2");
+  var c2 = document.createElement("canvas");;
   var ctx2 = c2.getContext("2d");
   
   var cw = c1.width = c2.width = 400,
