@@ -897,7 +897,7 @@ function updateImgPreview(canvas, img) {
   // div.style.backgroundImage = 'url(' + canvas.toDataURL() + ')'
 }
 
-function enableCropImage(frntback){
+function enableCropImage(frntback) {
 
   if (frntback == 'front') {
     var image = document.getElementById("shtmImgFront")
