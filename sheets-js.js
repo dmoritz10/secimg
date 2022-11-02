@@ -967,7 +967,7 @@ function setupCrop(canvas, img) {
   var output = document.getElementById("output");;
   var c1 = canvas;
   var ctx1 = c1.getContext("2d");
-  var c2 = document.createElement("canvas");;
+  var c2 = document.getElementById("c2");
   var ctx2 = c2.getContext("2d");
   
   var cw = c1.width = c2.width = 400,
