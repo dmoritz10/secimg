@@ -1101,11 +1101,11 @@ function setupCrop(canvas, image) {
   var imgo = Imgo(o, d); // an object defining the cropped image
   Output(Imgo, output); // text: "drawImage(img,130,10,200,220,150,145,100,110)";
 
-  if (frntback == 'front') {
+  // if (frntback == 'front') {
     var image = document.getElementById("shtmImgFront")
-  } else {
-    var image = document.getElementById("shtmImgBack")
-  }
+  // } else {
+  //   var image = document.getElementById("shtmImgBack")
+  // }
   
   var img = new Image();
   img.src = image.src;
