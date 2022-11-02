@@ -1107,12 +1107,12 @@ function setupCrop(canvas, image) {
   //   var image = document.getElementById("shtmImgBack")
   // }
   
-  var img = new Image();
-  img.src = image.src;
-  img.onload = function() {
-    c1.style.backgroundImage = img.src;
+  // var img = new Image();
+  // img.src = image.src;
+  // img.onload = function() {
+    c1.style.backgroundImage = image.src;
     drawCroppedImage(imgo);
-  }
+  // }
   
   // mousedown ***************************
   
