@@ -962,7 +962,7 @@ function cropImage(frntback) {
 
 function setupCrop(canvas, img) {
 
-  var proportion = .8; // you may change the proportion for the cropped image.
+  var proportion = 1; // you may change the proportion for the cropped image.
 
   var output = document.getElementById("output");;
   var c1 = canvas;
@@ -1140,6 +1140,31 @@ function setupCrop(canvas, img) {
   
   }, false);
   
+  c1.addEventListener('touchmove', function(evt) {
+    isDragging1 = true;
+  
+    
+    mousePos1 = oTouchPos(c1, evt);
+    for (k in o) {
+      ctx1.beginPath();
+      ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
+      if (ctx1.isPointInPath(mousePos1.x, mousePos1.y)) {
+        o[k].bool = true;
+        if (k == "sx" || k == "sw") {
+          o[k].y = mousePos1.y;
+        } else {
+          o[k].x = mousePos1.x;
+        }
+        break;
+      } else {
+        o[k].bool = false;
+      }
+    }
+  
+    Output(Imgo, output);
+  
+  }, false);
+  
   c2.addEventListener('mousedown', function(evt) {
     mousePos2 = oMousePos(c2, evt);
     outlineImage(imgo)
@@ -1228,6 +1253,16 @@ function setupCrop(canvas, img) {
     }
   }
 
+  function oTouchPos(canvas, evt) {
+
+    var touchLocation = e.targetTouches[0];
+    
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: Math.round(touchLocation.pageX - rect.left),
+      y: Math.round(touchLocation.pageY - rect.top)
+    }
+  }
 
 
 
