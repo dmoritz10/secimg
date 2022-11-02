@@ -897,6 +897,29 @@ function updateImgPreview(canvas, img) {
   // div.style.backgroundImage = 'url(' + canvas.toDataURL() + ')'
 }
 
+function enableCropImage(frntback){
+
+  if (frntback == 'front') {
+    var image = document.getElementById("shtmImgFront")
+    var canvas = document.getElementById("shtmCanvasFront")
+  } else {
+    var image = document.getElementById("shtmImgBack")
+    var canvas = document.getElementById("shtmCanvasBack")
+  }
+
+  canvas.width = image.width
+  canvas.height = image.height
+
+  let ctx = canvas.getContext('2d')
+
+  ctx.drawImage(image, 0, 0, image.width, image.height)
+
+  $(canvas).removeClass('d-none')
+  $(image).addClass('d-none')
+
+
+}
+
 function cropImage(frntback) {
 
   if (frntback == 'front') {
