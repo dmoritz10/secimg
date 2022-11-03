@@ -1140,6 +1140,57 @@ function setupCrop(canvas, img) {
   
   }, false);
   
+  c1.addEventListener('touchstart', function(evt) {
+    isDragging1 = true;
+  
+    mousePos1 = oTouchPos(c1, evt);
+    for (k in o) {
+      ctx1.beginPath();
+      ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
+      if (ctx1.isPointInPath(mousePos1.x, mousePos1.y)) {
+        o[k].bool = true;
+        if (k == "sx" || k == "sw") {
+          o[k].y = mousePos1.y;
+        } else {
+          o[k].x = mousePos1.x;
+        }
+        break;
+      } else {
+        o[k].bool = false;
+      }
+    }
+  
+    Output(Imgo, output);
+  
+  }, false);
+
+  // mousemove ***************************
+  c1.addEventListener('mousemove', function(evt) {
+    mousePos1 = oMousePos(c1, evt); //console.log(mousePos)	
+    cursorStyleC1();
+  
+    if (isDragging1 == true) {
+      ctx1.clearRect(0, 0, cw, ch);
+  
+      for (k in o) {
+        if (o[k].bool) {
+          if (k == "sx" || k == "sw") {
+            o[k].y = mousePos1.y;
+          } else {
+            o[k].x = mousePos1.x;
+          }
+          break;
+        }
+      }
+  
+      drawGuides(o);
+      ctx2.clearRect(0, 0, cw, ch);
+      imgo = Imgo(o, d);
+      drawCroppedImage(imgo);
+      Output(Imgo, output);
+    }
+  }, false);
+
   c1.addEventListener('touchmove', function(evt) {
     isDragging1 = true;
   
@@ -1170,60 +1221,6 @@ function setupCrop(canvas, img) {
   
   }, false);
   
-  c2.addEventListener('mousedown', function(evt) {
-    mousePos2 = oMousePos(c2, evt);
-    outlineImage(imgo)
-    if (ctx2.isPointInPath(mousePos2.x, mousePos2.y)) {
-      isDragging2 = true;
-  
-      deltaX = mousePos2.x - imgo.x;
-      deltaY = mousePos2.y - imgo.y;
-  
-      Output(Imgo, output);
-    }
-  }, false);
-  
-  // mousemove ***************************
-  c1.addEventListener('mousemove', function(evt) {
-    mousePos1 = oMousePos(c1, evt); //console.log(mousePos)	
-    cursorStyleC1();
-  
-    if (isDragging1 == true) {
-      ctx1.clearRect(0, 0, cw, ch);
-  
-      for (k in o) {
-        if (o[k].bool) {
-          if (k == "sx" || k == "sw") {
-            o[k].y = mousePos1.y;
-          } else {
-            o[k].x = mousePos1.x;
-          }
-          break;
-        }
-      }
-  
-      drawGuides(o);
-      ctx2.clearRect(0, 0, cw, ch);
-      imgo = Imgo(o, d);
-      drawCroppedImage(imgo);
-      Output(Imgo, output);
-    }
-  }, false);
-  
-  c2.addEventListener('mousemove', function(evt) {
-    mousePos2 = oMousePos(c2, evt);
-  
-    if (isDragging2 == true) {
-      ctx2.clearRect(0, 0, cw, ch);
-      d.x = mousePos2.x - deltaX;
-      d.y = mousePos2.y - deltaY;
-      imgo = Imgo(o, d);
-      drawCroppedImage(imgo);
-      Output(Imgo, output);
-    }
-    cursorStyleC2();
-  }, false);
-  
   // mouseup ***************************
   c1.addEventListener('mouseup', function(evt) {
     isDragging1 = false;
@@ -1232,24 +1229,16 @@ function setupCrop(canvas, img) {
     }
   }, false);
   
-  c2.addEventListener('mouseup', function(evt) {
-    isDragging2 = false;
-  
-  }, false);
-  
-  // mouseout ***************************
-  c1.addEventListener('mouseout', function(evt) {
+   c1.addEventListener('touchend', function(evt) {
     isDragging1 = false;
     for (k in o) {
       o[k].bool = false;
     }
   }, false);
+ 
+  // mouseout ***************************
   
-  c2.addEventListener('mouseout', function(evt) {
-    isDragging2 = false;
-  
-  }, false);
-  
+
   function oMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
     return {
