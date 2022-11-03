@@ -1145,6 +1145,9 @@ function setupCrop(canvas, img) {
   
     mousePos1 = oTouchPos(c1, evt);
     for (k in o) {
+
+      console.log('start', k, o[k])
+
       ctx1.beginPath();
       ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
       if (ctx1.isPointInPath(mousePos1.x, mousePos1.y)) {
@@ -1200,7 +1203,7 @@ function setupCrop(canvas, img) {
     console.log(mousePos1)
     for (k in o) {
 
-      console.log(k, o[k])
+      console.log('move', k, o[k])
       ctx1.beginPath();
       ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
       if (ctx1.isPointInPath(mousePos1.x, mousePos1.y)) {
@@ -1232,6 +1235,9 @@ function setupCrop(canvas, img) {
    c1.addEventListener('touchend', function(evt) {
     isDragging1 = false;
     for (k in o) {
+
+      console.log('end', k, o[k])
+
       o[k].bool = false;
     }
   }, false);
