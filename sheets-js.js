@@ -912,7 +912,7 @@ function enableCropImage(frntback) {
 
   let ctx = canvas.getContext('2d')
 
-  ctx.drawImage(image, 0, 0, image.width, image.height)
+  ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
 
   $(canvas).removeClass('d-none')
   $(image).addClass('d-none')
