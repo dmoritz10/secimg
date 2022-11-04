@@ -912,7 +912,7 @@ function enableCropImage(frntback) {
 
   let ctx = canvas.getContext('2d')
 
-  ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+  ctx.drawImage(image, 0, 0, image.width, image.height)
 
   $(canvas).removeClass('d-none')
   $(image).addClass('d-none')
@@ -990,13 +990,12 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
 
   var proportion = 1; // you may change the proportion for the cropped image.
 
-  var output = document.getElementById("output");;
   var c1 = canvas;
   var ctx1 = c1.getContext("2d");
   
-  var cw = c1.width = 400,
+  var cw = c1.width,
       cx = cw / 2;
-  var ch = c1.height = 400,
+  var ch = c1.height,
       cy = ch / 2;
   
   var isDragging1 = false;
