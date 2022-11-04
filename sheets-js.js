@@ -1198,10 +1198,10 @@ function setupCrop(canvas, img) {
   }, false);
 
   c1.addEventListener('touchmove', function(evt) {
-    touchPos1 = oMousePos(c1, evt); //console.log(mousePos)	
+    mousePos1 = oTouchPos(c1, evt); //console.log(mousePos)	
     cursorStyleC1();
 
-    console.log('move', touchPos1)
+    console.log('move', mousePos1)
   
     if (isDragging1 == true) {
       ctx1.clearRect(0, 0, cw, ch);
