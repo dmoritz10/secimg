@@ -1223,7 +1223,10 @@ function setupCrop(canvas, img) {
       }
     }
   
-    Output(Imgo, output);
+    drawGuides(o);
+    ctx2.clearRect(0, 0, cw, ch);
+    imgo = Imgo(o, d);
+    drawCroppedImage(imgo);
   
   }, false);
   
