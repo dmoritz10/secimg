@@ -1146,7 +1146,7 @@ function setupCrop(canvas, img) {
     mousePos1 = oTouchPos(c1, evt);
     console.log(mousePos1)
 
-    document.getElementsByClassName("modal-content")[0].body.scroll = "no";
+    document.getElementsByClassName("modal-content")[0].scroll = "no";
 
     for (k in o) {
 
@@ -1237,7 +1237,7 @@ function setupCrop(canvas, img) {
   
    c1.addEventListener('touchend', function(evt) {
     isDragging1 = false;
-    document.getElementsByClassName("modal-content")[0].body.scroll = "yes";
+    document.getElementsByClassName("modal-content")[0].scroll = "yes";
 
     for (k in o) {
 
