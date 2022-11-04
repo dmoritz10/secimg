@@ -1001,16 +1001,13 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   var output = document.getElementById("output");;
   var c1 = canvas;
   var ctx1 = c1.getContext("2d");
-  var c2 = document.getElementById("c2");
-  var ctx2 = c2.getContext("2d");
   
-  var cw = c1.width = c2.width = 400,
+  var cw = c1.width = 400,
     cx = cw / 2;
-  var ch = c1.height = c2.height = 400,
+  var ch = c1.height 400,
     cy = ch / 2;
   
   var isDragging1 = false;
-  var isDragging2 = false;
   
   var sy = 20;
   var sx = 130;
@@ -1090,17 +1087,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     y: ~~(cy - sh * proportion / 2)
   }
   
-  function Output(Imgo, output) {
-    // output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + imgo.x + "," + imgo.y + "," + imgo.w + "," + imgo.h + ")";
-  }
-  
   function drawCroppedImage(imgo) {
-    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
-  }
-  
-  function outlineImage(imgo) {
-    ctx2.beginPath();
-    ctx2.rect(imgo.x, imgo.y, imgo.w, imgo.h);
+    // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
   }
   
   function cursorStyleC1() {
@@ -1121,19 +1109,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     }
   }
   
-  function cursorStyleC2() {
-    c2.style.cursor = "default";
-    outlineImage(imgo);
-    if (ctx2.isPointInPath(mousePos2.x, mousePos2.y)) {
-      c2.style.cursor = "move";
-    } else {
-      c2.style.cursor = "default";
-    }
-  }
-  
   drawGuides(o);
   var imgo = Imgo(o, d); // an object defining the cropped image
-  Output(Imgo, output); // text: "drawImage(img,130,10,200,220,150,145,100,110)";
 
   // if (frntback == 'front') {
     var img = document.getElementById("shtmImgFront")
@@ -1226,7 +1203,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       }
   
       drawGuides(o);
-      ctx2.clearRect(0, 0, cw, ch);
       imgo = Imgo(o, d);
       drawCroppedImage(imgo);
       Output(Imgo, output);
@@ -1254,7 +1230,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       }
   
       drawGuides(o);
-      ctx2.clearRect(0, 0, cw, ch);
       imgo = Imgo(o, d);
       drawCroppedImage(imgo);
       Output(Imgo, output);
