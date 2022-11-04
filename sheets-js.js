@@ -1180,8 +1180,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     mousePos1 = oTouchPos(c1, evt);
     console.log(mousePos1)
 
-    document.getElementsByClassName("modal-content")[0].scroll = "no";
-    evt.preventDefault();
+    c1.addEventListener('touchmove', disableScroll, false);
+
     for (k in o) {
 
       console.log('start', k, o[k])
@@ -1271,7 +1271,9 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   
    c1.addEventListener('touchend', function(evt) {
     isDragging1 = false;
-    document.getElementsByClassName("modal-content")[0].scroll = "yes";
+
+    c1.removeEventListener('touchmove', disableScroll, false);
+
 
     for (k in o) {
 
@@ -1302,6 +1304,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       y: Math.round(touchLocation.pageY - rect.top)
     }
   }
+
+  function disableScroll(e) {e.preventDefault();}
 
 
 
