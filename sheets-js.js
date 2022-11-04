@@ -1004,7 +1004,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   
   var cw = c1.width = 400,
     cx = cw / 2;
-  var ch = c1.height 400,
+  var ch = c1.height = 400,
     cy = ch / 2;
   
   var isDragging1 = false;
@@ -1281,8 +1281,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }
 
   function disableScroll(e) {e.preventDefault();}
-
-
 
 
 }
