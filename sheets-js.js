@@ -1151,6 +1151,7 @@ function setupCrop(canvas, img) {
       ctx1.beginPath();
       ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
       if (ctx1.isPointInPath(mousePos1.x, mousePos1.y)) {
+        console.log('start true')
         o[k].bool = true;
         if (k == "sx" || k == "sw") {
           o[k].y = mousePos1.y;
