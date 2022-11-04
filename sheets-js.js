@@ -1053,6 +1053,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   
   function drawGuides(o) {
     alert('drawguides')
+    console.log('drawGuides', o)
     for (k in o) {
       ctx1.fillStyle = o[k].color;
       ctx1.beginPath();
