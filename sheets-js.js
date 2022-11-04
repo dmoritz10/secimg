@@ -1144,6 +1144,8 @@ function setupCrop(canvas, img) {
     isDragging1 = true;
   
     mousePos1 = oTouchPos(c1, evt);
+    console.log(mousePos1)
+
     for (k in o) {
 
       console.log('start', k, o[k])
