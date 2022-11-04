@@ -962,6 +962,40 @@ function cropImage(frntback) {
 
 function setupCrop(canvas, img) {
 
+  /*
+original image:
+----------------------------
+|     |                    |
+|     |sy                  |
+|_____|____________        |
+| sx  |           |        |
+|     |           |        |
+|     |           | sh     |
+|     |           |        |
+|     |___________|        |
+|          sw              |
+|                          |
+|                          |
+|__________________________|
+
+cropped image:
+----------------------------
+|     |                    |
+|     |y                   |
+|_____|_________           |
+|  x  |        |           |
+|     |        | h         |
+|     |________|           |
+|          w               |
+|                          |
+|                          |
+|__________________________|
+
+ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
+
+*/
+
+
   var proportion = 1; // you may change the proportion for the cropped image.
 
   var output = document.getElementById("output");;
@@ -1147,7 +1181,7 @@ function setupCrop(canvas, img) {
     console.log(mousePos1)
 
     document.getElementsByClassName("modal-content")[0].scroll = "no";
-
+    evt.preventDefault();
     for (k in o) {
 
       console.log('start', k, o[k])
