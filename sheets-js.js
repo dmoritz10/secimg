@@ -203,8 +203,6 @@ async function editSheet(arrIdx) {
 
   var imgs = await fetchImages(shtEnc, shtObj['File Id'])
 
-  console.log('imgs', imgs.length)
-
   $('#shtmDocument').val(shtObj['Document'])
   $('#shtmExpiry').val(shtObj['Expiry'])
   $('#shtmImgBack').val(shtObj['Account Nbr'])
@@ -907,6 +905,8 @@ function enableCropImage(frntback) {
     var canvas = document.getElementById("shtmCanvasBack")
   }
 
+  console.log('image width', image.width, image.height)
+
   canvas.width = image.width
   canvas.height = image.height
 
@@ -934,20 +934,12 @@ function cropImage(frntback) {
   // cropImg
   let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, 0)
 
-  
- 
-  // ctx.save()
-  // ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-  if (cropImg.length != 2) return
-
-    let tx = cropImg[0][0]
-    let ty = cropImg[0][1]
+    let tx = image.width
+    let ty = image.height
     let width = cropImg[1][0] - cropImg[0][0]
     let height = cropImg[1][1] - cropImg[0][1]
 
-    let canvas = document.createElement("canvas");
-
+    let canvas = document.getElementById("shtmCanvasFront");
     let ctx = canvas.getContext('2d')
 
     canvas.width = width
@@ -1003,9 +995,9 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   var ctx1 = c1.getContext("2d");
   
   var cw = c1.width = 400,
-    cx = cw / 2;
+      cx = cw / 2;
   var ch = c1.height = 400,
-    cy = ch / 2;
+      cy = ch / 2;
   
   var isDragging1 = false;
   
@@ -1147,8 +1139,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       }
     }
   
-    Output(Imgo, output);
-  
   }, false);
   
   c1.addEventListener('touchstart', function(evt) {
@@ -1179,8 +1169,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       }
     }
   
-    Output(Imgo, output);
-  
   }, false);
 
   // mousemove ***************************
@@ -1205,7 +1193,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       drawGuides(o);
       imgo = Imgo(o, d);
       drawCroppedImage(imgo);
-      Output(Imgo, output);
     }
   }, false);
 
@@ -1232,7 +1219,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       drawGuides(o);
       imgo = Imgo(o, d);
       drawCroppedImage(imgo);
-      Output(Imgo, output);
     }
   }, false);
   
@@ -1244,8 +1230,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     }
   }, false);
   
-   c1.addEventListener('touchend', function(evt) {
-    isDragging1 = false;
+  c1.addEventListener('touchend', function(evt) {
+  isDragging1 = false;
 
     c1.removeEventListener('touchmove', disableScroll, false);
 
@@ -1259,7 +1245,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }, false);
  
   // mouseout ***************************
-  
 
   function oMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
