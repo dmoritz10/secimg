@@ -925,7 +925,11 @@ function enableCropImage(frntback) {
 
 function editImage(frntback) {
 
+  console.log(frntback)
+
   if (frntback == 'front') {
+
+    console.log('front')
 
     var image = document.getElementById("shtmImgFront")
     var canvas = document.getElementById("shtmCanvasFront")
