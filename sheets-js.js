@@ -1113,8 +1113,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   // var img = new Image();
   // img.src = image.src;
   // img.onload = function() {
-    c1.style.backgroundImage == 'url(' + img.src + ')';
-    // c1.style.background-size ==  '100% 100%'
+    c1.style.backgroundImage = 'url(' + img.src + ')';
+    c1.style.backgroundSize =  '100% 100%'
     drawCroppedImage(imgo);
   // }
   
