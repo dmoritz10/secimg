@@ -1052,13 +1052,12 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }
   
   function drawGuides(o) {
-    alert('drawguides')
     console.log('drawGuides', o)
-    for (k in o) {
-      ctx1.fillStyle = o[k].color;
-      ctx1.beginPath();
-      ctx1.fillRect(o[k].x, o[k].y, o[k].w, o[k].h);
-    }
+    // for (k in o) {
+    //   ctx1.fillStyle = o[k].color;
+    //   ctx1.beginPath();
+    //   ctx1.fillRect(o[k].x, o[k].y, o[k].w, o[k].h);
+    // }
   }
   
   function Imgo(o, d) { // an object defining the cropped image
@@ -1226,6 +1225,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   // mouseup ***************************
   c1.addEventListener('mouseup', function(evt) {
     isDragging1 = false;
+    alert('mouseEnd',isDragging1 )
     for (k in o) {
       o[k].bool = false;
     }
@@ -1233,7 +1233,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   
   c1.addEventListener('touchend', function(evt) {
   isDragging1 = false;
-
+alert('touchEnd')
     c1.removeEventListener('touchmove', disableScroll, false);
 
 
