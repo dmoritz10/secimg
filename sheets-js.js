@@ -1203,7 +1203,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     console.log('move', mousePos1)
   
     if (isDragging1 == true) {
-      ctx1.clearRect(1, 1, cw-2, ch-2);
+      ctx1.clearRect(0, 0, canvas.width, canvas.height);
   console.log('cleaerRect', cw, ch)
       for (k in o) {
         if (o[k].bool) {
