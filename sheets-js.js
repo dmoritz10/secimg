@@ -1110,13 +1110,9 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   //   var image = document.getElementById("shtmImgBack")
   // }
   
-  // var img = new Image();
-  // img.src = image.src;
-  // img.onload = function() {
     c1.style.backgroundImage = 'url(' + img.src + ')';
     c1.style.backgroundSize =  '100% 100%'
     drawCroppedImage(imgo);
-  // }
   
   // mousedown ***************************
   

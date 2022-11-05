@@ -42,7 +42,6 @@ and left sides of the text */
   margin-left: 0.25em;
 }
 
-
 </style>
 
 <div class="">
@@ -222,7 +221,23 @@ and left sides of the text */
                 </div>
               </div>
 
-              <div class="row my-3">
+              <div id="shtmImgOptionsFront" class="row my-3">
+
+                <div class="col">    
+                  <div class="cursor-pointer" onclick="editImage('front')" data-toggle="tooltip" title="Edit Image"><i class="material-icons">edit</i></div>
+                </div>
+
+                <div class="col">    
+                  <div class="cursor-pointer" onclick="shareImage('front')"><i class="material-icons">share</i></div>
+                </div>
+
+                <div class="col">    
+                  <div class="cursor-pointer" onclick="deleteImage('front')"><i class="material-icons">delete</i></div>
+                </div>
+
+              </div>
+
+              <div id="shtmImgEditFront" class="row my-3 d-none">
                 <div class="col text-end">
                   <div class="cursor-pointer" onclick="clockwise('front')"><i class="material-icons">rotate_right</i></div>
                 </div>
@@ -230,13 +245,20 @@ and left sides of the text */
                   <div class="cursor-pointer" onclick="counterclockwise('front')"><i class="material-icons">rotate_left</i></div>
                 </div>
 
-                <div class="col">    
-                  <div id="enableCropImage" class="cursor-pointer" onclick="enableCropImage('front')">Crop Image</div>
+                <div class="col text-begin">    
+                  <div class="cursor-pointer d-none" onclick="cropImage('front')"><i class="material-icons">crop_original</i></div>
                 </div>
 
                 <div class="col text-begin">    
-                  <div id="cropImage" class="cursor-pointer d-none" onclick="cropImage('front')">Crop</div>
+                  <div class="cursor-pointer d-none" onclick="restoreImage('front')"><i class="material-icons">restore_page</i></div>
                 </div>
+
+                <div class="col text-begin">    
+                  <div class="cursor-pointer d-none" onclick="saveImage('front')"><i class="material-icons">save</i></div>
+                </div>
+
+
+              </div>
 
 
               
