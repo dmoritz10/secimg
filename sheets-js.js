@@ -929,23 +929,22 @@ function editImage(frntback) {
 
   if (frntback == 'front') {
 
-    console.log('front')
-
     var image = document.getElementById("shtmImgFront")
     var canvas = document.getElementById("shtmCanvasFront")
-    $("shtmImgOptionsFront").addClass('d-none')
-    $("shtmImgEditFront").removeClass('d-none')
+    var options = $("#shtmImgOptionsFront")
+    var edit = $("#shtmImgEditFront")
   
   } else {
 
     var image = document.getElementById("shtmImgBack")
     var canvas = document.getElementById("shtmCanvasBack")
-    $("shtmImgOptionsBack").addClass('d-none')
-    $("shtmImgEditBack").removeClass('d-none')
+    var options = $("#shtmImgOptionsBack")
+    var edit = $("#shtmImgEditBack")
   
   }
 
-
+  options.addClass('d-none')
+  edit.removeClass('d-none')
 
 
 }
@@ -953,23 +952,23 @@ function editImage(frntback) {
 function cancelEditImage(frntback) {
 
   if (frntback == 'front') {
-    
+
     var image = document.getElementById("shtmImgFront")
     var canvas = document.getElementById("shtmCanvasFront")
-    $("shtmImgOptionsFront").removeClass('d-none')
-    $("shtmImgEditFront").addClass('d-none')
+    var options = $("#shtmImgOptionsFront")
+    var edit = $("#shtmImgEditFront")
   
   } else {
 
     var image = document.getElementById("shtmImgBack")
     var canvas = document.getElementById("shtmCanvasBack")
-    $("shtmImgOptionsBack").removeClass('d-none')
-    $("shtmImgEditBack").addClass('d-none')
+    var options = $("#shtmImgOptionsBack")
+    var edit = $("#shtmImgEditBack")
   
   }
 
-
-
+  options.removeClass('d-none')
+  edit.addClass('d-none')
 
 }
 
