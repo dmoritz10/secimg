@@ -923,6 +923,53 @@ function enableCropImage(frntback) {
 
 }
 
+function editImage(frntback) {
+
+  if (frntback == 'front') {
+
+    var image = document.getElementById("shtmImgFront")
+    var canvas = document.getElementById("shtmCanvasFront")
+    $("shtmImgOptionsFront").addClass('d-none')
+    $("shtmImgEditFront").removeClass('d-none')
+  
+  } else {
+
+    var image = document.getElementById("shtmImgBack")
+    var canvas = document.getElementById("shtmCanvasBack")
+    $("shtmImgOptionsBack").addClass('d-none')
+    $("shtmImgEditBack").removeClass('d-none')
+  
+  }
+
+
+
+
+}
+
+function cancelEditImage(frntback) {
+
+  if (frntback == 'front') {
+    
+    var image = document.getElementById("shtmImgFront")
+    var canvas = document.getElementById("shtmCanvasFront")
+    $("shtmImgOptionsFront").removeClass('d-none')
+    $("shtmImgEditFront").addClass('d-none')
+  
+  } else {
+
+    var image = document.getElementById("shtmImgBack")
+    var canvas = document.getElementById("shtmCanvasBack")
+    $("shtmImgOptionsBack").removeClass('d-none')
+    $("shtmImgEditBack").addClass('d-none')
+  
+  }
+
+
+
+
+}
+
+
 function cropImage(frntback) {
 
   if (frntback == 'front') {
