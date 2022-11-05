@@ -1053,11 +1053,11 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   
   function drawGuides(o) {
     console.log('drawGuides', o)
-    // for (k in o) {
-    //   ctx1.fillStyle = o[k].color;
-    //   ctx1.beginPath();
-    //   ctx1.fillRect(o[k].x, o[k].y, o[k].w, o[k].h);
-    // }
+    for (k in o) {
+      ctx1.fillStyle = o[k].color;
+      ctx1.beginPath();
+      ctx1.fillRect(o[k].x, o[k].y, o[k].w, o[k].h);
+    }
   }
   
   function Imgo(o, d) { // an object defining the cropped image
@@ -1203,8 +1203,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     console.log('move', mousePos1)
   
     if (isDragging1 == true) {
-      ctx1.clearRect(0, 0, cw, ch);
-  
+      // ctx1.clearRect(0, 0, cw, ch);
+  console.log('cleaerRect', cw, ch)
       for (k in o) {
         if (o[k].bool) {
           if (k == "sx" || k == "sw") {
