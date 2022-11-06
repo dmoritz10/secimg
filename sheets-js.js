@@ -998,10 +998,10 @@ function cropImage(frntback) {
   
   }
 
-  var image = document.getElementById("scratchCanvas")
+  var scratchCanvas = document.getElementById("scratchCanvas")
 
 
-  setupCrop(canvas, img)
+  setupCrop(canvas, scratchCanvas)
     
 }
 
