@@ -990,38 +990,18 @@ function cropImage(frntback) {
 
   if (frntback == 'front') {
 
-    var image = document.getElementById("shtmImgFront")
     var canvas = document.getElementById("shtmCanvasFront")
   
   } else {
 
-    var image = document.getElementById("shtmImgBack")
     var canvas = document.getElementById("shtmCanvasBack")
   
   }
 
-  // cropImg
-  let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, 0)
-    var cropImage = canvas.style.backgroundImage
+  var image = document.getElementById("scratchCanvas")
 
-    let tx = cropImage.width
-    let ty = cropImage.height
-    let width = cropImg[1][0] - cropImg[0][0]
-    let height = cropImg[1][1] - cropImg[0][1]
 
-    let ctx = canvas.getContext('2d')
-
-    canvas.width = width
-    canvas.height = height
-
-    var cropImage = canvas.style.backgroundImage
-
-    ctx.drawImage(cropImage, tx, ty, width, height, 0, 0, width, height);
-
-    canvas.style.backgroundImage = canvas.toDataURL('image/jpeg', 1)
-    canvas.style.backgroundSize =  '100% 100%'
-
-    // image.src = canvas.toDataURL('image/jpeg', 1)
+  setupCrop(canvas, img)
     
 }
 
@@ -1065,7 +1045,10 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   var proportion = 1; // you may change the proportion for the cropped image.
 
   var c1 = canvas;
+  var c2 = document.getElementById("scratchCanvas")
+
   var ctx1 = c1.getContext("2d");
+  var ctx2 = c2.getContext("2d");
   
   var cw = c1.width,
       cx = cw / 2;
@@ -1082,10 +1065,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   var r = 4;
   
   var mousePos1 = {
-    x: 0,
-    y: 0
-  };
-  var mousePos2 = {
     x: 0,
     y: 0
   };
@@ -1153,7 +1132,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }
   
   function drawCroppedImage(imgo) {
-    // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
+    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
   }
   
   function cursorStyleC1() {
@@ -1176,16 +1155,9 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   
   drawGuides(o);
   var imgo = Imgo(o, d); // an object defining the cropped image
-
-  // if (frntback == 'front') {
-    // var img = document.getElementById("shtmImgFront")
-  // } else {
-  //   var image = document.getElementById("shtmImgBack")
-  // }
-  
-    c1.style.backgroundImage = 'url(' + img.src + ')';
-    c1.style.backgroundSize =  '100% 100%'
-    drawCroppedImage(imgo);
+  c1.style.backgroundImage = 'url(' + img.src + ')';
+  c1.style.backgroundSize =  '100% 100%'
+  drawCroppedImage(imgo);
   
   // mousedown ***************************
   
@@ -1294,14 +1266,14 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }, false);
   
   c1.addEventListener('touchend', function(evt) {
-  isDragging1 = false;
-  c1.removeEventListener('touchmove', disableScroll, false);
+    isDragging1 = false;
+    c1.removeEventListener('touchmove', disableScroll, false);
 
 
-    for (k in o) {
+      for (k in o) {
 
-      o[k].bool = false;
-    }
+        o[k].bool = false;
+      }
   }, false);
  
   // mouseout ***************************
