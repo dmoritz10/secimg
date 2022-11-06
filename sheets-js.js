@@ -1304,6 +1304,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     var rect = canvas.getBoundingClientRect();
 
     console.log('rect', rect)
+    console.log('window.scroll', window.scrollY , window.scrollX)
     return {
       x: Math.round(evt.clientX - rect.left),
       y: Math.round(evt.clientY - rect.top)
