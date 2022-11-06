@@ -1234,8 +1234,10 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       }
   
       drawGuides(o);
+      ctx2.clearRect(0, 0, cw, ch);
       imgo = Imgo(o, d);
       drawCroppedImage(imgo);
+      Output(Imgo, output);
     }
   }, false);
 
@@ -1257,6 +1259,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       }
   
       drawGuides(o);
+      ctx2.clearRect(0, 0, cw, ch);
       imgo = Imgo(o, d);
       drawCroppedImage(imgo);
     }
@@ -1270,6 +1273,13 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     }
   }, false);
   
+  c1.addEventListener('mouseout', function(evt) {
+    isDragging1 = false;
+    for (k in o) {
+      o[k].bool = false;
+    }
+  }, false);
+
   c1.addEventListener('touchend', function(evt) {
     isDragging1 = false;
     c1.removeEventListener('touchmove', disableScroll, false);
@@ -1281,6 +1291,13 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       }
   }, false);
  
+  c1.addEventListener('touchcancel', function(evt) {
+    isDragging1 = false;
+    for (k in o) {
+      o[k].bool = false;
+    }
+  }, false);
+  
   // mouseout ***************************
 
   function oMousePos(canvas, evt) {
