@@ -895,33 +895,33 @@ function updateImgPreview(canvas, img) {
   // div.style.backgroundImage = 'url(' + canvas.toDataURL() + ')'
 }
 
-function enableCropImage(frntback) {
+// function enableCropImage(frntback) {
 
-  if (frntback == 'front') {
-    var image = document.getElementById("shtmImgFront")
-    var canvas = document.getElementById("shtmCanvasFront")
-  } else {
-    var image = document.getElementById("shtmImgBack")
-    var canvas = document.getElementById("shtmCanvasBack")
-  }
+//   if (frntback == 'front') {
+//     var image = document.getElementById("shtmImgFront")
+//     var canvas = document.getElementById("shtmCanvasFront")
+//   } else {
+//     var image = document.getElementById("shtmImgBack")
+//     var canvas = document.getElementById("shtmCanvasBack")
+//   }
 
-  console.log('image width', image.width, image.height)
+//   console.log('image width', image.width, image.height)
 
-  canvas.width = image.width
-  canvas.height = image.height
+//   canvas.width = image.width
+//   canvas.height = image.height
 
-  let ctx = canvas.getContext('2d')
+//   let ctx = canvas.getContext('2d')
 
-  // ctx.drawImage(image, 0, 0, image.width, image.height)
+//   // ctx.drawImage(image, 0, 0, image.width, image.height)
 
-  $(canvas).removeClass('d-none')
-  $(image).addClass('d-none')
-  $(document.getElementById("enableCropImage")).addClass('d-none')
-  $(document.getElementById("cropImage")).removeClass('d-none')
+//   $(canvas).removeClass('d-none')
+//   $(image).addClass('d-none')
+//   $(document.getElementById("enableCropImage")).addClass('d-none')
+//   $(document.getElementById("cropImage")).removeClass('d-none')
 
-  setupCrop(canvas, image)
+//   setupCrop(canvas, image)
 
-}
+// }
 
 function editImage(frntback) {
 
@@ -1002,9 +1002,10 @@ function cropImage(frntback) {
 
   // cropImg
   let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, 0)
+    var cropImage = canvas.style.backgroundImage
 
-    let tx = image.width
-    let ty = image.height
+    let tx = cropImage.width
+    let ty = cropImage.height
     let width = cropImg[1][0] - cropImg[0][0]
     let height = cropImg[1][1] - cropImg[0][1]
 
@@ -1125,7 +1126,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }
   
   function drawGuides(o) {
-    console.log('drawGuides', o)
     for (k in o) {
       ctx1.fillStyle = o[k].color;
       ctx1.beginPath();
@@ -1178,7 +1178,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   var imgo = Imgo(o, d); // an object defining the cropped image
 
   // if (frntback == 'front') {
-    var img = document.getElementById("shtmImgFront")
+    // var img = document.getElementById("shtmImgFront")
   // } else {
   //   var image = document.getElementById("shtmImgBack")
   // }
@@ -1215,18 +1215,14 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     isDragging1 = true;
   
     mousePos1 = oTouchPos(c1, evt);
-    console.log(mousePos1)
 
     c1.addEventListener('touchmove', disableScroll, false);
 
     for (k in o) {
 
-      console.log('start', k, o[k])
-
       ctx1.beginPath();
       ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
       if (ctx1.isPointInPath(mousePos1.x, mousePos1.y)) {
-        console.log('start true')
         o[k].bool = true;
         if (k == "sx" || k == "sw") {
           o[k].y = mousePos1.y;
@@ -1243,7 +1239,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
 
   // mousemove ***************************
   c1.addEventListener('mousemove', function(evt) {
-    mousePos1 = oMousePos(c1, evt); //console.log(mousePos)	
+    mousePos1 = oMousePos(c1, evt); 
     cursorStyleC1();
   
     if (isDragging1 == true) {
@@ -1267,14 +1263,11 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }, false);
 
   c1.addEventListener('touchmove', function(evt) {
-    mousePos1 = oTouchPos(c1, evt); //console.log(mousePos)	
+    mousePos1 = oTouchPos(c1, evt); 
     cursorStyleC1();
 
-    console.log('move', mousePos1)
-  
     if (isDragging1 == true) {
-      ctx1.clearRect(10, 10, 200, 200);
-  console.log('cleaerRect', cw, ch)
+      ctx1.clearRect(0, 0, cw, ch);;
       for (k in o) {
         if (o[k].bool) {
           if (k == "sx" || k == "sw") {
@@ -1295,7 +1288,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   // mouseup ***************************
   c1.addEventListener('mouseup', function(evt) {
     isDragging1 = false;
-    alert('mouseEnd',isDragging1 )
     for (k in o) {
       o[k].bool = false;
     }
@@ -1303,13 +1295,10 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   
   c1.addEventListener('touchend', function(evt) {
   isDragging1 = false;
-alert('touchEnd')
-    c1.removeEventListener('touchmove', disableScroll, false);
+  c1.removeEventListener('touchmove', disableScroll, false);
 
 
     for (k in o) {
-
-      console.log('end', k, o[k])
 
       o[k].bool = false;
     }
