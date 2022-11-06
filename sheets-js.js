@@ -946,6 +946,15 @@ function editImage(frntback) {
   options.addClass('d-none')
   edit.removeClass('d-none')
 
+  canvas.width = image.width
+  canvas.height = image.height
+
+  let ctx = canvas.getContext('2d')
+
+  $(canvas).removeClass('d-none')
+  $(image).addClass('d-none')
+
+  setupCrop(canvas, image)
 
 }
 
@@ -970,15 +979,29 @@ function cancelEditImage(frntback) {
   options.removeClass('d-none')
   edit.addClass('d-none')
 
+  $(canvas).removeClass('d-none')
+  $(image).addClass('d-none')
+  
 }
 
 
 function cropImage(frntback) {
 
+
   if (frntback == 'front') {
+
     var image = document.getElementById("shtmImgFront")
+    var canvas = document.getElementById("shtmCanvasFront")
+    var options = $("#shtmImgOptionsFront")
+    var edit = $("#shtmImgEditFront")
+  
   } else {
+
     var image = document.getElementById("shtmImgBack")
+    var canvas = document.getElementById("shtmCanvasBack")
+    var options = $("#shtmImgOptionsBack")
+    var edit = $("#shtmImgEditBack")
+  
   }
 
   // cropImg
