@@ -1302,6 +1302,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
 
   function oMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
+
+    console.log('rect', rect)
     return {
       x: Math.round(evt.clientX - rect.left),
       y: Math.round(evt.clientY - rect.top)
