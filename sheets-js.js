@@ -954,7 +954,7 @@ function editImage(frntback) {
   $(canvas).removeClass('d-none')
   $(image).addClass('d-none')
 
-  setupCrop(canvas, image)
+  setupCrop(canvas, image.src)
 
 }
 
@@ -998,15 +998,14 @@ function cropImage(frntback) {
   
   }
 
-  var scratchCanvas = document.getElementById("scratchCanvas").style.backgroundImage
+  var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
 
-
-  setupCrop(canvas, scratchCanvas)
+  setupCrop(canvas, scratchCanvasSrc)
     
 }
 
 
-function setupCrop(canvas, img) {
+function setupCrop(canvas, imgSrc) {
 
   /*
 original image:
@@ -1056,6 +1055,9 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       cy = ch / 2;
   
   var isDragging1 = false;
+
+  var img = new Image()
+  img.src = imgSrc
   
   var sy = 20;
   var sx = 130;
