@@ -992,15 +992,11 @@ function cropImage(frntback) {
 
     var image = document.getElementById("shtmImgFront")
     var canvas = document.getElementById("shtmCanvasFront")
-    var options = $("#shtmImgOptionsFront")
-    var edit = $("#shtmImgEditFront")
   
   } else {
 
     var image = document.getElementById("shtmImgBack")
     var canvas = document.getElementById("shtmCanvasBack")
-    var options = $("#shtmImgOptionsBack")
-    var edit = $("#shtmImgEditBack")
   
   }
 
@@ -1017,9 +1013,14 @@ function cropImage(frntback) {
     canvas.width = width
     canvas.height = height
 
-    ctx.drawImage(image, tx, ty, width, height, 0, 0, width, height);
+    var cropImage = canvas.style.backgroundImage
 
-    image.src = canvas.toDataURL('image/jpeg', 1)
+    ctx.drawImage(cropImage, tx, ty, width, height, 0, 0, width, height);
+
+    canvas.style.backgroundImage = canvas.toDataURL('image/jpeg', 1)
+    canvas.style.backgroundSize =  '100% 100%'
+
+    // image.src = canvas.toDataURL('image/jpeg', 1)
     
 }
 
