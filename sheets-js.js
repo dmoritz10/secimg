@@ -998,7 +998,7 @@ function cropImage(frntback) {
   
   }
 
-  var scratchCanvas = document.getElementById("scratchCanvas")
+  var scratchCanvas = document.getElementById("scratchCanvas").style.backgroundImage
 
 
   setupCrop(canvas, scratchCanvas)
