@@ -1045,6 +1045,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
 
   var c1 = canvas;
   var c2 = document.getElementById("scratchCanvas")
+  var output = document.getElementById("output");
 
   var ctx1 = c1.getContext("2d");
   var ctx2 = c2.getContext("2d");
@@ -1135,6 +1136,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   
   function drawCroppedImage(imgo) {
     ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
+    Output(Imgo, output); 
   }
   
   function cursorStyleC1() {
@@ -1301,5 +1303,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
 
   function disableScroll(e) {e.preventDefault();}
 
-
+  function Output(Imgo, output) {
+    output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + imgo.x + "," + imgo.y + "," + imgo.w + "," + imgo.h + ")";
+  }
 }
