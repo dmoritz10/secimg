@@ -981,7 +981,7 @@ function cancelEditImage(frntback) {
 
   $(canvas).removeClass('d-none')
   $(image).addClass('d-none')
-  
+
 }
 
 
@@ -1012,7 +1012,6 @@ function cropImage(frntback) {
     let width = cropImg[1][0] - cropImg[0][0]
     let height = cropImg[1][1] - cropImg[0][1]
 
-    let canvas = document.getElementById("shtmCanvasFront");
     let ctx = canvas.getContext('2d')
 
     canvas.width = width
