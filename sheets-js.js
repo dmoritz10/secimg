@@ -1041,7 +1041,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
 */
 
 
-  var proportion = .9; // you may change the proportion for the cropped image.
+  var proportion = .7; // you may change the proportion for the cropped image.
 
   var c1 = canvas;
   var c2 = document.getElementById("scratchCanvas")
