@@ -1064,8 +1064,10 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   var hs = canvas.height/img.naturalHeight
   var sy = ~~(20/hs);
   var sx = ~~(20/ws);
-  var sw = ~~((cw-20)/ws);
-  var sh = ~~((ch-20)/hs);
+  var sw = ~~((cw-200)/ws);
+  var sh = ~~((ch-200)/hs);
+
+  console.log('setgrids', ws, hs, sw, sh)
   
   var r = 4;
   
