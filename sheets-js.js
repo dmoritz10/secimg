@@ -1060,10 +1060,12 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   var img = new Image()
   img.src = imgSrc
   
-  var sy = 20;
-  var sx = 20;
-  var sw = cw-20;
-  var sh = ch-20;
+  var ws = canvas.width/img.naturalWidth
+  var hs = canvas.height/img.naturalHeight
+  var sy = ~~(20/hs);
+  var sx = ~~(20/ws);
+  var sw = ~~((cw-20)/ws);
+  var sh = ~~((ch-20)/hs);
   
   var r = 4;
   
@@ -1161,7 +1163,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
       }
     }
   }
-  
+
   ctx1.clearRect(0, 0, cw, ch);
   ctx2.clearRect(0, 0, cw, ch);
   drawGuides(o);
