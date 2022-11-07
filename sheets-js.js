@@ -1050,9 +1050,9 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   var ctx1 = c1.getContext("2d");
   var ctx2 = c2.getContext("2d");
   
-  var cw = c2.width = c1.width,
+  var cw = c2.width = c1.width = canvas.offsetWidth,
       cx = cw / 2;
-  var ch = c2.height = c1.height,
+  var ch = c2.height = c1.height = canvas.offsetHeight,
       cy = ch / 2;
   
   var isDragging1 = false;
