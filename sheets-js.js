@@ -1329,6 +1329,9 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   function disableScroll(e) {e.preventDefault();}
 
   function Output(Imgo, output) {
-    output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + imgo.x + "," + imgo.y + "," + imgo.w + "," + imgo.h + ")";
+    // output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + imgo.x + "," + imgo.y + "," + imgo.w + "," + imgo.h + ")";
+    var ws = canvas.width/img.naturalWidth
+    var hs = canvas.height/img.naturalHeight
+    output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + 0 + "," + 0 + "," + imgo.w*ws + "," + imgo.h*hs + ")";
   }
 }
