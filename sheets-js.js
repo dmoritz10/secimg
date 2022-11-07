@@ -1061,9 +1061,9 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   img.src = imgSrc
   
   var sy = 20;
-  var sx = 130;
-  var sw = 200;
-  var sh = 200;
+  var sx = 20;
+  var sw = cw-20;
+  var sh = ch-20;
   
   var r = 4;
   
@@ -1139,10 +1139,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }
   
   function drawCroppedImage(imgo) {
-
-    var ws = canvas.width/img.naturalWidth
-    var hs = canvas.height/img.naturalHeight
-
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
     ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w, imgo.h);
     Output(Imgo, output); 
@@ -1166,6 +1162,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     }
   }
   
+  ctx1.clearRect(0, 0, cw, ch);
+  ctx2.clearRect(0, 0, cw, ch);
   drawGuides(o);
   var imgo = Imgo(o, d); // an object defining the cropped image
   c1.style.backgroundImage = 'url(' + img.src + ')';
@@ -1311,8 +1309,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   function oMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
 
-    console.log('rect', rect)
-    console.log('window.scroll', window.scrollY , window.scrollX)
     return {
       x: Math.round(evt.clientX - rect.left),
       y: Math.round(evt.clientY - rect.top)
