@@ -1135,8 +1135,12 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }
   
   function drawCroppedImage(imgo) {
+
+    var ws = canvas.width/img.naturalWidth
+    var hs = canvas.height/img.naturalHeight
+
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
-    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w/img.naturalWidth, imgo.h/img.naturalHeight);
+    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w*ws, imgo.h*hs);
     Output(Imgo, output); 
   }
   
