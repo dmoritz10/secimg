@@ -1116,15 +1116,19 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   }
   
   function Imgo(o, d) { // an object defining the cropped image
+
+    var ws = canvas.width/img.naturalWidth
+    var hs = canvas.height/img.naturalHeight
+
     var imgo = {
-      sx: o.sy.x,
-      sy: o.sx.y,
-      sw: o.sh.x - o.sy.x,
-      sh: o.sw.y - o.sx.y,
-      w: ~~((o.sh.x - o.sy.x) * proportion),
-      h: ~~((o.sw.y - o.sx.y) * proportion),
-      x: d.x,
-      y: d.y
+      sx: ~~(o.sy.x/ws),
+      sy: ~~(o.sx.y/hs),
+      sw: ~~((o.sh.x - o.sy.x)/ws),
+      sh: ~~((o.sw.y - o.sx.y)/hs),
+      w:  ~~((o.sh.x - o.sy.x) * proportion),
+      h:  ~~((o.sw.y - o.sx.y) * proportion),
+      x:  d.x,
+      y:  d.y
     }
     return imgo;
   }
@@ -1140,7 +1144,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     var hs = canvas.height/img.naturalHeight
 
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
-    ctx2.drawImage(img, imgo.sx/ws, imgo.sy/hs, imgo.sw/ws, imgo.sh/hs, 0, 0, imgo.w, imgo.h);
+    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w, imgo.h);
     Output(Imgo, output); 
   }
   
@@ -1329,9 +1333,6 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   function disableScroll(e) {e.preventDefault();}
 
   function Output(Imgo, output) {
-    // output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + imgo.x + "," + imgo.y + "," + imgo.w + "," + imgo.h + ")";
-    var ws = canvas.width/img.naturalWidth
-    var hs = canvas.height/img.naturalHeight
-    output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + ~~(imgo.x*ws) + "," + ~~(imgo.y*hs) + "," + ~~(imgo.w*ws) + "," + ~~(imgo.h*hs) + ")";
+    output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + 0 + "," + 0 + "," + imgo.w + "," + imgo.h + ")";
   }
 }
