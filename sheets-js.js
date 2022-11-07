@@ -1140,7 +1140,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     var hs = canvas.height/img.naturalHeight
 
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
-    ctx2.drawImage(img, imgo.sx*ws, imgo.sy*hs, imgo.sw*ws, imgo.sh*hs, 0, 0, imgo.w*ws, imgo.h*hs);
+    ctx2.drawImage(img, imgo.sx/ws, imgo.sy/hs, imgo.sw/ws, imgo.sh/hs, 0, 0, imgo.w*ws, imgo.h*hs);
     Output(Imgo, output); 
   }
   
