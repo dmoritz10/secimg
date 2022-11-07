@@ -1136,7 +1136,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   
   function drawCroppedImage(imgo) {
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
-    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w/image.naturalWidth, imgo.h/image.naturalHeight);
+    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w/img.naturalWidth, imgo.h/img.naturalHeight);
     Output(Imgo, output); 
   }
   
@@ -1161,7 +1161,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   drawGuides(o);
   var imgo = Imgo(o, d); // an object defining the cropped image
   c1.style.backgroundImage = 'url(' + img.src + ')';
-  c1.style.backgroundSize =  '687 417'
+  c1.style.backgroundSize =  'cover'
   drawCroppedImage(imgo);
   
   // mousedown ***************************
