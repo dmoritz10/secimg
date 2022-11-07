@@ -1161,7 +1161,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   drawGuides(o);
   var imgo = Imgo(o, d); // an object defining the cropped image
   c1.style.backgroundImage = 'url(' + img.src + ')';
-  c1.style.backgroundSize =  '100% 100%'
+  c1.style.backgroundSize =  'auto auto'
   drawCroppedImage(imgo);
   
   // mousedown ***************************
