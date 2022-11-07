@@ -1064,8 +1064,8 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   var hs = canvas.height/img.naturalHeight
   var sy = ~~(20/hs);
   var sx = ~~(20/ws);
-  var sw = ~~((cw-20)*ws);
-  var sh = ~~((ch-20)*hs);
+  var sw = ~~((cw-20)/ws);
+  var sh = ~~((ch-20)/hs);
   
   var r = 4;
   
