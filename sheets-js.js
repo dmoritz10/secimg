@@ -925,8 +925,6 @@ function updateImgPreview(canvas, img) {
 
 function editImage(frntback) {
 
-  console.log(frntback)
-
   if (frntback == 'front') {
 
     var image = document.getElementById("shtmImgFront")
@@ -949,11 +947,10 @@ function editImage(frntback) {
   canvas.width = image.width
   canvas.height = image.height
 
-  let ctx = canvas.getContext('2d')
-
   $(canvas).removeClass('d-none')
   $(image).addClass('d-none')
 
+  image.data.saveSrc = image.src
   setupCrop(canvas, image.src)
 
 }
@@ -990,16 +987,18 @@ function cropImage(frntback) {
 
   if (frntback == 'front') {
 
+    var image = document.getElementById("shtmImgFront")
     var canvas = document.getElementById("shtmCanvasFront")
   
   } else {
 
+    var image = document.getElementById("shtmImgBack")
     var canvas = document.getElementById("shtmCanvasBack")
   
   }
   
   var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
-
+  image.data.saveSrc = scratchCanvasSrc
   setupCrop(canvas, scratchCanvasSrc)
     
 }
@@ -1022,10 +1021,8 @@ function saveImage(frntback) {
     
     }
 
-    var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
-    console.log('scratchCanvasSrc', scratchCanvasSrc.length, scratchCanvasSrc)
     image.removeAttribute('src');
-    image.src = scratchCanvasSrc
+    image.src = image.dataset.saveSrc
   
     options.removeClass('d-none')
     edit.addClass('d-none')
