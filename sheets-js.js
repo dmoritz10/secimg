@@ -998,7 +998,7 @@ function cropImage(frntback) {
   }
   
   var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
-  image.data.saveSrc = scratchCanvasSrc
+  image.dataset['saveSrc'] = scratchCanvasSrc
   setupCrop(canvas, scratchCanvasSrc)
     
 }
