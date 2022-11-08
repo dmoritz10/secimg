@@ -957,7 +957,9 @@ function editImage(frntback) {
 
 function cancelEditImage(frntback) {
 
-  var fb = frntbackObj('front')
+  var fb = frntbackObj(frntback)
+
+  console.log('fb', fb)
 
   fb.options.removeClass('d-none')
   fb.edit.addClass('d-none')
@@ -1362,7 +1364,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
 }
 
 function frntbackObj(fb) {
-  
+
 
   if (fb == 'front') {
 
