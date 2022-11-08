@@ -1064,10 +1064,10 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
 
   var ws = canvas.width/img.naturalWidth
   var hs = canvas.height/img.naturalHeight
-  var sy = ~~(20/hs);
-  var sx = ~~(20/ws);
-  var sw = ~~((cw-200)/ws);
-  var sh = ~~((ch-200)/hs);
+  var sy = 20;
+  var sx = 20;
+  var sw =cw-40;
+  var sh = ch-40;
 
   console.log('canvas clientWidth', canvas.clientWidth)
   console.log('canvas width', canvas.width)
