@@ -997,11 +997,41 @@ function cropImage(frntback) {
     var canvas = document.getElementById("shtmCanvasBack")
   
   }
-
+  
   var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
 
   setupCrop(canvas, scratchCanvasSrc)
     
+}
+
+function saveImage(frntback) {
+
+    if (frntback == 'front') {
+  
+      var image = document.getElementById("shtmImgFront")
+      var canvas = document.getElementById("shtmCanvasFront")
+      var options = $("#shtmImgOptionsFront")
+      var edit = $("#shtmImgEditFront")
+    
+    } else {
+  
+      var image = document.getElementById("shtmImgBack")
+      var canvas = document.getElementById("shtmCanvasBack")
+      var options = $("#shtmImgOptionsBack")
+      var edit = $("#shtmImgEditBack")
+    
+    }
+
+    var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
+    image.src = scratchCanvasSrc
+  
+    options.removeClass('d-none')
+    edit.addClass('d-none')
+  
+    $(canvas).removeClass('d-none')
+    $(image).addClass('d-none')
+  
+
 }
 
 
