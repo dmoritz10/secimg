@@ -979,8 +979,8 @@ function cancelEditImage(frntback) {
   options.removeClass('d-none')
   edit.addClass('d-none')
 
-  $(canvas).removeClass('d-none')
-  $(image).addClass('d-none')
+  $(canvas).addClass('d-none')
+  $(image).removeClass('d-none')
 
 }
 
@@ -1028,8 +1028,8 @@ function saveImage(frntback) {
     options.removeClass('d-none')
     edit.addClass('d-none')
   
-    $(canvas).removeClass('d-none')
-    $(image).addClass('d-none')
+    $(canvas).addClass('d-none')
+    $(image).removeClass('d-none')
   
 
 }
