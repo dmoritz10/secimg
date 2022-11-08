@@ -223,23 +223,21 @@ and left sides of the text */
                 <div class="col text-center">
                   <img  id="shtmImgFront" name="shtmImgFront" width="100%" >
                   <canvas  id="shtmCanvasFront" class="d-none"></canvas>
-                  <canvas  id="c2" class="d-none"></canvas>
-
                 </div>
               </div>
 
               <div id="shtmImgOptionsFront" class="row my-3 mx-5 px-5">
 
                 <div class="col">    
-                  <div class="cursor-pointer text-center" onclick="editImage('front')" data-toggle="tooltip" title="Edit Image"><i class="material-icons">edit</i></div>
+                  <div id="editImageFront" class="cursor-pointer text-center" onclick="editImage('front')" data-toggle="tooltip" title="Edit Image"><i class="material-icons">edit</i></div>
                 </div>
 
                 <div class="col">    
-                  <div class="cursor-pointer text-center" onclick="shareImage('front')" data-toggle="tooltip" title="Share Image"><i class="material-icons">share</i></div>
+                  <div id="shareImageFront" class="cursor-pointer text-center" onclick="shareImage('front')" data-toggle="tooltip" title="Share Image"><i class="material-icons">share</i></div>
                 </div>
 
                 <div class="col">    
-                  <div class="cursor-pointer text-center" onclick="deleteImage('front')" data-toggle="tooltip" title="Delete Image"><i class="material-icons">delete</i></div>
+                  <div id="deleteImageFront" class="cursor-pointer text-center" onclick="deleteImage('front')" data-toggle="tooltip" title="Delete Image"><i class="material-icons">delete</i></div>
                 </div>
 
               </div>
@@ -249,26 +247,26 @@ and left sides of the text */
 
               <div id="shtmImgEditFront" class="row my-3 d-none">
                 <div class="col">
-                  <div class="cursor-pointer text-center" onclick="clockwise('front')"data-toggle="tooltip" title="Rotate Image Left"><i class="material-icons">rotate_right</i></div>
+                  <div id="clockwiseFront" class="cursor-pointer text-center" onclick="clockwise('front')" data-toggle="tooltip" title="Rotate Image Left"><i class="material-icons">rotate_right</i></div>
                 </div>
                 <div class="col">    
-                  <div class="cursor-pointer text-center" onclick="counterclockwise('front')"data-toggle="tooltip" title="Rotate Image Right"><i class="material-icons">rotate_left</i></div>
-                </div>
-
-                <div class="col">    
-                  <div class="cursor-pointer text-center" onclick="cropImage('front')"data-toggle="tooltip" title="Crop Image"><i class="material-icons">crop_original</i></div>
+                  <div id="counterclockwiseFront" class="cursor-pointer text-center" onclick="counterclockwise('front')" data-toggle="tooltip" title="Rotate Image Right"><i class="material-icons">rotate_left</i></div>
                 </div>
 
                 <div class="col">    
-                  <div class="cursor-pointer text-center" onclick="restoreImage('front')"data-toggle="tooltip" title="Restore Image"><i class="material-icons">restore_page</i></div>
+                  <div id="cropImageFront" class="cursor-pointer text-center" onclick="cropImage('front')" data-toggle="tooltip" title="Crop Image"><i class="material-icons">crop_original</i></div>
                 </div>
 
                 <div class="col">    
-                  <div class="cursor-pointer text-center" onclick="cancelEditImage('front')"data-toggle="tooltip" title="Cancel Edit"><i class="material-icons">cancel</i></div>
+                  <div id="restoreImageFront" class="cursor-pointer text-center" onclick="restoreImage('front')" data-toggle="tooltip" title="Restore Image"><i class="material-icons">restore_page</i></div>
+                </div>
+
+                <div class="col">    
+                  <div id="cancelEditImageFront" class="cursor-pointer text-center" onclick="cancelEditImage('front')" data-toggle="tooltip" title="Cancel Edit"><i class="material-icons">cancel</i></div>
                 </div>
 
                <div class="col">    
-                  <div class="cursor-pointer text-center" onclick="saveImage('front')"data-toggle="tooltip" title="Save Image"><i class="material-icons">save</i></div>
+                  <div id="saveImageFront" class="cursor-pointer text-center" onclick="saveImage('front')"data-toggle="tooltip" title="Save Image"><i class="material-icons">save</i></div>
                 </div>
 
               </div>

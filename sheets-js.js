@@ -957,27 +957,13 @@ function editImage(frntback) {
 
 function cancelEditImage(frntback) {
 
-  if (frntback == 'front') {
+  var fb = frntback('front')
 
-    var image = document.getElementById("shtmImgFront")
-    var canvas = document.getElementById("shtmCanvasFront")
-    var options = $("#shtmImgOptionsFront")
-    var edit = $("#shtmImgEditFront")
-  
-  } else {
+  fb.options.removeClass('d-none')
+  fb.edit.addClass('d-none')
 
-    var image = document.getElementById("shtmImgBack")
-    var canvas = document.getElementById("shtmCanvasBack")
-    var options = $("#shtmImgOptionsBack")
-    var edit = $("#shtmImgEditBack")
-  
-  }
-
-  options.removeClass('d-none')
-  edit.addClass('d-none')
-
-  $(canvas).addClass('d-none')
-  $(image).removeClass('d-none')
+  $(fb.canvas).addClass('d-none')
+  $(fb.image).removeClass('d-none')
 
 }
 
@@ -1373,4 +1359,64 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
   function Output(Imgo, output) {
     output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + 0 + "," + 0 + "," + imgo.w + "," + imgo.h + ")";
   }
+}
+
+function frntback(fb) {
+
+  if (fb == 'front') {
+
+    var image = document.getElementById("shtmImgFront")
+    var canvas = document.getElementById("shtmCanvasFront")
+
+    var options             = $("#shtmImgOptionsFront")
+      var editImage         = $("#editImageFront")
+      var shareImage        = $("#shareImageFront")
+      var deleteImage       = $("#deleteImageFront")
+    
+
+    var edit = $("#shtmImgEditFront")
+      var clockwise         = $("#clockwiseFront")
+      var counterclockwise  = $("#counterclockwiseFront")
+      var cropImage         = $("#cropImageFront")
+      var restoreImage      = $("#restoreImageFront")
+      var cancelEditImage   = $("#cancelEditImageFront")
+      var saveImage         = $("#saveImageFront")
+
+  } else {
+
+    var image = document.getElementById("shtmImgBack")
+    var canvas = document.getElementById("shtmCanvasBack")
+    var options = $("#shtmImgOptionsBack")
+    var edit = $("#shtmImgEditBack")
+  
+  }
+
+  return {
+
+    image:    image,
+    canvas:   canvas,
+
+    options:  {
+
+      row:    options,
+      edit:   editImage,
+      share:  shareImage,
+      delete: deleteImage
+
+    },
+
+    edit:     {
+      
+      row:              edit,
+      clockwise:        clockwise,
+      counterclockwise: counterclockwise,
+      cropImage:        cropImage,
+      restoreImage:     restoreImage,
+      cancelEditImage:  cancelEditImage,
+      saveImage:        saveImage
+
+    }
+
+  }
+
 }
