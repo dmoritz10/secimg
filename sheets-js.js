@@ -902,7 +902,8 @@ function editImage(frntback) {
   $(fb.image).addClass('d-none')
 
   fb.image.dataset['saveSrc'] = fb.image.src
-  setupCrop(canvas, fb.image.src)
+  
+  setupCrop(fb.canvas, fb.image.src)
 
 }
 
