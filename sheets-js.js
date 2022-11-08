@@ -1023,6 +1023,7 @@ function saveImage(frntback) {
     }
 
     var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
+    image.removeAttribute('src');
     image.src = scratchCanvasSrc
   
     options.removeClass('d-none')
