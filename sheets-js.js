@@ -950,7 +950,7 @@ function editImage(frntback) {
   $(canvas).removeClass('d-none')
   $(image).addClass('d-none')
 
-  image.data.saveSrc = image.src
+  image.dataset['saveSrc'] = image.src
   setupCrop(canvas, image.src)
 
 }
