@@ -961,8 +961,8 @@ function cancelEditImage(frntback) {
 
   console.log('fb', fb)
 
-  fb.options.removeClass('d-none')
-  fb.edit.addClass('d-none')
+  fb.options.row.removeClass('d-none')
+  fb.edit.row.addClass('d-none')
 
   $(fb.canvas).addClass('d-none')
   $(fb.image).removeClass('d-none')
