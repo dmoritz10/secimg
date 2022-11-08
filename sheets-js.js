@@ -886,80 +886,29 @@ function updateImgPreview(canvas, img) {
 
   img.src = canvas.toDataURL('image/jpeg', 1)
 
-  // if (canvas.width < div.clientWidth && canvas.height < div.clientHeight) {
-  //     div.style.backgroundSize = 'auto'
-  // }
-  // else {
-  //     div.style.backgroundSize = 'contain'
-  // }
-  // div.style.backgroundImage = 'url(' + canvas.toDataURL() + ')'
 }
-
-// function enableCropImage(frntback) {
-
-//   if (frntback == 'front') {
-//     var image = document.getElementById("shtmImgFront")
-//     var canvas = document.getElementById("shtmCanvasFront")
-//   } else {
-//     var image = document.getElementById("shtmImgBack")
-//     var canvas = document.getElementById("shtmCanvasBack")
-//   }
-
-//   console.log('image width', image.width, image.height)
-
-//   canvas.width = image.width
-//   canvas.height = image.height
-
-//   let ctx = canvas.getContext('2d')
-
-//   // ctx.drawImage(image, 0, 0, image.width, image.height)
-
-//   $(canvas).removeClass('d-none')
-//   $(image).addClass('d-none')
-//   $(document.getElementById("enableCropImage")).addClass('d-none')
-//   $(document.getElementById("cropImage")).removeClass('d-none')
-
-//   setupCrop(canvas, image)
-
-// }
 
 function editImage(frntback) {
 
-  if (frntback == 'front') {
+  var fb = frntbackObj(frntback)
 
-    var image = document.getElementById("shtmImgFront")
-    var canvas = document.getElementById("shtmCanvasFront")
-    var options = $("#shtmImgOptionsFront")
-    var edit = $("#shtmImgEditFront")
-  
-  } else {
+  fb.options.row.addClass('d-none')
+  fb.edit.row.removeClass('d-none')
 
-    var image = document.getElementById("shtmImgBack")
-    var canvas = document.getElementById("shtmCanvasBack")
-    var options = $("#shtmImgOptionsBack")
-    var edit = $("#shtmImgEditBack")
-  
-  }
+  fb.canvas.width = fb.image.width
+  fb.canvas.height = fb.image.height
 
-  options.addClass('d-none')
-  edit.removeClass('d-none')
+  $(fb.canvas).removeClass('d-none')
+  $(fb.image).addClass('d-none')
 
-  canvas.width = image.width
-  canvas.height = image.height
-
-  $(canvas).removeClass('d-none')
-  $(image).addClass('d-none')
-
-  image.dataset['saveSrc'] = image.src
-  setupCrop(canvas, image.src)
+  fb.image.dataset['saveSrc'] = fb.image.src
+  setupCrop(canvas, fb.image.src)
 
 }
 
 function cancelEditImage(frntback) {
 
   var fb = frntbackObj(frntback)
-
-  console.log('fb', fb)
 
   fb.options.row.removeClass('d-none')
   fb.edit.row.addClass('d-none')
@@ -972,51 +921,29 @@ function cancelEditImage(frntback) {
 
 function cropImage(frntback) {
 
+  var fb = frntbackObj(frntback)
 
-  if (frntback == 'front') {
-
-    var image = document.getElementById("shtmImgFront")
-    var canvas = document.getElementById("shtmCanvasFront")
-  
-  } else {
-
-    var image = document.getElementById("shtmImgBack")
-    var canvas = document.getElementById("shtmCanvasBack")
-  
-  }
-  
   var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
-  image.dataset['saveSrc'] = scratchCanvasSrc
-  setupCrop(canvas, scratchCanvasSrc)
+  fb.image.dataset['saveSrc'] = scratchCanvasSrc
+  setupCrop(fb.canvas, scratchCanvasSrc)
     
 }
 
 function saveImage(frntback) {
 
-    if (frntback == 'front') {
-  
-      var image = document.getElementById("shtmImgFront")
-      var canvas = document.getElementById("shtmCanvasFront")
-      var options = $("#shtmImgOptionsFront")
-      var edit = $("#shtmImgEditFront")
-    
-    } else {
-  
-      var image = document.getElementById("shtmImgBack")
-      var canvas = document.getElementById("shtmCanvasBack")
-      var options = $("#shtmImgOptionsBack")
-      var edit = $("#shtmImgEditBack")
-    
-    }
+  var fb = frntbackObj(frntback)
 
-    image.removeAttribute('src');
-    image.src = image.dataset.saveSrc
-  
-    options.removeClass('d-none')
-    edit.addClass('d-none')
-  
-    $(canvas).addClass('d-none')
-    $(image).removeClass('d-none')
+  $(fb.canvas).addClass('d-none')
+  $(fb.image).removeClass('d-none')
+
+  fb.image.removeAttribute('src');
+  fb.image.src = fb.image.dataset.saveSrc
+
+  fb.options.row.removeClass('d-none')
+  fb.edit.row.addClass('d-none')
+
+  $(fb.canvas).addClass('d-none')
+  $(fb.image).removeClass('d-none')
   
 
 }
