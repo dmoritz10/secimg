@@ -776,7 +776,7 @@ function enhancerClose() {
 
 }
 
-var maxSize = { width: 1980, height: 1980 }
+var maxSize = { width: 466, height: 466 }
 
 // var img 
 var canvas = document.getElementById("shtmCanvas")
@@ -1102,10 +1102,9 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w, imgo.h);
 
-    var w = canvas.width
-    var h = canvas.width*imgo.h/imgo.w
+    let newSize = determineSize(imgo.w, imgo.h, maxSize.width, maxSize.height, 0)
 
-    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, w, h);
+    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, newSize.width, newSize.height);
     Output(Imgo, output); 
   }
   
