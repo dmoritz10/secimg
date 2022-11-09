@@ -902,7 +902,7 @@ function editImage(frntback) {
   $(fb.image).addClass('d-none')
 
   fb.image.dataset['saveSrc'] = fb.image.src
-  
+
   setupCrop(fb.canvas, fb.image.src)
 
 }
@@ -926,6 +926,7 @@ function cropImage(frntback) {
 
   var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
   fb.image.dataset['saveSrc'] = scratchCanvasSrc
+
   setupCrop(fb.canvas, scratchCanvasSrc)
     
 }
@@ -950,7 +951,7 @@ function saveImage(frntback) {
 }
 
 
-function setupCrop(canvas, imgSrc) {
+async function setupCrop(canvas, imgSrc) {
 
   /*
 original image:
@@ -1005,18 +1006,19 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
 
   var img = new Image()
   img.src = imgSrc
+  await waitForImage(img); 
   
 
   var ws = canvas.width/img.naturalWidth
   var hs = canvas.height/img.naturalHeight
   var sy = 20;
   var sx = 20;
-  var sw =cw-40;
+  var sw = cw-40;
   var sh = ch-40;
 
   console.log('canvas clientWidth', canvas.clientWidth)
   console.log('canvas width', canvas.width)
-  console.log('inage naturalWidth', canvas.naturalWidth)
+  console.log('image naturalWidth', img.naturalWidth)
   console.log('image width', img.width)
   console.log('ws', canvas.width/img.naturalWidth)
   console.log('sy, sx, sw, sh', sy, sx, sw, sh)
@@ -1296,8 +1298,8 @@ function frntbackObj(fb) {
 
   if (fb == 'front') {
 
-    var image = document.getElementById("shtmImgFront")
-    var canvas = document.getElementById("shtmCanvasFront")
+    var image               = document.getElementById("shtmImgFront")
+    var canvas              = document.getElementById("shtmCanvasFront")
 
     var options             = $("#shtmImgOptionsFront")
       var editImage         = $("#editImageFront")
@@ -1305,7 +1307,7 @@ function frntbackObj(fb) {
       var deleteImage       = $("#deleteImageFront")
     
 
-    var edit = $("#shtmImgEditFront")
+    var edit                = $("#shtmImgEditFront")
       var clockwise         = $("#clockwiseFront")
       var counterclockwise  = $("#counterclockwiseFront")
       var cropImage         = $("#cropImageFront")
@@ -1351,3 +1353,15 @@ function frntbackObj(fb) {
   }
 
 }
+
+function waitForImage(imgElem) {
+  return new Promise((res, rej) => {
+      if (imgElem.complete) {
+          return res();
+      }
+      imgElem.onload = () => res();
+      imgElem.onerror = () => rej(imgElem);
+  });
+}
+
+
