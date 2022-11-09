@@ -1103,7 +1103,7 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w, imgo.h);
 
     var w = canvas.width
-    var h = canvas.height*imgo.h/imgo.w
+    var h = canvas.width*imgo.h/imgo.w
 
     ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, w, h);
     Output(Imgo, output); 
