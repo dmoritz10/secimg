@@ -1102,9 +1102,29 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
     // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w, imgo.h);
 
-    let newSize = determineSize(imgo.w, imgo.h, maxSize.width, maxSize.height, 0)
+    var MAX_WIDTH = 500;
+    var MAX_HEIGHT = 500;
+    var width = imgo.w;
+    var height = imgo.h;
 
-    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, newSize.width, newSize.height);
+// Add the resizing logic
+    if (width > height) {
+      if (width > MAX_WIDTH) {
+        height *= MAX_WIDTH / width;
+        width = MAX_WIDTH;
+      }
+    } else {
+      if (height > MAX_HEIGHT) {
+        width *= MAX_HEIGHT / height;
+        height = MAX_HEIGHT;
+      }
+    }
+
+//Specify the resizing result
+    canvas.width = width;
+    canvas.height = height;
+
+    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, width, height);
     Output(Imgo, output); 
   }
   
