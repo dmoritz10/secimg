@@ -1121,10 +1121,10 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     }
 
 //Specify the resizing result
-    canvas.width = width;
-    canvas.height = height;
+    // canvas.width = width;
+    // canvas.height = height;
 
-    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, width, height);
+    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w, imgo.h);
     Output(Imgo, output); 
   }
   
