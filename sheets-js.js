@@ -1124,8 +1124,11 @@ ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
     // canvas.width = width;
     // canvas.height = height;
 
+    console.log('ctx2b', ctx2.width, ctx2.height)
     ctx2.width = imgo.w
     ctx2.height = imgo.h
+
+    console.log('ctx2a', ctx2.width, ctx2.height)
     ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w, imgo.h);
     Output(Imgo, output); 
   }
