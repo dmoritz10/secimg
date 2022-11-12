@@ -906,6 +906,7 @@ function editImage(frntback) {
   console.log(fb.canvas.id)
 
   var canvas = new fabric.Canvas(fb.canvas.id);
+  canvas.Image.fromURL(fb.image.src)
 
 }
 
