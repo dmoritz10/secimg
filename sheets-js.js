@@ -909,8 +909,6 @@ function editImage(frntback) {
   var img = new fabric.Image(fb.image, {
     
   });
-  img.scaleToHeight(300);
-  img.scaleToWidth(300);
   canvas.add(img);
 }
 
