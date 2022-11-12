@@ -906,13 +906,16 @@ function editImage(frntback) {
   console.log(fb.canvas.id)
 
   var canvas = new fabric.Canvas(fb.canvas.id);
-  canvas.setWidth(fb.canvas.width)
-    canvas.setHeight(fb.canvas.height)
+  
   var img = new fabric.Image(fb.image, {
     
   });
 
   canvas.add(img);
+
+  canvas.setWidth(fb.canvas.width)
+    canvas.setHeight(fb.canvas.height)
+    
 }
 
 function cancelEditImage(frntback) {
