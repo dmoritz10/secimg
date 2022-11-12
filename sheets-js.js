@@ -907,9 +907,7 @@ function editImage(frntback) {
 
   var canvas = new fabric.Canvas(fb.canvas.id);
   var imgInstance = new fabric.Image(fb.image, {
-    left: 0,
-    top: 0,
-    scaleToWidth: fb.canvas.width
+    
   });
   canvas.add(imgInstance);
 }
