@@ -903,7 +903,9 @@ function editImage(frntback) {
 
   fb.image.dataset['saveSrc'] = fb.image.src
 
-  setupCrop(fb.canvas, fb.image.src)
+  console.log(fb.canvas.id)
+
+  var canvas = new fabric.Canvas(fb.canvas.id);
 
 }
 
