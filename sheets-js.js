@@ -912,7 +912,16 @@ function editImage(frntback) {
     height: 150
   });
 
-  canvas.add(img);
+  img.set({
+    scaleX: canvas.getWidth() / img.width,
+    scaleY: canvas.getHeight() / img.height,
+    objectCaching: false,
+    originX: 'left',
+    originY: 'top'
+ });
+ canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
+
+  // canvas.add(img);
 
   // canvas.setWidth(fb.canvas.width)
   //   canvas.setHeight(fb.canvas.height)
