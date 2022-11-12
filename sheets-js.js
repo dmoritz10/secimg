@@ -906,8 +906,13 @@ function editImage(frntback) {
   console.log(fb.canvas.id)
 
   var canvas = new fabric.Canvas(fb.canvas.id);
-  canvas.Image.fromURL(fb.image.src)
-
+  var imgInstance = new fabric.Image(fb.image, {
+    left: 100,
+    top: 100,
+    angle: 30,
+    opacity: 0.85
+  });
+  canvas.add(imgInstance);
 }
 
 function cancelEditImage(frntback) {
