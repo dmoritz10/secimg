@@ -1016,12 +1016,16 @@ async function setupCrop(c, imgSrc) {
       if(imgRatio <= canvasRatio){
         if(imgHeight> canvasHeight){
           oImg.scaleToHeight(canvasHeight);
+          console.log('scaleToHeight', canvasHeight)
         }
       }else{
         if(imgWidth> canvasWidth){
           oImg.scaleToWidth(canvasWidth);
+          console.log('scaleToWidth', canvasWidth)
         }
+        console.log('oImg', oImg.width, oImg.width)
     
+        console.log('hw', canvasHeight, canvasWidth)
       canvas.add(oImg);
       canvas.centerObject(oImg);
       canvas.setActiveObject(oImg);
