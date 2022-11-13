@@ -991,7 +991,7 @@ async function setupCrop(c, imgSrc) {
   createMaskForCrop(canvas);
   crop(canvas);
 
-  function initCnvas() {
+  function initCnvas(c) {
     return new fabric.Canvas(c.id, {
       
       strokeWidth: 5,
