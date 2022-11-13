@@ -903,35 +903,35 @@ function editImage(frntback) {
 
   fb.image.dataset['saveSrc'] = fb.image.src
 
-  console.log(fb.canvas.id)
+//   console.log(fb.canvas.id)
 
-  var canvas = new fabric.Canvas(fb.canvas.id);
+//   var canvas = new fabric.Canvas(fb.canvas.id);
   
-  var oImg = new fabric.Image(fb.image, {
+//   var oImg = new fabric.Image(fb.image, {
     
-  });
-  let imgWidth = oImg.width;
-  let imgHeight = oImg.height;
-  let canvasWidth = canvas.getWidth();
-  let canvasHeight = canvas.getHeight();
+//   });
+//   let imgWidth = oImg.width;
+//   let imgHeight = oImg.height;
+//   let canvasWidth = canvas.getWidth();
+//   let canvasHeight = canvas.getHeight();
 
-  let imgRatio = imgWidth / imgHeight;
-  let canvasRatio = canvasWidth / canvasHeight;
-  if(imgRatio <= canvasRatio){
-    if(imgHeight> canvasHeight){
-      oImg.scaleToHeight(canvasHeight);
-    }
-  }else{
-    if(imgWidth> canvasWidth){
-      oImg.scaleToWidth(canvasWidth);
-    }
+//   let imgRatio = imgWidth / imgHeight;
+//   let canvasRatio = canvasWidth / canvasHeight;
+//   if(imgRatio <= canvasRatio){
+//     if(imgHeight> canvasHeight){
+//       oImg.scaleToHeight(canvasHeight);
+//     }
+//   }else{
+//     if(imgWidth> canvasWidth){
+//       oImg.scaleToWidth(canvasWidth);
+//     }
 
     
-}
-console.log('img', imgWidth , imgHeight)
-    canvas.clear();
-    canvas.add(oImg);
-    canvas.centerObject(oImg);
+// }
+// console.log('img', imgWidth , imgHeight)
+//     canvas.clear();
+//     canvas.add(oImg);
+//     canvas.centerObject(oImg);
 
     setupCrop(fb.canvas, fb.image.src)
 }
