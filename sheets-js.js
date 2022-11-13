@@ -1071,7 +1071,7 @@ async function setupCrop(c, imgSrc) {
   function crop(canvas) {
     // Click the crop button croped the masked area
     document.querySelector("#cropImageFront").addEventListener("click", function (event) {
-      document.querySelector("button#cropImageFront").style.display = "none";
+      // document.querySelector("button#cropImageFront").style.display = "none";
 
       console.log('selectionRect',selectionRect)
 
