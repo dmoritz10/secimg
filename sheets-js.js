@@ -926,11 +926,12 @@ function editImage(frntback) {
       oImg.scaleToWidth(canvasWidth);
     }
 
-    console.log('img', imgWidth , imgHeight)
+    
+}
+console.log('img', imgWidth , imgHeight)
     canvas.clear();
     canvas.add(oImg);
     canvas.centerObject(oImg);
-}
 }
 
 function cancelEditImage(frntback) {
