@@ -1053,12 +1053,12 @@ async function setupCrop(frntback) {
 
   function createMaskForCrop(canvas) {
     //  After click start crop add the mask to canvas
-    document.querySelector("#counterclockwiseFront").addEventListener("click", function () {
+    document.querySelector("#setupCrop").addEventListener("click", function () {
       // Create mask layer and show to canvas
       addSelectionRect();
       canvas.setActiveObject(selectionRect);
       canvas.renderAll();
-      document.querySelector("#cropImageFront").style.display = "block";
+      // document.querySelector("#cropImageFront").style.display = "block";
     });
   }
 
