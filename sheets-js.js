@@ -903,35 +903,37 @@ function editImage(frntback) {
 
   fb.image.dataset['saveSrc'] = fb.image.src
 
-  console.log(fb.canvas.id)
+//   console.log(fb.canvas.id)
 
-  var canvas = new fabric.Canvas(fb.canvas.id);
+//   var canvas = new fabric.Canvas(fb.canvas.id);
   
-  var oImg = new fabric.Image(fb.image, {
+//   var oImg = new fabric.Image(fb.image, {
     
-  });
-  let imgWidth = oImg.width;
-  let imgHeight = oImg.height;
-  let canvasWidth = canvas.getWidth();
-  let canvasHeight = canvas.getHeight();
+//   });
+//   let imgWidth = oImg.width;
+//   let imgHeight = oImg.height;
+//   let canvasWidth = canvas.getWidth();
+//   let canvasHeight = canvas.getHeight();
 
-  let imgRatio = imgWidth / imgHeight;
-  let canvasRatio = canvasWidth / canvasHeight;
-  if(imgRatio <= canvasRatio){
-    if(imgHeight> canvasHeight){
-      oImg.scaleToHeight(canvasHeight);
-    }
-  }else{
-    if(imgWidth> canvasWidth){
-      oImg.scaleToWidth(canvasWidth);
-    }
+//   let imgRatio = imgWidth / imgHeight;
+//   let canvasRatio = canvasWidth / canvasHeight;
+//   if(imgRatio <= canvasRatio){
+//     if(imgHeight> canvasHeight){
+//       oImg.scaleToHeight(canvasHeight);
+//     }
+//   }else{
+//     if(imgWidth> canvasWidth){
+//       oImg.scaleToWidth(canvasWidth);
+//     }
 
     
-}
-console.log('img', imgWidth , imgHeight)
-    canvas.clear();
-    canvas.add(oImg);
-    canvas.centerObject(oImg);
+// }
+// console.log('img', imgWidth , imgHeight)
+//     canvas.clear();
+//     canvas.add(oImg);
+//     canvas.centerObject(oImg);
+
+    setupCrop(canvas, fb.image.src)
 }
 
 function cancelEditImage(frntback) {
@@ -985,24 +987,43 @@ async function setupCrop(c, imgSrc) {
   const canvas = initCnvas(c);
   canvas.preserveObjectStacking = true;
 
-  addImage(canvas);
+  addImage(canvas, imgSrc);
   createMaskForCrop(canvas);
   crop(canvas);
 
   function initCnvas() {
     return new fabric.Canvas(c.id, {
-      width: 1200,
-      height: 600,
+      
       strokeWidth: 5,
       stroke: "rgba(100,200,200,0.5)",
     });
   }
 
-  function addImage(canvas) {
+  function addImage(canvas, imgSrc) {
     const dogImg = new Image();
     dogImg.src = imgSrc;
     dogImg.onload = function () {
-      const img = new fabric.Image(dogImg);
+      var oImg = new fabric.Image(dogImg);
+
+      let imgWidth = oImg.width;
+      let imgHeight = oImg.height;
+      let canvasWidth = canvas.getWidth();
+      let canvasHeight = canvas.getHeight();
+    
+      let imgRatio = imgWidth / imgHeight;
+      let canvasRatio = canvasWidth / canvasHeight;
+      if(imgRatio <= canvasRatio){
+        if(imgHeight> canvasHeight){
+          oImg.scaleToHeight(canvasHeight);
+        }
+      }else{
+        if(imgWidth> canvasWidth){
+          oImg.scaleToWidth(canvasWidth);
+        }
+    
+
+
+
       canvas.add(img);
       canvas.centerObject(img);
       canvas.setActiveObject(img);
