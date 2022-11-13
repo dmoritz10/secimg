@@ -1055,7 +1055,12 @@ async function setupCrop(frntback) {
 
   function createMaskForCrop(canvas, fb) {
     //  After click start crop add the mask to canvas
-    fb.edit.setupCrop.addEventListener("click", function () {
+
+    console.log('fb createmask', fb)
+
+    var ele = fb.edit.setupCrop
+    console.log('ele', ele)
+    ele.addEventListener("click", function () {
       // Create mask layer and show to canvas
       addSelectionRect();
       canvas.setActiveObject(selectionRect);
