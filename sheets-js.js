@@ -978,374 +978,118 @@ function saveImage(frntback) {
 }
 
 
-async function setupCrop(canvas, imgSrc) {
+async function setupCrop(c, imgSrc) {
 
-  /*
-original image:
-----------------------------
-|     |                    |
-|     |sy                  |
-|_____|____________        |
-| sx  |           |        |
-|     |           |        |
-|     |           | sh     |
-|     |           |        |
-|     |___________|        |
-|          sw              |
-|                          |
-|                          |
-|__________________________|
+  let currentImage;
+  // init canvas
+  const canvas = initCnvas(c);
+  canvas.preserveObjectStacking = true;
 
-cropped image:
-----------------------------
-|     |                    |
-|     |y                   |
-|_____|_________           |
-|  x  |        |           |
-|     |        | h         |
-|     |________|           |
-|          w               |
-|                          |
-|                          |
-|__________________________|
+  addImage(canvas);
+  createMaskForCrop(canvas);
+  crop(canvas);
 
-ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
-
-*/
-
-
-  var proportion = 1; // you may change the proportion for the cropped image.
-
-  var c1 = canvas;
-  var c2 = document.getElementById("scratchCanvas")
-  var output = document.getElementById("output");
-
-  var ctx1 = c1.getContext("2d");
-  var ctx2 = c2.getContext("2d");
-  
-  var cw = c2.width = c1.width = canvas.clientWidth,
-      cx = cw / 2;
-  var ch = c2.height = c1.height = canvas.clientHeight,
-      cy = ch / 2;
-
-  
-  var isDragging1 = false;
-
-  var img = new Image()
-  img.src = imgSrc
-  await waitForImage(img); 
-  
-
-  var ws = canvas.width/img.naturalWidth
-  var hs = canvas.height/img.naturalHeight
-  var sy = 20;
-  var sx = 20;
-  var sw = cw-40;
-  var sh = ch-40;
-
-  console.log('canvas clientWidth', canvas.clientWidth)
-  console.log('canvas width', canvas.width)
-  console.log('image naturalWidth', img.naturalWidth)
-  console.log('image width', img.width)
-  console.log('ws', canvas.width/img.naturalWidth)
-  console.log('sy, sx, sw, sh', sy, sx, sw, sh)
-
-  console.log('setgrids', ws, hs, sw, sh)
-  
-  var r = 4;
-  
-  var mousePos1 = {
-    x: 0,
-    y: 0
-  };
-  
-  var o = { // cropping bars
-    "sx": {
-      color: "white",
-      x: 0,
-      y: sy,
-      w: cw,
-      h: r,
-      bool: false,
-    },
-    "sy": {
-      color: "yellow",
-      x: sx,
-      y: 0,
-      w: r,
-      h: ch,
-      bool: false,
-    },
-    "sw": {
-      color: "orange",
-      x: 0,
-      y: sy + sh,
-      w: cw,
-      h: r,
-      bool: false,
-    },
-    "sh": {
-      color: "red",
-      x: sx + sw,
-      y: 0,
-      w: r,
-      h: ch,
-      bool: false,
-    }
-  }
-  
-  function drawGuides(o) {
-    for (k in o) {
-      ctx1.fillStyle = o[k].color;
-      ctx1.beginPath();
-      ctx1.fillRect(o[k].x, o[k].y, o[k].w, o[k].h);
-    }
-  }
-  
-  function Imgo(o, d) { // an object defining the cropped image
-
-    var ws = canvas.width/img.naturalWidth
-    var hs = canvas.height/img.naturalHeight
-
-    var imgo = {
-      sx: ~~(o.sy.x/ws),
-      sy: ~~(o.sx.y/hs),
-      sw: ~~((o.sh.x - o.sy.x)/ws),
-      sh: ~~((o.sw.y - o.sx.y)/hs),
-      w:  ~~((o.sh.x - o.sy.x) * proportion),
-      h:  ~~((o.sw.y - o.sx.y) * proportion),
-      x:  d.x,
-      y:  d.y
-    }
-    return imgo;
-  }
-  
-  var d = {
-    x: ~~(cx - sw * proportion / 2),
-    y: ~~(cy - sh * proportion / 2)
-  }
-  
-  function drawCroppedImage(imgo) {
-    // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, imgo.x, imgo.y, imgo.w, imgo.h);
-    // ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w, imgo.h);
-
-    var MAX_WIDTH = 500;
-    var MAX_HEIGHT = 500;
-    var width = imgo.w;
-    var height = imgo.h;
-
-// Add the resizing logic
-    if (width > height) {
-      if (width > MAX_WIDTH) {
-        height *= MAX_WIDTH / width;
-        width = MAX_WIDTH;
-      }
-    } else {
-      if (height > MAX_HEIGHT) {
-        width *= MAX_HEIGHT / height;
-        height = MAX_HEIGHT;
-      }
-    }
-
-//Specify the resizing result
-    // canvas.width = width;
-    // canvas.height = height;
-
-    console.log('ctx2b', ctx2.width, ctx2.height)
-    ctx2.width = imgo.w
-    ctx2.height = imgo.h
-
-    console.log('ctx2a', ctx2.width, ctx2.height)
-    ctx2.drawImage(img, imgo.sx, imgo.sy, imgo.sw, imgo.sh, 0, 0, imgo.w, imgo.h);
-    Output(Imgo, output); 
-  }
-  
-  function cursorStyleC1() {
-    c1.style.cursor = "default";
-    for (k in o) { //o[k].bool = false;
-      ctx1.beginPath();
-      ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
-      if (ctx1.isPointInPath(mousePos1.x, mousePos1.y)) {
-        if (k == "sx" || k == "sw") {
-          c1.style.cursor = "row-resize";
-        } else {
-          c1.style.cursor = "col-resize";
-        }
-        break;
-      } else {
-        c1.style.cursor = "default";
-      }
-    }
+  function initCnvas() {
+    return new fabric.Canvas(c.id, {
+      width: 1200,
+      height: 600,
+      strokeWidth: 5,
+      stroke: "rgba(100,200,200,0.5)",
+    });
   }
 
-  ctx1.clearRect(0, 0, cw, ch);
-  ctx2.clearRect(0, 0, cw, ch);
-  drawGuides(o);
-  var imgo = Imgo(o, d); // an object defining the cropped image
-  c1.style.backgroundImage = 'url(' + img.src + ')';
-  c1.style.backgroundSize =  'cover'
-  drawCroppedImage(imgo);
-  
-  // mousedown ***************************
-  
-  c1.addEventListener('mousedown', function(evt) {
-    isDragging1 = true;
-  
-    mousePos1 = oMousePos(c1, evt);
-    for (k in o) {
-      ctx1.beginPath();
-      ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
-      if (ctx1.isPointInPath(mousePos1.x, mousePos1.y)) {
-        o[k].bool = true;
-        if (k == "sx" || k == "sw") {
-          o[k].y = mousePos1.y;
-        } else {
-          o[k].x = mousePos1.x;
-        }
-        break;
-      } else {
-        o[k].bool = false;
-      }
-    }
-  
-  }, false);
-  
-  c1.addEventListener('touchstart', function(evt) {
-    isDragging1 = true;
-  
-    mousePos1 = oTouchPos(c1, evt);
-
-    c1.addEventListener('touchmove', disableScroll, false);
-
-    for (k in o) {
-
-      ctx1.beginPath();
-      ctx1.rect(o[k].x - 10, o[k].y - 10, o[k].w + 20, o[k].h + 20);
-      if (ctx1.isPointInPath(mousePos1.x, mousePos1.y)) {
-        o[k].bool = true;
-        if (k == "sx" || k == "sw") {
-          o[k].y = mousePos1.y;
-        } else {
-          o[k].x = mousePos1.x;
-        }
-        break;
-      } else {
-        o[k].bool = false;
-      }
-    }
-  
-  }, false);
-
-  // mousemove ***************************
-  c1.addEventListener('mousemove', function(evt) {
-    mousePos1 = oMousePos(c1, evt); 
-    cursorStyleC1();
-  
-    if (isDragging1 == true) {
-      ctx1.clearRect(0, 0, cw, ch);
-  
-      for (k in o) {
-        if (o[k].bool) {
-          if (k == "sx" || k == "sw") {
-            o[k].y = mousePos1.y;
-          } else {
-            o[k].x = mousePos1.x;
-          }
-          break;
-        }
-      }
-  
-      drawGuides(o);
-      ctx2.clearRect(0, 0, cw, ch);
-      imgo = Imgo(o, d);
-      drawCroppedImage(imgo);
-      Output(Imgo, output);
-    }
-  }, false);
-
-  c1.addEventListener('touchmove', function(evt) {
-    mousePos1 = oTouchPos(c1, evt); 
-    cursorStyleC1();
-
-    if (isDragging1 == true) {
-      ctx1.clearRect(0, 0, cw, ch);;
-      for (k in o) {
-        if (o[k].bool) {
-          if (k == "sx" || k == "sw") {
-            o[k].y = mousePos1.y;
-          } else {
-            o[k].x = mousePos1.x;
-          }
-          break;
-        }
-      }
-  
-      drawGuides(o);
-      ctx2.clearRect(0, 0, cw, ch);
-      imgo = Imgo(o, d);
-      drawCroppedImage(imgo);
-    }
-  }, false);
-  
-  // mouseup ***************************
-  c1.addEventListener('mouseup', function(evt) {
-    isDragging1 = false;
-    for (k in o) {
-      o[k].bool = false;
-    }
-  }, false);
-  
-  c1.addEventListener('mouseout', function(evt) {
-    isDragging1 = false;
-    for (k in o) {
-      o[k].bool = false;
-    }
-  }, false);
-
-  c1.addEventListener('touchend', function(evt) {
-    isDragging1 = false;
-    c1.removeEventListener('touchmove', disableScroll, false);
-
-
-      for (k in o) {
-
-        o[k].bool = false;
-      }
-  }, false);
- 
-  c1.addEventListener('touchcancel', function(evt) {
-    isDragging1 = false;
-    for (k in o) {
-      o[k].bool = false;
-    }
-  }, false);
-
-  // mouseout ***************************
-
-  function oMousePos(canvas, evt) {
-    var rect = canvas.getBoundingClientRect();
-
-    return {
-      x: Math.round(evt.clientX - rect.left),
-      y: Math.round(evt.clientY - rect.top)
-    }
+  function addImage(canvas) {
+    const dogImg = new Image();
+    dogImg.src = imgSrc;
+    dogImg.onload = function () {
+      const img = new fabric.Image(dogImg);
+      canvas.add(img);
+      canvas.centerObject(img);
+      canvas.setActiveObject(img);
+      currentImage = img;
+      canvas.renderAll();
+    };
   }
 
-  function oTouchPos(canvas, evt) {
-
-    var touchLocation = evt.targetTouches[0];
-    
-    var rect = canvas.getBoundingClientRect();
-    return {
-      x: Math.round(touchLocation.pageX - rect.left),
-      y: Math.round(touchLocation.pageY - rect.top)
-    }
+  function createMaskForCrop(canvas) {
+    //  After click start crop add the mask to canvas
+    document.querySelector("#startCrop").addEventListener("click", function () {
+      // Create mask layer and show to canvas
+      addSelectionRect();
+      canvas.setActiveObject(selectionRect);
+      canvas.renderAll();
+      document.querySelector("#crop").style.display = "block";
+    });
   }
 
-  function disableScroll(e) {e.preventDefault();}
+  function addSelectionRect() {
+    selectionRect = new fabric.Rect({
+      fill: "rgba(0,0,0,0.3)",
+      originX: "left",
+      originY: "top",
+      stroke: "black",
+      opacity: 1,
+      width: currentImage.width,
+      height: currentImage.height,
+      hasRotatingPoint: false,
+      transparentCorners: false,
+      cornerColor: "white",
+      cornerStrokeColor: "black",
+      borderColor: "black",
+      cornerSize: 12,
+      padding: 0,
+      cornerStyle: "circle",
+      borderDashArray: [5, 5],
+      borderScaleFactor: 1.3,
+    });
 
-  function Output(Imgo, output) {
-    output.innerHTML = "ctx.drawImage(img," + imgo.sx + "," + imgo.sy + "," + imgo.sw + "," + imgo.sh + "," + 0 + "," + 0 + "," + imgo.w + "," + imgo.h + ")";
+    selectionRect.scaleToWidth(300);
+    canvas.centerObject(selectionRect);
+    canvas.add(selectionRect);
+  }
+
+  function crop(canvas) {
+    // Click the crop button croped the masked area
+    document.querySelector("#crop").addEventListener("click", function (event) {
+      document.querySelector("button#crop").style.display = "none";
+
+      // create mask rectabgle for crop
+      let rect = new fabric.Rect({
+        left: selectionRect.left,
+        top: selectionRect.top,
+        width: selectionRect.getScaledWidth(),
+        height: selectionRect.getScaledHeight(),
+        absolutePositioned: true,
+      });
+
+      // add to the current image clicpPath property
+      currentImage.clipPath = rect;
+
+      // remove the mask layer
+      canvas.remove(selectionRect);
+
+      // init new image instance
+      var cropped = new Image();
+
+      // set src value of canvas croped area as toDataURL
+      cropped.src = canvas.toDataURL({
+        left: rect.left,
+        top: rect.top,
+        width: rect.width,
+        height: rect.height,
+      });
+
+      // after onload clear the canvas and add cropped image to the canvas
+      cropped.onload = function () {
+        canvas.clear();
+        image = new fabric.Image(cropped);
+        image.left = rect.left;
+        image.top = rect.top;
+        image.setCoords();
+        canvas.add(image);
+        canvas.renderAll();
+      };
+    });
   }
 }
 
