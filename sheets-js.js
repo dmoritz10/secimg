@@ -980,12 +980,27 @@ function saveImage(frntback) {
 }
 
 
-async function setupCrop(c, imgSrc) {
+async function setupCrop(frntback) {
+
+  var fb = frntbackObj(frntback)
+
+  fb.options.row.addClass('d-none')
+  fb.edit.row.removeClass('d-none')
+
+  fb.canvas.width = fb.image.width
+  fb.canvas.height = fb.image.height
+
+  $(fb.canvas).removeClass('d-none')
+  $(fb.image).addClass('d-none')
+
+  fb.image.dataset['saveSrc'] = fb.image.src
+
+  var imgSrc = fb.image.src
 
   var selectionRect
   var currentImage;
   // init canvas
-  var canvas = initCnvas(c);
+  var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
 
   addImage(canvas, imgSrc);
@@ -1136,8 +1151,7 @@ function frntbackObj(fb) {
     
 
     var edit                = $("#shtmImgEditFront")
-      var clockwise         = $("#clockwiseFront")
-      var counterclockwise  = $("#counterclockwiseFront")
+      var setupCrop         = $("#setupCrop")
       var cropImage         = $("#cropImageFront")
       var restoreImage      = $("#restoreImageFront")
       var cancelEditImage   = $("#cancelEditImageFront")
@@ -1169,8 +1183,7 @@ function frntbackObj(fb) {
     edit:     {
       
       row:              edit,
-      clockwise:        clockwise,
-      counterclockwise: counterclockwise,
+      setupCrop:        setupCrop,
       cropImage:        cropImage,
       restoreImage:     restoreImage,
       cancelEditImage:  cancelEditImage,
