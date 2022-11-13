@@ -907,25 +907,28 @@ function editImage(frntback) {
 
   var canvas = new fabric.Canvas(fb.canvas.id);
   
-  var img = new fabric.Image(fb.image, {
+  var oImg = new fabric.Image(fb.image, {
     width: 250,
     height: 150
   });
+  let imgWidth = oImg.width;
+  let imgHeight = oImg.height;
+  let canvasWidth = canvas.getWidth();
+  let canvasHeight = canvas.getHeight();
 
-  img.set({
-    scaleX: canvas.getWidth() / img.width,
-    scaleY: canvas.getHeight() / img.height,
-    objectCaching: false,
-    originX: 'left',
-    originY: 'top'
- });
- canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
-
-  // canvas.add(img);
-
-  // canvas.setWidth(fb.canvas.width)
-  //   canvas.setHeight(fb.canvas.height)
-
+  let imgRatio = imgWidth / imgHeight;
+  let canvasRatio = canvasWidth / canvasHeight;
+  if(imgRatio <= canvasRatio){
+    if(imgHeight> canvasHeight){
+      oImg.scaleToHeight(canvasHeight);
+    }
+  }else{
+    if(imgWidth> canvasWidth){
+      oImg.scaleToWidth(canvasWidth);
+    }
+    canvas.clear();
+    canvas.add(oImg);
+    canvas.centerObject(oImg);
 }
 
 function cancelEditImage(frntback) {
