@@ -1008,8 +1008,8 @@ async function setupCrop(frntback) {
   canvas.preserveObjectStacking = true;
 
   addImage(canvas, imgSrc);
-  createMaskForCrop(canvas);
-  crop(canvas);
+  createMaskForCrop(canvas, fb);
+  crop(canvas, fb);
 
   function initCnvas(c) {
     return new fabric.Canvas(c.id, {
