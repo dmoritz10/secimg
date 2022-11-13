@@ -984,6 +984,8 @@ async function setupCrop(frntback) {
 
   var fb = frntbackObj(frntback)
 
+  console.log('fb', fb)
+
   fb.options.row.addClass('d-none')
   fb.edit.row.removeClass('d-none')
 
