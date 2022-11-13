@@ -888,53 +888,53 @@ function updateImgPreview(canvas, img) {
 
 }
 
-// function editImage(frntback) {
+function editImage(frntback) {
 
-//   var fb = frntbackObj(frntback)
+  var fb = frntbackObj(frntback)
 
-//   fb.options.row.addClass('d-none')
-//   fb.edit.row.removeClass('d-none')
+  fb.options.row.addClass('d-none')
+  fb.edit.row.removeClass('d-none')
 
-//   fb.canvas.width = fb.image.width
-//   fb.canvas.height = fb.image.height
+  fb.canvas.width = fb.image.width
+  fb.canvas.height = fb.image.height
 
-//   $(fb.canvas).removeClass('d-none')
-//   $(fb.image).addClass('d-none')
+  $(fb.canvas).removeClass('d-none')
+  $(fb.image).addClass('d-none')
 
-//   fb.image.dataset['saveSrc'] = fb.image.src
+  fb.image.dataset['saveSrc'] = fb.image.src
 
-// //   console.log(fb.canvas.id)
+//   console.log(fb.canvas.id)
 
-// //   var canvas = new fabric.Canvas(fb.canvas.id);
+//   var canvas = new fabric.Canvas(fb.canvas.id);
   
-// //   var oImg = new fabric.Image(fb.image, {
+//   var oImg = new fabric.Image(fb.image, {
     
-// //   });
-// //   let imgWidth = oImg.width;
-// //   let imgHeight = oImg.height;
-// //   let canvasWidth = canvas.getWidth();
-// //   let canvasHeight = canvas.getHeight();
+//   });
+//   let imgWidth = oImg.width;
+//   let imgHeight = oImg.height;
+//   let canvasWidth = canvas.getWidth();
+//   let canvasHeight = canvas.getHeight();
 
-// //   let imgRatio = imgWidth / imgHeight;
-// //   let canvasRatio = canvasWidth / canvasHeight;
-// //   if(imgRatio <= canvasRatio){
-// //     if(imgHeight> canvasHeight){
-// //       oImg.scaleToHeight(canvasHeight);
-// //     }
-// //   }else{
-// //     if(imgWidth> canvasWidth){
-// //       oImg.scaleToWidth(canvasWidth);
-// //     }
+//   let imgRatio = imgWidth / imgHeight;
+//   let canvasRatio = canvasWidth / canvasHeight;
+//   if(imgRatio <= canvasRatio){
+//     if(imgHeight> canvasHeight){
+//       oImg.scaleToHeight(canvasHeight);
+//     }
+//   }else{
+//     if(imgWidth> canvasWidth){
+//       oImg.scaleToWidth(canvasWidth);
+//     }
 
     
-// // }
-// // console.log('img', imgWidth , imgHeight)
-// //     canvas.clear();
-// //     canvas.add(oImg);
-// //     canvas.centerObject(oImg);
-
-//     setupCrop(frntback)
 // }
+// console.log('img', imgWidth , imgHeight)
+//     canvas.clear();
+//     canvas.add(oImg);
+//     canvas.centerObject(oImg);
+
+    // setupCrop(frntback)
+}
 
 function cancelEditImage(frntback) {
 
