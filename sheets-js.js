@@ -1053,7 +1053,7 @@ async function setupCrop(frntback) {
     }
   }
 
-  function createMaskForCrop(canvas) {
+  function createMaskForCrop(canvas, fb) {
     //  After click start crop add the mask to canvas
     fb.edit.setupCrop.addEventListener("click", function () {
       // Create mask layer and show to canvas
@@ -1090,7 +1090,7 @@ async function setupCrop(frntback) {
     canvas.add(selectionRect);
   }
 
-  function crop(canvas) {
+  function crop(canvas, fb) {
     // Click the crop button croped the masked area
     fb.edit.cropImage.addEventListener("click", function (event) {
       // document.querySelector("button#cropImageFront").style.display = "none";
@@ -1139,7 +1139,7 @@ async function setupCrop(frntback) {
     });
   }
 
-  function saveImage(canvas) {
+  function saveImage(canvas, fb) {
     //  After click start crop add the mask to canvas
     fb.edit.saveImage.addEventListener("click", function () {
       // Create mask layer and show to canvas
