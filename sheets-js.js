@@ -1069,8 +1069,8 @@ async function setupCrop(c, imgSrc) {
 
   function crop(canvas) {
     // Click the crop button croped the masked area
-    document.querySelector("#crop").addEventListener("click", function (event) {
-      document.querySelector("button#crop").style.display = "none";
+    document.querySelector("#cropImageFront").addEventListener("click", function (event) {
+      document.querySelector("button#cropImageFront").style.display = "none";
 
       // create mask rectabgle for crop
       let rect = new fabric.Rect({
