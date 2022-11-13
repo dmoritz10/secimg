@@ -933,7 +933,7 @@ function editImage(frntback) {
 //     canvas.add(oImg);
 //     canvas.centerObject(oImg);
 
-    setupCrop(canvas, fb.image.src)
+    setupCrop(fb.canvas, fb.image.src)
 }
 
 function cancelEditImage(frntback) {
