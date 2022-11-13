@@ -1095,6 +1095,7 @@ async function setupCrop(c, imgSrc) {
 
       // remove the mask layer
       canvas.remove(selectionRect);
+      canvas.remove(canvas.getActiveObject())
 
       // init new image instance
       var cropped = new Image();
