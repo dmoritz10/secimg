@@ -890,19 +890,19 @@ function updateImgPreview(canvas, img) {
 
 function editImage(frntback) {
 
-  var fb = frntbackObj(frntback)
+  // var fb = frntbackObj(frntback)
 
-  fb.options.row.addClass('d-none')
-  fb.edit.row.removeClass('d-none')
+  // fb.options.row.addClass('d-none')
+  // fb.edit.row.removeClass('d-none')
 
-  fb.canvas.width = fb.image.width
-  fb.canvas.height = fb.image.height
-  console.log('wxh1', fb.image.width, fb.image.height, fb.canvas.width, fb.canvas.height)
+  // fb.canvas.width = fb.image.width
+  // fb.canvas.height = fb.image.height
+  // console.log('wxh1', fb.image.width, fb.image.height, fb.canvas.width, fb.canvas.height)
 
-  $(fb.canvas).removeClass('d-none')
-  $(fb.image).addClass('d-none')
+  // $(fb.canvas).removeClass('d-none')
+  // $(fb.image).addClass('d-none')
 
-  fb.image.dataset['saveSrc'] = fb.image.src
+  // fb.image.dataset['saveSrc'] = fb.image.src
 
 //   console.log(fb.canvas.id)
 
