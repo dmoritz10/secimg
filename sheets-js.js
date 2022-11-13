@@ -984,7 +984,7 @@ async function setupCrop(c, imgSrc) {
 
   let currentImage;
   // init canvas
-  const canvas = initCnvas(c);
+  var canvas = initCnvas(c);
   canvas.preserveObjectStacking = true;
 
   addImage(canvas, imgSrc);
