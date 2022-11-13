@@ -1005,7 +1005,6 @@ async function setupCrop(c, imgSrc) {
     dogImg.src = imgSrc;
     dogImg.onload = function () {
       var oImg = new fabric.Image(dogImg);
-      console.log('oImg1', oImg.width, oImg.height)
 
       let imgWidth = oImg.width;
       let imgHeight = oImg.height;
@@ -1025,9 +1024,7 @@ async function setupCrop(c, imgSrc) {
           console.log('scaleToWidth', canvasWidth)
         }
       };
-        console.log('oImg2', oImg.width, oImg.height)
-    
-        console.log('canvas', canvasWidth, canvasHeight)
+        
       canvas.add(oImg);
       canvas.centerObject(oImg);
       canvas.setActiveObject(oImg);
