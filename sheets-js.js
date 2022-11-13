@@ -1093,10 +1093,7 @@ async function setupCrop(c, imgSrc) {
       // add to the current image clicpPath property
       currentImage.clipPath = rect;
 
-      // remove the mask layer
-      canvas.remove(selectionRect);
-      canvas.remove(canvas.getActiveObject())
-
+     
       // init new image instance
       var cropped = new Image();
 
@@ -1114,8 +1111,15 @@ async function setupCrop(c, imgSrc) {
       cropped.onload = function () {
 
         // console.log('croped', cropped)
+        alert('clear next')
 
         canvas.clear();
+         // remove the mask layer
+         alert('after clear')
+      canvas.remove(selectionRect);
+      alert('after remove')
+      // canvas.remove(canvas.getActiveObject())
+
         image = new fabric.Image(cropped);
 
         // console.log('image', image)
