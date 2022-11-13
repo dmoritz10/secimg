@@ -951,12 +951,12 @@ function cancelEditImage(frntback) {
 
 function cropImage(frntback) {
 
-  var fb = frntbackObj(frntback)
+  // var fb = frntbackObj(frntback)
 
-  var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
-  fb.image.dataset['saveSrc'] = scratchCanvasSrc
+  // var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
+  // fb.image.dataset['saveSrc'] = scratchCanvasSrc
 
-  setupCrop(fb.canvas, scratchCanvasSrc)
+  // setupCrop(fb.canvas, scratchCanvasSrc)
     
 }
 
