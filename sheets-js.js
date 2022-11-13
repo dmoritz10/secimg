@@ -1101,10 +1101,18 @@ async function setupCrop(c, imgSrc) {
         height: rect.height,
       });
 
+console.log('croped', cropped)
+
       // after onload clear the canvas and add cropped image to the canvas
       cropped.onload = function () {
+
+        console.log('croped', cropped)
+
         canvas.clear();
         image = new fabric.Image(cropped);
+
+        console.log('image', image)
+
         image.left = rect.left;
         image.top = rect.top;
         image.setCoords();
