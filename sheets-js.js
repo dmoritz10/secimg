@@ -993,8 +993,6 @@ async function setupCrop(frntback) {
   fb.canvas.width = fb.image.width
   fb.canvas.height = fb.image.height
 
-  console.log('wxh', fb.image.width, fb.image.height, fb.canvas.width, fb.canvas.height)
-
   $(fb.canvas).removeClass('d-none')
   $(fb.image).addClass('d-none')
 
@@ -1004,6 +1002,7 @@ async function setupCrop(frntback) {
 
   var selectionRect
   var currentImage;
+
   // init canvas
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
@@ -1014,17 +1013,17 @@ async function setupCrop(frntback) {
 
   function initCnvas(c) {
     return new fabric.Canvas(c.id, {
-      
       strokeWidth: 5,
       stroke: "rgba(100,200,200,0.5)",
     });
   }
 
   function addImage(canvas, imgSrc) {
-    const dogImg = new Image();
-    dogImg.src = imgSrc;
-    dogImg.onload = function () {
-      var oImg = new fabric.Image(dogImg);
+    const img = new Image();
+    img.src = imgSrc;
+    img.onload = function () {
+
+      var oImg = new fabric.Image(img);
 
       let imgWidth = oImg.width;
       let imgHeight = oImg.height;
@@ -1056,7 +1055,7 @@ async function setupCrop(frntback) {
 
   function createMaskForCrop(canvas) {
     //  After click start crop add the mask to canvas
-    document.querySelector("#setupCrop").addEventListener("click", function () {
+    fb.edit.setupCrop.addEventListener("click", function () {
       // Create mask layer and show to canvas
       addSelectionRect();
       canvas.setActiveObject(selectionRect);
@@ -1093,7 +1092,7 @@ async function setupCrop(frntback) {
 
   function crop(canvas) {
     // Click the crop button croped the masked area
-    document.querySelector("#cropImageFront").addEventListener("click", function (event) {
+    fb.edit.cropImage.addEventListener("click", function (event) {
       // document.querySelector("button#cropImageFront").style.display = "none";
       console.log('selectionRect',selectionRect)
 
@@ -1139,6 +1138,18 @@ async function setupCrop(frntback) {
       };
     });
   }
+
+  function saveImage(canvas) {
+    //  After click start crop add the mask to canvas
+    fb.edit.saveImage.addEventListener("click", function () {
+      // Create mask layer and show to canvas
+      addSelectionRect();
+      canvas.setActiveObject(selectionRect);
+      canvas.renderAll();
+      // document.querySelector("#cropImageFront").style.display = "block";
+    });
+  }
+
 }
 
 function frntbackObj(fb) {
