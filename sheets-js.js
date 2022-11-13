@@ -982,7 +982,8 @@ function saveImage(frntback) {
 
 async function setupCrop(c, imgSrc) {
 
-  let currentImage;
+  var selectionRect
+  var currentImage;
   // init canvas
   var canvas = initCnvas(c);
   canvas.preserveObjectStacking = true;
@@ -1071,6 +1072,8 @@ async function setupCrop(c, imgSrc) {
     // Click the crop button croped the masked area
     document.querySelector("#cropImageFront").addEventListener("click", function (event) {
       document.querySelector("button#cropImageFront").style.display = "none";
+
+      console.log('selectionRect',selectionRect)
 
       // create mask rectabgle for crop
       let rect = new fabric.Rect({
