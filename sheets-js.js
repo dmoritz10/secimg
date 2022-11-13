@@ -925,6 +925,8 @@ function editImage(frntback) {
     if(imgWidth> canvasWidth){
       oImg.scaleToWidth(canvasWidth);
     }
+
+    console.log('img', imgWidth , imgHeight)
     canvas.clear();
     canvas.add(oImg);
     canvas.centerObject(oImg);
