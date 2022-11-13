@@ -1078,7 +1078,7 @@ async function setupCrop(c, imgSrc) {
     // Click the crop button croped the masked area
     document.querySelector("#cropImageFront").addEventListener("click", function (event) {
       // document.querySelector("button#cropImageFront").style.display = "none";
-alert('in crop')
+      alert('in crop')
       console.log('selectionRect',selectionRect)
 
       // create mask rectabgle for crop
@@ -1105,8 +1105,8 @@ alert('in crop')
         height: rect.height,
       });
 
-// console.log('croped', cropped)
-alert('before onload')
+      // console.log('croped', cropped)
+      alert('before onload')
       // after onload clear the canvas and add cropped image to the canvas
       cropped.onload = function () {
 
@@ -1130,7 +1130,9 @@ alert('before onload')
         canvas.add(image);
         canvas.renderAll();
       };
+      alert ('after onload')
     });
+    alert ('after click event')
   }
 }
 
