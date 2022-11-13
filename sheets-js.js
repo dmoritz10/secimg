@@ -1078,7 +1078,6 @@ async function setupCrop(c, imgSrc) {
     // Click the crop button croped the masked area
     document.querySelector("#cropImageFront").addEventListener("click", function (event) {
       // document.querySelector("button#cropImageFront").style.display = "none";
-      alert('in crop')
       console.log('selectionRect',selectionRect)
 
       // create mask rectabgle for crop
@@ -1093,7 +1092,10 @@ async function setupCrop(c, imgSrc) {
       // add to the current image clicpPath property
       currentImage.clipPath = rect;
 
-     alert('after clippath')
+         // remove the mask layer
+         canvas.remove(selectionRect);
+
+
       // init new image instance
       var cropped = new Image();
 
@@ -1105,24 +1107,12 @@ async function setupCrop(c, imgSrc) {
         height: rect.height,
       });
 
-      // console.log('croped', cropped)
-      alert('before onload')
       // after onload clear the canvas and add cropped image to the canvas
       cropped.onload = function () {
 
-        // console.log('croped', cropped)
-        alert('clear next')
-
         canvas.clear();
-         // remove the mask layer
-         alert('after clear')
-      canvas.remove(selectionRect);
-      alert('after remove')
-      // canvas.remove(canvas.getActiveObject())
 
         image = new fabric.Image(cropped);
-
-        // console.log('image', image)
 
         image.left = rect.left;
         image.top = rect.top;
@@ -1130,9 +1120,7 @@ async function setupCrop(c, imgSrc) {
         canvas.add(image);
         canvas.renderAll();
       };
-      alert ('after onload')
     });
-    alert ('after click event')
   }
 }
 
