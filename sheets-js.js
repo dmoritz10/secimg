@@ -1078,7 +1078,7 @@ async function setupCrop(c, imgSrc) {
     // Click the crop button croped the masked area
     document.querySelector("#cropImageFront").addEventListener("click", function (event) {
       // document.querySelector("button#cropImageFront").style.display = "none";
-
+alert('in crop')
       console.log('selectionRect',selectionRect)
 
       // create mask rectabgle for crop
@@ -1093,7 +1093,7 @@ async function setupCrop(c, imgSrc) {
       // add to the current image clicpPath property
       currentImage.clipPath = rect;
 
-     
+     alert('after clippath')
       // init new image instance
       var cropped = new Image();
 
@@ -1106,7 +1106,7 @@ async function setupCrop(c, imgSrc) {
       });
 
 // console.log('croped', cropped)
-
+alert('before onload')
       // after onload clear the canvas and add cropped image to the canvas
       cropped.onload = function () {
 
