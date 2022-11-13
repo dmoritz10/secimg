@@ -1160,25 +1160,25 @@ function frntbackObj(fb) {
     var image               = document.getElementById("shtmImgFront")
     var canvas              = document.getElementById("shtmCanvasFront")
 
-    var options             = $("#shtmImgOptionsFront")
-      var editImage         = $("#editImageFront")
-      var shareImage        = $("#shareImageFront")
-      var deleteImage       = $("#deleteImageFront")
+    var options             = $("#shtmImgOptionsFront")[0]
+      var editImage         = $("#editImageFront")[0]
+      var shareImage        = $("#shareImageFront")[0]
+      var deleteImage       = $("#deleteImageFront")[0]
     
 
-    var edit                = $("#shtmImgEditFront")
-      var setupCrop         = $("#setupCrop")
-      var cropImage         = $("#cropImageFront")
-      var restoreImage      = $("#restoreImageFront")
-      var cancelEditImage   = $("#cancelEditImageFront")
-      var saveImage         = $("#saveImageFront")
+    var edit                = $("#shtmImgEditFront")[0]
+      var setupCrop         = $("#setupCrop")[0]
+      var cropImage         = $("#cropImageFront")[0]
+      var restoreImage      = $("#restoreImageFront")[0]
+      var cancelEditImage   = $("#cancelEditImageFront")[0]
+      var saveImage         = $("#saveImageFront")[0]
 
   } else {
 
     var image = document.getElementById("shtmImgBack")
     var canvas = document.getElementById("shtmCanvasBack")
-    var options = $("#shtmImgOptionsBack")
-    var edit = $("#shtmImgEditBack")
+    var options = $("#shtmImgOptionsBack")[0]
+    var edit = $("#shtmImgEditBack")[0]
   
   }
 
