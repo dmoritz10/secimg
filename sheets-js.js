@@ -1172,7 +1172,7 @@ function frntbackObj(fb) {
     
 
     var edit                = document.getElementById("shtmImgEditFront")
-      var setupCrop         = document.getElementById("setupCrop")
+      var setupCrop         = document.getElementById("setupCropFront")
       var cropImage         = document.getElementById("cropImageFront")
       var restoreImage      = document.getElementById("restoreImageFront")
       var cancelEditImage   = document.getElementById("cancelEditImageFront")
