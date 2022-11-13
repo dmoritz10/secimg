@@ -908,8 +908,7 @@ function editImage(frntback) {
   var canvas = new fabric.Canvas(fb.canvas.id);
   
   var oImg = new fabric.Image(fb.image, {
-    width: 250,
-    height: 150
+    
   });
   let imgWidth = oImg.width;
   let imgHeight = oImg.height;
@@ -929,6 +928,7 @@ function editImage(frntback) {
     canvas.clear();
     canvas.add(oImg);
     canvas.centerObject(oImg);
+}
 }
 
 function cancelEditImage(frntback) {
