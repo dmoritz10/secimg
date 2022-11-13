@@ -956,7 +956,7 @@ function cropImage(frntback) {
   // var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
   // fb.image.dataset['saveSrc'] = scratchCanvasSrc
 
-  // setupCrop(fb.canvas, scratchCanvasSrc)
+  setupCrop(frntback)
     
 }
 
