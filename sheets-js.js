@@ -1055,7 +1055,7 @@ async function setupCrop(frntback) {
 
   function createMaskForCrop(canvas) {
     //  After click start crop add the mask to canvas
-    fb.edit.setupCrop.addEventListener("click", function () {
+    fb.edit.setupCrop[0].addEventListener("click", function () {
       // Create mask layer and show to canvas
       addSelectionRect();
       canvas.setActiveObject(selectionRect);
@@ -1092,7 +1092,7 @@ async function setupCrop(frntback) {
 
   function crop(canvas) {
     // Click the crop button croped the masked area
-    fb.edit.cropImage.addEventListener("click", function (event) {
+    fb.edit.cropImage[0].addEventListener("click", function (event) {
       // document.querySelector("button#cropImageFront").style.display = "none";
       console.log('selectionRect',selectionRect)
 
@@ -1141,7 +1141,7 @@ async function setupCrop(frntback) {
 
   function saveImage(canvas) {
     //  After click start crop add the mask to canvas
-    fb.edit.saveImage.addEventListener("click", function () {
+    fb.edit.saveImage[0].addEventListener("click", function () {
       // Create mask layer and show to canvas
       addSelectionRect();
       canvas.setActiveObject(selectionRect);
@@ -1160,25 +1160,25 @@ function frntbackObj(fb) {
     var image               = document.getElementById("shtmImgFront")
     var canvas              = document.getElementById("shtmCanvasFront")
 
-    var options             = $("#shtmImgOptionsFront")[0]
-      var editImage         = $("#editImageFront")[0]
-      var shareImage        = $("#shareImageFront")[0]
-      var deleteImage       = $("#deleteImageFront")[0]
+    var options             = $("#shtmImgOptionsFront")
+      var editImage         = $("#editImageFront")
+      var shareImage        = $("#shareImageFront")
+      var deleteImage       = $("#deleteImageFront")
     
 
-    var edit                = $("#shtmImgEditFront")[0]
-      var setupCrop         = $("#setupCrop")[0]
-      var cropImage         = $("#cropImageFront")[0]
-      var restoreImage      = $("#restoreImageFront")[0]
-      var cancelEditImage   = $("#cancelEditImageFront")[0]
-      var saveImage         = $("#saveImageFront")[0]
+    var edit                = $("#shtmImgEditFront")
+      var setupCrop         = $("#setupCrop")
+      var cropImage         = $("#cropImageFront")
+      var restoreImage      = $("#restoreImageFront")
+      var cancelEditImage   = $("#cancelEditImageFront")
+      var saveImage         = $("#saveImageFront")
 
   } else {
 
     var image = document.getElementById("shtmImgBack")
     var canvas = document.getElementById("shtmCanvasBack")
-    var options = $("#shtmImgOptionsBack")[0]
-    var edit = $("#shtmImgEditBack")[0]
+    var options = $("#shtmImgOptionsBack")
+    var edit = $("#shtmImgEditBack")
   
   }
 
