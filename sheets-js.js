@@ -1010,6 +1010,7 @@ async function setupCrop(frntback) {
   addImage(canvas, imgSrc);
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
+  saveImage(canvas, fb)
 
   function initCnvas(c) {
     return new fabric.Canvas(c.id, {
@@ -1147,14 +1148,15 @@ async function setupCrop(frntback) {
   function saveImage(canvas, fb) {
     //  After click start crop add the mask to canvas
     fb.edit.saveImage.addEventListener("click", function () {
-      $(fb.canvas).addClass('d-none')
-      $(fb.image).removeClass('d-none')
-    
+      
       fb.image.removeAttribute('src');
       fb.image.src = canvas.toDataURL('image/jpeg', 1)
     
-      fb.options.row.removeClass('d-none')
-      fb.edit.row.addClass('d-none')
+      $(fb.canvas).addClass('d-none')
+      $(fb.image).removeClass('d-none')
+    
+      $(fb.options.row).removeClass('d-none')
+      $(fb.edit.row).addClass('d-none')
     
       $(fb.canvas).addClass('d-none')
       $(fb.image).removeClass('d-none')
