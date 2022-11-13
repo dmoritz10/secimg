@@ -992,6 +992,8 @@ async function setupCrop(frntback) {
   fb.canvas.width = fb.image.width
   fb.canvas.height = fb.image.height
 
+  console.log('wxh', fb.image.width, fb.image.height, fb.canvas.width, fb.canvas.height)
+
   $(fb.canvas).removeClass('d-none')
   $(fb.image).addClass('d-none')
 
