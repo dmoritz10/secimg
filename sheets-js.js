@@ -1021,10 +1021,10 @@ async function setupCrop(c, imgSrc) {
           oImg.scaleToWidth(canvasWidth);
         }
     
-      canvas.add(img);
-      canvas.centerObject(img);
-      canvas.setActiveObject(img);
-      currentImage = img;
+      canvas.add(oImg);
+      canvas.centerObject(oImg);
+      canvas.setActiveObject(oImg);
+      currentImage = oImg;
       canvas.renderAll();
       };
     }
