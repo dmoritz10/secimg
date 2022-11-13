@@ -969,7 +969,7 @@ function saveImage(frntback) {
   $(fb.image).removeClass('d-none')
 
   fb.image.removeAttribute('src');
-  fb.image.src = fb.image.dataset.saveSrc
+  fb.image.src = canvas.toDataURL('image/jpeg', 1)
 
   fb.options.row.removeClass('d-none')
   fb.edit.row.addClass('d-none')
@@ -1147,11 +1147,18 @@ async function setupCrop(frntback) {
   function saveImage(canvas, fb) {
     //  After click start crop add the mask to canvas
     fb.edit.saveImage.addEventListener("click", function () {
-      // Create mask layer and show to canvas
-      addSelectionRect();
-      canvas.setActiveObject(selectionRect);
-      canvas.renderAll();
-      // document.querySelector("#cropImageFront").style.display = "block";
+      $(fb.canvas).addClass('d-none')
+      $(fb.image).removeClass('d-none')
+    
+      fb.image.removeAttribute('src');
+      fb.image.src = canvas.toDataURL('image/jpeg', 1)
+    
+      fb.options.row.removeClass('d-none')
+      fb.edit.row.addClass('d-none')
+    
+      $(fb.canvas).addClass('d-none')
+      $(fb.image).removeClass('d-none')
+      
     });
   }
 
