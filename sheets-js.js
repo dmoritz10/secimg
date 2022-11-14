@@ -1036,12 +1036,10 @@ async function setupCrop(frntback) {
       if(imgRatio <= canvasRatio){
         if(imgHeight> canvasHeight){
           oImg.scaleToHeight(canvasHeight);
-          console.log('scaleToHeight', canvasHeight)
         }
       }else{
         if(imgWidth> canvasWidth){
           oImg.scaleToWidth(canvasWidth);
-          console.log('scaleToWidth', canvasWidth)
         }
       };
         
@@ -1057,10 +1055,7 @@ async function setupCrop(frntback) {
   function createMaskForCrop(canvas, fb) {
     //  After click start crop add the mask to canvas
 
-    console.log('fb createmask', fb)
-
     var ele = fb.edit.setupCrop
-    console.log('ele', ele)
     ele.addEventListener("click", function () {
       // Create mask layer and show to canvas
       addSelectionRect();
@@ -1100,7 +1095,6 @@ async function setupCrop(frntback) {
     // Click the crop button croped the masked area
     fb.edit.cropImage.addEventListener("click", function (event) {
       // document.querySelector("button#cropImageFront").style.display = "none";
-      console.log('selectionRect',selectionRect)
 
       // create mask rectabgle for crop
       let rect = new fabric.Rect({
@@ -1114,9 +1108,8 @@ async function setupCrop(frntback) {
       // add to the current image clicpPath property
       currentImage.clipPath = rect;
 
-         // remove the mask layer
-         canvas.remove(selectionRect);
-
+      // remove the mask layer
+      canvas.remove(selectionRect);
 
       // init new image instance
       var cropped = new Image();
@@ -1139,6 +1132,9 @@ async function setupCrop(frntback) {
         image.left = rect.left;
         image.top = rect.top;
         image.setCoords();
+
+        canvas.width = image.width
+        canvas.height = image.height
         canvas.add(image);
         canvas.renderAll();
       };
