@@ -1122,6 +1122,8 @@ async function setupCrop(frntback) {
         height: rect.height,
       });
 
+      console.log('rect', rect.left, rect.top, rect.width, rect.height )
+
       // after onload clear the canvas and add cropped image to the canvas
       cropped.onload = function () {
 
@@ -1131,7 +1133,9 @@ async function setupCrop(frntback) {
 
         image.left = rect.left;
         image.top = rect.top;
+        console.log('image1', image.left, image.top, image.width, image.height )
         image.setCoords();
+        console.log('image2', image.left, image.top, image.width, image.height )
 
         canvas.width = image.width
         canvas.height = image.height
