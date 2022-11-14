@@ -1137,9 +1137,10 @@ async function setupCrop(frntback) {
         image.setCoords();
         console.log('image2', image.left, image.top, image.width, image.height )
 
+        
+        canvas.add(image);
         canvas.width = image.width
         canvas.height = image.height
-        canvas.add(image);
         canvas.renderAll();
       };
     });
