@@ -1081,6 +1081,14 @@ async function editImage(frntback) {
 
         console.log('ele', ele)
         console.log('eleh', ele.height)
+        console.log('elehe', ele._element)
+        console.log('elehe', ele._element.img)
+        console.log('elehe', ele._element.img.canvas-img)
+
+        _element
+        : 
+        img.canvas-img
+
       })
 
       console.log('fimage', canvas.getObjects())
