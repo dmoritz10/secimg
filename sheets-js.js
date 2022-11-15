@@ -1162,18 +1162,24 @@ async function setupCrop(frntback) {
       $(fb.canvas).addClass('d-none')
       $(fb.image).removeClass('d-none')
 
-      canvas.clear();
+      clearCanvas( canvas, fb)
       
-      var canvasCol = $(fb.canvas).parent().parent()
-      $(fb.canvas).parent('.canvas-container').remove();
-      $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
-      $(fb.edit.row).find("*").off();
-
     });
 
   }
 
 }
+
+function clearCanvas( canvas, fb) {
+
+  canvas.clear();
+  var canvasCol = $(fb.canvas).parent().parent()
+  $(fb.canvas).parent('.canvas-container').remove();
+  $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
+  $(fb.edit.row).find("*").off();
+
+}
+
 
 function frntbackObj(fb) {
 
