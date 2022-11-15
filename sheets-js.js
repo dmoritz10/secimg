@@ -1056,7 +1056,7 @@ async function setupCrop(frntback) {
     //  After click start crop add the mask to canvas
 
     var ele = fb.edit.setupCrop
-    ele.addEventListener("click", function editListener () {
+    $(fb.edit.setupCrop).on("click.editListener", function  () {
       // Create mask layer and show to canvas
       addSelectionRect();
       canvas.setActiveObject(selectionRect);
@@ -1093,7 +1093,7 @@ async function setupCrop(frntback) {
 
   function crop(canvas, fb) {
     // Click the crop button croped the masked area
-    fb.edit.cropImage.addEventListener("click", function editListener (event) {
+    $(fb.edit.cropImage).on("click.editListener", function  () {
       // document.querySelector("button#cropImageFront").style.display = "none";
 
       // create mask rectabgle for crop
