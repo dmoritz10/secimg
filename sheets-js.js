@@ -1164,7 +1164,7 @@ async function setupCrop(frntback) {
 
       clearCanvas(canvas, fb)
 
-      $(fb.edit.row).find("*").off();
+      $(fb.edit.row).find("*").off('click');
       
     });
 
