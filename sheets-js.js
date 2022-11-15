@@ -1162,18 +1162,13 @@ async function setupCrop(frntback) {
       $(fb.canvas).addClass('d-none')
       $(fb.image).removeClass('d-none')
 
-      var objects = canvas.getObjects();
-      for(var i = 0; i < objects.length; i++){
-        //console.log(objects[i]);     
-        canvas.remove(objects[i]);
-      }canvas.renderAll();
-
-
       canvas.clear();
       
       console.log($('#shtmFront'))
       $(fb.canvas).parent('.canvas-container').remove();
-      // $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo($('#shtmFront'));
+      alert('1')
+      $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo($('#shtmFront'));
+      alert('2')
       console.log($('#shtmFront'))
 
     });
