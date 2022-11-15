@@ -888,100 +888,7 @@ function updateImgPreview(canvas, img) {
 
 }
 
-function editImage(frntback) {
-
-  // var fb = frntbackObj(frntback)
-
-  // fb.options.row.addClass('d-none')
-  // fb.edit.row.removeClass('d-none')
-
-  // fb.canvas.width = fb.image.width
-  // fb.canvas.height = fb.image.height
-  // console.log('wxh1', fb.image.width, fb.image.height, fb.canvas.width, fb.canvas.height)
-
-  // $(fb.canvas).removeClass('d-none')
-  // $(fb.image).addClass('d-none')
-
-  // fb.image.dataset['saveSrc'] = fb.image.src
-
-//   console.log(fb.canvas.id)
-
-//   var canvas = new fabric.Canvas(fb.canvas.id);
-  
-//   var oImg = new fabric.Image(fb.image, {
-    
-//   });
-//   let imgWidth = oImg.width;
-//   let imgHeight = oImg.height;
-//   let canvasWidth = canvas.getWidth();
-//   let canvasHeight = canvas.getHeight();
-
-//   let imgRatio = imgWidth / imgHeight;
-//   let canvasRatio = canvasWidth / canvasHeight;
-//   if(imgRatio <= canvasRatio){
-//     if(imgHeight> canvasHeight){
-//       oImg.scaleToHeight(canvasHeight);
-//     }
-//   }else{
-//     if(imgWidth> canvasWidth){
-//       oImg.scaleToWidth(canvasWidth);
-//     }
-
-    
-// }
-// console.log('img', imgWidth , imgHeight)
-//     canvas.clear();
-//     canvas.add(oImg);
-//     canvas.centerObject(oImg);
-
-    setupCrop(frntback)
-}
-
-function cancelEditImage(frntback) {
-
-  var fb = frntbackObj(frntback)
-
-  fb.options.row.removeClass('d-none')
-  fb.edit.row.addClass('d-none')
-
-  $(fb.canvas).addClass('d-none')
-  $(fb.image).removeClass('d-none')
-
-}
-
-
-function cropImage(frntback) {
-
-  // var fb = frntbackObj(frntback)
-
-  // var scratchCanvasSrc = document.getElementById("scratchCanvas").toDataURL('image/jpeg', 1);
-  // fb.image.dataset['saveSrc'] = scratchCanvasSrc
-
-  setupCrop(frntback)
-    
-}
-
-function saveImage(frntback) {
-
-  var fb = frntbackObj(frntback)
-
-  $(fb.canvas).addClass('d-none')
-  $(fb.image).removeClass('d-none')
-
-  fb.image.removeAttribute('src');
-  fb.image.src = canvas.toDataURL('image/jpeg', 1)
-
-  fb.options.row.removeClass('d-none')
-  fb.edit.row.addClass('d-none')
-
-  $(fb.canvas).addClass('d-none')
-  $(fb.image).removeClass('d-none')
-  
-
-}
-
-
-async function setupCrop(frntback) {
+async function editImage(frntback) {
 
   var fb = frntbackObj(frntback)
 
@@ -1159,9 +1066,6 @@ async function setupCrop(frntback) {
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
     
-      $(fb.canvas).addClass('d-none')
-      $(fb.image).removeClass('d-none')
-
       clearCanvas(canvas, fb)
       
     });
@@ -1178,9 +1082,6 @@ async function setupCrop(frntback) {
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
     
-      $(fb.canvas).addClass('d-none')
-      $(fb.image).removeClass('d-none')
-
       clearCanvas(canvas, fb)
       
     });
