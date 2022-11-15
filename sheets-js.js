@@ -1057,10 +1057,10 @@ async function editImage(frntback) {
         image.setCoords();
         console.log('image2', image.left, image.top, image.width, image.height )
 
-        
-        canvas.add(image);
         canvas.width = image.width
         canvas.height = image.height
+        canvas.add(image);
+       
         console.log('canvas', canvas.left, canvas.top, canvas.width, canvas.height )
         canvas.renderAll();
       };
