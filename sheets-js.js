@@ -1049,6 +1049,9 @@ async function editImage(frntback) {
 
         image = new fabric.Image(cropped);
 
+        canvas.setWidth = image.width
+        canvas.setHeight = image.height
+
         // image.left = rect.left;
         // image.top = rect.top;
         image.left = 0;
