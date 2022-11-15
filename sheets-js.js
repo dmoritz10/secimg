@@ -1059,7 +1059,8 @@ async function editImage(frntback) {
 
         canvas.width = image.width
         canvas.height = image.height
-        canvas.add(image);
+        // canvas.add(image);
+        canvas.add(image.set({ width: image.width, height: image.height, angle: 30 }))
        
         console.log('canvas', canvas.left, canvas.top, canvas.width, canvas.height )
         canvas.renderAll();
