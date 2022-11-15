@@ -1067,12 +1067,13 @@ async function editImage(frntback) {
       
       fb.image.removeAttribute('src');
       fb.image.src = canvas.toDataURL('image/jpeg', 1)
+
+      console.log('widths1', fb.image.width, fb.canvas.width)
+
+      fb.image.width = fb.canvas.width
+      fb.image.height = fb.canvas.height
+      console.log('widths2', fb.image.width, fb.canvas.width)
     
-      // $(fb.canvas).addClass('d-none')
-      // $(fb.image).removeClass('d-none')
-    
-      // $(fb.options.row).removeClass('d-none')
-      // $(fb.edit.row).addClass('d-none')
     
       clearCanvas(fb)
       
@@ -1084,12 +1085,6 @@ async function editImage(frntback) {
 
     $(fb.edit.cancelEditImage).on("click.editListener", function  () {
       
-      // $(fb.canvas).addClass('d-none')
-      // $(fb.image).removeClass('d-none')
-    
-      // $(fb.options.row).removeClass('d-none')
-      // $(fb.edit.row).addClass('d-none')
-    
       clearCanvas(fb)
       
     });
@@ -1100,11 +1095,6 @@ async function editImage(frntback) {
 
     $(fb.edit.restoreImage).on("click.editListener", function  () {
       
-      // $(fb.canvas).addClass('d-none')
-      // $(fb.image).removeClass('d-none')
-    
-      
-
       clearCanvas(fb)
 
       var canvas = initCnvas(fb.canvas);
