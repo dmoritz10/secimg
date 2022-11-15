@@ -1148,7 +1148,8 @@ async function setupCrop(frntback) {
 
   function saveImage(canvas, fb) {
     //  After click start crop add the mask to canvas
-    fb.edit.saveImage.addEventListener("click", function editListener () {
+    // fb.edit.saveImage.addEventListener("click", function editListener () {
+    $(fb.edit.saveImage).on("click.editListener", function  () {
       
       fb.image.removeAttribute('src');
       fb.image.src = canvas.toDataURL('image/jpeg', 1)
@@ -1156,15 +1157,15 @@ async function setupCrop(frntback) {
       $(fb.canvas).addClass('d-none')
       $(fb.image).removeClass('d-none')
 
-console.log('fb.edit.row',$(fb.edit.row).find("*") )
+// console.log('fb.edit.row',$(fb.edit.row).find("*") )
 
-$(fb.edit.row).find("*").each(function() {
-  console.log('this', this)
-  $(this).off("click");
-  this.removeEventListener("click", editListener); 
-});
+// $(fb.edit.row).find("*").each(function() {
+//   console.log('this', this)
+//   $(this).off("click");
+//   this.removeEventListener("click", editListener); 
+// });
 
-      // $(fb.edit.row).find("*").off( "click", "div", editListener );
+      $(fb.edit.row).find("*").off("click.editListener")
     
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
