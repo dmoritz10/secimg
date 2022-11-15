@@ -1077,6 +1077,12 @@ async function editImage(frntback) {
     //  After click start crop add the mask to canvas
     $(fb.edit.saveImage).on("click.editListener", function  () {
 
+      canvas.getObjects().foreach( ele =>{
+
+        console.log('ele', ele)
+        console.log('eleh', ele.height)
+      })
+
       console.log('fimage', canvas.getObjects())
       console.log('fimageh', canvas.getObjects()[0].height)
       
