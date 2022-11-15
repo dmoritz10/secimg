@@ -1047,7 +1047,7 @@ async function editImage(frntback) {
 
         canvas.clear();
 
-        image = new fabric.Image(cropped);
+        var image = new fabric.Image(cropped);
 
         canvas.setWidth = image.width
         canvas.setHeight = image.height
@@ -1063,9 +1063,10 @@ async function editImage(frntback) {
         
         // canvas.add(image);
         canvas.add(image.set({ width: image.width, height: image.height}))
-        canvas.setWidth = image.width
-        canvas.setHeight = image.height
-
+        canvas.setDimensions({
+          width:200,
+          height:300
+         });
         console.log('canvas', canvas.left, canvas.top, canvas.width, canvas.height )
         canvas.renderAll();
       };
