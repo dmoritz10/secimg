@@ -1011,6 +1011,8 @@ async function setupCrop(frntback) {
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
   saveImage(canvas, fb)
+  cancelImage(canvas, fb)
+  restoreImage(canvas, fb,  imgSrc)
 
   function initCnvas(c) {
     return new fabric.Canvas(c.id, {
@@ -1055,14 +1057,13 @@ async function setupCrop(frntback) {
   function createMaskForCrop(canvas, fb) {
     //  After click start crop add the mask to canvas
 
-    var ele = fb.edit.setupCrop
     $(fb.edit.setupCrop).on("click.editListener", function  () {
       // Create mask layer and show to canvas
       addSelectionRect();
       canvas.setActiveObject(selectionRect);
       canvas.renderAll();
-      // document.querySelector("#cropImageFront").style.display = "block";
     });
+
   }
 
   function addSelectionRect() {
@@ -1094,7 +1095,6 @@ async function setupCrop(frntback) {
   function crop(canvas, fb) {
     // Click the crop button croped the masked area
     $(fb.edit.cropImage).on("click.editListener", function  () {
-      // document.querySelector("button#cropImageFront").style.display = "none";
 
       // create mask rectabgle for crop
       let rect = new fabric.Rect({
@@ -1148,7 +1148,6 @@ async function setupCrop(frntback) {
 
   function saveImage(canvas, fb) {
     //  After click start crop add the mask to canvas
-    // fb.edit.saveImage.addEventListener("click", function editListener () {
     $(fb.edit.saveImage).on("click.editListener", function  () {
       
       fb.image.removeAttribute('src');
@@ -1156,16 +1155,44 @@ async function setupCrop(frntback) {
     
       $(fb.canvas).addClass('d-none')
       $(fb.image).removeClass('d-none')
+    
+      $(fb.options.row).removeClass('d-none')
+      $(fb.edit.row).addClass('d-none')
+    
+      $(fb.canvas).addClass('d-none')
+      $(fb.image).removeClass('d-none')
 
-// console.log('fb.edit.row',$(fb.edit.row).find("*") )
+      clearCanvas(canvas, fb)
+      
+    });
 
-// $(fb.edit.row).find("*").each(function() {
-//   console.log('this', this)
-//   $(this).off("click");
-//   this.removeEventListener("click", editListener); 
-// });
+  }
 
-      $(fb.edit.row).find("*").off("click.editListener")
+  function cancelImage(canvas, fb) {
+
+    $(fb.edit.cancelEditImage).on("click.editListener", function  () {
+      
+      $(fb.canvas).addClass('d-none')
+      $(fb.image).removeClass('d-none')
+    
+      $(fb.options.row).removeClass('d-none')
+      $(fb.edit.row).addClass('d-none')
+    
+      $(fb.canvas).addClass('d-none')
+      $(fb.image).removeClass('d-none')
+
+      clearCanvas(canvas, fb)
+      
+    });
+
+  }
+
+  function restoreImage(canvas, fb, imgSrc) {
+
+    $(fb.edit.restoreImage).on("click.editListener", function  () {
+      
+      // $(fb.canvas).addClass('d-none')
+      // $(fb.image).removeClass('d-none')
     
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
@@ -1175,6 +1202,10 @@ async function setupCrop(frntback) {
 
       clearCanvas(canvas, fb)
 
+      var canvas = initCnvas(fb.canvas);
+      canvas.preserveObjectStacking = true;
+
+      addImage(canvas, imgSrc);
       
     });
 
@@ -1188,8 +1219,7 @@ function clearCanvas(canvas, fb) {
   var canvasCol = $(fb.canvas).parent().parent()
   $(fb.canvas).parent('.canvas-container').remove();
   $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
-  $(fb.edit.row).find("*").off('click');
-
+  $(fb.edit.row).find("*").off("click.editListener")
 
 }
 
