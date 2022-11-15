@@ -1049,8 +1049,10 @@ async function editImage(frntback) {
 
         image = new fabric.Image(cropped);
 
-        image.left = rect.left;
-        image.top = rect.top;
+        // image.left = rect.left;
+        // image.top = rect.top;
+        image.left = 0;
+        image.top = 0;
         console.log('image1', image.left, image.top, image.width, image.height )
         image.setCoords();
         console.log('image2', image.left, image.top, image.width, image.height )
