@@ -1171,7 +1171,7 @@ async function setupCrop(frntback) {
 
       canvas.clear();
       
-      $(canvas).parent('.canvas-container').remove();
+      $(fb.canvas).parent('.canvas-container').remove();
       $('#shtmFront').add('<canvas id="shtmCanvasFront" class="d-none"></canvas>')
     });
 
