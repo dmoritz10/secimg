@@ -1042,6 +1042,9 @@ async function editImage(frntback) {
       // after onload clear the canvas and add cropped image to the canvas
       cropped.onload = function () {
 
+        console.log('cropped', cropped)
+        console.log('rect', rect)
+
         canvas.clear();
 
         image = new fabric.Image(cropped);
