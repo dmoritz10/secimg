@@ -1156,6 +1156,8 @@ async function setupCrop(frntback) {
       $(fb.canvas).addClass('d-none')
       $(fb.image).removeClass('d-none')
 
+console.log('fb.edit.row',$(fb.edit.row).find("*") )
+
       $(fb.edit.row).find("*").off('click');
     
       $(fb.options.row).removeClass('d-none')
