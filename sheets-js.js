@@ -892,6 +892,8 @@ async function editImage(frntback) {
 
   var fb = frntbackObj(frntback)
 
+  clearCanvas(fb)
+
   console.log('fb', fb)
 
   $(fb.options.row).addClass('d-none')
@@ -1066,7 +1068,7 @@ async function editImage(frntback) {
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
     
-      clearCanvas(canvas, fb)
+      clearCanvas(fb)
       
     });
 
@@ -1082,7 +1084,7 @@ async function editImage(frntback) {
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
     
-      clearCanvas(canvas, fb)
+      clearCanvas(fb)
       
     });
 
@@ -1101,7 +1103,7 @@ async function editImage(frntback) {
       $(fb.canvas).addClass('d-none')
       $(fb.image).removeClass('d-none')
 
-      clearCanvas(canvas, fb)
+      clearCanvas(fb)
 
       var canvas = initCnvas(fb.canvas);
       canvas.preserveObjectStacking = true;
@@ -1114,9 +1116,9 @@ async function editImage(frntback) {
 
 }
 
-function clearCanvas(canvas, fb) {
+function clearCanvas(fb) {
 
-  canvas.clear();
+  // canvas.clear();
   var canvasCol = $(fb.canvas).parent().parent()
   $(fb.canvas).parent('.canvas-container').remove();
   $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
