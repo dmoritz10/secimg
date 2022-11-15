@@ -1064,8 +1064,8 @@ async function editImage(frntback) {
         // canvas.add(image);
         canvas.add(image.set({ width: image.width, height: image.height}))
         canvas.setDimensions({
-          width:200,
-          height:300
+          width:image.width,
+          height:image.height
          });
         console.log('canvas', canvas.left, canvas.top, canvas.width, canvas.height )
         canvas.renderAll();
