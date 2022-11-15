@@ -1170,8 +1170,9 @@ async function setupCrop(frntback) {
 
 
       canvas.clear();
-      $(canvas).parent('.canvas-container').replaceWith('<canvas id="shtmCanvasFront" class="d-none"></canvas>');
-      
+      var parent = 
+      $(canvas).parent('.canvas-container').remove();
+      $('#shtmFront').add('<canvas id="shtmCanvasFront" class="d-none"></canvas>')
     });
 
   }
