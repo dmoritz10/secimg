@@ -225,6 +225,11 @@ async function editSheet(arrIdx) {
 
   $('#btnShtmDelete').removeClass('d-none')
 
+  var fb = frntbackObj('front')
+  clearCanvas(fb)
+  var fb = frntbackObj('back')
+  clearCanvas(fb)
+
   modal(false)
 
 }
@@ -999,6 +1004,7 @@ async function editImage(frntback) {
     selectionRect.scaleToWidth(300);
     canvas.centerObject(selectionRect);
     canvas.add(selectionRect);
+
   }
 
   function crop(canvas, fb) {
@@ -1062,11 +1068,11 @@ async function editImage(frntback) {
       fb.image.removeAttribute('src');
       fb.image.src = canvas.toDataURL('image/jpeg', 1)
     
-      $(fb.canvas).addClass('d-none')
-      $(fb.image).removeClass('d-none')
+      // $(fb.canvas).addClass('d-none')
+      // $(fb.image).removeClass('d-none')
     
-      $(fb.options.row).removeClass('d-none')
-      $(fb.edit.row).addClass('d-none')
+      // $(fb.options.row).removeClass('d-none')
+      // $(fb.edit.row).addClass('d-none')
     
       clearCanvas(fb)
       
@@ -1078,11 +1084,11 @@ async function editImage(frntback) {
 
     $(fb.edit.cancelEditImage).on("click.editListener", function  () {
       
-      $(fb.canvas).addClass('d-none')
-      $(fb.image).removeClass('d-none')
+      // $(fb.canvas).addClass('d-none')
+      // $(fb.image).removeClass('d-none')
     
-      $(fb.options.row).removeClass('d-none')
-      $(fb.edit.row).addClass('d-none')
+      // $(fb.options.row).removeClass('d-none')
+      // $(fb.edit.row).addClass('d-none')
     
       clearCanvas(fb)
       
@@ -1097,11 +1103,7 @@ async function editImage(frntback) {
       // $(fb.canvas).addClass('d-none')
       // $(fb.image).removeClass('d-none')
     
-      $(fb.options.row).removeClass('d-none')
-      $(fb.edit.row).addClass('d-none')
-    
-      $(fb.canvas).addClass('d-none')
-      $(fb.image).removeClass('d-none')
+      
 
       clearCanvas(fb)
 
@@ -1123,6 +1125,12 @@ function clearCanvas(fb) {
   $(fb.canvas).parent('.canvas-container').remove();
   $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
   $(fb.edit.row).find("*").off("click.editListener")
+
+  $(fb.options.row).removeClass('d-none')
+  $(fb.edit.row).addClass('d-none')
+
+  $(fb.canvas).addClass('d-none')
+  $(fb.image).removeClass('d-none')
 
 }
 
