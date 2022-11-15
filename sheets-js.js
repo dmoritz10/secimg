@@ -1155,6 +1155,8 @@ async function setupCrop(frntback) {
     
       $(fb.canvas).addClass('d-none')
       $(fb.image).removeClass('d-none')
+
+      $(fb.edit.row).find("*").off('click');
     
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
@@ -1164,7 +1166,6 @@ async function setupCrop(frntback) {
 
       clearCanvas(canvas, fb)
 
-      $(fb.edit.row).find("*").off('click');
       
     });
 
@@ -1178,6 +1179,7 @@ function clearCanvas(canvas, fb) {
   var canvasCol = $(fb.canvas).parent().parent()
   $(fb.canvas).parent('.canvas-container').remove();
   $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
+  $(fb.edit.row).find("*").off('click');
 
 
 }
