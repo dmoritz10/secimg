@@ -1158,7 +1158,12 @@ async function setupCrop(frntback) {
 
 console.log('fb.edit.row',$(fb.edit.row).find("*") )
 
-      $(fb.edit.row).find("*").off('click');
+$(fb.edit.row).find("*").each(function() {
+  console.log('this', this)
+  $(this).off("click");
+});
+
+      // $(fb.edit.row).find("*").off("click");
     
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
