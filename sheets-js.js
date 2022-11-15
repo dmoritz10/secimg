@@ -1059,6 +1059,7 @@ async function editImage(frntback) {
         canvas.add(image);
         canvas.width = image.width
         canvas.height = image.height
+        console.log('canvas', canvas.left, canvas.top, canvas.width, canvas.height )
         canvas.renderAll();
       };
     });
