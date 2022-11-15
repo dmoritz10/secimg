@@ -1069,10 +1069,12 @@ async function editImage(frntback) {
       fb.image.src = canvas.toDataURL('image/jpeg', 1)
 
       console.log('widths1', fb.image.width, fb.canvas.width)
+      console.log('heights1', fb.image.height, fb.height.width)
 
       fb.image.width = fb.canvas.width
       fb.image.height = fb.canvas.height
       console.log('widths2', fb.image.width, fb.canvas.width)
+      console.log('heights2', fb.image.height, fb.height.width)
     
     
       clearCanvas(fb)
