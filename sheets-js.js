@@ -1147,8 +1147,8 @@ async function editImage(frntback) {
       
       // clearCanvas(fb)
 
-      canvas = initCnvas(fb.canvas);
-      canvas.preserveObjectStacking = true;
+      // canvas = initCnvas(fb.canvas);
+      // canvas.preserveObjectStacking = true;
       addImage(canvas, imgSrc);
       
     });
