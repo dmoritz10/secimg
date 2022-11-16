@@ -1160,7 +1160,7 @@ async function editImage(frntback) {
 
 function clearCanvas(fb) {
 
-   canvas.trace();
+   console.trace();
   console.log('clearCanvas', $(fb.canvas).parent('.canvas-container').length)
   if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
     
