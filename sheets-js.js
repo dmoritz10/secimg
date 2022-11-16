@@ -440,6 +440,12 @@ async function btnAddSheetHtml() {
 
    $('#btnShtmDelete').addClass('d-none')
 
+   var fb = frntbackObj('front')
+   clearCanvas(fb)
+   var fb = frntbackObj('back')
+   clearCanvas(fb)
+ 
+
 }
 
 async function btnDeleteSheetHtml() {
@@ -1049,8 +1055,8 @@ async function editImage(frntback) {
 
         var image = new fabric.Image(cropped);
 
-        canvas.setWidth = image.width
-        canvas.setHeight = image.height
+        // canvas.setWidth = image.width
+        // canvas.setHeight = image.height
 
         // image.left = rect.left;
         // image.top = rect.top;
