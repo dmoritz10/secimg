@@ -790,7 +790,7 @@ function enhancerClose() {
 var maxSize = { width: 466, height: 466 }
 
 // var img 
-var canvas = document.getElementById("shtmCanvas")
+// var canvas = document.getElementById("shtmCanvas")
 
 function clockwise(frntback) { 
 
