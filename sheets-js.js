@@ -1145,7 +1145,7 @@ async function editImage(frntback) {
 
     $(fb.edit.restoreImage).on("click.editListener", function  () {
       
-      clearCanvas(fb)
+      // clearCanvas(fb)
 
       canvas = initCnvas(fb.canvas);
       canvas.preserveObjectStacking = true;
