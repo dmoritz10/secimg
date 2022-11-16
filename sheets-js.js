@@ -929,7 +929,7 @@ async function editImage(frntback) {
 
   addImage(canvas, imgSrc);
   createMaskForCrop(canvas, fb);
-  crop(canvas, fb);
+  await crop(canvas, fb);
   saveImage(canvas, fb)
   cancelImage(canvas, fb)
   restoreImage(canvas, fb,  imgSrc)
@@ -1016,9 +1016,9 @@ async function editImage(frntback) {
 
   }
 
-  function crop(canvas, fb) {
+  async function crop(canvas, fb) {
     // Click the crop button croped the masked area
-    $(fb.edit.cropImage).on("click.editListener", function  () {
+    $(fb.edit.cropImage).on("click.editListener", async function  () {
 
       // create mask rectabgle for crop
       let rect = new fabric.Rect({
@@ -1045,6 +1045,8 @@ async function editImage(frntback) {
         width: rect.width,
         height: rect.height,
       });
+
+      await waitForImage(cropped);
 
       console.log('rect', rect.left, rect.top, rect.width, rect.height )
 
@@ -1084,7 +1086,7 @@ async function editImage(frntback) {
 
   function saveImage(canvas, fb) {
     //  After click start crop add the mask to canvas
-    $(fb.edit.saveImage).on("click.editListener", function  () {
+    $(fb.edit.saveImage).on("click.editListener", async function  () {
 
       canvas.getObjects().forEach( ele =>{
 
@@ -1110,6 +1112,8 @@ async function editImage(frntback) {
        
       fb.image.removeAttribute('src');
       fb.image.src = canvas.toDataURL('image/jpeg', 1)
+
+      await waitForImage(fb.image)
 
       console.log('widths3', fb.image.width, fb.canvas.width)
       console.log('heights3', fb.image.height, fb.canvas.width)
@@ -1232,7 +1236,7 @@ function frntbackObj(fb) {
 
 }
 
-function waitForImage(imgElem) {
+async function waitForImage(imgElem) {
   return new Promise((res, rej) => {
       if (imgElem.complete) {
           return res();
