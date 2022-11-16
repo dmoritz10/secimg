@@ -936,7 +936,7 @@ async function editImage(frntback) {
 
   function initCnvas(c) {
     return new fabric.Canvas(c.id, {
-      strokeWidth: 5,
+      strokeWidth: 15,
       stroke: "rgba(100,200,200,0.5)",
     });
   }
@@ -960,11 +960,11 @@ async function editImage(frntback) {
       let canvasRatio = canvasWidth / canvasHeight;
       if(imgRatio <= canvasRatio){
         if(imgHeight> canvasHeight){
-          oImg.scaleToHeight(canvasHeight);
+          // oImg.scaleToHeight(canvasHeight);
         }
       }else{
         if(imgWidth> canvasWidth){
-          oImg.scaleToWidth(canvasWidth);
+          // oImg.scaleToWidth(canvasWidth);
         }
       };
         
