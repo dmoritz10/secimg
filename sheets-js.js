@@ -1161,14 +1161,14 @@ function clearCanvas(fb) {
 
   // canvas.clear();
   console.log('clearCanvas', $(fb.canvas).parent('.canvas-container'))
-  if ($(fb.canvas).parent('.canvas-container')) {
+  if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
     
     var canvasCol = $(fb.canvas).parent().parent()
     $(fb.canvas).parent('.canvas-container').remove();
     alert('remove')
     $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
     $(fb.edit.row).find("*").off("click.editListener")
-    
+
   }
 
   $(fb.options.row).removeClass('d-none')
