@@ -967,7 +967,7 @@ async function editImage(frntback) {
       //   }
       // };
 
-      setDims (canvas, oImg)
+      setDims (canvas, oImg, fb)
         
       canvas.add(oImg);
       canvas.centerObject(oImg);
@@ -1249,7 +1249,7 @@ async function waitForImage(imgElem) {
   });
 }
 
-function setDims (fCanvas, fImg) {
+function setDims (fCanvas, fImg, fb) {
 
   var fb = frntbackObj(frntback)
 
