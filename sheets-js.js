@@ -960,11 +960,11 @@ async function editImage(frntback) {
       let canvasRatio = canvasWidth / canvasHeight;
       if(imgRatio <= canvasRatio){
         if(imgHeight> canvasHeight){
-          // oImg.scaleToHeight(canvasHeight);
+          oImg.scaleToHeight(canvasHeight);
         }
       }else{
         if(imgWidth> canvasWidth){
-          // oImg.scaleToWidth(canvasWidth);
+          oImg.scaleToWidth(canvasWidth);
         }
       };
         
