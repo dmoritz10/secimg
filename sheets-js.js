@@ -1016,7 +1016,7 @@ async function editImage(frntback) {
 
   }
 
-  async function crop(canvas, fb) {
+  function crop(canvas, fb) {
     // Click the crop button croped the masked area
     $(fb.edit.cropImage).on("click.editListener", function  () {
 
@@ -1160,7 +1160,7 @@ async function editImage(frntback) {
 function clearCanvas(fb) {
 
   // canvas.clear();
-  console.log('clearCanvas', $(fb.canvas).parent('.canvas-container'))
+  console.log('clearCanvas', $(fb.canvas).parent('.canvas-container').length)
   if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
     
     var canvasCol = $(fb.canvas).parent().parent()
