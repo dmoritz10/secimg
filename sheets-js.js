@@ -952,6 +952,9 @@ async function editImage(frntback) {
       let imgHeight = oImg.height;
       let canvasWidth = canvas.getWidth();
       let canvasHeight = canvas.getHeight();
+
+      console.log('img', oImg.width, oImg.height)
+      console.log('can', canvas.getWidth(), canvas.getHeight())
     
       let imgRatio = imgWidth / imgHeight;
       let canvasRatio = canvasWidth / canvasHeight;
