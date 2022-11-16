@@ -225,10 +225,8 @@ async function editSheet(arrIdx) {
 
   $('#btnShtmDelete').removeClass('d-none')
 
-  var fb = frntbackObj('front')
-  clearCanvas(fb)
-  var fb = frntbackObj('back')
-  clearCanvas(fb)
+  clearCanvas(frntbackObj('front'))
+  clearCanvas(frntbackObj('back'))
 
   modal(false)
 
@@ -949,25 +947,27 @@ async function editImage(frntback) {
 
       var oImg = new fabric.Image(img);
 
-      let imgWidth = oImg.width;
-      let imgHeight = oImg.height;
-      let canvasWidth = canvas.getWidth();
-      let canvasHeight = canvas.getHeight();
+      // let imgWidth = oImg.width;
+      // let imgHeight = oImg.height;
+      // let canvasWidth = canvas.getWidth();
+      // let canvasHeight = canvas.getHeight();
 
-      console.log('img', oImg.width, oImg.height)
-      console.log('can', canvas.getWidth(), canvas.getHeight())
+      // console.log('img', oImg.width, oImg.height)
+      // console.log('can', canvas.getWidth(), canvas.getHeight())
     
-      let imgRatio = imgWidth / imgHeight;
-      let canvasRatio = canvasWidth / canvasHeight;
-      if(imgRatio <= canvasRatio){
-        if(imgHeight> canvasHeight){
-          oImg.scaleToHeight(canvasHeight);
-        }
-      }else{
-        if(imgWidth> canvasWidth){
-          oImg.scaleToWidth(canvasWidth);
-        }
-      };
+      // let imgRatio = imgWidth / imgHeight;
+      // let canvasRatio = canvasWidth / canvasHeight;
+      // if(imgRatio <= canvasRatio){
+      //   if(imgHeight> canvasHeight){
+      //     oImg.scaleToHeight(canvasHeight);
+      //   }
+      // }else{
+      //   if(imgWidth> canvasWidth){
+      //     oImg.scaleToWidth(canvasWidth);
+      //   }
+      // };
+
+      setDims (canvas, oImg)
         
       canvas.add(oImg);
       canvas.centerObject(oImg);
@@ -1052,7 +1052,7 @@ async function editImage(frntback) {
       // after onload clear the canvas and add cropped image to the canvas
       cropped.onload = function () {
 
-        console.log('cropped', cropped)
+        // console.log('cropped', cropped)
         console.log('rect', rect)
 
         canvas.clear();
@@ -1166,7 +1166,6 @@ function clearCanvas(fb) {
     
     var canvasCol = $(fb.canvas).parent().parent()
     $(fb.canvas).parent('.canvas-container').remove();
-    alert('remove')
     $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
     $(fb.edit.row).find("*").off("click.editListener")
 
@@ -1250,4 +1249,35 @@ async function waitForImage(imgElem) {
   });
 }
 
+function setDims (fCanvas, fImg) {
 
+  var fb = frntbackObj(frntback)
+
+  let iHeight = fImg.height
+  let iWidth = fImg.width
+
+  let containerWidth = $(".container").width
+
+  let cWidth = containerWidth
+
+  let cHeight =  iHeight * (containerWidth / iWidth)
+
+  fCanvas.setDimensions({
+          width:cWidth,
+          height:cHeight
+         });
+
+  let iRatio = iWidth / iHeight;
+  let cRatio = cWidth / cHeight;
+  if(iRatio <= cRatio){
+    if(iHeight> cHeight){
+      fImg.scaleToHeight(cHeight);
+    }
+  }else{
+    if(iWidth> cWidth){
+      fImg.scaleToWidth(cWidth);
+    }
+  };
+
+
+}
