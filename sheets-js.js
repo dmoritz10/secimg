@@ -903,7 +903,7 @@ async function editImage(frntback) {
 
   var fb = frntbackObj(frntback)
 
-  // clearCanvas(fb)
+  clearCanvas(fb)
 
   console.log('fb', fb)
 
@@ -928,6 +928,7 @@ async function editImage(frntback) {
   canvas.preserveObjectStacking = true;
 
   addImage(canvas, imgSrc);
+  
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
   saveImage(canvas, fb)
