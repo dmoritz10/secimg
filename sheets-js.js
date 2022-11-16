@@ -932,7 +932,7 @@ async function editImage(frntback) {
   crop(canvas, fb);
   saveImage(canvas, fb)
   cancelImage(canvas, fb)
-  var canvas = restoreImage(canvas, fb,  imgSrc)
+  restoreImage(canvas, fb,  imgSrc)
 
   function initCnvas(c) {
     return new fabric.Canvas(c.id, {
@@ -1147,10 +1147,9 @@ async function editImage(frntback) {
       
       clearCanvas(fb)
 
-      var canvas = initCnvas(fb.canvas);
+      canvas = initCnvas(fb.canvas);
       canvas.preserveObjectStacking = true;
       addImage(canvas, imgSrc);
-      return canvas
       
     });
 
