@@ -903,7 +903,7 @@ async function editImage(frntback) {
 
   var fb = frntbackObj(frntback)
 
-  clearCanvas(fb)
+  // clearCanvas(fb)
 
   console.log('fb', fb)
 
@@ -1160,11 +1160,16 @@ async function editImage(frntback) {
 function clearCanvas(fb) {
 
   // canvas.clear();
-  var canvasCol = $(fb.canvas).parent().parent()
-  $(fb.canvas).parent('.canvas-container').remove();
-  alert('remove')
-  $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
-  $(fb.edit.row).find("*").off("click.editListener")
+  console.log('clearCanvas', $(fb.canvas).parent('.canvas-container'))
+  if ($(fb.canvas).parent('.canvas-container')) {
+    
+    var canvasCol = $(fb.canvas).parent().parent()
+    $(fb.canvas).parent('.canvas-container').remove();
+    alert('remove')
+    $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
+    $(fb.edit.row).find("*").off("click.editListener")
+    
+  }
 
   $(fb.options.row).removeClass('d-none')
   $(fb.edit.row).addClass('d-none')
