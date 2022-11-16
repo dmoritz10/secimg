@@ -1162,6 +1162,7 @@ function clearCanvas(fb) {
   // canvas.clear();
   var canvasCol = $(fb.canvas).parent().parent()
   $(fb.canvas).parent('.canvas-container').remove();
+  alert('remove')
   $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
   $(fb.edit.row).find("*").off("click.editListener")
 
