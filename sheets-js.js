@@ -1082,8 +1082,8 @@ async function editImage(frntback) {
         console.log('ele', ele)
         console.log('eleh', ele.height)
         console.log('elehe', ele._element)
-        console.log('elehe', ele._element.img)
-        console.log('elehe', ele._element.img.canvas-img)
+        console.log('h', ele._element.height)
+        console.log('w', ele._element.width)
 
         _element
         : 
