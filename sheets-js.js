@@ -1062,11 +1062,11 @@ async function editImage(frntback) {
 
         
         // canvas.add(image);
-        canvas.add(image.set({ width: image.width, height: image.height}))
-        canvas.setDimensions({
-          width:image.width,
-          height:image.height
-         });
+        canvas.add(image)
+        // canvas.setDimensions({
+        //   width:image.width,
+        //   height:image.height
+        //  });
         console.log('canvas', canvas.left, canvas.top, canvas.width, canvas.height )
         canvas.renderAll();
       };
@@ -1081,13 +1081,8 @@ async function editImage(frntback) {
 
         console.log('ele', ele)
         console.log('eleh', ele.height)
-        console.log('elehe', ele._element)
         console.log('h', ele._element.height)
         console.log('w', ele._element.width)
-
-        _element
-        : 
-        img.canvas-img
 
       })
 
