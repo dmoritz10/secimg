@@ -1264,7 +1264,7 @@ function setDims (fCanvas, fImg, fb) {
           width:cWidth,
           height:cHeight
          });
-
+console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
   let iRatio = iWidth / iHeight;
   let cRatio = cWidth / cHeight;
   if(iRatio <= cRatio){
