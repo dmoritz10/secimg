@@ -970,7 +970,7 @@ async function editImage(frntback) {
       setDims (canvas, oImg, fb)
         
       canvas.add(oImg);
-      canvas.centerObject(oImg);
+      // canvas.centerObject(oImg);
       canvas.setActiveObject(oImg);
       currentImage = oImg;
       canvas.renderAll();
