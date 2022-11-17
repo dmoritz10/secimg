@@ -1254,7 +1254,7 @@ function setDims (fCanvas, fImg, fb) {
   let iHeight = fImg.height
   let iWidth = fImg.width
 
-  let containerWidth = $(".container").width
+  let containerWidth = $(".container").offsetWidth
 
   let cWidth = containerWidth
 
