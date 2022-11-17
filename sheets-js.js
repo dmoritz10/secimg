@@ -1256,6 +1256,10 @@ function setDims (fCanvas, fImg, fb) {
 
   let containerWidth = $(fb.canvas).parent().parent().clientWidth
 
+  console.log('canvas', $(fb.canvas))
+  console.log('canvas', $(fb.canvas).parent())
+  console.log('canvas', $(fb.canvas).parent().parent())
+
   let cWidth = containerWidth
 
   let cHeight =  iHeight * (containerWidth / iWidth)
