@@ -1126,7 +1126,7 @@ async function editImage(frntback) {
         width: width,
         height:height
 
-    }));
+    })
 
       await waitForImage(fb.image)
 
