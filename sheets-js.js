@@ -1100,13 +1100,14 @@ async function editImage(frntback) {
 
       console.log('fimage', canvas.getObjects())
       console.log('fimageh', canvas.getObjects()[0].height)
+      console.log('fimageh', canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY)
       
       console.log('widths1', fb.image.width, fb.canvas.width)
       console.log('heights1', fb.image.height, fb.canvas.width)
 
       canvas.setDimensions({
-          width:canvas.getObjects()[0].width,
-          height:canvas.getObjects()[0].height
+          width:canvas.getObjects()[0].width * canvas.getObjects()[0].scaleX,
+          height:canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY
          });
          console.log('widths2', fb.image.width, fb.canvas.width)
          console.log('heights2', fb.image.height, fb.canvas.width)
