@@ -1098,25 +1098,35 @@ async function editImage(frntback) {
 
       })
 
-      console.log('fimage', canvas.getObjects())
+      console.log('fimage', canvas.getObjects()[0])
       console.log('fimageh', canvas.getObjects()[0].height)
       console.log('fimagey', canvas.getObjects()[0].scaleY)
       console.log('fimages', canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY)
 
-      console.table(canvas.getObjects()[0])
-      
       console.log('widths1', fb.image.width, fb.canvas.width)
       console.log('heights1', fb.image.height, fb.canvas.width)
 
-      canvas.setDimensions({
-          width:canvas.getObjects()[0].width * canvas.getObjects()[0].scaleX,
-          height:canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY
-         });
+      // canvas.setDimensions({
+      //     width:canvas.getObjects()[0].width * canvas.getObjects()[0].scaleX,
+      //     height:canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY
+      //    });
          console.log('widths2', fb.image.width, fb.canvas.width)
          console.log('heights2', fb.image.height, fb.canvas.width)
+
+         let width = canvas.getObjects()[0].width * canvas.getObjects()[0].scaleX
+         let height = canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY
        
       fb.image.removeAttribute('src');
-      fb.image.src = canvas.toDataURL('image/jpeg', 1)
+      // fb.image.src = canvas.toDataURL('image/jpeg', 1)
+
+      fb.image.src = canvas.toDataURL({
+        // format: 'png',
+        left: 10,
+        top: 25,
+        width: width,
+        height:height
+
+    }));
 
       await waitForImage(fb.image)
 
