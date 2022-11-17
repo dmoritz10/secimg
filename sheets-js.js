@@ -1064,12 +1064,14 @@ async function editImage(frntback) {
 
         // image.left = rect.left;
         // image.top = rect.top;
-        image.left = 0;
-        image.top = 0;
-        console.log('image1', image.left, image.top, image.width, image.height )
-        image.setCoords();
-        console.log('image2', image.left, image.top, image.width, image.height )
 
+        // image.left = 0;
+        // image.top = 0;
+        // console.log('image1', image.left, image.top, image.width, image.height )
+        // image.setCoords();
+        // console.log('image2', image.left, image.top, image.width, image.height )
+
+      setDims (canvas, image, fb)
         
         // canvas.add(image);
         canvas.add(image)
@@ -1256,10 +1258,6 @@ function setDims (fCanvas, fImg, fb) {
 
   let containerWidth = $(fb.canvas).parent().parent()[0].clientWidth
 
-  console.log('canvas', $(fb.canvas))
-  console.log('canvas', $(fb.canvas).parent())
-  console.log('canvas', $(fb.canvas).parent().parent())
-
   let cWidth = containerWidth
 
   let cHeight =  iHeight * (containerWidth / iWidth)
@@ -1268,7 +1266,9 @@ function setDims (fCanvas, fImg, fb) {
           width:cWidth,
           height:cHeight
          });
+
 console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
+
   let iRatio = iWidth / iHeight;
   let cRatio = cWidth / cHeight;
   if(iRatio <= cRatio){
