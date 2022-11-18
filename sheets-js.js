@@ -1120,7 +1120,7 @@ async function editImage(frntback) {
          let top = img.aCoords.tl.y 
          let left = img.aCoords.tl.x 
 
-console.log('img', width, height, top, loft)
+console.log('img', width, height, top, left)
 
       fb.image.removeAttribute('src');
       // fb.image.src = canvas.toDataURL('image/jpeg', 1)
