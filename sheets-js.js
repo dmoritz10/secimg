@@ -1113,10 +1113,15 @@ async function editImage(frntback) {
          console.log('widths2', fb.image.width, fb.canvas.width)
          console.log('heights2', fb.image.height, fb.canvas.width)
 
-         let width = canvas.getObjects()[0].width * canvas.getObjects()[0].scaleX
-         let height = canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY
-         let top = canvas.getObjects()[0].aCoords.tl.y 
-         let left = canvas.getObjects()[0].aCoords.tl.x 
+         let img = canvas.getObjects()[0]
+
+         let width = img.width * img.scaleX
+         let height = img.height * img.scaleY
+         let top = img.aCoords.tl.y 
+         let left = img.aCoords.tl.x 
+
+console.log('img', width, height, top, loft)
+
       fb.image.removeAttribute('src');
       // fb.image.src = canvas.toDataURL('image/jpeg', 1)
 
