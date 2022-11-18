@@ -1115,14 +1115,15 @@ async function editImage(frntback) {
 
          let width = canvas.getObjects()[0].width * canvas.getObjects()[0].scaleX
          let height = canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY
-       
+         let top = canvas.getObjects()[0].aCoords.tl.y 
+         let left = canvas.getObjects()[0].aCoords.tl.x 
       fb.image.removeAttribute('src');
       // fb.image.src = canvas.toDataURL('image/jpeg', 1)
 
       fb.image.src = canvas.toDataURL({
         // format: 'png',
-        left: 10,
-        top: 25,
+        left: top,
+        top: left,
         width: width,
         height:height
 
