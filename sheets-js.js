@@ -1089,31 +1089,8 @@ async function editImage(frntback) {
     //  After click start crop add the mask to canvas
     $(fb.edit.saveImage).on("click.editListener", async function  () {
 
-      canvas.getObjects().forEach( ele =>{
-
-        console.log('ele', ele)
-        console.log('eleh', ele.height)
-        console.log('h', ele._element.height)
-        console.log('w', ele._element.width)
-
-      })
-
-      console.log('fimage', canvas.getObjects()[0])
-      console.log('fimageh', canvas.getObjects()[0].height)
-      console.log('fimagey', canvas.getObjects()[0].scaleY)
-      console.log('fimages', canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY)
-
-      console.log('widths1', fb.image.width, fb.canvas.width)
-      console.log('heights1', fb.image.height, fb.canvas.width)
-
-      // canvas.setDimensions({
-      //     width:canvas.getObjects()[0].width * canvas.getObjects()[0].scaleX,
-      //     height:canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY
-      //    });
-        //  console.log('widths2', fb.image.width, fb.canvas.width)
-        //  console.log('heights2', fb.image.height, fb.canvas.width)
-
-         let img = canvas.getObjects()[0]
+      
+      let img = canvas.getObjects()[0]
 
          let widthz = img.width * img.scaleX
          let heightz = img.height * img.scaleY
@@ -1122,7 +1099,7 @@ async function editImage(frntback) {
          let top = img.aCoords.tl.y 
          let left = img.aCoords.tl.x 
 
-console.log('img', top, left, width, height,  widthz, heightz)
+      console.log('img', top, left, width, height,  widthz, heightz)
 
       fb.image.removeAttribute('src');
       // fb.image.src = canvas.toDataURL('image/jpeg', 1)
@@ -1184,8 +1161,6 @@ console.log('img', top, left, width, height,  widthz, heightz)
 
 function clearCanvas(fb) {
 
-   console.trace();
-  console.log('clearCanvas', $(fb.canvas).parent('.canvas-container').length)
   if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
     
     var canvasCol = $(fb.canvas).parent().parent()
@@ -1200,6 +1175,9 @@ function clearCanvas(fb) {
 
   $(fb.canvas).addClass('d-none')
   $(fb.image).removeClass('d-none')
+
+  $(fb.image).removeAttr('src');
+  $(fb.image).removeData('save-src');
 
 }
 
