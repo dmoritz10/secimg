@@ -1129,8 +1129,8 @@ console.log('img', top, left, width, height,  widthz, heightz)
 
       fb.image.src = canvas.toDataURL({
         // format: 'png',
-        left: top,
-        top: left,
+        left: left,
+        top: top,
         width: width,
         height:height
 
