@@ -1117,8 +1117,8 @@ async function editImage(frntback) {
 
          let widthz = img.width * img.scaleX
          let heightz = img.height * img.scaleY
-         let width = img.aCoords.tl.x - img.aCoords.tr.x
-         let height = img.aCoords.tl.y - img.aCoords.bl.y
+         let width = img.aCoords.tr.x - img.aCoords.tl.x
+         let height = img.aCoords.bl.y - img.aCoords.tl.y
          let top = img.aCoords.tl.y 
          let left = img.aCoords.tl.x 
 
