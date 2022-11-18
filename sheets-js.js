@@ -1110,17 +1110,19 @@ async function editImage(frntback) {
       //     width:canvas.getObjects()[0].width * canvas.getObjects()[0].scaleX,
       //     height:canvas.getObjects()[0].height * canvas.getObjects()[0].scaleY
       //    });
-         console.log('widths2', fb.image.width, fb.canvas.width)
-         console.log('heights2', fb.image.height, fb.canvas.width)
+        //  console.log('widths2', fb.image.width, fb.canvas.width)
+        //  console.log('heights2', fb.image.height, fb.canvas.width)
 
          let img = canvas.getObjects()[0]
 
-         let width = img.width * img.scaleX
-         let height = img.height * img.scaleY
+         let widthz = img.width * img.scaleX
+         let heightz = img.height * img.scaleY
+         let width = img.aCoords.tl.x - img.aCoords.tr.x
+         let height = img.aCoords.tl.y - img.aCoords.bl.y
          let top = img.aCoords.tl.y 
          let left = img.aCoords.tl.x 
 
-console.log('img', width, height, top, left)
+console.log('img', top, left, width, height,  widthz, heightz)
 
       fb.image.removeAttribute('src');
       // fb.image.src = canvas.toDataURL('image/jpeg', 1)
