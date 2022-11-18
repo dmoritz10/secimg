@@ -914,6 +914,9 @@ async function editImage(frntback) {
   $(fb.canvas).removeClass('d-none')
   $(fb.image).addClass('d-none')
 
+  $(fb.image).removeAttr('src');
+  $(fb.image).removeData('saveSrc');
+
   fb.image.dataset['saveSrc'] = fb.image.src
 
   var imgSrc = fb.image.src
@@ -1101,7 +1104,9 @@ async function editImage(frntback) {
 
       console.log('img', top, left, width, height,  widthz, heightz)
 
-      fb.image.removeAttribute('src');
+      // fb.image.removeAttribute('src');
+      $(fb.image).removeAttr('src');
+      $(fb.image).removeData('saveSrc');
       // fb.image.src = canvas.toDataURL('image/jpeg', 1)
 
       fb.image.src = canvas.toDataURL({
@@ -1148,7 +1153,7 @@ async function editImage(frntback) {
     $(fb.edit.restoreImage).on("click.editListener", function  () {
       
       let img = canvas.getObjects()[0]
-      canvas.remove(img);
+      if (img) canvas.remove(img);
       addImage(canvas, imgSrc);
       
     });
@@ -1173,9 +1178,6 @@ function clearCanvas(fb) {
 
   $(fb.canvas).addClass('d-none')
   $(fb.image).removeClass('d-none')
-
-  $(fb.image).removeAttr('src');
-  $(fb.image).removeData('save-src');
 
 }
 
