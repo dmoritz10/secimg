@@ -914,7 +914,7 @@ async function editImage(frntback) {
   $(fb.canvas).removeClass('d-none')
   $(fb.image).addClass('d-none')
 
-  fb.image.dataset['saveSrc'] = fb.image.src
+  // fb.image.dataset['saveSrc'] = fb.image.src
 
   var imgSrc = fb.image.src
 
@@ -1258,13 +1258,26 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
   let cRatio = cWidth / cHeight;
   if(iRatio <= cRatio){
     if(iHeight> cHeight){
-      fImg.scaleToHeight(cHeight);
+      // fImg.scaleToHeight(cHeight);
+      fImg.set({
+        scaleX: cHeight * iRatio,
+        scaleY: cHeight
+      })
     }
   }else{
     if(iWidth> cWidth){
-      fImg.scaleToWidth(cWidth);
+      // fImg.scaleToWidth(cWidth);
+      fImg.set({
+        scaleX: cWidth,
+        scaleY: cWidth / iRatio
+      })
     }
   };
+
+  fImg.set({
+    scaleX: canvasWidth / img.width,
+    scaleY: canvasHeight / img.height
+  })
 
 
 }
