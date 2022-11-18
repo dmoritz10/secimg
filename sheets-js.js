@@ -1241,7 +1241,7 @@ function setDims (fCanvas, fImg, fb) {
   let iHeight = fImg.height
   let iWidth = fImg.width
 
-  let containerWidth = $(fb.canvas).parent().parent()[0].clientWidth
+  let containerWidth = $(fb.canvas).parent().parent().innerWidth()
 
   let cWidth = containerWidth
 
@@ -1273,11 +1273,5 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
       })
     }
   };
-
-  fImg.set({
-    scaleX: canvasWidth / img.width,
-    scaleY: canvasHeight / img.height
-  })
-
 
 }
