@@ -1119,18 +1119,6 @@ async function editImage(frntback) {
     })
 
       await waitForImage(fb.image)
-
-      console.log('widths3', fb.image.width, fb.canvas.width)
-      console.log('heights3', fb.image.height, fb.canvas.width)
-    
-      // fb.canvas.width = fb.image.width 
-      // fb.canvas.height = fb.image.height 
-      
-      // fb.canvas.width = fb.image.naturalWidth 
-      // fb.canvas.height = fb.image.naturalHeight 
-      console.log('widths2', fb.image.width, fb.canvas.width)
-      console.log('heights2', fb.image.height, fb.canvas.width)
-    
     
       clearCanvas(fb)
       
