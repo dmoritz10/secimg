@@ -914,9 +914,6 @@ async function editImage(frntback) {
   $(fb.canvas).removeClass('d-none')
   $(fb.image).addClass('d-none')
 
-  $(fb.image).removeAttr('src');
-  $(fb.image).removeData('saveSrc');
-
   fb.image.dataset['saveSrc'] = fb.image.src
 
   var imgSrc = fb.image.src
