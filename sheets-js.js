@@ -1258,7 +1258,7 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
   let cRatio = cWidth / cHeight;
 
   fImg.set({
-    scaleX: iRatio,
+    scale: iRatio,
     // scaleY: 150
   })
 
