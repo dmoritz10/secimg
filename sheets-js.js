@@ -1257,18 +1257,18 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
   let iRatio = iWidth / iHeight;
   let cRatio = cWidth / cHeight;
 
-  fImg.set({
-    scale: iRatio,
-    // scaleY: 150
-  })
+  // fImg.set({
+  //   scale: iRatio,
+  //   // scaleY: 150
+  // })
 
-  return
+  
   if(iRatio <= cRatio){
     if(iHeight> cHeight){
       // fImg.scaleToHeight(cHeight);
       fImg.set({
-        scaleX: 300,
-        scaleY: 150
+        scaleX: .3,
+        scaleY: .5
       })
     }
   }else{
@@ -1277,8 +1277,8 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
       fImg.set({
         // scaleX: cWidth,
         // scaleY: cWidth / iRatio 
-        scaleX: 300,
-        scaleY: 150
+        scaleX: .5,
+        scaleY: .3
       })
     }
   };
