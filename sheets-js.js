@@ -1268,8 +1268,10 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
     if(iWidth> cWidth){
       // fImg.scaleToWidth(cWidth);
       fImg.set({
-        scaleX: cWidth,
-        scaleY: cWidth / iRatio
+        // scaleX: cWidth,
+        // scaleY: cWidth / iRatio 
+        scaleX: cHeight * iRatio,
+        scaleY: cHeight
       })
     }
   };
