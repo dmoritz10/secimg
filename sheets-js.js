@@ -1264,7 +1264,11 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
 
   
   if(iRatio <= cRatio){
+
+    console.log('1')
     if(iHeight > cHeight){
+    console.log('2')
+
       // fImg.scaleToHeight(cHeight);
       fImg.set({
         scaleX: .3,
@@ -1272,7 +1276,11 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
       })
     }
   }else{
+    console.log('3')
+
     if(iWidth > cWidth){
+    console.log('4')
+
       // fImg.scaleToWidth(cWidth);
       fImg.set({
         // scaleX: cWidth,
