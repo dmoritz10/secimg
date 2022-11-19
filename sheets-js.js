@@ -1260,8 +1260,8 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
     if(iHeight> cHeight){
       // fImg.scaleToHeight(cHeight);
       fImg.set({
-        scaleX: cHeight * iRatio,
-        scaleY: cHeight
+        scaleX: 300,
+        scaleY: 150
       })
     }
   }else{
@@ -1270,8 +1270,8 @@ console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
       fImg.set({
         // scaleX: cWidth,
         // scaleY: cWidth / iRatio 
-        scaleX: cHeight * iRatio,
-        scaleY: cHeight
+        scaleX: 300,
+        scaleY: 150
       })
     }
   };
