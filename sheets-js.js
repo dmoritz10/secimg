@@ -1253,7 +1253,7 @@ function setDims (fCanvas, fImg, fb) {
          });
 
 console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight )
-
+return
   let iRatio = iWidth / iHeight;
   let cRatio = cWidth / cHeight;
   if(iRatio <= cRatio){
