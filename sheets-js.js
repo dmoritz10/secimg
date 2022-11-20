@@ -1202,9 +1202,6 @@ async function waitForImage(imgElem) {
 
 function setDims (fCanvas, fImg) {
 
-  var fb = frntbackObj('front')
-
-
   let iHeight = fImg.height
   let iWidth = fImg.width
 
