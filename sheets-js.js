@@ -531,6 +531,8 @@ async function showFile(input) {
 
     reader.onload = function (e) {
 
+      console.log('e', e)
+
       if (input.id == "shtmInputFront")   {
         $('#shtmImgFront').attr('src', e.target.result);
         $('#shtmImgFront').removeClass('d-none');
