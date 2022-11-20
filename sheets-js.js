@@ -925,7 +925,7 @@ async function editImage(frntback) {
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
 
-  addImage(canvas, imgSrc);
+  addImage(canvas, imgSrc, fb);
 
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
@@ -940,14 +940,14 @@ async function editImage(frntback) {
     });
   }
 
-  function addImage(canvas, imgSrc) {
+  function addImage(canvas, imgSrc, fb) {
     const img = new Image();
     img.src = imgSrc;
     img.onload = function () {
 
       var oImg = new fabric.Image(img);
 
-      setDims (canvas, oImg)
+      setDims (canvas, oImg, fb)
         
       canvas.add(oImg);
       // canvas.centerObject(oImg);
@@ -1039,7 +1039,7 @@ async function editImage(frntback) {
 
         var image = new fabric.Image(cropped);
         
-        setDims (canvas, image)
+        setDims (canvas, image, fb)
         
         canvas.add(image)
         console.log('canvas', canvas.left, canvas.top, canvas.width, canvas.height )
@@ -1200,7 +1200,7 @@ async function waitForImage(imgElem) {
   });
 }
 
-function setDims (fCanvas, fImg) {
+function setDims (fCanvas, fImg, fb) {
 
   let iHeight = fImg.height
   let iWidth = fImg.width
