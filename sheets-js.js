@@ -1252,7 +1252,13 @@ function setDims (fCanvas, fImg, fb) {
           height:cHeight
          });
 
+  fImg.set({
+    width:cWidth,
+    height:cHeight
+  }) 
 
+
+    return
   let iRatio = iWidth / iHeight;
   let cRatio = cWidth / cHeight;
   console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight, iRatio, cRatio  )
