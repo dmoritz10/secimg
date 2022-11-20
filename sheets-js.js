@@ -1257,7 +1257,9 @@ function setDims (fCanvas, fImg, fb) {
   let iRatio = iWidth / iHeight;
   let cRatio = cWidth / cHeight;
 
-  console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight, iRatio, cRatio  )
+  var retina = canvas.getRetinaScaling();
+
+  console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight, iRatio, cRatio, retina  )
   
   if(iRatio <= cRatio){
 
