@@ -792,19 +792,10 @@ var maxSize = { width: 466, height: 466 }
 
 function clockwise(frntback) { 
 
-  if (frntback == 'front') {
-    var img = document.getElementById("shtmImgFront")
-  } else {
-    var img = document.getElementById("shtmImgBack")
-  }
+  var fb = frntbackObj(frntback)
 
-  // var canvas = document.getElementById("canvas");
-  // if(canvas) {
-  //   document.body.removeChild(canvas);
-  // }
-  // var canvas = document.createElement("canvas");
-  drawOptimizedImage(canvas, img, maxSize, 'clockwise')
-  updateImgPreview(canvas, img)
+  drawOptimizedImage(fb.canvas, fb.image, maxSize, 'clockwise')
+  updateImgPreview(fb.canvas, fb.image)
 
 };
 
