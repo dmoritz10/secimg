@@ -1103,7 +1103,7 @@ async function editImage(frntback) {
       
       let img = canvas.getObjects()[0]
       if (img) canvas.remove(img);
-      addImage(canvas, imgSrc);
+      addImage(canvas, imgSrc, fb);
       
     });
 
@@ -1227,78 +1227,14 @@ function setDims (fCanvas, fImg, fb) {
   
   if(iRatio <= cRatio){
 
-    console.log('1')
     if(iHeight > cHeight){
-    console.log('2')
-
       fImg.scaleToHeight(cHeight);
-      // fImg.set({
-      //   scaleX: .3,
-      //   scaleY: .5
-      // })
     }
   }else{
-    console.log('3')
-
     if(iWidth > cWidth){
-    console.log('4')
-
       fImg.scaleToWidth(cWidth);
-      // fImg.set({
-      //   // scaleX: cWidth,
-      //   // scaleY: cWidth / iRatio 
-      //   scaleX: cWidth / iWidth,
-      //   scaleY: (cWidth / iWidth) / iRatio
-      // })
     }
   };
 
 }
 
-// fabric.Image.fromURL('../assets/dragon.jpg', function(img) {
-// 	var r = canvas.getRetinaScaling();
-//   oImg = img.set({ left: 400, top: 250}).scale(0.2);
-// 	lanczosFilter.scaleX = lanczosFilter.scaleY = oImg.scaleX * r;
-// 	oImg.lockScalingFlip = true;
-// 	oImg.minScaleLimit = 0.025;
-// 	oImg.padding = 5;
-// 	oImg.filters = [lanczosFilter];
-// 	oImg.hoverCursor = 'crossHair';
-//   oImg.on('scaling', function(opt) {
-// 		var filters = [];
-// 		var sX = Math.abs(this.scaleX) * r, sY = Math.abs(this.scaleY) * r;
-// 		if (sX > 0.01 && sY > 0.01 && sX < 1 && sY < 1) {
-// 			if (sX <= 0.2 || sY <= 0.2) {
-// 				lanczosFilter.lanczosLobes = 2;
-// 			} else if (sX <= 0.05 || sY <= 0.05) {
-// 				lanczosFilter.lanczosLobes = 1;
-// 			} else {
-// 				lanczosFilter.lanczosLobes = 3;
-// 			}
-// 			lanczosFilter.scaleX = sX;
-// 			lanczosFilter.scaleY = sY;
-// 			filters.push(lanczosFilter);
-// 		}
-// 		this.filters = filters;
-//   });
-// 	oImg.on('mousedown', function(opt) {
-// 		if (opt.button === 3) {
-// 			p = oImg.getLocalPointer(opt.e);
-// 			p.x /= lanczosFilter.scaleX;
-// 			p.y /= lanczosFilter.scaleY;
-// 			updateFor(lanczosFilter.scaleX, lanczosFilter.scaleY)
-// 		}
-// 	})
-//   canvas.add(oImg);
-// 	canvas.setActiveObject(oImg);
-// 	canvas.on('before:render', function() {
-// 		canvas.backgroundImage.scaleX = oImg.scaleX;
-// 		canvas.backgroundImage.scaleY = oImg.scaleY;
-// 		oImg.applyFilters();
-// 		updateFor(oImg.scaleX, oImg.scaleY);
-// 		document.getElementById('log').innerHTML = 'scale: ' + lanczosFilter.scaleX.toFixed(4) + ' lobes: ' + lanczosFilter.lanczosLobes +
-// 			', taps: ' + lanczosFilter.taps.length + '\nweights:\n' + lanczosFilter.taps.map(
-// 				function(tap, i) { return i + ': ' + tap.toFixed(7); }
-// 			).join('\n');
-// 	});
-// });
