@@ -888,6 +888,14 @@ function updateImgPreview(canvas, img) {
 
 }
 
+function deleteImage(frntback) {
+
+  var fb = frntbackObj(frntback)
+
+  $(fb.image).attr('src', '#').addClass('d-none')
+
+}
+
 async function editImage(frntback) {
 
   var fb = frntbackObj(frntback)
