@@ -947,27 +947,7 @@ async function editImage(frntback) {
 
       var oImg = new fabric.Image(img);
 
-      // let imgWidth = oImg.width;
-      // let imgHeight = oImg.height;
-      // let canvasWidth = canvas.getWidth();
-      // let canvasHeight = canvas.getHeight();
-
-      // console.log('img', oImg.width, oImg.height)
-      // console.log('can', canvas.getWidth(), canvas.getHeight())
-    
-      // let imgRatio = imgWidth / imgHeight;
-      // let canvasRatio = canvasWidth / canvasHeight;
-      // if(imgRatio <= canvasRatio){
-      //   if(imgHeight> canvasHeight){
-      //     oImg.scaleToHeight(canvasHeight);
-      //   }
-      // }else{
-      //   if(imgWidth> canvasWidth){
-      //     oImg.scaleToWidth(canvasWidth);
-      //   }
-      // };
-
-      setDims (canvas, oImg, fb)
+      setDims (canvas, oImg)
         
       canvas.add(oImg);
       // canvas.centerObject(oImg);
@@ -1058,29 +1038,13 @@ async function editImage(frntback) {
         canvas.clear();
 
         var image = new fabric.Image(cropped);
-
-        // canvas.setWidth = image.width
-        // canvas.setHeight = image.height
-
-        // image.left = rect.left;
-        // image.top = rect.top;
-
-        // image.left = 0;
-        // image.top = 0;
-        // console.log('image1', image.left, image.top, image.width, image.height )
-        // image.setCoords();
-        // console.log('image2', image.left, image.top, image.width, image.height )
-
-      setDims (canvas, image, fb)
         
-        // canvas.add(image);
+        setDims (canvas, image)
+        
         canvas.add(image)
-        // canvas.setDimensions({
-        //   width:image.width,
-        //   height:image.height
-        //  });
         console.log('canvas', canvas.left, canvas.top, canvas.width, canvas.height )
         canvas.renderAll();
+
       };
     });
   }
@@ -1236,7 +1200,10 @@ async function waitForImage(imgElem) {
   });
 }
 
-function setDims (fCanvas, fImg, fb) {
+function setDims (fCanvas, fImg) {
+
+  var fb = frntbackObj(frntback)
+
 
   let iHeight = fImg.height
   let iWidth = fImg.width
