@@ -1252,29 +1252,10 @@ function setDims (fCanvas, fImg, fb) {
           height:cHeight
          });
 
-  fImg.set({
-    width:cWidth,
-    height:cHeight
-  }) 
-
-
-    
   let iRatio = iWidth / iHeight;
   let cRatio = cWidth / cHeight;
+
   console.log('setDims', cWidth, cHeight, containerWidth, iWidth, iHeight, iRatio, cRatio  )
-
-  fImg.set({
-    width:cWidth*iRatio,
-    height:cHeight*iRatio
-  }) 
-
-  
-
-  // fImg.set({
-  //   scale: iRatio,
-  //   // scaleY: 150
-  // })
-
   
   if(iRatio <= cRatio){
 
@@ -1282,11 +1263,11 @@ function setDims (fCanvas, fImg, fb) {
     if(iHeight > cHeight){
     console.log('2')
 
-      // fImg.scaleToHeight(cHeight);
-      fImg.set({
-        scaleX: .3,
-        scaleY: .5
-      })
+      fImg.scaleToHeight(cHeight);
+      // fImg.set({
+      //   scaleX: .3,
+      //   scaleY: .5
+      // })
     }
   }else{
     console.log('3')
@@ -1294,13 +1275,13 @@ function setDims (fCanvas, fImg, fb) {
     if(iWidth > cWidth){
     console.log('4')
 
-      // fImg.scaleToWidth(cWidth);
-      fImg.set({
-        // scaleX: cWidth,
-        // scaleY: cWidth / iRatio 
-        scaleX: cWidth / iWidth,
-        scaleY: (cWidth / iWidth) / iRatio
-      })
+      fImg.scaleToWidth(cWidth);
+      // fImg.set({
+      //   // scaleX: cWidth,
+      //   // scaleY: cWidth / iRatio 
+      //   scaleX: cWidth / iWidth,
+      //   scaleY: (cWidth / iWidth) / iRatio
+      // })
     }
   };
 
