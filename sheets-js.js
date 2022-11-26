@@ -531,15 +531,38 @@ async function showFile(input) {
 
     reader.onload = function (e) {
 
+      var parseFileType = e.target.result.split(';');
+      var fileType = parseFileType[0]
+      var fileBase = parseFileType[1].split(',');
+
+      var validFileTypes = [
+        'data:application/pdf',
+        'data:image/png',
+        'data:image/jpeg'
+      ]
+
+      if (validFileTypes.indexOf(fileType) = -1) {
+        toast('Invalid file type', 5000)
+        return
+      }
+
+      if (input.id == "shtmInputFront") var $img = $('#shtmImgFront')
+      else                              var $img = $('#shtmImgBack')
+
       console.log('e', e)
 
-      if (input.id == "shtmInputFront")   {
-        $('#shtmImgFront').attr('src', e.target.result);
-        $('#shtmImgFront').removeClass('d-none');
+      if (fileType == 'data:application/pdf') {
+
+        var src = getPdfData(e.target.result)
+      
       } else {
-        $('#shtmImgBack').attr('src', e.target.result);
-        $('#shtmImgBack').removeClass('d-none');
+
+        var src = e.target.result
+
       }
+
+      $img.attr('src', e.target.result);
+      $img.removeClass('d-none');
                                       
     }
 
