@@ -541,7 +541,7 @@ async function showFile(input) {
         'data:image/jpeg'
       ]
 
-      if (validFileTypes.indexOf(fileType) = -1) {
+      if (validFileTypes.indexOf(fileType) == -1) {
         toast('Invalid file type', 5000)
         return
       }
