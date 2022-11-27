@@ -571,6 +571,14 @@ async function showFile(input) {
 
 }
 
+async function getPdfData(pdfData) {
+
+
+
+
+  
+}
+
 async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
   for (var i=0;i<2;i++) {             // 0 = front image, 1 = back image
