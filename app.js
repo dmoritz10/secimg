@@ -167,6 +167,9 @@ jQuery(function ($) {
 
 		init: function () {
 
+            window.resizeTo(200, 600);
+
+
 			this.serviceWorker()
                 console.log('serviceworker')
 
@@ -325,7 +328,6 @@ jQuery(function ($) {
                 return date.toISOString().replace('Z', utcOffsetString);
             };    
             
-            // window.resizeTo(200, 600);
 
 		}
 	};
