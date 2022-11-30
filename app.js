@@ -167,9 +167,6 @@ jQuery(function ($) {
 
 		init: function () {
 
-            window.resizeTo(200, 600);
-
-
 			this.serviceWorker()
                 console.log('serviceworker')
 
