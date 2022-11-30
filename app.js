@@ -325,7 +325,7 @@ jQuery(function ($) {
                 return date.toISOString().replace('Z', utcOffsetString);
             };    
             
-            window.resizeTo(200, 600);
+            // window.resizeTo(200, 600);
 
 		}
 	};
