@@ -235,6 +235,8 @@ async function editSheet(arrIdx) {
   await addImage(canvas, imgs[0], fb)
   console.log('addImage1', canvas)
   canvas.item(0)['hasControls'] = false
+  console.log('item(0)', canvas.item(0))
+  console.log('item', canvas.item)
 
   modal(false)
 
