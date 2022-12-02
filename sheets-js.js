@@ -208,15 +208,15 @@ async function editSheet(arrIdx) {
   $('#shtmNotes').val(shtObj['Notes'])
   $('#shtmFavorite').val(shtObj['Favorite'])
   $('#shtmFileId').val(shtObj['File Id'])
-  $('#shtmImgFront').attr('src', imgs[0])
-  $('#shtmImgBack').attr('src', imgs[1])
-  $('#shtmSaveImgFront').attr('src', imgs[0])
-  $('#shtmSaveImgBack').attr('src', imgs[1])
+  // $('#shtmImgFront').attr('src', imgs[0])
+  // $('#shtmImgBack').attr('src', imgs[1])
+  // $('#shtmSaveImgFront').attr('src', imgs[0])
+  // $('#shtmSaveImgBack').attr('src', imgs[1])
 
-  if (imgs[0])  $('#shtmImgFront').removeClass('d-none')
-  else          $('#shtmImgFront').addClass('d-none');
-  if (imgs[1])  $('#shtmImgBack').removeClass('d-none')
-  else          $('#shtmImgBack').addClass('d-none');
+  // if (imgs[0])  $('#shtmImgFront').removeClass('d-none')
+  // else          $('#shtmImgFront').addClass('d-none');
+  // if (imgs[1])  $('#shtmImgBack').removeClass('d-none')
+  // else          $('#shtmImgBack').addClass('d-none');
 
  
   $('#btnShtmDelete').removeClass('d-none')
@@ -224,21 +224,21 @@ async function editSheet(arrIdx) {
   clearCanvas(frntbackObj('front'))
   clearCanvas(frntbackObj('back'))
 
-  var fb = frntbackObj('front')
+  if (imgs[0])  {
+    
+    var fb = frntbackObj('front')
+    fb.canvas.removeClass('d-none')
+    var canvas = initCnvas(fb.canvas);
+    canvas.preserveObjectStacking = true;
+    await addImage(canvas, imgs[0], fb)
+    canvas.item(0)['hasControls'] = false
+    canvas.renderAll()
 
+  } else {
 
-  if (imgs[0])  $('#shtmCanvasFront').removeClass('d-none')
-  else          $('#shtmCanvasFront').addClass('d-none');
-
-  var canvas = initCnvas(fb.canvas);
-  canvas.preserveObjectStacking = true;
-  await addImage(canvas, imgs[0], fb)
-  console.log('addImage1', canvas)
-  canvas.item(0)['hasControls'] = false
-  canvas.renderAll()
-  console.log('item(0)', canvas.item(0))
-  console.log('item', canvas.item)
-
+    $('#shtmCanvasFront').addClass('d-none');
+  }
+  
   modal(false)
 
 }
