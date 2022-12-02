@@ -254,7 +254,7 @@ function addImage(canvas, imgSrc, fb) {
     setDims (canvas, oImg, fb)
       
     canvas.add(oImg);
-    // canvas.centerObject(oImg);
+    canvas.centerObject(oImg);
     canvas.setActiveObject(oImg);
     currentImage = oImg;
     canvas.renderAll();
