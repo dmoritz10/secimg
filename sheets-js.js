@@ -187,8 +187,8 @@ async function editSheet(arrIdx) {
  
   $("#sheet-form")[0].reset();
 
-  $('#shtmImgFront').removeAttr('src').addClass('d-none')
-  $('#shtmImgBack').removeAttr('src').addClass('d-none')
+  // $('#shtmImgFront').removeAttr('src').addClass('d-none')
+  // $('#shtmImgBack').removeAttr('src').addClass('d-none')
 
   $('#shtmSheetName').html(shtTitle)
 
@@ -295,13 +295,17 @@ async function btnShtmSubmitSheetHtml() {
   var imgs = []
   var savImgs = []
 
-  imgs[0] = document.getElementById("shtmImgFront").src
-  imgs[1] = document.getElementById("shtmImgBack").src
-  savImgs[0] = document.getElementById("shtmSaveImgFront").src;
-  savImgs[1] = document.getElementById("shtmSaveImgBack").src;
+  var fb = frntbackObj('front')
+  imgs[0] = fb.canvas.toDataURL('image/jpeg', 1)
+  var fb = frntbackObj('back')
+  imgs[1] = fb.canvas.toDataURL('image/jpeg', 1)
 
-  console.log('imgFront.src', document.getElementById("shtmImgFront").src.substring(0,100))
-  console.log('imgBack.src', document.getElementById("shtmImgBack").src.substring(0,100))
+  // imgs[1] = document.getElementById("shtmImgBack").src
+  // savImgs[0] = document.getElementById("shtmSaveImgFront").src;
+  // savImgs[1] = document.getElementById("shtmSaveImgBack").src;
+
+  // console.log('imgFront.src', document.getElementById("shtmImgFront").src.substring(0,100))
+  // console.log('imgBack.src', document.getElementById("shtmImgBack").src.substring(0,100))
 
   // console.log('submit', [...imgs])
   // console.log('submit', [...savImgs])
@@ -310,8 +314,11 @@ async function btnShtmSubmitSheetHtml() {
 
   await postImages(shtEnc, fileId, imgs, savImgs)
 
-  $('#shtmImgFront').removeAttr('src').addClass('d-none')
-  $('#shtmImgBack').removeAttr('src').addClass('d-none')
+  // $('#shtmImgFront').removeAttr('src').addClass('d-none')
+  // $('#shtmImgBack').removeAttr('src').addClass('d-none')
+
+  clearCanvas(frntbackObj('front'))
+  clearCanvas(frntbackObj('back'))
 
   $("#sheet-modal").modal('hide');
   // $("#sheet-modal").modal('dispose');
@@ -441,8 +448,10 @@ function fixUrl(url) {
 
 async function btnAddSheetHtml() {
 
-  $('#shtmImgFront').removeAttr('src').addClass('d-none')
-  $('#shtmImgBack').removeAttr('src').addClass('d-none')
+    $(frntbackObj('front').canvas).addClass('d-none')
+    $(frntbackObj('back').canvas).addClass('d-none')
+  // $('#shtmImgFront').removeAttr('src').addClass('d-none')
+  // $('#shtmImgBack').removeAttr('src').addClass('d-none')
 
   $("#sheet-form")[0].reset();
   $('#shtmModalTitle').html('')
@@ -541,7 +550,7 @@ async function showFile(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
-    reader.onload = function (e) {
+    reader.onload = async function (e) {
 
       var parseFileType = e.target.result.split(';');
       var fileType = parseFileType[0]
@@ -558,8 +567,8 @@ async function showFile(input) {
         return
       }
 
-      if (input.id == "shtmInputFront") var $img = $('#shtmImgFront')
-      else                              var $img = $('#shtmImgBack')
+      if (input.id == "shtmInputFront") var fb = $(frntbackObj('front'))
+      else                              var fb = $(frntbackObj('back'))
 
       console.log('e', e)
 
@@ -573,8 +582,13 @@ async function showFile(input) {
 
       }
 
-      $img.attr('src', e.target.result);
-      $img.removeClass('d-none');
+      
+      $(fb.canvas).removeClass('d-none')
+      var canvas = initCnvas(fb.canvas);
+      canvas.preserveObjectStacking = true;
+      await addImage(canvas, src, fb)
+      canvas.item(0)['hasControls'] = false
+      canvas.renderAll()
                                       
     }
 
