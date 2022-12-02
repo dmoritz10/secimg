@@ -1116,7 +1116,7 @@ async function editImage(frntback) {
 
   async function restoreImage(canvas, fb, imgSrc) {
 
-    $(fb.edit.restoreImage).on("click.editListener", function  () {
+    $(fb.edit.restoreImage).on("click.editListener", async function  () {
       
       let img = canvas.getObjects()[0]
       if (img) canvas.remove(img);
