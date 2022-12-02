@@ -234,6 +234,7 @@ async function editSheet(arrIdx) {
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
   addImage(canvas, imgs[0], fb)
+  console.log('addImage1', canvas)
   canvas.item(0)['hasControls'] = false
 
   modal(false)
@@ -1150,6 +1151,7 @@ function addImage(canvas, imgSrc, fb) {
     canvas.setActiveObject(oImg);
     currentImage = oImg;
     canvas.renderAll();
+  console.log('addImage2', canvas)
     
   }
 }
