@@ -180,7 +180,6 @@ async function setFavorite(arrIdx) {
 
 }
 
-
 async function editSheet(arrIdx) {
 
   modal(true)
