@@ -227,7 +227,7 @@ async function editSheet(arrIdx) {
   if (imgs[0])  {
     
     var fb = frntbackObj('front')
-    fb.canvas.removeClass('d-none')
+    $(fb.canvas).removeClass('d-none')
     var canvas = initCnvas(fb.canvas);
     canvas.preserveObjectStacking = true;
     await addImage(canvas, imgs[0], fb)
