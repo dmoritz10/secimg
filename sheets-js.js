@@ -227,7 +227,12 @@ async function editSheet(arrIdx) {
 
   if (imgs[0])  $('#shtmCanvasFront').removeClass('d-none')
   else          $('#shtmCanvasFront').addClass('d-none');
-  var canvas = initCnvas($('#shtmCanvasFront')[0]);
+
+  var canvas = new fabric.Canvas($('#shtmCanvasFront')[0], {
+    strokeWidth: 15,
+    stroke: "rgba(100,200,200,0.5)",
+  });
+
   canvas.preserveObjectStacking = true;
   addImage(canvas, imgs[0])
 
