@@ -233,7 +233,7 @@ async function editSheet(arrIdx) {
 
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
-  addImage(canvas, imgs[0], fb)
+  await addImage(canvas, imgs[0], fb)
   console.log('addImage1', canvas)
   canvas.item(0)['hasControls'] = false
 
@@ -967,7 +967,7 @@ async function editImage(frntback) {
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
 
-  addImage(canvas, imgSrc, fb);
+  asait addImage(canvas, imgSrc, fb);
 
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
@@ -1115,13 +1115,13 @@ async function editImage(frntback) {
 
   }
 
-  function restoreImage(canvas, fb, imgSrc) {
+  async function restoreImage(canvas, fb, imgSrc) {
 
     $(fb.edit.restoreImage).on("click.editListener", function  () {
       
       let img = canvas.getObjects()[0]
       if (img) canvas.remove(img);
-      addImage(canvas, imgSrc, fb);
+      await addImage(canvas, imgSrc, fb);
       
     });
 
@@ -1136,10 +1136,10 @@ function initCnvas(c) {
   });
 }
 
-function addImage(canvas, imgSrc, fb) {
+async function addImage(canvas, imgSrc, fb) {
   const img = new Image();
   img.src = imgSrc;
-  img.onload = function () {
+  await waitForImage(img)
 
     var oImg = new fabric.Image(img);
     oImg.setControlsVisibility({ mtr: false })
@@ -1153,7 +1153,6 @@ function addImage(canvas, imgSrc, fb) {
     canvas.renderAll();
   console.log('addImage2', canvas)
     
-  }
 }
 
 
