@@ -231,11 +231,7 @@ async function editSheet(arrIdx) {
   if (imgs[0])  $('#shtmCanvasFront').removeClass('d-none')
   else          $('#shtmCanvasFront').addClass('d-none');
 
-  var canvas = new fabric.Canvas(fb.canvas, {
-    strokeWidth: 15,
-    stroke: "rgba(100,200,200,0.5)",
-  });
-
+  var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
   addImage(canvas, imgs[0], fb)
 
@@ -243,24 +239,6 @@ async function editSheet(arrIdx) {
 
 }
 
-function addImage(canvas, imgSrc, fb) {
-  const img = new Image();
-  img.src = imgSrc;
-  img.onload = function () {
-
-    var oImg = new fabric.Image(img);
-
-
-    setDims (canvas, oImg, fb)
-      
-    canvas.add(oImg);
-    canvas.centerObject(oImg);
-    canvas.setActiveObject(oImg);
-    currentImage = oImg;
-    canvas.renderAll();
-    
-  }
-}
 
 async function btnShtmSubmitSheetHtml() {
 
@@ -995,31 +973,7 @@ async function editImage(frntback) {
   cancelImage(canvas, fb)
   restoreImage(canvas, fb,  imgSrc)
 
-  function initCnvas(c) {
-    return new fabric.Canvas(c.id, {
-      strokeWidth: 15,
-      stroke: "rgba(100,200,200,0.5)",
-    });
-  }
-
-  function addImage(canvas, imgSrc, fb) {
-    const img = new Image();
-    img.src = imgSrc;
-    img.onload = function () {
-
-      var oImg = new fabric.Image(img);
-
-      setDims (canvas, oImg, fb)
-        
-      canvas.add(oImg);
-      // canvas.centerObject(oImg);
-      canvas.setActiveObject(oImg);
-      currentImage = oImg;
-      canvas.renderAll();
-      
-    }
-  }
-
+  
   function createMaskForCrop(canvas, fb) {
     //  After click start crop add the mask to canvas
 
@@ -1172,6 +1126,32 @@ async function editImage(frntback) {
   }
 
 }
+
+function initCnvas(c) {
+  return new fabric.Canvas(c.id, {
+    strokeWidth: 15,
+    stroke: "rgba(100,200,200,0.5)",
+  });
+}
+
+function addImage(canvas, imgSrc, fb) {
+  const img = new Image();
+  img.src = imgSrc;
+  img.onload = function () {
+
+    var oImg = new fabric.Image(img);
+
+    setDims (canvas, oImg, fb)
+      
+    canvas.add(oImg);
+    canvas.centerObject(oImg);
+    canvas.setActiveObject(oImg);
+    currentImage = oImg;
+    canvas.renderAll();
+    
+  }
+}
+
 
 function clearCanvas(fb) {
 
