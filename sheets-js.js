@@ -241,6 +241,7 @@ function addImage(canvas, imgSrc, fb) {
 
     var oImg = new fabric.Image(img);
 
+    
     // setDims (canvas, oImg, fb)
       
     canvas.add(oImg);
