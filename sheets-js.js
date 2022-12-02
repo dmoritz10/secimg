@@ -218,10 +218,10 @@ async function editSheet(arrIdx) {
   else          $('#shtmImgFront').addClass('d-none');
   if (imgs[1])  $('#shtmImgBack').removeClass('d-none')
   else          $('#shtmImgBack').addClass('d-none');
-  // document.getElementById("shtmImgFront").src = imgs[0];
-  // document.getElementById("shtmImgBack").src = imgs[1];
-  // document.getElementById("shtmSaveImgFront").src = imgs[0];
-  // document.getElementById("shtmSaveImgBack").src = imgs[1];
+
+  if (imgs[0])  $('#shtmCanvasFront').removeClass('d-none')
+  else          $('#shtmCanvasFront').addClass('d-none');
+
 
   $('#btnShtmDelete').removeClass('d-none')
 
@@ -576,7 +576,7 @@ async function getPdfData(pdfData) {
 
 
 
-  
+
 }
 
 async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
