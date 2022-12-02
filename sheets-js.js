@@ -219,17 +219,37 @@ async function editSheet(arrIdx) {
   if (imgs[1])  $('#shtmImgBack').removeClass('d-none')
   else          $('#shtmImgBack').addClass('d-none');
 
-  if (imgs[0])  $('#shtmCanvasFront').removeClass('d-none')
-  else          $('#shtmCanvasFront').addClass('d-none');
-
-
+ 
   $('#btnShtmDelete').removeClass('d-none')
 
   clearCanvas(frntbackObj('front'))
   clearCanvas(frntbackObj('back'))
 
+  if (imgs[0])  $('#shtmCanvasFront').removeClass('d-none')
+  else          $('#shtmCanvasFront').addClass('d-none');
+
+  addImage($('#shtmCanvasFront')[0], imgs[0], fb)
+
   modal(false)
 
+}
+
+function addImage(canvas, imgSrc, fb) {
+  const img = new Image();
+  img.src = imgSrc;
+  img.onload = function () {
+
+    var oImg = new fabric.Image(img);
+
+    // setDims (canvas, oImg, fb)
+      
+    canvas.add(oImg);
+    // canvas.centerObject(oImg);
+    canvas.setActiveObject(oImg);
+    currentImage = oImg;
+    canvas.renderAll();
+    
+  }
 }
 
 async function btnShtmSubmitSheetHtml() {
