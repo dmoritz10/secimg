@@ -227,8 +227,9 @@ async function editSheet(arrIdx) {
 
   if (imgs[0])  $('#shtmCanvasFront').removeClass('d-none')
   else          $('#shtmCanvasFront').addClass('d-none');
-
-  addImage($('#shtmCanvasFront')[0], imgs[0])
+  var canvas = initCnvas($('#shtmCanvasFront')[0]);
+  canvas.preserveObjectStacking = true;
+  addImage(canvas, imgs[0])
 
   modal(false)
 
