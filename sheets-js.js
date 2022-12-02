@@ -234,6 +234,7 @@ async function editSheet(arrIdx) {
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
   addImage(canvas, imgs[0], fb)
+  canvas.item(0)['hasControls'] = false
 
   modal(false)
 
@@ -1140,6 +1141,7 @@ function addImage(canvas, imgSrc, fb) {
   img.onload = function () {
 
     var oImg = new fabric.Image(img);
+    oImg.setControlsVisibility({ mtr: false })
 
     setDims (canvas, oImg, fb)
       
