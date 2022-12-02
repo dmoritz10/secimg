@@ -225,16 +225,19 @@ async function editSheet(arrIdx) {
   clearCanvas(frntbackObj('front'))
   clearCanvas(frntbackObj('back'))
 
+  var fb = frntbackObj('front')
+
+
   if (imgs[0])  $('#shtmCanvasFront').removeClass('d-none')
   else          $('#shtmCanvasFront').addClass('d-none');
 
-  var canvas = new fabric.Canvas($('#shtmCanvasFront')[0], {
+  var canvas = new fabric.Canvas(fb.canvas, {
     strokeWidth: 15,
     stroke: "rgba(100,200,200,0.5)",
   });
 
   canvas.preserveObjectStacking = true;
-  addImage(canvas, imgs[0])
+  addImage(canvas, imgs[0], fb)
 
   modal(false)
 
@@ -248,7 +251,7 @@ function addImage(canvas, imgSrc, fb) {
     var oImg = new fabric.Image(img);
 
 
-    // setDims (canvas, oImg, fb)
+    setDims (canvas, oImg, fb)
       
     canvas.add(oImg);
     // canvas.centerObject(oImg);
