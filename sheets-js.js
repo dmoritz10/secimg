@@ -228,7 +228,7 @@ async function editSheet(arrIdx) {
   if (imgs[0])  $('#shtmCanvasFront').removeClass('d-none')
   else          $('#shtmCanvasFront').addClass('d-none');
 
-  addImage($('#shtmCanvasFront')[0], imgs[0], fb)
+  addImage($('#shtmCanvasFront')[0], imgs[0])
 
   modal(false)
 
@@ -241,7 +241,7 @@ function addImage(canvas, imgSrc, fb) {
 
     var oImg = new fabric.Image(img);
 
-    
+
     // setDims (canvas, oImg, fb)
       
     canvas.add(oImg);
