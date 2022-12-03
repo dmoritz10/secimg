@@ -825,8 +825,8 @@ async function startCamera(frntBack) {
 
   document.getElementById("enhancerUIContainer").dataset.frntback = frntBack;
   
-  if (frntBack == 'front')  $('#shtmImgFront').addClass('d-none');
-  else                      $('#shtmImgBack').addClass('d-none');
+  // if (frntBack == 'front')  $('#shtmImgFront').addClass('d-none');
+  // else                      $('#shtmImgBack').addClass('d-none');
 
   $("#cameraOverlay").removeClass('d-none')
   
@@ -844,8 +844,8 @@ async function clickPhoto() {
 
     var frntback = document.getElementById("enhancerUIContainer").dataset.frntback;
 
-      await showCanvas(frntback, image_data_url)
-      showControls(frntback, false)
+    await showCanvas(frntback, image_data_url)
+    showControls(frntback, false)
                                       
     enhancerClose()
 
