@@ -1006,7 +1006,6 @@ async function editImage(frntback) {
   // await addImage(canvas, imgSrc, fb);
   showControls(frntback, true)
   var canvas = fb.canvas.fCanvas
-  canvas.setActiveObject(canvas.item(0));
   var imgSrc = canvas.toDataURL('image/jpeg', 1)
 
   createMaskForCrop(canvas, fb);
@@ -1035,8 +1034,8 @@ async function editImage(frntback) {
       originY: "top",
       stroke: "black",
       opacity: 1,
-      // width: currentImage.width,
-      // height: currentImage.height,
+      width: canvas.item(0).width,
+      height: canvas.item(0).height,
       width: 200,
       height: 100,
       hasRotatingPoint: false,
@@ -1071,7 +1070,8 @@ async function editImage(frntback) {
       });
 
       // add to the current image clicpPath property
-      currentImage.clipPath = rect;
+      // currentImage.clipPath = rect;
+      canvas.item(0).clipPath = rect;
 
       // remove the mask layer
       canvas.remove(selectionRect);
