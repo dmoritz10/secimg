@@ -1006,6 +1006,7 @@ async function editImage(frntback) {
   // await addImage(canvas, imgSrc, fb);
   showControls(frntback, true)
   var canvas = fb.canvas.fCanvas
+  canvas.setActiveObject(canvas.item(0));
   var imgSrc = canvas.toDataURL('image/jpeg', 1)
 
   createMaskForCrop(canvas, fb);
