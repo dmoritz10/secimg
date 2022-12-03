@@ -567,8 +567,8 @@ async function showFile(input) {
         return
       }
 
-      if (input.id == "shtmInputFront") var fb = $(frntbackObj('front'))
-      else                              var fb = $(frntbackObj('back'))
+      if (input.id == "shtmInputFront") var fb = frntbackObj('front')
+      else                              var fb = frntbackObj('back')
 
       console.log('e', e)
 
