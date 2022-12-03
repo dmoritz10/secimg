@@ -607,6 +607,7 @@ function showControls(frntback, bool) {
 
   var fb = frntbackObj(frntback)
 
+console.log('fb', fb)
   var canvas = fb.canvas
   var c = canvas.item(0)
   c.selectable = bool;
