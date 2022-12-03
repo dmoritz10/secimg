@@ -587,10 +587,12 @@ async function showFile(input) {
       var canvas = initCnvas(fb.canvas);
       canvas.preserveObjectStacking = true;
       await addImage(canvas, src, fb);
-      
+
       var c = canvas.item(0)
       c.selectable = false;
       c.hasControls = false;
+      c.lockMovementY = true;
+      c.lockMovementX = true;
 
       canvas.renderAll();
                                       
