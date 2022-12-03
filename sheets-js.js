@@ -567,8 +567,8 @@ async function showFile(input) {
         return
       }
 
-      if (input.id == "shtmInputFront") var fb = frntbackObj('front')
-      else                              var fb = frntbackObj('back')
+      if (input.id == "shtmInputFront") var frntback = 'front'
+      else                              var frntback = 'back'
 
       console.log('e', e)
 
@@ -582,25 +582,38 @@ async function showFile(input) {
 
       }
 
-      console.log('fb', fb)
-      $(fb.canvas).removeClass('d-none');
-      var canvas = initCnvas(fb.canvas);
-      canvas.preserveObjectStacking = true;
-      await addImage(canvas, src, fb);
-
-      var c = canvas.item(0)
-      c.selectable = false;
-      c.hasControls = false;
-      c.lockMovementY = true;
-      c.lockMovementX = true;
-      c.hoverCursor = 'none';
-
-      canvas.renderAll();
+      showCanvas(frntback, src)
+      showControls(frntback, bool)
                                       
     }
 
     reader.readAsDataURL(input.files[0]);
   }
+
+}
+
+async function showCanvas(frntback, src) {
+  var fb = frntbackObj(frntback)
+  $(fb.canvas).removeClass('d-none');
+  var canvas = initCnvas(fb.canvas);
+  canvas.preserveObjectStacking = true;
+  await addImage(canvas, src, fb);
+
+  canvas.renderAll();
+
+}
+
+function showControls(frntback, bool) {
+
+  var fb = frntbackObj(frntback)
+  var c = fb.canvas.item(0)
+  c.selectable = bool;
+  c.hasControls = bool;
+  c.lockMovementY = -bool;
+  c.lockMovementX = -bool;
+  c.hoverCursor = bool ? 'all-scroll' : 'none';
+
+  canvas.renderAll();
 
 }
 
