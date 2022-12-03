@@ -1158,7 +1158,8 @@ async function editImage(frntback) {
       // if (img) canvas.remove(img);
 
       console.log('nbr', canvas.getObjects())
-      canvas.clear()
+      // canvas.clear()
+      canvas.remove(...canvas.getObjects());
       await addImage(canvas, imgSrc, fb);
       showControls(fb, false)
 
