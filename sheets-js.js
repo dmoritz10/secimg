@@ -590,6 +590,7 @@ async function showFile(input) {
 }
 
 async function showCanvas(frntback, src) {
+
   var fb = frntbackObj(frntback)
   $(fb.canvas).removeClass('d-none');
   var canvas = initCnvas(fb.canvas);
@@ -604,7 +605,6 @@ function showControls(frntback, bool) {
 
   var fb = frntbackObj(frntback)
 
-console.log('fb', fb)
   var canvas = fb.canvas.fCanvas
   var c = canvas.item(0)
   c.selectable = bool;
@@ -832,7 +832,7 @@ async function startCamera(frntBack) {
   
 }
 
-function clickPhoto() {
+async function clickPhoto() {
 
   if (enhancer) {
 
@@ -844,14 +844,9 @@ function clickPhoto() {
 
     var frntback = document.getElementById("enhancerUIContainer").dataset.frntback;
 
-    if (frntback == 'front') {
-      $('#shtmImgFront').attr('src', image_data_url);
-      $('#shtmImgFront').removeClass('d-none');
-    } else {
-      $('#shtmImgBack').attr('src', image_data_url);
-      $('#shtmImgBack').removeClass('d-none');
-    }
-  
+      await showCanvas(frntback, image_data_url)
+      showControls(frntback, false)
+                                      
     enhancerClose()
 
   }
