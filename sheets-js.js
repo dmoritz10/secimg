@@ -587,13 +587,11 @@ async function showFile(input) {
       var canvas = initCnvas(fb.canvas);
       canvas.preserveObjectStacking = true;
       await addImage(canvas, src, fb);
+      
       var c = canvas.item(0)
-      c({
-        selectable: false,
-        hascontrols: false
-      })
-      // canvas.item(0)['selectable'] = false;
-      // canvas.item(0)['hasControls'] = false;
+      c.selectable = false;
+      c.hasControls = false;
+
       canvas.renderAll();
                                       
     }
