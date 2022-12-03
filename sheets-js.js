@@ -593,6 +593,7 @@ async function showFile(input) {
       c.hasControls = false;
       c.lockMovementY = true;
       c.lockMovementX = true;
+      c.hoverCursor = 'none';
 
       canvas.renderAll();
                                       
