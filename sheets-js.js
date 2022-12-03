@@ -1007,8 +1007,8 @@ async function editImage(frntback) {
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
   saveImage(canvas, fb)
-  cancelImage(canvas, fb)
-  restoreImage(canvas, fb,  imgSrc)
+  cancelImage(canvas, fb, imgSrc)
+  restoreImage(canvas, fb, imgSrc)
 
   
   function createMaskForCrop(canvas, fb) {
@@ -1150,8 +1150,11 @@ async function editImage(frntback) {
 
   function cancelImage(canvas, fb) {
 
-    $(fb.edit.cancelEditImage).on("click.editListener", function  () {
+    $(fb.edit.cancelEditImage).on("click.editListener", async function  () {
       
+      let img = canvas.getObjects()[0]
+      if (img) canvas.remove(img);
+      await addImage(canvas, imgSrc, fb);
       showControls(fb, false)
 
       $(fb.options.row).removeClass('d-none')
