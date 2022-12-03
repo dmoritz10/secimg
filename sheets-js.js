@@ -1135,7 +1135,7 @@ async function editImage(frntback) {
 
       showControls(fb, false)
 
-    })
+    // })
 
       // await waitForImage(fb.image)
     
