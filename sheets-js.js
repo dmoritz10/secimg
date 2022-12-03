@@ -231,7 +231,9 @@ async function editSheet(arrIdx) {
 
   } else {
 
-    $('#shtmCanvasFront').addClass('d-none');
+    await showCanvas('back', imgs[0])
+    showControls('back', false)
+
   }
   
   modal(false)
