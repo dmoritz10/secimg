@@ -295,9 +295,9 @@ async function btnShtmSubmitSheetHtml() {
   var savImgs = []
 
   var fb = frntbackObj('front')
-  imgs[0] = fb.canvas.toDataURL('image/jpeg', 1)
+  imgs[0] = fb.canvas ? fb.canvas.toDataURL('image/jpeg', 1) : null
   var fb = frntbackObj('back')
-  imgs[1] = fb.canvas.toDataURL('image/jpeg', 1)
+  imgs[1] = fb.canvas ? fb.canvas.toDataURL('image/jpeg', 1) : null
 
   // imgs[1] = document.getElementById("shtmImgBack").src
   // savImgs[0] = document.getElementById("shtmSaveImgFront").src;
@@ -968,7 +968,7 @@ function deleteImage(frntback) {
   var fb = frntbackObj(frntback)
 
   $(fb.image).attr('src', '#').addClass('d-none')
-
+initCnvas
 }
 
 async function editImage(frntback) {
@@ -1032,6 +1032,8 @@ async function editImage(frntback) {
       opacity: 1,
       width: canvas.item(0).width,
       height: canvas.item(0).height,
+      // width: currentImage.width,
+      // height: currentImage.height,
       width: 200,
       height: 100,
       hasRotatingPoint: false,
