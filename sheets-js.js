@@ -614,7 +614,7 @@ console.log('fb', fb)
   c.hasControls = bool;
   c.lockMovementY = !bool;
   c.lockMovementX = !bool;
-  c.hoverCursor = bool ? 'all-scroll' : 'none';
+  c.hoverCursor = bool ? 'pointer' : 'none';
 
   canvas.renderAll();
 
