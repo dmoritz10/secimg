@@ -608,7 +608,7 @@ function showControls(frntback, bool) {
   var fb = frntbackObj(frntback)
 
 console.log('fb', fb)
-  var canvas = fb.canvas
+  var canvas = fb.canvas.fCanvas
   var c = canvas.item(0)
   c.selectable = bool;
   c.hasControls = bool;
@@ -1169,10 +1169,11 @@ async function editImage(frntback) {
 }
 
 function initCnvas(c) {
-  return new fabric.Canvas(c.id, {
+  var fCanvas = new fabric.Canvas(c.id, {
     strokeWidth: 15,
     stroke: "rgba(100,200,200,0.5)",
   });
+  c.fCanvas = fCanvas
 }
 
 async function addImage(canvas, imgSrc, fb) {
