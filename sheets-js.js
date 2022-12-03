@@ -979,18 +979,18 @@ async function editImage(frntback) {
 
   var fb = frntbackObj(frntback)
 
-  clearCanvas(fb)
+  // clearCanvas(fb)
 
   console.log('fb', fb)
 
   $(fb.options.row).addClass('d-none')
   $(fb.edit.row).removeClass('d-none')
 
-  fb.canvas.width = fb.image.width
-  fb.canvas.height = fb.image.height
+  // fb.canvas.width = fb.image.width
+  // fb.canvas.height = fb.image.height
 
-  $(fb.canvas).removeClass('d-none')
-  $(fb.image).addClass('d-none')
+  // $(fb.canvas).removeClass('d-none')
+  // $(fb.image).addClass('d-none')
 
   // fb.image.dataset['saveSrc'] = fb.image.src
 
