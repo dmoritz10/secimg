@@ -976,7 +976,8 @@ async function editImage(frntback) {
   var fb = frntbackObj(frntback)
 
   // clearCanvas(fb)
-
+  $(fb.edit.row).find("*").off("click.editListener")
+  
   console.log('fb', fb)
 
   $(fb.options.row).addClass('d-none')
@@ -1013,7 +1014,7 @@ async function editImage(frntback) {
   
   function createMaskForCrop(canvas, fb) {
     //  After click start crop add the mask to canvas
-
+    
     $(fb.edit.setupCrop).on("click.editListener", function  () {
       // Create mask layer and show to canvas
       addSelectionRect();
