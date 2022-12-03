@@ -583,13 +583,13 @@ async function showFile(input) {
       }
 
       console.log('fb', fb)
-      $(fb.canvas).removeClass('d-none')
+      $(fb.canvas).removeClass('d-none');
       var canvas = initCnvas(fb.canvas);
       canvas.preserveObjectStacking = true;
-      await addImage(canvas, src, fb)
-      canvas.item(0)['hasControls'] = false
+      await addImage(canvas, src, fb);
       canvas.item(0)['selectable'] = false;
-      canvas.renderAll()
+      canvas.item(0)['hasControls'] = false;
+      canvas.renderAll();
                                       
     }
 
