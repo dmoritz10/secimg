@@ -583,7 +583,7 @@ async function showFile(input) {
       }
 
       showCanvas(frntback, src)
-      showControls(frntback, bool)
+      showControls(frntback, false)
                                       
     }
 
