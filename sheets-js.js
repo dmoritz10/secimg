@@ -1000,10 +1000,12 @@ async function editImage(frntback) {
   var currentImage;
 
   // init canvas
-  var canvas = initCnvas(fb.canvas);
-  canvas.preserveObjectStacking = true;
+  // var canvas = initCnvas(fb.canvas);
+  // canvas.preserveObjectStacking = true;
 
-  await addImage(canvas, imgSrc, fb);
+  // await addImage(canvas, imgSrc, fb);
+
+  var canvas = fb.canvas.fCanvas
 
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
