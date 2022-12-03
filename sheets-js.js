@@ -594,6 +594,7 @@ async function showFile(input) {
 async function showCanvas(frntback, src) {
 
   var fb = frntbackObj(frntback)
+  clearCanvas(fb)
   $(fb.canvas).removeClass('d-none');
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
@@ -833,7 +834,7 @@ async function startCamera(frntBack) {
   
 }
 
-async function clickPhoto() {
+async function clickPhoto() {showCanvas
 
   if (enhancer) {
 
@@ -968,7 +969,7 @@ function deleteImage(frntback) {
   var fb = frntbackObj(frntback)
 
   $(fb.image).attr('src', '#').addClass('d-none')
-initCnvas
+
 }
 
 async function editImage(frntback) {
@@ -977,7 +978,7 @@ async function editImage(frntback) {
 
   // clearCanvas(fb)
   $(fb.edit.row).find("*").off("click.editListener")
-  
+
   console.log('fb', fb)
 
   $(fb.options.row).addClass('d-none')
@@ -991,7 +992,7 @@ async function editImage(frntback) {
 
   // fb.image.dataset['saveSrc'] = fb.image.src
 
-  var imgSrc = fb.image.src
+  // var imgSrc = fb.image.src
 
   var selectionRect
   var currentImage;
@@ -1199,17 +1200,16 @@ async function addImage(canvas, imgSrc, fb) {
   img.src = imgSrc;
   await waitForImage(img)
 
-    var oImg = new fabric.Image(img);
-    oImg.setControlsVisibility({ mtr: false })
+  var oImg = new fabric.Image(img);
+  oImg.setControlsVisibility({ mtr: false })
 
-    setDims (canvas, oImg, fb)
-      
-    canvas.add(oImg);
-    canvas.centerObject(oImg);
-    canvas.setActiveObject(oImg);
-    currentImage = oImg;
-    canvas.renderAll();
-  console.log('addImage2', canvas)
+  setDims (canvas, oImg, fb)
+    
+  canvas.add(oImg);
+  canvas.centerObject(oImg);
+  canvas.setActiveObject(oImg);
+  currentImage = oImg;
+  canvas.renderAll();
     
 }
 
@@ -1228,8 +1228,8 @@ function clearCanvas(fb) {
   $(fb.options.row).removeClass('d-none')
   $(fb.edit.row).addClass('d-none')
 
-  $(fb.canvas).addClass('d-none')
-  $(fb.image).removeClass('d-none')
+  // $(fb.canvas).addClass('d-none')
+  // $(fb.image).removeClass('d-none')
 
 }
 
