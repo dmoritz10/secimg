@@ -1150,7 +1150,7 @@ async function editImage(frntback) {
 
   }
 
-  function cancelImage(canvas, fb) {
+  function cancelImage(canvas, fb, imgSrc) {
 
     $(fb.edit.cancelEditImage).on("click.editListener", async function  () {
       
