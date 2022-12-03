@@ -1174,6 +1174,7 @@ function initCnvas(c) {
     stroke: "rgba(100,200,200,0.5)",
   });
   c.fCanvas = fCanvas
+  return fCanvas
 }
 
 async function addImage(canvas, imgSrc, fb) {
