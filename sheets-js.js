@@ -606,12 +606,14 @@ async function showCanvas(frntback, src) {
 function showControls(frntback, bool) {
 
   var fb = frntbackObj(frntback)
+
+console.log('fb', fb)
   var canvas = fb.canvas
   var c = canvas.item(0)
   c.selectable = bool;
   c.hasControls = bool;
-  c.lockMovementY = -bool;
-  c.lockMovementX = -bool;
+  c.lockMovementY = !bool;
+  c.lockMovementX = !bool;
   c.hoverCursor = bool ? 'all-scroll' : 'none';
 
   canvas.renderAll();
