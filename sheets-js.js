@@ -611,7 +611,7 @@ function showControls(frntback, bool) {
   c.hasControls = bool;
   c.lockMovementY = !bool;
   c.lockMovementX = !bool;
-  c.hoverCursor = bool ? 'pointer' : 'none';
+  // c.hoverCursor = bool ? 'pointer' : 'none';
 
   canvas.renderAll();
 
