@@ -1152,8 +1152,9 @@ async function editImage(frntback) {
 
     $(fb.edit.cancelEditImage).on("click.editListener", async function  () {
       
-      let img = canvas.getObjects()[0]
-      if (img) canvas.remove(img);
+      // let img = canvas.getObjects()[0]
+      // if (img) canvas.remove(img);
+      canvas.clear()
       await addImage(canvas, imgSrc, fb);
       showControls(fb, false)
 
