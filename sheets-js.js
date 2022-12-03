@@ -1135,6 +1135,9 @@ async function editImage(frntback) {
 
       showControls(fb, false)
 
+      $(fb.options.row).removeClass('d-none')
+      $(fb.edit.row).addClass('d-none')
+
     // })
 
       // await waitForImage(fb.image)
@@ -1149,7 +1152,10 @@ async function editImage(frntback) {
 
     $(fb.edit.cancelEditImage).on("click.editListener", function  () {
       
-      clearCanvas(fb)
+      showControls(fb, false)
+
+      $(fb.options.row).removeClass('d-none')
+      $(fb.edit.row).addClass('d-none')
       
     });
 
