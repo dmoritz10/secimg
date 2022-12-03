@@ -582,7 +582,7 @@ async function showFile(input) {
 
       }
 
-      
+      console.log('fb', fb)
       $(fb.canvas).removeClass('d-none')
       var canvas = initCnvas(fb.canvas);
       canvas.preserveObjectStacking = true;
