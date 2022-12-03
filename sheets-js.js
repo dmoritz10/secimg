@@ -605,7 +605,8 @@ async function showCanvas(frntback, src) {
 
 function showControls(frntback, bool) {
 
-  var fb = frntbackObj(frntback)
+  if (typeof frntback === 'string') var fb = frntbackObj(frntback)
+  else                              var fb = frntback
 
   var canvas = fb.canvas.fCanvas
   var c = canvas.item(0)
@@ -1109,34 +1110,36 @@ async function editImage(frntback) {
     $(fb.edit.saveImage).on("click.editListener", async function  () {
 
       
-      let img = canvas.getObjects()[0]
+      // let img = canvas.getObjects()[0]
 
-         let widthz = img.width * img.scaleX
-         let heightz = img.height * img.scaleY
-         let width = img.aCoords.tr.x - img.aCoords.tl.x
-         let height = img.aCoords.bl.y - img.aCoords.tl.y
-         let top = img.aCoords.tl.y 
-         let left = img.aCoords.tl.x 
+      //    let widthz = img.width * img.scaleX
+      //    let heightz = img.height * img.scaleY
+      //    let width = img.aCoords.tr.x - img.aCoords.tl.x
+      //    let height = img.aCoords.bl.y - img.aCoords.tl.y
+      //    let top = img.aCoords.tl.y 
+      //    let left = img.aCoords.tl.x 
 
-      console.log('img', top, left, width, height,  widthz, heightz)
+      // console.log('img', top, left, width, height,  widthz, heightz)
 
-      // fb.image.removeAttribute('src');
-      $(fb.image).removeAttr('src');
-      $(fb.image).removeData('saveSrc');
-      // fb.image.src = canvas.toDataURL('image/jpeg', 1)
+      // // fb.image.removeAttribute('src');
+      // $(fb.image).removeAttr('src');
+      // $(fb.image).removeData('saveSrc');
+      // // fb.image.src = canvas.toDataURL('image/jpeg', 1)
 
-      fb.image.src = canvas.toDataURL({
-        // format: 'png',
-        left: left,
-        top: top,
-        width: width,
-        height:height
+      // fb.image.src = canvas.toDataURL({
+      //   // format: 'png',
+      //   left: left,
+      //   top: top,
+      //   width: width,
+      //   height:height
+
+      showControls(fb, false)
 
     })
 
-      await waitForImage(fb.image)
+      // await waitForImage(fb.image)
     
-      clearCanvas(fb)
+      // clearCanvas(fb)
       
     });
 
