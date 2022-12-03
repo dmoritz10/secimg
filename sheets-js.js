@@ -762,15 +762,13 @@ async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
 
 async function pasteImage() {
 
-  
-
   var item = pasteEvent.clipboardData.items[0];
 
   console.log(item)
 
  
-  if (item.type.indexOf("image") === 0)
-  {
+  if (item.type.indexOf("image") === 0) {
+
       var blob = item.getAsFile();
 
       var reader = new FileReader();
