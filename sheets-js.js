@@ -594,7 +594,7 @@ async function showFile(input) {
 async function showCanvas(frntback, src) {
 
   var fb = frntbackObj(frntback)
-  clearCanvas(fb)
+  // clearCanvas(fb)
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
   await addImage(canvas, src, fb);
