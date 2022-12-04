@@ -616,7 +616,7 @@ function showControls(frntback, bool) {
   c.hasControls = bool;
   c.lockMovementY = !bool;
   c.lockMovementX = !bool;
-  // c.hoverCursor = bool ? 'pointer' : 'none';
+  c.hoverCursor = bool ? 'move' : 'none';
 
   canvas.renderAll();
 
@@ -1001,9 +1001,11 @@ async function editImage(frntback) {
   // init canvas
   // var canvas = initCnvas(fb.canvas);
   // canvas.preserveObjectStacking = true;
-
   // await addImage(canvas, imgSrc, fb);
+
+
   showControls(frntback, true)
+
   var canvas = fb.canvas.fCanvas
   var imgSrc = canvas.toDataURL('image/jpeg', 1)
 
