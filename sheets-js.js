@@ -595,12 +595,13 @@ async function showCanvas(frntback, src) {
 
   var fb = frntbackObj(frntback)
   clearCanvas(fb)
-  $(fb.canvas).removeClass('d-none');
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
   await addImage(canvas, src, fb);
 
   canvas.renderAll();
+  $(fb.canvas).removeClass('d-none');
+
 
 }
 
@@ -834,7 +835,7 @@ async function startCamera(frntBack) {
   
 }
 
-async function clickPhoto() {showCanvas
+async function clickPhoto() {
 
   if (enhancer) {
 
