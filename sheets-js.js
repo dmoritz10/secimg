@@ -233,8 +233,8 @@ async function editSheet(arrIdx) {
   
   if (imgs[1]) {
 
-    await showCanvas('back', imgs[1])
-    showControls('back', false)
+    // await showCanvas('back', imgs[1])
+    // showControls('back', false)
 
   }
   
@@ -601,7 +601,7 @@ async function showCanvas(frntback, src) {
 
   canvas.renderAll();
   $(fb.canvas).removeClass('d-none');
-
+showCanvas
 
 }
 
@@ -1204,7 +1204,7 @@ async function addImage(canvas, imgSrc, fb) {
   await waitForImage(img)
 
   var oImg = new fabric.Image(img);
-  oImg.setControlsVisibility({ mtr: false })
+  // oImg.setControlsVisibility({ mtr: false })
 
   setDims (canvas, oImg, fb)
     
