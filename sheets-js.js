@@ -1084,14 +1084,14 @@ async function editImage(frntback) {
     $(fb.edit.saveImage).on("click.editListener", async function  () {
 
       
-      // let img = canvas.getObjects()[0]
+      let img = canvas.item(0)
 
-      //    let widthz = img.width * img.scaleX
-      //    let heightz = img.height * img.scaleY
-      //    let width = img.aCoords.tr.x - img.aCoords.tl.x
-      //    let height = img.aCoords.bl.y - img.aCoords.tl.y
-      //    let top = img.aCoords.tl.y 
-      //    let left = img.aCoords.tl.x 
+         let widthz = img.width * img.scaleX
+         let heightz = img.height * img.scaleY
+         let width = img.aCoords.tr.x - img.aCoords.tl.x
+         let height = img.aCoords.bl.y - img.aCoords.tl.y
+         let top = img.aCoords.tl.y 
+         let left = img.aCoords.tl.x 
 
       // console.log('img', top, left, width, height,  widthz, heightz)
 
@@ -1100,13 +1100,15 @@ async function editImage(frntback) {
       // $(fb.image).removeData('saveSrc');
       // // fb.image.src = canvas.toDataURL('image/jpeg', 1)
 
-      // fb.image.src = canvas.toDataURL({
-      //   // format: 'png',
-      //   left: left,
-      //   top: top,
-      //   width: width,
-      //   height:height
+      var src = canvas.toDataURL({
+        // format: 'png',
+        left: left,
+        top: top,
+        width: width,
+        height:height
+      })
 
+      await showCanvas(fb, src)
       showControls(fb, false)
 
       $(fb.options.row).removeClass('d-none')
