@@ -565,7 +565,9 @@ async function showFile(input) {
 
 async function showCanvas(frntback, src) {
 
-  var fb = frntbackObj(frntback)
+  if (typeof frntback === 'string') var fb = frntbackObj(frntback)
+  else                              var fb = frntback
+
   // clearCanvas(fb)
   $(fb.canvas).removeClass('d-none');
   var canvas = initCnvas(fb.canvas);
@@ -1093,7 +1095,7 @@ async function editImage(frntback) {
          let top = img.aCoords.tl.y 
          let left = img.aCoords.tl.x 
 
-      // console.log('img', top, left, width, height,  widthz, heightz)
+      console.log('img', top, left, width, height,  widthz, heightz)
 
       // // fb.image.removeAttribute('src');
       // $(fb.image).removeAttr('src');
