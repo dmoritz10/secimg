@@ -1001,7 +1001,7 @@ async function editImage(frntback) {
   showControls(frntback, true)
 
   var canvas = fb.canvas.fCanvas
-  var imgSrc = canvas.toDataURL('image/jpeg', 1)
+  var imgSrc = getImgURL(canvas)
 
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
