@@ -282,8 +282,8 @@ async function btnShtmSubmitSheetHtml() {
   var imgs = []
   var savImgs = []
 
-  imgs[0] = frntbackObj('front').canvas ? getImgURL(frntbackObj('front').canvas) : null
-  imgs[1] = frntbackObj('back').canvas ? getImgURL(frntbackObj('back').canvas) : null
+  imgs[0] = frntbackObj('front').canvas ? getImgURL(frntbackObj('front').canvas.fCanvas) : null
+  imgs[1] = frntbackObj('back').canvas ? getImgURL(frntbackObj('back').canvas.fCanvas) : null
 
   console.log('fileId', fileId)
 
