@@ -282,8 +282,8 @@ async function btnShtmSubmitSheetHtml() {
   var imgs = []
   var savImgs = []
 
-  imgs[0] = frntbackObj('front').canvas ? frntbackObj('front').canvas.toDataURL('image/jpeg', 1) : null
-  imgs[1] = frntbackObj('back').canvas ? frntbackObj('back').canvas.toDataURL('image/jpeg', 1) : null
+  imgs[0] = frntbackObj('front').canvas ? getImgURL(frntbackObj('front').canvas) : null
+  imgs[1] = frntbackObj('back').canvas ? getImgURL(frntbackObj('back').canvas) : null
 
   console.log('fileId', fileId)
 
@@ -1085,31 +1085,8 @@ async function editImage(frntback) {
     //  After click start crop add the mask to canvas
     $(fb.edit.saveImage).on("click.editListener", async function  () {
 
+      var src = getImgURL(canvas)
       
-      let img = canvas.item(0)
-
-         let widthz = img.width * img.scaleX
-         let heightz = img.height * img.scaleY
-         let width = img.aCoords.tr.x - img.aCoords.tl.x
-         let height = img.aCoords.bl.y - img.aCoords.tl.y
-         let top = img.aCoords.tl.y 
-         let left = img.aCoords.tl.x 
-
-      console.log('img', top, left, width, height,  widthz, heightz)
-
-      // // fb.image.removeAttribute('src');
-      // $(fb.image).removeAttr('src');
-      // $(fb.image).removeData('saveSrc');
-      // // fb.image.src = canvas.toDataURL('image/jpeg', 1)
-
-      var src = canvas.toDataURL({
-        // format: 'png',
-        left: left,
-        top: top,
-        width: width,
-        height:height
-      })
-
       await showCanvas(fb, src)
       showControls(fb, false)
 
@@ -1123,6 +1100,30 @@ async function editImage(frntback) {
       // clearCanvas(fb)
       
     });
+
+  }
+
+  function getImgURL(canvas) {
+
+    let img = canvas.item(0)
+
+    let widthz = img.width * img.scaleX
+    let heightz = img.height * img.scaleY
+    let width = img.aCoords.tr.x - img.aCoords.tl.x
+    let height = img.aCoords.bl.y - img.aCoords.tl.y
+    let top = img.aCoords.tl.y 
+    let left = img.aCoords.tl.x 
+
+ console.log('img', top, left, width, height,  widthz, heightz)
+
+ return canvas.toDataURL({
+   format: 'jpeg',
+   quality: 1,
+   left: left,
+   top: top,
+   width: width,
+   height:height
+ })
 
   }
 
