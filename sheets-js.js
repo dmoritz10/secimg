@@ -603,6 +603,31 @@ async function getPdfData(pdfData) {
 
 }
 
+function getImgURL(canvas) {
+
+  let img = canvas.item(0)
+
+  let widthz = img.width * img.scaleX
+  let heightz = img.height * img.scaleY
+  let width = img.aCoords.tr.x - img.aCoords.tl.x
+  let height = img.aCoords.bl.y - img.aCoords.tl.y
+  let top = img.aCoords.tl.y 
+  let left = img.aCoords.tl.x 
+
+console.log('img', top, left, width, height,  widthz, heightz)
+
+  return canvas.toDataURL({
+    format: 'jpeg',
+    quality: 1,
+    left: left,
+    top: top,
+    width: width,
+    height:height
+  })
+
+}
+
+
 async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
   for (var i=0;i<2;i++) {             // 0 = front image, 1 = back image
@@ -1103,30 +1128,7 @@ async function editImage(frntback) {
 
   }
 
-  function getImgURL(canvas) {
-
-    let img = canvas.item(0)
-
-    let widthz = img.width * img.scaleX
-    let heightz = img.height * img.scaleY
-    let width = img.aCoords.tr.x - img.aCoords.tl.x
-    let height = img.aCoords.bl.y - img.aCoords.tl.y
-    let top = img.aCoords.tl.y 
-    let left = img.aCoords.tl.x 
-
- console.log('img', top, left, width, height,  widthz, heightz)
-
- return canvas.toDataURL({
-   format: 'jpeg',
-   quality: 1,
-   left: left,
-   top: top,
-   width: width,
-   height:height
- })
-
-  }
-
+  
   function cancelImage(canvas, fb, imgSrc) {
 
     $(fb.edit.cancelEditImage).on("click.editListener", async function  () {
