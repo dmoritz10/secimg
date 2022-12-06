@@ -221,8 +221,8 @@ async function editSheet(arrIdx) {
  
   $('#btnShtmDelete').removeClass('d-none')
 
-  clearCanvas(frntbackObj('front'))
-  clearCanvas(frntbackObj('back'))
+  // clearCanvas(frntbackObj('front'))
+  // clearCanvas(frntbackObj('back'))
 
   if (imgs[0])  {
     
