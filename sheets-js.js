@@ -187,9 +187,6 @@ async function editSheet(arrIdx) {
  
   $("#sheet-form")[0].reset();
 
-  // $('#shtmImgFront').removeAttr('src').addClass('d-none')
-  // $('#shtmImgBack').removeAttr('src').addClass('d-none')
-
   $('#shtmSheetName').html(shtTitle)
 
   $("#sheet-modal").modal('show');
@@ -208,26 +205,16 @@ async function editSheet(arrIdx) {
   $('#shtmNotes').val(shtObj['Notes'])
   $('#shtmFavorite').val(shtObj['Favorite'])
   $('#shtmFileId').val(shtObj['File Id'])
-  // $('#shtmImgFront').attr('src', imgs[0])
-  // $('#shtmImgBack').attr('src', imgs[1])
-  // $('#shtmSaveImgFront').attr('src', imgs[0])
-  // $('#shtmSaveImgBack').attr('src', imgs[1])
-
-  // if (imgs[0])  $('#shtmImgFront').removeClass('d-none')
-  // else          $('#shtmImgFront').addClass('d-none');
-  // if (imgs[1])  $('#shtmImgBack').removeClass('d-none')
-  // else          $('#shtmImgBack').addClass('d-none');
-
- 
+  
   $('#btnShtmDelete').removeClass('d-none')
 
-  // clearCanvas(frntbackObj('front'))
-  // clearCanvas(frntbackObj('back'))
+  clearCanvas(frntbackObj('front'))
+  clearCanvas(frntbackObj('back'))
 
   if (imgs[0])  {
     
     await showCanvas('front', imgs[0])
-    // showControls('front', false)
+    showControls('front', false)
 
   } 
   
@@ -270,6 +257,8 @@ async function btnShtmSubmitSheetHtml() {
       return
     }
 
+    modal(true)
+
     var fileId = await buildImageFile()
 
     var vals = []
@@ -283,7 +272,6 @@ async function btnShtmSubmitSheetHtml() {
 
   }
 
-  modal(true)
 
   var shtIdx = arrIdx == -1 ? -1 : shtIdxArr[arrIdx]  // get the row nbr on the sheet from shtIdxArr
 
@@ -294,27 +282,12 @@ async function btnShtmSubmitSheetHtml() {
   var imgs = []
   var savImgs = []
 
-  var fb = frntbackObj('front')
-  imgs[0] = fb.canvas ? fb.canvas.toDataURL('image/jpeg', 1) : null
-  var fb = frntbackObj('back')
-  imgs[1] = fb.canvas ? fb.canvas.toDataURL('image/jpeg', 1) : null
-
-  // imgs[1] = document.getElementById("shtmImgBack").src
-  // savImgs[0] = document.getElementById("shtmSaveImgFront").src;
-  // savImgs[1] = document.getElementById("shtmSaveImgBack").src;
-
-  // console.log('imgFront.src', document.getElementById("shtmImgFront").src.substring(0,100))
-  // console.log('imgBack.src', document.getElementById("shtmImgBack").src.substring(0,100))
-
-  // console.log('submit', [...imgs])
-  // console.log('submit', [...savImgs])
+  imgs[0] = frntbackObj('front').canvas ? fb.canvas.toDataURL('image/jpeg', 1) : null
+  imgs[1] = frntbackObj('back').canvas ? fb.canvas.toDataURL('image/jpeg', 1) : null
 
   console.log('fileId', fileId)
 
   await postImages(shtEnc, fileId, imgs, savImgs)
-
-  // $('#shtmImgFront').removeAttr('src').addClass('d-none')
-  // $('#shtmImgBack').removeAttr('src').addClass('d-none')
 
   clearCanvas(frntbackObj('front'))
   clearCanvas(frntbackObj('back'))
@@ -325,6 +298,7 @@ async function btnShtmSubmitSheetHtml() {
   updateUI(valsEnc, arrIdx)
 
   modal(false)
+
 }
 
 async function buildImageFile() {
@@ -458,10 +432,8 @@ async function btnAddSheetHtml() {
 
    $('#btnShtmDelete').addClass('d-none')
 
-   var fb = frntbackObj('front')
-   clearCanvas(fb)
-   var fb = frntbackObj('back')
-   clearCanvas(fb)
+   clearCanvas(frntbackObj('front'))
+   clearCanvas(frntbackObj('back'))
  
 
 }
@@ -827,9 +799,6 @@ async function startCamera(frntBack) {
 
   document.getElementById("enhancerUIContainer").dataset.frntback = frntBack;
   
-  // if (frntBack == 'front')  $('#shtmImgFront').addClass('d-none');
-  // else                      $('#shtmImgBack').addClass('d-none');
-
   $("#cameraOverlay").removeClass('d-none')
   
 }
@@ -847,6 +816,7 @@ async function clickPhoto() {
     var frntback = document.getElementById("enhancerUIContainer").dataset.frntback;
 
     await showCanvas(frntback, image_data_url)
+    
     showControls(frntback, false)
                                       
     enhancerClose()
@@ -966,9 +936,7 @@ function updateImgPreview(canvas, img) {
 
 function deleteImage(frntback) {
 
-  var fb = frntbackObj(frntback)
-
-  $(fb.image).attr('src', '#').addClass('d-none')
+  clearCanvas(frntbackObj(frntback))
 
 }
 
