@@ -227,7 +227,7 @@ async function editSheet(arrIdx) {
   if (imgs[0])  {
     
     await showCanvas('front', imgs[0])
-    showControls('front', false)
+    // showControls('front', false)
 
   } 
   
