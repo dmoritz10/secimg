@@ -1261,15 +1261,16 @@ function frntbackObj(fb) {
 
   return {
 
-    image:    image,
-    canvas:   canvas,
+    colContainer: colContainer,
+    image:        image,
+    canvas:       canvas,
 
     options:  {
 
-      row:    options,
-      edit:   editImage,
-      share:  shareImage,
-      delete: deleteImage
+      row:        options,
+      edit:       editImage,
+      share:      shareImage,
+      delete:     deleteImage
 
     },
 
