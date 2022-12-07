@@ -1193,10 +1193,12 @@ async function addImage(canvas, imgSrc, fb) {
   await waitForImage(img)
 
   console.log('addimage1', fb)
+  console.log('canvas1', canvas)
 
   var oImg = new fabric.Image(img);
   oImg.setControlsVisibility({ mtr: false })
   console.log('addimage2', fb)
+  console.log('canvas2', canvas)
 
   setDims (canvas, oImg, fb)
     
