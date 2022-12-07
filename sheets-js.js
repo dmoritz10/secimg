@@ -568,14 +568,14 @@ async function showCanvas(frntback, src) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
-  console.log('fb showCanvas', fb)
+  console.log('frntback', frntback)
   $(fb.canvas).removeClass('d-none');
-  console.log('fb.canvas showanvas', $(fb.canvas))
+  console.log('fb.canvas showanvas', fb.canvas.fCanvas)
   var canvas = initCnvas(fb.canvas);
-  console.log('fb.canvas showanvas222', $(fb.canvas))
+  console.log('fb.canvas showanvas222', fb.canvas.fCanvas)
   canvas.preserveObjectStacking = true;
   await addImage(canvas, src, fb);
-  console.log('fb.canvas after addimage', $(fb.canvas))
+  console.log('fb.canvas after addimage', fb.canvas.fCanvas)
 
   canvas.renderAll();
 
@@ -585,7 +585,7 @@ function showControls(frntback, bool) {
 
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
-  console.log('showcontrols', $(fb.canvas))
+  console.log('showcontrols', fb.canvas.fCanvas)
   var canvas = fb.canvas.fCanvas
   var c = canvas.item(0)
   c.selectable = bool;
@@ -595,7 +595,7 @@ function showControls(frntback, bool) {
   c.hoverCursor = bool ? 'move' : 'default';
 
   canvas.renderAll();
-  console.log('showcontrols after renderall', $(fb.canvas))
+  console.log('showcontrols after renderall', fb.canvas.fCanvas)
 
 }
 
