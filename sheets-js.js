@@ -1219,6 +1219,9 @@ function clearCanvas(frntback) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
+  console.log('fb clearcanvas', fb)
+  console.log('frntback clearcanvas', fb)
+
   if ($('.canvas-container')) {
 
     $('.canvas-container').remove();
