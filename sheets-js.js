@@ -1187,6 +1187,8 @@ function initCnvas(fb) {
     strokeWidth: 15,
     stroke: "rgba(100,200,200,0.5)",
   });
+
+  fb.canvas = fb.frntback == 'front' ? document.getElementById("shtmCanvasFront") : document.getElementById("shtmCanvasBack")
  
   fb.canvas.fCanvas = fCanvas
   return fCanvas
@@ -1279,6 +1281,7 @@ function frntbackObj(fb) {
 
   return {
 
+    frntback:     fb,
     colContainer: colContainer,
     image:        image,
     canvas:       canvas,
