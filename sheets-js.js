@@ -1136,10 +1136,14 @@ async function editImage(frntback) {
       // let img = canvas.getObjects()[0]
       // if (img) canvas.remove(img);
 
-      console.log('nbr', canvas.getObjects())
-      // canvas.clear()
-      canvas.remove(...canvas.getObjects());
-      await addImage(canvas, imgSrc, fb);
+      // console.log('nbr', canvas.getObjects())
+      // // canvas.clear()
+      // canvas.remove(...canvas.getObjects());
+      // await addImage(canvas, imgSrc, fb);
+      // showControls(fb, false)
+
+      clearCanvas(fb)
+      await showCanvas(fb, imgSrc)
       showControls(fb, false)
 
       $(fb.options.row).removeClass('d-none')
@@ -1156,6 +1160,10 @@ async function editImage(frntback) {
       let img = canvas.getObjects()[0]
       if (img) canvas.remove(img);
       await addImage(canvas, imgSrc, fb);
+
+      clearCanvas(fb)
+      await showCanvas(fb, imgSrc)
+      showControls(fb, false)
       
     });
 
