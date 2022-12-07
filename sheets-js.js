@@ -1180,8 +1180,8 @@ async function editImage(frntback) {
 
 }
 
-function initCnvas(c) {
-
+function initCnvas(can) {
+var c = frntbackObj('front').canvas
   console.log('c1', c)
   var fCanvas = new fabric.Canvas(c.id, {
     strokeWidth: 15,
