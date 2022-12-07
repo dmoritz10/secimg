@@ -568,6 +568,8 @@ async function showCanvas(frntback, src) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
+console.log('frntobj', frntbackObj('front'))
+
   console.log('frntback', frntback)
   $(fb.canvas).removeClass('d-none');
   console.log('fb.canvas showanvas', fb.canvas.fCanvas)
