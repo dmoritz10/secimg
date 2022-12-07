@@ -1308,11 +1308,10 @@ function setDims (fCanvas, fImg, fb) {
   
   console.log('fb', fb)
   console.log('colContainer', fb.colContainer)
-  console.log('fb.canvas', fb.canvas)
+  console.log('fb.canvas', $(fb.canvas))
   console.log('container', $(fb.canvas).parent())
   console.log('container', $(fb.canvas).parent().parent())
 
-  console.log('canvas', fb.canvas)
   console.log('fcanvas', fCanvas)
 
   console.log('fImg', fImg)
