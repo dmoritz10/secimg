@@ -568,7 +568,7 @@ async function showCanvas(frntback, src) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
-  // clearCanvas(fb)
+  console.log('fb showCanvas', fb)
   $(fb.canvas).removeClass('d-none');
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
