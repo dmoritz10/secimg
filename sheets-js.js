@@ -1213,6 +1213,8 @@ function clearCanvas(frntback) {
     $('<canvas id="shtmCanvasFront" class="d-none"></canvas>').appendTo(canvasCol);
     $(fb.edit.row).find("*").off("click.editListener")
 
+    console.log('clearCanvas', $(fb.canvas).parent('.canvas-container'))
+
   }
 
   $(fb.options.row).removeClass('d-none')
