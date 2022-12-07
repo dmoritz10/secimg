@@ -1176,10 +1176,14 @@ async function editImage(frntback) {
 }
 
 function initCnvas(c) {
+
+  console.log('c1', c)
   var fCanvas = new fabric.Canvas(c.id, {
     strokeWidth: 15,
     stroke: "rgba(100,200,200,0.5)",
   });
+  console.log('c1', c)
+console.log('fCanvas', fCanvas)
   c.fCanvas = fCanvas
   return fCanvas
 }
