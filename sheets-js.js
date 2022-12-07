@@ -1188,7 +1188,7 @@ function initCnvas(fb) {
     stroke: "rgba(100,200,200,0.5)",
   });
  
-  c.fCanvas = fCanvas
+  fb.canvas.fCanvas = fCanvas
   return fCanvas
 }
 
