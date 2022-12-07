@@ -1122,6 +1122,7 @@ async function editImage(frntback) {
 
       var src = getImgURL(canvas)
       
+      clearCanvas(fb)
       await showCanvas(fb, src)
       showControls(fb, false)
 
