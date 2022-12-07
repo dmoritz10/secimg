@@ -974,6 +974,9 @@ async function editImage(frntback) {
 
   var fb = frntbackObj(frntback)
 
+  console.log('editImage', $(fb.canvas))
+  console.log('editImage2', fb.canvas.fCanvas)
+
   // clearCanvas(fb)
   $(fb.edit.row).find("*").off("click.editListener")
 
