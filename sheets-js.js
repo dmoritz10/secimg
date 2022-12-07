@@ -573,7 +573,7 @@ console.log('frntobj', frntbackObj('front'))
   console.log('frntback', frntback)
   $(fb.canvas).removeClass('d-none');
   console.log('fb.canvas showanvas', frntbackObj('front').canvas.fCanvas)
-  var canvas = initCnvas(fb.canvas);
+  var canvas = initCnvas(fb);
   console.log('fb.canvas showanvas222', frntbackObj('front').canvas.fCanvas)
   canvas.preserveObjectStacking = true;
   await addImage(canvas, src, fb);
@@ -587,9 +587,10 @@ function showControls(frntback, bool) {
 
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
-  console.log('showcontrols', frntbackObj('front').canvas.fCanvas)
-  var canvas = fb.canvas.fCanvas
-  var c = canvas.item(0)
+
+  console.log('showcontrols', fb.canvas.fCanvas)
+  let canvas = fb.canvas.fCanvas
+  let c = canvas.item(0)
   c.selectable = bool;
   c.hasControls = bool;
   c.lockMovementY = !bool;
@@ -597,7 +598,7 @@ function showControls(frntback, bool) {
   c.hoverCursor = bool ? 'move' : 'default';
 
   canvas.renderAll();
-  console.log('showcontrols after renderall', frntbackObj('front').canvas.fCanvas)
+  console.log('showcontrols after renderall', fb.canvas.fCanvas)
 
 }
 
@@ -975,7 +976,7 @@ function deleteImage(frntback) {
 
 async function editImage(frntback) {
 
-  var fb = frntbackObj(frntback)
+  let fb = frntbackObj(frntback)
 
   console.log('editImage', $(fb.canvas))
   console.log('editImage2', fb.canvas.fCanvas)
@@ -1007,10 +1008,10 @@ async function editImage(frntback) {
   // await addImage(canvas, imgSrc, fb);
 
 
-  showControls(frntback, true)
+  showControls(fb, true)
 
-  var canvas = fb.canvas.fCanvas
-  var imgSrc = getImgURL(canvas)
+  let canvas = fb.canvas.fCanvas
+  let imgSrc = getImgURL(canvas)
 
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
@@ -1180,15 +1181,13 @@ async function editImage(frntback) {
 
 }
 
-function initCnvas(can) {
-var c = frntbackObj('front').canvas
-  console.log('c1', c)
-  var fCanvas = new fabric.Canvas(c.id, {
+function initCnvas(fb) {
+
+  var fCanvas = new fabric.Canvas(fb.canvas.id, {
     strokeWidth: 15,
     stroke: "rgba(100,200,200,0.5)",
   });
-  console.log('c1', c)
-console.log('fCanvas', fCanvas)
+ 
   c.fCanvas = fCanvas
   return fCanvas
 }
