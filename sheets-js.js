@@ -575,6 +575,7 @@ async function showCanvas(frntback, src) {
   console.log('fb.canvas showanvas222', $(fb.canvas))
   canvas.preserveObjectStacking = true;
   await addImage(canvas, src, fb);
+  console.log('fb.canvas after addimage', $(fb.canvas))
 
   canvas.renderAll();
 
@@ -591,7 +592,7 @@ function showControls(frntback, bool) {
   c.hasControls = bool;
   c.lockMovementY = !bool;
   c.lockMovementX = !bool;
-  c.hoverCursor = bool ? 'move' : 'pointer';
+  c.hoverCursor = bool ? 'move' : 'default';
 
   canvas.renderAll();
 
@@ -1005,8 +1006,6 @@ async function editImage(frntback) {
   var canvas = fb.canvas.fCanvas
   var imgSrc = getImgURL(canvas)
 
-  console.log('imgSrc', imgSrc)
-
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
   saveImage(canvas, fb)
@@ -1193,8 +1192,11 @@ async function addImage(canvas, imgSrc, fb) {
   img.src = imgSrc;
   await waitForImage(img)
 
+  console.log('addimage1', fb)
+
   var oImg = new fabric.Image(img);
   oImg.setControlsVisibility({ mtr: false })
+  console.log('addimage2', fb)
 
   setDims (canvas, oImg, fb)
     
