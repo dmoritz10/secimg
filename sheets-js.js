@@ -1219,11 +1219,10 @@ function clearCanvas(frntback) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
-  if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
-    
-    var canvasCol = $(fb.canvas).parent().parent()
-    $(fb.canvas).parent('.canvas-container').remove();
-    $('<canvas id="shtmCanvasFront" ></canvas>').appendTo(canvasCol);
+  if ($('.canvas-container')) {
+
+    $('.canvas-container').remove();
+    $('<canvas id="shtmCanvasFront" ></canvas>').appendTo(fb.colContainer);
     $(fb.edit.row).find("*").off("click.editListener")
 
     console.log('clearCanvas', $(fb.canvas).parent('.canvas-container'))
