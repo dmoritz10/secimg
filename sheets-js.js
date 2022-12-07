@@ -1233,6 +1233,7 @@ function frntbackObj(fb) {
 
   if (fb == 'front') {
 
+    var colContainer        = document.getElementById("shtmFront")
     var image               = document.getElementById("shtmImgFront")
     var canvas              = document.getElementById("shtmCanvasFront")
 
@@ -1302,7 +1303,7 @@ function setDims (fCanvas, fImg, fb) {
   let iHeight = fImg.height
   let iWidth = fImg.width
 
-  let containerWidth = $(fb.canvas).parent().parent().width()
+  let containerWidth = $(fb.colContainer).width()
   
   console.log('fb.canvas', fb.canvas)
   console.log('container', $(fb.canvas).parent())
