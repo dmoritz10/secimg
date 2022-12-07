@@ -1003,6 +1003,8 @@ async function editImage(frntback) {
   var canvas = fb.canvas.fCanvas
   var imgSrc = getImgURL(canvas)
 
+  console.log('imgSrc', imgSrc)
+
   createMaskForCrop(canvas, fb);
   crop(canvas, fb);
   saveImage(canvas, fb)
@@ -1146,8 +1148,8 @@ async function editImage(frntback) {
       await showCanvas(fb, imgSrc)
       showControls(fb, false)
 
-      $(fb.options.row).removeClass('d-none')
-      $(fb.edit.row).addClass('d-none')
+      // $(fb.options.row).removeClass('d-none')
+      // $(fb.edit.row).addClass('d-none')
       
     });
 
@@ -1157,9 +1159,9 @@ async function editImage(frntback) {
 
     $(fb.edit.restoreImage).on("click.editListener", async function  () {
       
-      let img = canvas.getObjects()[0]
-      if (img) canvas.remove(img);
-      await addImage(canvas, imgSrc, fb);
+      // let img = canvas.getObjects()[0]
+      // if (img) canvas.remove(img);
+      // await addImage(canvas, imgSrc, fb);
 
       clearCanvas(fb)
       await showCanvas(fb, imgSrc)
@@ -1199,7 +1201,10 @@ async function addImage(canvas, imgSrc, fb) {
 }
 
 
-function clearCanvas(fb) {
+function clearCanvas(frntback) {
+
+  if (typeof frntback === 'string') var fb = frntbackObj(frntback)
+  else                              var fb = frntback
 
   if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
     
