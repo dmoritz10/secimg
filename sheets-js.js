@@ -1229,8 +1229,6 @@ function clearCanvas(frntback) {
 
   if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
 
-    alert('yes has container')
-    
     var canvasCol = $(fb.canvas).parent().parent()
     $(fb.canvas).parent('.canvas-container').remove();
     $('<canvas id="shtmCanvasFront" ></canvas>').appendTo(fb.colContainer);
@@ -1238,7 +1236,7 @@ function clearCanvas(frntback) {
 
     console.log('clearCanvas', $(fb.canvas).parent('.canvas-container'))
 
-  } else alert('no container')
+  } 
 
   $(fb.options.row).removeClass('d-none')
   $(fb.edit.row).addClass('d-none')
