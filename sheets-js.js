@@ -585,7 +585,7 @@ function showControls(frntback, bool) {
 
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
-
+  console.log('showcontrols', $(fb.canvas))
   var canvas = fb.canvas.fCanvas
   var c = canvas.item(0)
   c.selectable = bool;
@@ -595,6 +595,7 @@ function showControls(frntback, bool) {
   c.hoverCursor = bool ? 'move' : 'default';
 
   canvas.renderAll();
+  console.log('showcontrols after renderall', $(fb.canvas))
 
 }
 
@@ -1224,7 +1225,7 @@ function clearCanvas(frntback) {
 
   if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
 
-    console.log('clearCanbas', 'yes has container')
+    alert('yes has container')
     
     var canvasCol = $(fb.canvas).parent().parent()
     $(fb.canvas).parent('.canvas-container').remove();
@@ -1233,7 +1234,7 @@ function clearCanvas(frntback) {
 
     console.log('clearCanvas', $(fb.canvas).parent('.canvas-container'))
 
-  }
+  } else alert('no container')
 
   $(fb.options.row).removeClass('d-none')
   $(fb.edit.row).addClass('d-none')
