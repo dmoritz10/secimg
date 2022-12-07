@@ -572,6 +572,7 @@ async function showCanvas(frntback, src) {
   $(fb.canvas).removeClass('d-none');
   console.log('fb.canvas showanvas', $(fb.canvas))
   var canvas = initCnvas(fb.canvas);
+  console.log('fb.canvas showanvas222', $(fb.canvas))
   canvas.preserveObjectStacking = true;
   await addImage(canvas, src, fb);
 
