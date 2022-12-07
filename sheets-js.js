@@ -570,6 +570,7 @@ async function showCanvas(frntback, src) {
 
   console.log('fb showCanvas', fb)
   $(fb.canvas).removeClass('d-none');
+  console.log('fb.canvas showanvas', $(fb.canvas))
   var canvas = initCnvas(fb.canvas);
   canvas.preserveObjectStacking = true;
   await addImage(canvas, src, fb);
@@ -1186,8 +1187,6 @@ async function addImage(canvas, imgSrc, fb) {
   const img = new Image();
   img.src = imgSrc;
   await waitForImage(img)
-
-  console.log('img', img)
 
   var oImg = new fabric.Image(img);
   oImg.setControlsVisibility({ mtr: false })
