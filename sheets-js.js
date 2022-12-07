@@ -1187,6 +1187,8 @@ async function addImage(canvas, imgSrc, fb) {
   img.src = imgSrc;
   await waitForImage(img)
 
+  console.log('img', img)
+
   var oImg = new fabric.Image(img);
   oImg.setControlsVisibility({ mtr: false })
 
