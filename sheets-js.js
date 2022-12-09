@@ -624,8 +624,8 @@ console.log('img', top, left, width, height,  widthz, heightz)
     quality: 1,
     left: left,
     top: top,
-    width: width,
-    height:height
+    width: widthz,
+    height:heightz
   })
 
 }
@@ -875,8 +875,8 @@ function clockwise(frntback) {
 
   var canvas = fb.canvas.fCanvas
   var curAngle = canvas.item(0).angle;
-  // canvas.item(0).rotate(curAngle + 90) 
-  canvas.item(0).angle = (curAngle + 90);
+  canvas.item(0).rotate(curAngle + 90) 
+  // canvas.item(0).angle = (curAngle + 90);
 
   canvas.renderAll();
 
