@@ -620,7 +620,9 @@ function getImgURL(canvas) {
 
 console.log('img', top, left, width, height,  widthz, heightz)
 
-  var bRect = img.getBoundingRect
+  var bRect = img.getBoundingRect()
+
+  console.log('brect', bRect)
 
   return canvas.toDataURL({
     format: 'jpeg',
