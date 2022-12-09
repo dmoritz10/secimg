@@ -571,16 +571,11 @@ async function showCanvas(frntback, src) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
-console.log('frntobj', frntbackObj('front'))
-
-  console.log('frntback', frntback)
-  $(fb.canvas).removeClass('d-none');
-  console.log('fb.canvas showanvas', frntbackObj('front').canvas.fCanvas)
+  // $(fb.canvas).removeClass('d-none');
+  $(fb.canvas).css("display", "");
   var canvas = initCnvas(fb);
-  console.log('fb.canvas showanvas222', frntbackObj('front').canvas.fCanvas)
   canvas.preserveObjectStacking = true;
   await addImage(canvas, src, fb);
-  console.log('fb.canvas after addimage', frntbackObj('front').canvas.fCanvas)
 
   canvas.renderAll();
 
@@ -1185,7 +1180,7 @@ function clearCanvas(frntback) {
   if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
 
     $(fb.canvas).parent('.canvas-container').remove();
-    $('<canvas id="shtmCanvasFront"></canvas>').appendTo(fb.colContainer);
+    $('<canvas id="shtmCanvasFront" style="display:none"></canvas>').appendTo(fb.colContainer);
     $(fb.edit.row).find("*").off("click.editListener")
 
   } 
