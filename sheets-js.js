@@ -609,6 +609,7 @@ async function getPdfData(pdfData) {
 function getImgURL(canvas) {
 
   let img = canvas.item(0)
+  img.setCoords();
 
   let widthz = img.width * img.scaleX
   let heightz = img.height * img.scaleY
@@ -624,8 +625,8 @@ console.log('img', top, left, width, height,  widthz, heightz)
     quality: 1,
     left: left,
     top: top,
-    width: widthz,
-    height:heightz
+    width: width,
+    height:height
   })
 
 }
@@ -1169,10 +1170,10 @@ async function addImage(canvas, imgSrc, fb) {
   await waitForImage(img)
 
   var oImg = new fabric.Image(img);
-  oImg.set({
-    originX:  'middle',
-    originY: 'middle'
-  });
+  // oImg.set({
+  //   originX:  'middle',
+  //   originY: 'middle'
+  // });
   oImg.setControlsVisibility({ mtr: false })
   
   setDims (canvas, oImg, fb)
