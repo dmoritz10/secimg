@@ -591,7 +591,6 @@ function showControls(frntback, bool) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
-  console.log('showcontrols', fb.canvas.fCanvas)
   let canvas = fb.canvas.fCanvas
   let c = canvas.item(0)
   c.selectable = bool;
@@ -601,7 +600,6 @@ function showControls(frntback, bool) {
   c.hoverCursor = bool ? 'move' : 'default';
 
   canvas.renderAll();
-  console.log('showcontrols after renderall', fb.canvas.fCanvas)
 
 }
 
@@ -992,24 +990,8 @@ async function editImage(frntback) {
   $(fb.options.row).addClass('d-none')
   $(fb.edit.row).removeClass('d-none')
 
-  // fb.canvas.width = fb.image.width
-  // fb.canvas.height = fb.image.height
-
-  // $(fb.canvas).removeClass('d-none')
-  // $(fb.image).addClass('d-none')
-
-  // fb.image.dataset['saveSrc'] = fb.image.src
-
-  // var imgSrc = fb.image.src
-
   var selectionRect
   var currentImage;
-
-  // init canvas
-  // var canvas = initCnvas(fb.canvas);
-  // canvas.preserveObjectStacking = true;
-  // await addImage(canvas, imgSrc, fb);
-
 
   showControls(fb, true)
 
@@ -1132,12 +1114,6 @@ async function editImage(frntback) {
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
 
-    // })
-
-      // await waitForImage(fb.image)
-    
-      // clearCanvas(fb)
-      
     });
 
   }
@@ -1147,22 +1123,10 @@ async function editImage(frntback) {
 
     $(fb.edit.cancelEditImage).on("click.editListener", async function  () {
       
-      // let img = canvas.getObjects()[0]
-      // if (img) canvas.remove(img);
-
-      // console.log('nbr', canvas.getObjects())
-      // // canvas.clear()
-      // canvas.remove(...canvas.getObjects());
-      // await addImage(canvas, imgSrc, fb);
-      // showControls(fb, false)
-
       clearCanvas(fb)
       await showCanvas(fb, imgSrc)
       showControls(fb, false)
 
-      // $(fb.options.row).removeClass('d-none')
-      // $(fb.edit.row).addClass('d-none')
-      
     });
 
   }
@@ -1171,13 +1135,9 @@ async function editImage(frntback) {
 
     $(fb.edit.restoreImage).on("click.editListener", async function  () {
       
-      // let img = canvas.getObjects()[0]
-      // if (img) canvas.remove(img);
-      // await addImage(canvas, imgSrc, fb);
-
       clearCanvas(fb)
       await showCanvas(fb, imgSrc)
-      showControls(fb, false)
+      showControls(fb, true)
       
     });
 
@@ -1203,14 +1163,9 @@ async function addImage(canvas, imgSrc, fb) {
   img.src = imgSrc;
   await waitForImage(img)
 
-  console.log('addimage1', fb)
-  console.log('canvas1', canvas)
-
   var oImg = new fabric.Image(img);
   oImg.setControlsVisibility({ mtr: false })
-  console.log('addimage2', fb)
-  console.log('canvas2', canvas)
-
+  
   setDims (canvas, oImg, fb)
     
   canvas.add(oImg);
@@ -1227,25 +1182,16 @@ function clearCanvas(frntback) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
-  console.log('clearCanbas fb', fb)
-  console.log('clearCanbas frntback', frntback)
-
   if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
 
-    var canvasCol = $(fb.canvas).parent().parent()
     $(fb.canvas).parent('.canvas-container').remove();
     $('<canvas id="shtmCanvasFront"></canvas>').appendTo(fb.colContainer);
     $(fb.edit.row).find("*").off("click.editListener")
-
-    console.log('clearCanvas', $(fb.canvas).parent('.canvas-container'))
 
   } 
 
   $(fb.options.row).removeClass('d-none')
   $(fb.edit.row).addClass('d-none')
-
-  // $(fb.canvas).addClass('d-none')
-  // $(fb.image).removeClass('d-none')
 
 }
 
@@ -1329,16 +1275,6 @@ function setDims (fCanvas, fImg, fb) {
 
   let containerWidth = $(fb.colContainer).width()
   
-  console.log('fb', fb)
-  console.log('colContainer', fb.colContainer)
-  console.log('fb.canvas', $(fb.canvas))
-  console.log('container', $(fb.canvas).parent())
-  console.log('container', $(fb.canvas).parent().parent())
-
-  console.log('fcanvas', fCanvas)
-
-  console.log('fImg', fImg)
-
   let cWidth = containerWidth
 
   let cHeight =  iHeight * (containerWidth / iWidth)
