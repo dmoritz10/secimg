@@ -876,7 +876,8 @@ function clockwise(frntback) {
   var canvas = fb.canvas.fCanvas
   // var curAngle = canvas.item(0).angle;
   // canvas.item(0).angle = (curAngle+90);
-  canvas.item(0).rotate(90) 
+  var curAngle = canvas.item(0).angle;
+  canvas.item(0).rotate(curAngle + 90) 
   canvas.renderAll();
 
 };
