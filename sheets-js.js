@@ -1169,6 +1169,10 @@ async function addImage(canvas, imgSrc, fb) {
   await waitForImage(img)
 
   var oImg = new fabric.Image(img);
+  oImg.set({
+    originX:  'middle',
+    originY: 'middle'
+  });
   oImg.setControlsVisibility({ mtr: false })
   
   setDims (canvas, oImg, fb)
