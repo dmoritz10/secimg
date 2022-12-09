@@ -1142,18 +1142,16 @@ async function editImage(frntback) {
 
 function initCnvas(fb) {
 
-  $(fb.canvas).css("display", "");
+  // $(fb.canvas).css("display", "");
 
-  console.log($('.canvas-container'))
+  fb.canvas = fb.frntback == 'front' ? document.getElementById("shtmCanvasFront") : document.getElementById("shtmCanvasBack")
+  $(fb.canvas).css("display", "");
 
   var fCanvas = new fabric.Canvas(fb.canvas.id, {
     strokeWidth: 15,
     stroke: "rgba(100,200,200,0.5)",
   });
 
-  fb.canvas = fb.frntback == 'front' ? document.getElementById("shtmCanvasFront") : document.getElementById("shtmCanvasBack")
-  $(fb.canvas).css("display", "");
-  
   fb.canvas.fCanvas = fCanvas
   return fCanvas
 }
