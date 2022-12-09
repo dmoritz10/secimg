@@ -870,8 +870,12 @@ function clockwise(frntback) {
 
   var fb = frntbackObj(frntback)
 
-  drawOptimizedImage(fb.canvas, fb.image, maxSize, 'clockwise')
-  updateImgPreview(fb.canvas, fb.image)
+  // drawOptimizedImage(fb.canvas, fb.image, maxSize, 'clockwise')
+  // updateImgPreview(fb.canvas, fb.image)
+
+  var curAngle = fb.canvas.item(0).angle;
+  fb.canvas.item(0).angle = (curAngle+90);
+  fb.canvas.renderAll();
 
 };
 
