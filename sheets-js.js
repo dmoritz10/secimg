@@ -423,8 +423,8 @@ function fixUrl(url) {
 
 async function btnAddSheetHtml() {
 
-    $(frntbackObj('front').canvas).addClass('d-none')
-    $(frntbackObj('back').canvas).addClass('d-none')
+    // $(frntbackObj('front').canvas).addClass('d-none')
+    // $(frntbackObj('back').canvas).addClass('d-none')
   // $('#shtmImgFront').removeAttr('src').addClass('d-none')
   // $('#shtmImgBack').removeAttr('src').addClass('d-none')
 
