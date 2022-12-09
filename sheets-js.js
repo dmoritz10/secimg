@@ -1211,7 +1211,7 @@ async function addImage(canvas, imgSrc, fb) {
   console.log('addimage2', fb)
   console.log('canvas2', canvas)
 
-  setDims (canvas, oImg, fb)clearCanvas
+  setDims (canvas, oImg, fb)
     
   canvas.add(oImg);
   canvas.centerObject(oImg);
