@@ -1142,6 +1142,8 @@ async function editImage(frntback) {
 
 function initCnvas(fb) {
 
+  $(fb.canvas).css("display", "");
+
   var fCanvas = new fabric.Canvas(fb.canvas.id, {
     strokeWidth: 15,
     stroke: "rgba(100,200,200,0.5)",
