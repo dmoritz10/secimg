@@ -620,13 +620,15 @@ function getImgURL(canvas) {
 
 console.log('img', top, left, width, height,  widthz, heightz)
 
+  var bRect = img.getBoundingRect
+
   return canvas.toDataURL({
     format: 'jpeg',
     quality: 1,
-    left: left,
-    top: top,
-    width: width,
-    height:height
+    left: bRect.left,
+    top: bRect.top,
+    width: bRect.width,
+    height:bRect.height
   })
 
 }
