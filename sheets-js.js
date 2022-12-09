@@ -213,6 +213,8 @@ async function editSheet(arrIdx) {
 
   if (imgs[0])  {
     
+    
+    clearCanvas('front')
     await showCanvas('front', imgs[0])
     showControls('front', false)
 
@@ -553,6 +555,7 @@ async function showFile(input) {
 
       }
 
+      clearCanvas(frntback)
       await showCanvas(frntback, src)
       showControls(frntback, false)
                                       
@@ -849,8 +852,8 @@ async function clickPhoto() {
 
     var frntback = document.getElementById("enhancerUIContainer").dataset.frntback;
 
+    clearCanvas(frntback)
     await showCanvas(frntback, image_data_url)
-    
     showControls(frntback, false)
                                       
     enhancerClose()
@@ -1208,7 +1211,7 @@ async function addImage(canvas, imgSrc, fb) {
   console.log('addimage2', fb)
   console.log('canvas2', canvas)
 
-  setDims (canvas, oImg, fb)
+  setDims (canvas, oImg, fb)clearCanvas
     
   canvas.add(oImg);
   canvas.centerObject(oImg);
