@@ -547,19 +547,19 @@ async function showFile(input) {
 
       if (fileType == 'data:application/pdf') {
 
-        var src = getPdfData(e.target.result, frntback)
+        var src = showPDF(e.target.result, frntback)
         console.log('pdf src', src)
       
       } else {
 
         var src = e.target.result
-
+        clearCanvas(frntback)
+        await showCanvas(frntback, src)
+        showControls(frntback, false)
+                                        
       }
 
-      clearCanvas(frntback)
-      await showCanvas(frntback, src)
-      showControls(frntback, false)
-                                      
+      
     }
 
     reader.readAsDataURL(input.files[0]);
