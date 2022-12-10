@@ -49,6 +49,8 @@ _CURRENT_PAGE = page_no;
 // update current page
 document.querySelector("#navPages").innerHTML = page_no + '/' + _TOTAL_PAGES;
 
+console.log('_fb', _fb)
+
 // get handle of page
 try {
     var page = await _PDF_DOC.getPage(page_no);
