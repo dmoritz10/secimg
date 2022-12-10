@@ -547,7 +547,8 @@ async function showFile(input) {
 
       if (fileType == 'data:application/pdf') {
 
-        var src = getPdfData(e.target.result)
+        var src = getPdfData(e.target.result, frntback)
+        console.log('pdf src', src)
       
       } else {
 
@@ -865,17 +866,11 @@ function enhancerClose() {
 
 }
 
-var maxSize = { width: 466, height: 466 }
-
-// var img 
-// var canvas = document.getElementById("shtmCanvas")
+// var maxSize = { width: 466, height: 466 }
 
 function clockwise(frntback) { 
 
   var fb = frntbackObj(frntback)
-
-  // drawOptimizedImage(fb.canvas, fb.image, maxSize, 'clockwise')
-  // updateImgPreview(fb.canvas, fb.image)
 
   var canvas = fb.canvas.fCanvas
   var curAngle = canvas.item(0).angle;
@@ -979,10 +974,6 @@ async function editImage(frntback) {
 
   let fb = frntbackObj(frntback)
 
-  console.log('editImage', $(fb.canvas))
-  console.log('editImage2', fb.canvas.fCanvas)
-
-  // clearCanvas(fb)
   $(fb.edit.row).find("*").off("click.editListener")
 
   console.log('fb', fb)
@@ -1079,13 +1070,8 @@ async function editImage(frntback) {
         height: rect.height,
       });
 
-      console.log('rect', rect.left, rect.top, rect.width, rect.height )
-
       // after onload clear the canvas and add cropped image to the canvas
       cropped.onload = function () {
-
-        // console.log('cropped', cropped)
-        console.log('rect', rect)
 
         canvas.clear();
 
@@ -1094,7 +1080,6 @@ async function editImage(frntback) {
         setDims (canvas, image, fb)
         
         canvas.add(image)
-        console.log('canvas', canvas.left, canvas.top, canvas.width, canvas.height )
         canvas.renderAll();
 
       };
@@ -1102,7 +1087,7 @@ async function editImage(frntback) {
   }
 
   function saveImage(canvas, fb) {
-    //  After click start crop add the mask to canvas
+
     $(fb.edit.saveImage).on("click.editListener", async function  () {
 
       var src = getImgURL(canvas)
@@ -1147,8 +1132,6 @@ async function editImage(frntback) {
 
 function initCnvas(fb) {
 
-  // $(fb.canvas).css("display", "");
-
   fb.canvas = fb.frntback == 'front' ? document.getElementById("shtmCanvasFront") : document.getElementById("shtmCanvasBack")
   $(fb.canvas).css("display", "");
 
@@ -1167,10 +1150,6 @@ async function addImage(canvas, imgSrc, fb) {
   await waitForImage(img)
 
   var oImg = new fabric.Image(img);
-  // oImg.set({
-  //   originX:  'middle',
-  //   originY: 'middle'
-  // });
   oImg.setControlsVisibility({ mtr: false })
   
   setDims (canvas, oImg, fb)
@@ -1310,4 +1289,3 @@ function setDims (fCanvas, fImg, fb) {
   };
 
 }
-
