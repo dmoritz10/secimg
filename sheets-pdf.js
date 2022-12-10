@@ -30,11 +30,11 @@ _TOTAL_PAGES = _PDF_DOC.numPages;
 // Hide the pdf loader and show pdf container
 
 // show the first page
-showPage(1, _fb);
+showPage(1);
 }
 
 // load and render specific page of the PDF
-async function showPage(page_no, _fb) {
+async function showPage(page_no) {
 _PAGE_RENDERING_IN_PROGRESS = 1;
 _CURRENT_PAGE = page_no;
 
