@@ -30,11 +30,11 @@ _TOTAL_PAGES = _PDF_DOC.numPages;
 // Hide the pdf loader and show pdf container
 
 // show the first page
-showPage(1, fb);
+showPage(1, _fb);
 }
 
 // load and render specific page of the PDF
-async function showPage(page_no, fb) {
+async function showPage(page_no, _fb) {
 _PAGE_RENDERING_IN_PROGRESS = 1;
 _CURRENT_PAGE = page_no;
 
@@ -63,17 +63,17 @@ console.log('page', page)
 var pdf_original_width = page.getViewport({ scale: 1 }).width;
 
 // as the canvas is of a fixed width we need to adjust the scale of the viewport where page is rendered
-var scale_required = $(fb.colContainer).width() / pdf_original_width;
+var scale_required = $(_fb.colContainer).width() / pdf_original_width;
 
 // get viewport to render the page at required scale
 var viewport = page.getViewport({ scale: scale_required });
 console.log('viewport',viewport)
 console.log('scale_required',scale_required)
-console.log('fb.colContainer.width',$(fb.colContainer).width())
+console.log('_fb.colContainer.width',$(_fb.colContainer).width())
 
 // set canvas height same as viewport height
-fb.canvas.height = viewport.height;
-fb.canvas.width = viewport.width;
+_fb.canvas.height = viewport.height;
+_fb.canvas.width = viewport.width;
 
 console.log('page', pdf_original_width, scale_required, page.getViewport)
 
@@ -83,11 +83,11 @@ console.log('page', pdf_original_width, scale_required, page.getViewport)
 
 // page is rendered on <canvas> element
 var render_context = {
-    canvasContext: fb.canvas.getContext('2d'),
+    canvasContext: _fb.canvas.getContext('2d'),
     viewport: viewport
 };
 
-$(fb.canvas).css("display", "");
+$(_fb.canvas).css("display", "");
     
 // render the page contents in the canvas
 try {
