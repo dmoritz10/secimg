@@ -9,7 +9,7 @@ async function showPDF(pdf_url, frntback) {
 
 // get handle of pdf document
 try {
-    _PDF_DOC = await pdfjsLib.getDocument({ url: pdf_url });
+    _PDF_DOC = await pdfjsLib.getDocument({ data: pdf_url });
 }
 catch(error) {
     alert(error.message);
