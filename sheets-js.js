@@ -548,9 +548,9 @@ async function showFile(input) {
       if (fileType == 'data:application/pdf') {
 
         var src = atob(fileBase[1])
+        console.log('fileBasd', fileBase)
 
-        var src = showPDF(e.target.result, frntback)
-        console.log('pdf src', src)
+        showPDF(src, frntback)
       
       } else {
 
