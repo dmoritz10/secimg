@@ -2,7 +2,7 @@
 var _PDF_DOC,
 _CURRENT_PAGE,
 _TOTAL_PAGES,
-_PAGE_RENDERING_IN_PROGRESS = 0
+_PAGE_RENDERING_IN_PROGRESS = 0,
 _fb
 
 // initialize and load the PDF
