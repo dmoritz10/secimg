@@ -550,8 +550,6 @@ async function showFile(input) {
       if (fileType == 'data:application/pdf') {
 
         var src = atob(fileBase[1])
-        console.log('fileBasd', fileBase)
-
         showPDF(src, frntback)
       
       } else {
@@ -563,6 +561,7 @@ async function showFile(input) {
                                         
       }
 
+      frntbackObj(frntback).canvas.imgSrc = e.target.result
       
     }
 
