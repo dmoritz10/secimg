@@ -21,7 +21,7 @@ async function showPDF(pdf_url, frntback) {
     //     'MDAwIG4gCjAwMDAwMDAzODAgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9v' +
     //     'dCAxIDAgUgo+PgpzdGFydHhyZWYKNDkyCiUlRU9G');
 // get handle of pdf document
-var pdfData = atob(pdf_url)
+var pdfData = pdf_url
 pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
 
 try {
