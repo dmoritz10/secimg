@@ -24,6 +24,7 @@ async function showPDF(pdf_url, frntback) {
 try {
     let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
     _PDF_DOC = await loadingTask.promise;
+    console.log('1')
 }
 catch(error) {
     alert(error.message);
