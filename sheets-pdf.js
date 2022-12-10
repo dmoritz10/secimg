@@ -83,7 +83,7 @@ var viewport = page.getViewport(scale_required);
 // set canvas height same as viewport height
 fb.canvas.height = viewport.height;
 
-console.log('page', pdf_original_width, scale_required, viewport)
+console.log('page', pdf_original_width, scale_required, page.getViewport)
 
 // setting page loader height for smooth experience
 // document.querySelector("#page-loader").style.height =  fb.canvas.height + 'px';
