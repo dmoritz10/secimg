@@ -91,14 +91,14 @@ _PAGE_RENDERING_IN_PROGRESS = 0;
 // document.querySelector("#page-loader").style.display = 'none';
 }
 
-// click on the "Previous" page button
-document.querySelector("#pdf-prev").addEventListener('click', function() {
-if(_CURRENT_PAGE != 1)
-    showPage(--_CURRENT_PAGE);
-});
+// // click on the "Previous" page button
+// document.querySelector("#pdf-prev").addEventListener('click', function() {
+// if(_CURRENT_PAGE != 1)
+//     showPage(--_CURRENT_PAGE);
+// });
 
-// click on the "Next" page button
-document.querySelector("#pdf-next").addEventListener('click', function() {
-if(_CURRENT_PAGE != _TOTAL_PAGES)
-    showPage(++_CURRENT_PAGE);
-});
+// // click on the "Next" page button
+// document.querySelector("#pdf-next").addEventListener('click', function() {
+// if(_CURRENT_PAGE != _TOTAL_PAGES)
+//     showPage(++_CURRENT_PAGE);
+// });
