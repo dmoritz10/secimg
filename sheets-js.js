@@ -609,7 +609,6 @@ async function getPdfData(pdfData) {
 function getImgURL(canvas) {
 
   let img = canvas.item(0)
-  img.setCoords();
 
   let widthz = img.width * img.scaleX
   let heightz = img.height * img.scaleY
@@ -889,20 +888,14 @@ function clockwise(frntback) {
 
 function counterclockwise(frntback) { 
 
-  if (frntback == 'front') {
-    var img = document.getElementById("shtmImgFront")
-  } else {
-    var img = document.getElementById("shtmImgBack")
-  }
+  var fb = frntbackObj(frntback)
 
-  // var canvas = document.getElementById("canvas");
-  // if(canvas) {
-  //   document.body.removeChild(canvas);
-  // }
-  // var canvas = document.createElement("canvas");
+  // drawOptimizedImage(fb.canvas, fb.image, maxSize, 'clockwise')
+  // updateImgPreview(fb.canvas, fb.image)
 
-  drawOptimizedImage(canvas, img, maxSize, 'anticlockwise')
-  updateImgPreview(canvas, img)
+  var canvas = fb.canvas.fCanvas
+  var curAngle = canvas.item(0).angle;
+  canvas.item(0).rotate(curAngle - 90) 
 };
 
 function drawOptimizedImage (canvas, image, maxSize, rotationDirection) {
