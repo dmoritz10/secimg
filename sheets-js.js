@@ -1170,7 +1170,6 @@ function clearCanvas(frntback) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
-  $(fb.canvas).remove()
 
   if ($(fb.canvas).parent('.canvas-container').length > 0 ) {
 
@@ -1178,6 +1177,8 @@ function clearCanvas(frntback) {
     $(fb.edit.row).find("*").off("click.editListener")
 
   } 
+  
+  $(fb.canvas).remove()
 
   $('<canvas id="shtmCanvasFront" style="display:none"></canvas>').appendTo(fb.colContainer);
 
