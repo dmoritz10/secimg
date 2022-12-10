@@ -896,6 +896,9 @@ function counterclockwise(frntback) {
   var canvas = fb.canvas.fCanvas
   var curAngle = canvas.item(0).angle;
   canvas.item(0).rotate(curAngle - 90) 
+
+  canvas.renderAll();
+
 };
 
 function drawOptimizedImage (canvas, image, maxSize, rotationDirection) {
