@@ -72,6 +72,8 @@ catch(error) {
 
 console.log('page', page)
 // original width of the pdf page at scale 1
+
+console.log('viewport', page.getViewport(1))
 var pdf_original_width = page.getViewport(1).width;
 
 // as the canvas is of a fixed width we need to adjust the scale of the viewport where page is rendered
