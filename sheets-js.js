@@ -552,6 +552,8 @@ async function showFile(input) {
 
       console.log('e', e)
 
+      clearCanvas(frntback)
+
       if (fileType == 'data:application/pdf') {
 
         var src = atob(fileBase[1])
@@ -560,7 +562,6 @@ async function showFile(input) {
       } else {
 
         var src = e.target.result
-        clearCanvas(frntback)
         await showCanvas(frntback, src)
         showControls(frntback, false)
                                         

@@ -19,7 +19,6 @@ catch(error) {
     alert(error.message);
 }
 
-clearCanvas(frntbackObj(frntback))
 _fb = frntbackObj(frntback)
 
 // total pages in pdf
