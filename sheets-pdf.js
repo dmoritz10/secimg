@@ -49,7 +49,7 @@ try {
     var page = await _PDF_DOC.getPage(page_no);
 }
 catch(error) {
-    alert(error.message);
+    alert('hi dan' + error.message);
 }
 
 // original width of the pdf page at scale 1
