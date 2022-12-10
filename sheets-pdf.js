@@ -73,7 +73,7 @@ catch(error) {
 console.log('page', page)
 // original width of the pdf page at scale 1
 
-var pdf_original_width = page.getViewport(1).width;
+var pdf_original_width = page.getViewport({ scale: 1 }).width;
 
 // as the canvas is of a fixed width we need to adjust the scale of the viewport where page is rendered
 var scale_required = fb.canvas.width / pdf_original_width;
