@@ -23,6 +23,7 @@ catch(error) {
 console.log('_PDF_DOC', _PDF_DOC)
 
 _fb = frntbackObj(frntback)
+clearCanvas(_fb)
 
 // total pages in pdf
 _TOTAL_PAGES = _PDF_DOC.numPages;
