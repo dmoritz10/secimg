@@ -21,6 +21,9 @@ async function showPDF(pdf_url, frntback) {
         'MDAwIG4gCjAwMDAwMDAzODAgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9v' +
         'dCAxIDAgUgo+PgpzdGFydHhyZWYKNDkyCiUlRU9G');
 // get handle of pdf document
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+
 try {
     let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
     _PDF_DOC = await loadingTask.promise;
