@@ -284,8 +284,10 @@ async function btnShtmSubmitSheetHtml() {
   var imgs = []
   var savImgs = []
 
-  imgs[0] = frntbackObj('front').canvas ? getImgURL(frntbackObj('front').canvas.fCanvas) : null
-  imgs[1] = frntbackObj('back').canvas ? getImgURL(frntbackObj('back').canvas.fCanvas) : null
+  var fb = frntbackObj('front')
+  imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : fb.canvas.imgSrc ? fb.canvas.imgSrc : null
+  var fb = frntbackObj('back')
+  imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : fb.canvas.imgSrc ? fb.canvas.imgSrc : null
 
   console.log('fileId', fileId)
 
@@ -1177,7 +1179,7 @@ function clearCanvas(frntback) {
     $(fb.edit.row).find("*").off("click.editListener")
 
   } 
-  
+
   $(fb.canvas).remove()
 
   $('<canvas id="shtmCanvasFront" style="display:none"></canvas>').appendTo(fb.colContainer);
