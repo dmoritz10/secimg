@@ -14,16 +14,13 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.w
 try {
     let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
     _PDF_DOC = await loadingTask.promise;
-    console.log('1')
 }
 catch(error) {
     alert(error.message);
 }
 
-console.log('_PDF_DOC', _PDF_DOC)
-
+clearCanvas(frntbackObj(frntback))
 _fb = frntbackObj(frntback)
-clearCanvas(_fb)
 
 // total pages in pdf
 _TOTAL_PAGES = _PDF_DOC.numPages;
@@ -50,8 +47,6 @@ _CURRENT_PAGE = page_no;
 // update current page
 document.querySelector("#navPages").innerHTML = page_no + '/' + _TOTAL_PAGES;
 
-console.log('_fb', _fb)
-
 // get handle of page
 try {
     var page = await _PDF_DOC.getPage(page_no);
@@ -60,7 +55,6 @@ catch(error) {
     alert(error.message);
 }
 
-console.log('page', page)
 // original width of the pdf page at scale 1
 
 var pdf_original_width = page.getViewport({ scale: 1 }).width;
