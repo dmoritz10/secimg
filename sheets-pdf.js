@@ -50,9 +50,10 @@ try {
     var page = await _PDF_DOC.getPage(page_no);
 }
 catch(error) {
-    alert('hi dan' + error.message);
+    alert(error.message);
 }
 
+console.log('page', page)
 // original width of the pdf page at scale 1
 var pdf_original_width = page.getViewport(1).width;
 
@@ -66,8 +67,8 @@ var viewport = page.getViewport(scale_required);
 fb.canvas.height = viewport.height;
 
 // setting page loader height for smooth experience
-document.querySelector("#page-loader").style.height =  fb.canvas.height + 'px';
-document.querySelector("#page-loader").style.lineHeight = fb.canvas.height + 'px';
+// document.querySelector("#page-loader").style.height =  fb.canvas.height + 'px';
+// document.querySelector("#page-loader").style.lineHeight = fb.canvas.height + 'px';
 
 // page is rendered on <canvas> element
 var render_context = {
