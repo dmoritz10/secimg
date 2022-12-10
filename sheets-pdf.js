@@ -15,6 +15,8 @@ catch(error) {
     alert(error.message);
 }
 
+console.log('_PDF_DOC', _PDF_DOC)
+
 var fb = frntbackObj(frntback)
 
 // total pages in pdf
