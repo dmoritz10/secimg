@@ -81,6 +81,8 @@ var scale_required = fb.canvas.width / pdf_original_width;
 // get viewport to render the page at required scale
 var viewport = page.getViewport({ scale: scale_required });
 console.log('viewport',viewport)
+console.log('scale_required',scale_required)
+console.log('fb.canvas.width',fb.canvas.width)
 
 // set canvas height same as viewport height
 fb.canvas.height = viewport.height;
