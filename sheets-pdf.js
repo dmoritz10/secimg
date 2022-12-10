@@ -3,23 +3,10 @@ var _PDF_DOC,
 _CURRENT_PAGE,
 _TOTAL_PAGES,
 _PAGE_RENDERING_IN_PROGRESS = 0
+_fb
 
 // initialize and load the PDF
 async function showPDF(pdf_url, frntback) {
-    // var pdfData = atob(
-    //     'JVBERi0xLjcKCjEgMCBvYmogICUgZW50cnkgcG9pbnQKPDwKICAvVHlwZSAvQ2F0YWxvZwog' +
-    //     'IC9QYWdlcyAyIDAgUgo+PgplbmRvYmoKCjIgMCBvYmoKPDwKICAvVHlwZSAvUGFnZXMKICAv' +
-    //     'TWVkaWFCb3ggWyAwIDAgMjAwIDIwMCBdCiAgL0NvdW50IDEKICAvS2lkcyBbIDMgMCBSIF0K' +
-    //     'Pj4KZW5kb2JqCgozIDAgb2JqCjw8CiAgL1R5cGUgL1BhZ2UKICAvUGFyZW50IDIgMCBSCiAg' +
-    //     'L1Jlc291cmNlcyA8PAogICAgL0ZvbnQgPDwKICAgICAgL0YxIDQgMCBSIAogICAgPj4KICA+' +
-    //     'PgogIC9Db250ZW50cyA1IDAgUgo+PgplbmRvYmoKCjQgMCBvYmoKPDwKICAvVHlwZSAvRm9u' +
-    //     'dAogIC9TdWJ0eXBlIC9UeXBlMQogIC9CYXNlRm9udCAvVGltZXMtUm9tYW4KPj4KZW5kb2Jq' +
-    //     'Cgo1IDAgb2JqICAlIHBhZ2UgY29udGVudAo8PAogIC9MZW5ndGggNDQKPj4Kc3RyZWFtCkJU' +
-    //     'CjcwIDUwIFRECi9GMSAxMiBUZgooSGVsbG8sIHdvcmxkISkgVGoKRVQKZW5kc3RyZWFtCmVu' +
-    //     'ZG9iagoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDEwIDAwMDAwIG4g' +
-    //     'CjAwMDAwMDAwNzkgMDAwMDAgbiAKMDAwMDAwMDE3MyAwMDAwMCBuIAowMDAwMDAwMzAxIDAw' +
-    //     'MDAwIG4gCjAwMDAwMDAzODAgMDAwMDAgbiAKdHJhaWxlcgo8PAogIC9TaXplIDYKICAvUm9v' +
-    //     'dCAxIDAgUgo+PgpzdGFydHhyZWYKNDkyCiUlRU9G');
 // get handle of pdf document
 var pdfData = pdf_url
 pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
@@ -35,7 +22,7 @@ catch(error) {
 
 console.log('_PDF_DOC', _PDF_DOC)
 
-var fb = frntbackObj(frntback)
+var _fb = frntbackObj(frntback)
 
 // total pages in pdf
 _TOTAL_PAGES = _PDF_DOC.numPages;
@@ -121,14 +108,14 @@ _PAGE_RENDERING_IN_PROGRESS = 0;
 // document.querySelector("#page-loader").style.display = 'none';
 }
 
-// // click on the "Previous" page button
-// document.querySelector("#pdf-prev").addEventListener('click', function() {
-// if(_CURRENT_PAGE != 1)
-//     showPage(--_CURRENT_PAGE);
-// });
+// click on the "Previous" page button
+document.querySelector("#pdf-prev").addEventListener('click', function() {
+if(_CURRENT_PAGE != 1)
+    showPage(--_CURRENT_PAGE);
+});
 
-// // click on the "Next" page button
-// document.querySelector("#pdf-next").addEventListener('click', function() {
-// if(_CURRENT_PAGE != _TOTAL_PAGES)
-//     showPage(++_CURRENT_PAGE);
-// });
+// click on the "Next" page button
+document.querySelector("#pdf-next").addEventListener('click', function() {
+if(_CURRENT_PAGE != _TOTAL_PAGES)
+    showPage(++_CURRENT_PAGE);
+});
