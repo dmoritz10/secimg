@@ -22,7 +22,7 @@ catch(error) {
 
 console.log('_PDF_DOC', _PDF_DOC)
 
-var _fb = frntbackObj(frntback)
+_fb = frntbackObj(frntback)
 
 // total pages in pdf
 _TOTAL_PAGES = _PDF_DOC.numPages;
