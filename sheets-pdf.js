@@ -86,6 +86,7 @@ console.log('fb.colContainer.width',$(fb.colContainer).width())
 
 // set canvas height same as viewport height
 fb.canvas.height = viewport.height;
+fb.canvas.width = viewport.width;
 
 console.log('page', pdf_original_width, scale_required, page.getViewport)
 
