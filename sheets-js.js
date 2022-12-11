@@ -594,6 +594,8 @@ function toggleEditButtons(frntback, fType) {
     console.log('pdf')
 
     $(fb.options.edit).attr("hidden",true);
+    $(fb.options.share).attr("hidden",false);
+    $(fb.options.save).attr("hidden",false);
     $(fb.options.prevpagePDF).attr("hidden",false);
     $(fb.options.nextpagePDF).attr("hidden",false);
     $(fb.options.pagesPDF).attr("hidden",false);
@@ -602,6 +604,8 @@ function toggleEditButtons(frntback, fType) {
     console.log('img')
 
     $(fb.options.edit).attr("hidden",false);
+    $(fb.options.share).attr("hidden",false);
+    $(fb.options.save).attr("hidden",false);
     $(fb.options.prevpagePDF).attr("hidden",true);
     $(fb.options.nextpagePDF).attr("hidden",true);
     $(fb.options.pagesPDF).attr("hidden",true);
@@ -609,6 +613,8 @@ function toggleEditButtons(frntback, fType) {
   } else {
     console.log('nonw')
 
+    $(fb.options.share).attr("hidden",true);
+    $(fb.options.save).attr("hidden",true);
     $(fb.options.edit).attr("hidden",true);
     $(fb.options.prevpagePDF).attr("hidden",true);
     $(fb.options.nextpagePDF).attr("hidden",true);
@@ -1360,17 +1366,21 @@ function frntbackObj(fb) {
 
   return {
 
-    frntback:     fb,
-    colContainer: colContainer,
-    image:        image,
-    canvas:       canvas,
+    frntback:       fb,
+    colContainer:   colContainer,
+    image:          image,
+    canvas:         canvas,
 
     options:  {
 
-      row:        options,
-      edit:       editImage,
-      share:      shareImage,
-      delete:     deleteImage
+      
+      row:          options,
+      edit:         editImage,
+      share:        shareImage,
+      delete:       deleteImage,
+      prevpagePDF:  prevpagePDF,
+      nextpagePDF:  nextpagePDF,
+      pagesPDF:     pagesPDF
 
     },
 
