@@ -1112,6 +1112,7 @@ async function editImage(frntback) {
         height: selectionRect.getScaledHeight(),
         absolutePositioned: true,
       });
+      rect.setControlsVisibility({ mtr:  false })
 
       // add to the current image clicpPath property
       // currentImage.clipPath = rect;
@@ -1217,7 +1218,6 @@ async function addImage(canvas, imgSrc, fb) {
     mt:   false,
     mb:   false,
     mr:   false
-  
   })
   
   setDims (canvas, oImg, fb)
