@@ -1239,8 +1239,12 @@ async function editImage(frntback) {
 
 function initCnvas(fb) {
 
+  console.log('fb', fb)
+
   fb.canvas = fb.frntback == 'front' ? document.getElementById("shtmCanvasFront") : document.getElementById("shtmCanvasBack")
   $(fb.canvas).css("display", "");
+
+  console.log('fb1', fb)
 
   var fCanvas = new fabric.Canvas(fb.canvas.id, {
     strokeWidth: 15,
