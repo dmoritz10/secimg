@@ -1244,6 +1244,8 @@ async function editImage(frntback) {
 function initCnvas(fb) {
 
   console.log('fb', fb)
+  console.log('fbf', document.getElementById("shtmCanvasFront"))
+  console.log('fbb', document.getElementById("shtmCanvasBack"))
 
   fb.canvas = fb.frntback == 'front' ? document.getElementById("shtmCanvasFront") : document.getElementById("shtmCanvasBack")
   $(fb.canvas).css("display", "");
@@ -1299,7 +1301,7 @@ function clearCanvas(frntback) {
 
   $(fb.canvas).remove()
 
-  if (fb.frntback == "Front") $('<canvas id="shtmCanvasFront" style="display:none"></canvas>').appendTo(fb.colContainer);
+  if (fb.frntback == "front") $('<canvas id="shtmCanvasFront" style="display:none"></canvas>').appendTo(fb.colContainer);
   else                        $('<canvas id="shtmCanvasBack" style="display:none"></canvas>').appendTo(fb.colContainer);
 
   $(fb.options.row).removeClass('d-none')
