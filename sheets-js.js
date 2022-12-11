@@ -1235,6 +1235,8 @@ async function editImage(frntback) {
       $(fb.options.row).removeClass('d-none')
       $(fb.edit.row).addClass('d-none')
 
+      toggleEditButtons(frntback, 'img')
+
     });
 
   }
@@ -1247,6 +1249,9 @@ async function editImage(frntback) {
       clearCanvas(fb)
       await showCanvas(fb, imgSrc)
       showControls(fb, false)
+
+      toggleEditButtons(frntback, 'img')
+
 
     });
 
