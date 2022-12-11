@@ -213,7 +213,7 @@ async function editSheet(arrIdx) {
 
   if (imgs[0])  {
     
-    var rtn = displayFile (imgSrc, 'front')
+    var rtn = await displayFile (imgSrc, 'front')
     if (!rtn) return
 
   } 
@@ -533,7 +533,7 @@ async function showFile(input) {
       if (input.id == "shtmInputFront") var frntback = 'front'
       else                              var frntback = 'back'
 
-      var rtn = displayFile (imgSrc, frntback)
+      var rtn = await displayFile (imgSrc, frntback)
       if (!rtn) return
 
     }
@@ -543,7 +543,7 @@ async function showFile(input) {
 
 }
 
-function displayFile (imgSrc, frntback) {
+async function displayFile (imgSrc, frntback) {
 
   var fileInfo = parseFile(e.target.result)
 
