@@ -1340,12 +1340,12 @@ function frntbackObj(fb) {
     var canvas              = document.getElementById("shtmCanvasFront")
 
     var options             = document.getElementById("shtmImgOptionsFront")
-      var editImage         = document.getElementById("editImageFront")
-      var shareImage        = document.getElementById("#shareImageFront")
-      var deleteImage       = document.getElementById("#deleteImageFront")
-      var prevPagePDF       = document.getElementById("#pdfPrevFront")
-      var nextPagePDF       = document.getElementById("#pdfNextFront")
-      var pagesPDF          = document.getElementById("#pdfPagesFront")
+      var edit              = document.getElementById("editImageFront")
+      var share             = document.getElementById("shareImageFront")
+      var deletez           = document.getElementById("deleteImageFront")
+      var prevPagePDF       = document.getElementById("pdfPrevFront")
+      var nextPagePDF       = document.getElementById("pdfNextFront")
+      var pagesPDF          = document.getElementById("pdfPagesFront")
     
 
     var edit                = document.getElementById("shtmImgEditFront")
@@ -1374,9 +1374,9 @@ function frntbackObj(fb) {
     options:  {
 
       row:          options,
-      edit:         editImage,
-      share:        shareImage,
-      delete:       deleteImage,
+      edit:         edit,
+      share:        share,
+      delete:       deletez,
       prevPagePDF:  prevPagePDF,
       nextPagePDF:  nextPagePDF,
       pagesPDF:     pagesPDF
