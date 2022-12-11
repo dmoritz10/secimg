@@ -582,7 +582,12 @@ function toggleEditButtons(frntback, fType) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
+  console.log('fb', fb)
+  console.log('fType', fType)
+
   if (fType == 'pdf') {
+
+    console.log('pdf')
 
     $(fb.options.edit).attr("hidden",true);
     $(fb.options.prevpagePDF).attr("hidden",false);
@@ -590,6 +595,7 @@ function toggleEditButtons(frntback, fType) {
     $(fb.options.pagesPDF).attr("hidden",false);
 
   } else if (fType == 'img') {
+    console.log('img')
 
     $(fb.options.edit).attr("hidden",false);
     $(fb.options.prevpagePDF).attr("hidden",true);
@@ -597,6 +603,7 @@ function toggleEditButtons(frntback, fType) {
     $(fb.options.pagesPDF).attr("hidden",true);
 
   } else {
+    console.log('nonw')
 
     $(fb.options.edit).attr("hidden",true);
     $(fb.options.prevpagePDF).attr("hidden",true);
