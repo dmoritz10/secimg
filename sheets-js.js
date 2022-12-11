@@ -546,6 +546,8 @@ async function displayFile (imgSrc, frntback) {
 
   var fileInfo = parseFile(imgSrc)
 
+  console.log('fileInfo', fileInfo)
+
   if (!fileInfo.validFile) {
     
     toast(fileInfo.validFile, 5000)
