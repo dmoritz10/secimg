@@ -427,11 +427,6 @@ function fixUrl(url) {
 
 async function btnAddSheetHtml() {
 
-    // $(frntbackObj('front').canvas).addClass('d-none')
-    // $(frntbackObj('back').canvas).addClass('d-none')
-  // $('#shtmImgFront').removeAttr('src').addClass('d-none')
-  // $('#shtmImgBack').removeAttr('src').addClass('d-none')
-
   $("#sheet-form")[0].reset();
   $('#shtmModalTitle').html('')
   $("#sheet-modal").modal('show');
@@ -440,7 +435,6 @@ async function btnAddSheetHtml() {
 
    clearCanvas(frntbackObj('front'))
    clearCanvas(frntbackObj('back'))
- 
 
 }
 
@@ -1343,7 +1337,6 @@ function frntbackObj(fb) {
   if (fb == 'front') {
 
     var colContainer        = document.getElementById("shtmFront")
-    var image               = document.getElementById("shtmImgFront")
     var canvas              = document.getElementById("shtmCanvasFront")
 
     var options             = document.getElementById("shtmImgOptionsFront")
