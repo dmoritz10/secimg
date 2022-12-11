@@ -625,6 +625,7 @@ function showControls(frntback, bool) {
 
   let canvas = fb.canvas.fCanvas
   let c = canvas.item(0)
+  
   c.selectable = bool;
   c.hasControls = bool;
   c.lockMovementY = !bool;
@@ -1089,6 +1090,13 @@ async function editImage(frntback) {
       cornerStyle: "circle",
       borderDashArray: [5, 5],
       borderScaleFactor: 1.3,
+        mtr:  false,
+        ml:   false,
+        mt:   false,
+        mb:   false,
+        mr:   false
+      
+      
     });
 
     selectionRect.scaleToWidth(300);
@@ -1208,7 +1216,14 @@ async function addImage(canvas, imgSrc, fb) {
   await waitForImage(img)
 
   var oImg = new fabric.Image(img);
-  oImg.setControlsVisibility({ mtr: false })
+  oImg.setControlsVisibility({ 
+    mtr:  false,
+    ml:   false,
+    mt:   false,
+    mb:   false,
+    mr:   false
+  
+  })
   
   setDims (canvas, oImg, fb)
     
