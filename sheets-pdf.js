@@ -34,7 +34,7 @@ _PAGE_RENDERING_IN_PROGRESS = 1;
 _CURRENT_PAGE = page_no;
 
 // update current page
-document.getElementById(pdfPagesFront).innerHTML = page_no + '/' + _TOTAL_PAGES;
+document.getElementById('pdfPagesFront').innerHTML = page_no + '/' + _TOTAL_PAGES;
 
 // get handle of page
 try {
