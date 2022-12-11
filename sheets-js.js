@@ -1068,6 +1068,15 @@ async function editImage(frntback) {
   }
 
   function addSelectionRect() {
+
+    if (canvas.item(1)) {
+
+      canvas.remove(canvas.item(1))
+      canvas.renderAll();
+      return
+
+    }
+
     selectionRect = new fabric.Rect({
       fill: "rgba(0,0,0,0.3)",
       originX: "left",
@@ -1104,6 +1113,8 @@ async function editImage(frntback) {
     // Click the crop button croped the masked area
     $(fb.edit.cropImage).on("click.editListener", function  () {
 
+      
+    
       // create mask rectabgle for crop
       let rect = new fabric.Rect({
         left: selectionRect.left,
@@ -1278,7 +1289,7 @@ function frntbackObj(fb) {
     var edit                = document.getElementById("shtmImgEditFront")
       var setupCrop         = document.getElementById("setupCropFront")
       var cropImage         = document.getElementById("cropImageFront")
-      var restoreImage      = document.getElementById("restoreImageFront")
+      var contrastImage     = document.getElementById("contrastImageFront")
       var cancelEditImage   = document.getElementById("cancelEditImageFront")
       var saveImage         = document.getElementById("saveImageFront")
 
@@ -1312,7 +1323,7 @@ function frntbackObj(fb) {
       row:              edit,
       setupCrop:        setupCrop,
       cropImage:        cropImage,
-      restoreImage:     restoreImage,
+      contrastImage:    contrastImage,
       cancelEditImage:  cancelEditImage,
       saveImage:        saveImage
 
