@@ -921,6 +921,20 @@ function counterclockwise(frntback) {
 
 };
 
+function contrast (frntback) { 
+
+  var fb = frntbackObj(frntback)
+
+  var canvas = fb.canvas.fCanvas
+  var curAngle = canvas.item(0).angle;
+  canvas.item(0).rotate(curAngle - 90) 
+
+  canvas.renderAll();
+
+};
+
+
+
 function drawOptimizedImage (canvas, image, maxSize, rotationDirection) {
   let degrees = updateRotationDegrees(rotationDirection)
   let newSize = determineSize(image.width, image.height, maxSize.width, maxSize.height, degrees)
