@@ -520,6 +520,8 @@ async function showFile(input) {
 
 async function displayFile (imgSrc, frntback) {
 
+  console.log('frntback', frntback)
+
   var fileInfo = parseFile(imgSrc)
 
 
