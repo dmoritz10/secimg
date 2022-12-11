@@ -925,15 +925,16 @@ function contrast (frntback) {
 
   var fb = frntbackObj(frntback)
 
-  var obj = fb.canvas.fCanvas.item(0)
+  var canvas = fb.canvas.fCanvas
+  var img = fb.canvas.fCanvas.item(0)
 
   var filter = new fabric.Image.filters.Convolute({
     matrix: [ 0, -1,  0,
              -1,  5, -1,
               0, -1,  0 ]
   });
-  obj.filters.push(filter);
-  obj.applyFilters();
+  img.filters.push(filter);
+  img.applyFilters();
   canvas.renderAll();
 
 };
