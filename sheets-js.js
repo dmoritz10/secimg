@@ -594,7 +594,8 @@ function parseFile(f) {
 
     type: parseFileType[0],
     base: base,
-    data: data
+    data: data, 
+    validFile: true
 
   }
 
