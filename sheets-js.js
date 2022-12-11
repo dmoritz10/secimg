@@ -942,7 +942,7 @@ function contrast (frntback) {
   // });
   
 
-  img.filters.push(lanczosFilter);
+  img.filters.push(filter);
   img.applyFilters();
 
   canvas.renderAll();
