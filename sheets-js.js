@@ -531,6 +531,7 @@ async function showFile(input) {
 
       if (input.id == "shtmInputFront") var frntback = 'front'
       else                              var frntback = 'back'
+      console.log(' showFile')
 
       var rtn = await displayFile (e.target.result, frntback)
       if (!rtn) return
@@ -543,6 +544,7 @@ async function showFile(input) {
 }
 
 async function displayFile (imgSrc, frntback) {
+  console.log('displayFile')
 
   var fileInfo = parseFile(imgSrc)
 
@@ -558,12 +560,14 @@ async function displayFile (imgSrc, frntback) {
   clearCanvas(frntback)
 
   if (fileInfo.type == 'data:application/pdf') {
+    console.log('displayFile pdf')
 
     var src = atob(fileInfo.data)
     showPDF(src, frntback)
     toggleEditButtons(frntback, 'pdf')
   
   } else {
+    console.log('displayFile img')
 
     await showCanvas(frntback, imgSrc)
     showControls(frntback, false)
