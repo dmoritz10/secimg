@@ -577,7 +577,7 @@ async function displayFile (imgSrc, frntback) {
   
 }
 
-function toggleEditButtons(fType, frntback) {
+function toggleEditButtons(frntback, fType) {
 
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
