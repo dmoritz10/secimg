@@ -1112,7 +1112,6 @@ async function editImage(frntback) {
         height: selectionRect.getScaledHeight(),
         absolutePositioned: true,
       });
-      rect.setControlsVisibility({ mtr:  false })
 
       // add to the current image clicpPath property
       // currentImage.clipPath = rect;
@@ -1138,6 +1137,13 @@ async function editImage(frntback) {
         canvas.clear();
 
         var image = new fabric.Image(cropped);
+        image.setControlsVisibility({ 
+          mtr:  false,
+          ml:   false,
+          mt:   false,
+          mb:   false,
+          mr:   false
+        })
         
         setDims (canvas, image, fb)
         
