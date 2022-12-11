@@ -1340,7 +1340,7 @@ function frntbackObj(fb) {
     var canvas              = document.getElementById("shtmCanvasFront")
 
     var options             = document.getElementById("shtmImgOptionsFront")
-      var edit              = document.getElementById("editImageFront")
+      var editz             = document.getElementById("editImageFront")
       var share             = document.getElementById("shareImageFront")
       var deletez           = document.getElementById("deleteImageFront")
       var prevPagePDF       = document.getElementById("pdfPrevFront")
@@ -1374,7 +1374,7 @@ function frntbackObj(fb) {
     options:  {
 
       row:          options,
-      edit:         edit,
+      edit:         editz,
       share:        share,
       delete:       deletez,
       prevPagePDF:  prevPagePDF,
