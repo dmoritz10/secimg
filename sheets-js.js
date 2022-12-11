@@ -1169,6 +1169,13 @@ async function editImage(frntback) {
 
     $(fb.edit.saveImage).on("click.editListener", async function  () {
 
+      if (selectionRect) {
+        canvas.remove(selectionRect);
+        selectionRect = null;
+        canvas.renderAll();
+        return
+      }
+
       var src = getImgURL(canvas)
       
       clearCanvas(fb)
