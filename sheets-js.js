@@ -926,15 +926,25 @@ function contrast (frntback) {
   var fb = frntbackObj(frntback)
 
   var canvas = fb.canvas.fCanvas
-  var img = fb.canvas.fCanvas.item(0)
+  var img = canvas.item(0)
 
-  var filter = new fabric.Image.filters.Convolute({
-    matrix: [ 0, -1,  0,
-             -1,  5, -1,
-              0, -1,  0 ]
+  // var filter = new fabric.Image.filters.Convolute({
+  //   matrix: [ 0, -1,  0,
+  //            -1,  5, -1,
+  //             0, -1,  0 ]
+  // });
+
+  var lanczosFilter = new fabric.Image.filters.Resize({
+    scaleX: 1,
+    scaleY: 1,
+    resizeType: 'lanczos',
+    lanczosLobes: 3,
   });
-  img.filters.push(filter);
+  
+
+  img.filters.push(lanczosFilter);
   img.applyFilters();
+
   canvas.renderAll();
 
 };
