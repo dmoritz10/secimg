@@ -933,6 +933,8 @@ async function clickPhoto() {
     clearCanvas(frntback)
     await showCanvas(frntback, image_data_url)
     showControls(frntback, false)
+
+    toggleEditButtons(frntback, 'img')
                                       
     enhancerClose()
 
