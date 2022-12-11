@@ -1112,7 +1112,7 @@ async function editImage(frntback) {
     // Click the crop button croped the masked area
     $(fb.edit.cropImage).on("click.editListener", function  () {
 
-      
+      if (!selectionRect) return
     
       // create mask rectabgle for crop
       let rect = new fabric.Rect({
