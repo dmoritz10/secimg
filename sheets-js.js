@@ -929,9 +929,9 @@ function contrast (frntback) {
   var img = canvas.item(0)
 
   var filter = new fabric.Image.filters.Convolute({
-    matrix: [ 0, -1,  0,
-             -1,  5, -1,
-              0, -1,  0 ]
+    matrix: [ 1,   1,  1,
+      1, 0.7, -1,
+     -1,  -1, -1 ]
   });
 
   // var lanczosFilter = new fabric.Image.filters.Resize({
