@@ -590,7 +590,7 @@ function parseFile(f) {
   ]
 
   if (validFileTypes.indexOf(fileType) == -1) {
-    return { validFile: 'Invalid file type'}
+    return { invalidFile: 'Invalid file type'}
   }
 
   return {
