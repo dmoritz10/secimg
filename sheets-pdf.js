@@ -5,6 +5,8 @@ _TOTAL_PAGES,
 _PAGE_RENDERING_IN_PROGRESS = 0,
 _fb
 
+console.log('fb sheets-pdf', frntbackObj('front'))
+
 // initialize and load the PDF
 async function showPDF(pdf_url, frntback) {
 // get handle of pdf document
