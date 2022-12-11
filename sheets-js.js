@@ -555,6 +555,8 @@ async function displayFile (imgSrc, frntback) {
                                     
   }
 
+console.log('frntbackObj(frntback)', frntbackObj(frntback))
+
   frntbackObj(frntback).canvas.imgSrc = imgSrc
 
   return true
