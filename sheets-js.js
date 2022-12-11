@@ -533,7 +533,7 @@ async function showFile(input) {
       if (input.id == "shtmInputFront") var frntback = 'front'
       else                              var frntback = 'back'
 
-      var rtn = await displayFile (imgSrc, frntback)
+      var rtn = await displayFile (e.target.result, frntback)
       if (!rtn) return
 
     }
@@ -545,7 +545,7 @@ async function showFile(input) {
 
 async function displayFile (imgSrc, frntback) {
 
-  var fileInfo = parseFile(e.target.result)
+  var fileInfo = parseFile(imgSrc)
 
   if (!fileInfo.validFile) {
     
