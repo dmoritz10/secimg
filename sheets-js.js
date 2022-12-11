@@ -213,8 +213,7 @@ async function editSheet(arrIdx) {
 
   if (imgs[0])  {
     
-    var rtn = await displayFile (imgs[0], 'front')
-    if (!rtn) return
+    await displayFile (imgs[0], 'front')
 
   } 
   
