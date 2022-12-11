@@ -1069,13 +1069,9 @@ async function editImage(frntback) {
 
   function addSelectionRect() {
 
-    if (canvas.item(1)) {
 
-      canvas.remove(canvas.item(1))
-      canvas.renderAll();
-      return
-
-    }
+      canvas.remove(selectionRect);
+      // canvas.renderAll();
 
     selectionRect = new fabric.Rect({
       fill: "rgba(0,0,0,0.3)",
