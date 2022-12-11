@@ -85,13 +85,13 @@ _PAGE_RENDERING_IN_PROGRESS = 0;
 }
 
 // click on the "Previous" page button
-document.getElementById(pdfPrevFront).addEventListener('click', function() {
+document.getElementById('pdfPrevFront').addEventListener('click', function() {
 if(_CURRENT_PAGE != 1)
     showPage(--_CURRENT_PAGE);
 });
 
 // click on the "Next" page button
-document.getElementById(pdfNextFront).addEventListener('click', function() {
+document.getElementById('pdfNextFront').addEventListener('click', function() {
 if(_CURRENT_PAGE != _TOTAL_PAGES)
     showPage(++_CURRENT_PAGE);
 });
