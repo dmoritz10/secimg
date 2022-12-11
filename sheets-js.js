@@ -548,9 +548,9 @@ async function displayFile (imgSrc, frntback) {
 
   console.log('fileInfo', fileInfo)
 
-  if (!fileInfo.validFile) {
+  if (fileInfo.invalidFile) {
     
-    toast(fileInfo.validFile, 5000)
+    toast(fileInfo.invalidFile, 5000)
     return null
 
   }
@@ -595,10 +595,10 @@ function parseFile(f) {
 
   return {
 
-    type:       parseFileType[0],
-    base:       base,
-    data:       data, 
-    validFile:  true
+    type:         parseFileType[0],
+    base:         base,
+    data:         data, 
+    invalidFile:  false
 
   }
 
