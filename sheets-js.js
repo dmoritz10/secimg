@@ -1089,17 +1089,12 @@ async function editImage(frntback) {
       padding: 0,
       cornerStyle: "circle",
       borderDashArray: [5, 5],
-      borderScaleFactor: 1.3,
-        mtr:  false,
-        ml:   false,
-        mt:   false,
-        mb:   false,
-        mr:   false
-      
-      
+      borderScaleFactor: 1.3
+       
     });
 
     selectionRect.scaleToWidth(300);
+    selectionRect.setControlsVisibility({ mtr:  false})
     canvas.centerObject(selectionRect);
     canvas.add(selectionRect);
 
