@@ -213,10 +213,8 @@ async function editSheet(arrIdx) {
 
   if (imgs[0])  {
     
-    
-    clearCanvas('front')
-    await showCanvas('front', imgs[0])
-    showControls('front', false)
+    var rtn = displayFile (imgSrc, 'front')
+    if (!rtn) return
 
   } 
   
@@ -532,46 +530,72 @@ async function showFile(input) {
 
     reader.onload = async function (e) {
 
-      var parseFileType = e.target.result.split(';');
-      var fileType = parseFileType[0]
-      var fileBase = parseFileType[1].split(',');
-
-      var validFileTypes = [
-        'data:application/pdf',
-        'data:image/png',
-        'data:image/jpeg'
-      ]
-
-      if (validFileTypes.indexOf(fileType) == -1) {
-        toast('Invalid file type', 5000)
-        return
-      }
-
       if (input.id == "shtmInputFront") var frntback = 'front'
       else                              var frntback = 'back'
 
-      console.log('e', e)
+      var rtn = displayFile (imgSrc, frntback)
+      if (!rtn) return
 
-      clearCanvas(frntback)
-
-      if (fileType == 'data:application/pdf') {
-
-        var src = atob(fileBase[1])
-        showPDF(src, frntback)
-      
-      } else {
-
-        var src = e.target.result
-        await showCanvas(frntback, src)
-        showControls(frntback, false)
-                                        
-      }
-
-      frntbackObj(frntback).canvas.imgSrc = e.target.result
-      
     }
 
     reader.readAsDataURL(input.files[0]);
+  }
+
+}
+
+function displayFile (imgSrc, frntback) {
+
+  var fileInfo = parseFile(e.target.result)
+
+  if (!fileInfo.validFile) {
+    
+    toast(fileInfo.validFile, 5000)
+    return null
+
+  }
+
+  clearCanvas(frntback)
+
+  if (fileInfo.type == 'data:application/pdf') {
+
+    var src = atob(fileInfo.data)
+    showPDF(src, frntback)
+  
+  } else {
+
+    await showCanvas(frntback, imgSrc)
+    showControls(frntback, false)
+                                    
+  }
+
+  frntbackObj(frntback).canvas.imgSrc = imgSrc
+  
+}
+
+function parseFile(f) {
+
+  var parseFileType = f.split(';');
+  var fileType = parseFileType[0]
+  var x = parseFileType[1].split(',')
+  var base = x[0]
+  var data = x[1]
+
+  var validFileTypes = [
+    'data:application/pdf',
+    'data:image/png',
+    'data:image/jpeg'
+  ]
+
+  if (validFileTypes.indexOf(fileType) == -1) {
+    return { validFile: 'Invalid file type'}
+  }
+
+  return {
+
+    type: parseFileType[0],
+    base: base,
+    data: data
+
   }
 
 }
