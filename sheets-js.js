@@ -415,16 +415,6 @@ async function updateUI (valsEnc, arrIdx) {
   }
 
 }
-
-function fixUrl(url) {
-
-  if (url.substring(0, 8) !== 'https://' && url.substring(0, 7) !== 'http://') return 'https://' + url
-
-  return url
-
-}
-
-
 async function btnAddSheetHtml() {
 
   $("#sheet-form")[0].reset();
@@ -480,7 +470,6 @@ async function btnDeleteSheetHtml() {
     console.log(response)
 
   })
-console.log('delete file id', $('#shtmFileId').val())
 
   await gapi.client.drive.files.delete({
                 
@@ -493,7 +482,6 @@ console.log('delete file id', $('#shtmFileId').val())
 });
 
   $("#sheet-modal").modal('hide');
-  // $("#sheet-modal").modal('dispose');
 
   modal(false)
 
