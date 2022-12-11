@@ -561,11 +561,13 @@ async function displayFile (imgSrc, frntback) {
 
     var src = atob(fileInfo.data)
     showPDF(src, frntback)
+    toggleEditButtons(frntback, 'pdf')
   
   } else {
 
     await showCanvas(frntback, imgSrc)
     showControls(frntback, false)
+    toggleEditButtons(frntback, 'img')
                                     
   }
 
@@ -573,6 +575,38 @@ async function displayFile (imgSrc, frntback) {
 
   return true
   
+}
+
+function toggleEditButtons(fType, frntback) {
+
+  if (typeof frntback === 'string') var fb = frntbackObj(frntback)
+  else                              var fb = frntback
+
+  if (fType == 'pdf') {
+
+    $(fb.options.edit).attr("hidden",true);
+    $(fb.options.prevpagePDF).attr("hidden",false);
+    $(fb.options.nextpagePDF).attr("hidden",false);
+    $(fb.options.pagesPDF).attr("hidden",false);
+
+  } else if (fType == 'img') {
+
+    $(fb.options.edit).attr("hidden",false);
+    $(fb.options.prevpagePDF).attr("hidden",true);
+    $(fb.options.nextpagePDF).attr("hidden",true);
+    $(fb.options.pagesPDF).attr("hidden",true);
+
+  } else {
+
+    $(fb.options.edit).attr("hidden",true);
+    $(fb.options.prevpagePDF).attr("hidden",true);
+    $(fb.options.nextpagePDF).attr("hidden",true);
+    $(fb.options.pagesPDF).attr("hidden",true);
+
+  }
+
+
+
 }
 
 function parseFile(f) {
@@ -1173,7 +1207,6 @@ async function editImage(frntback) {
         canvas.remove(selectionRect);
         selectionRect = null;
         canvas.renderAll();
-        return
       }
 
       var src = getImgURL(canvas)
@@ -1275,6 +1308,8 @@ function clearCanvas(frntback) {
   $(fb.options.row).removeClass('d-none')
   $(fb.edit.row).addClass('d-none')
 
+  toggleEditButtons(frntback, 'none')
+
 }
 
 
@@ -1291,6 +1326,9 @@ function frntbackObj(fb) {
       var editImage         = document.getElementById("editImageFront")
       var shareImage        = document.getElementById("#shareImageFront")
       var deleteImage       = document.getElementById("#deleteImageFront")
+      var prevpagePDF       = document.getElementById("#pdf-prev")
+      var nextpagePDF       = document.getElementById("#pdf-next")
+      var pagesPDF          = document.getElementById("#pdf-pages")
     
 
     var edit                = document.getElementById("shtmImgEditFront")
