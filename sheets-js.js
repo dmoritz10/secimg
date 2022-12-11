@@ -219,8 +219,7 @@ async function editSheet(arrIdx) {
   
   if (imgs[1]) {
 
-    // await showCanvas('back', imgs[1])
-    // showControls('back', false)
+    await displayFile (imgs[1], 'back')
 
   }
   
@@ -282,16 +281,11 @@ async function btnShtmSubmitSheetHtml() {
   var savImgs = []
 
   var fb = frntbackObj('front')
-  console.log('fb', fb)
-  console.log('fb.canvas', fb.canvas)
-  console.log('fb.canvas.fCanvas', fb.canvas.fCanvas)
-  console.log('fb.canvas.imgSrc', fb.canvas.imgSrc)
-
   imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : fb.canvas.imgSrc ? fb.canvas.imgSrc : null
-  // var fb = frntbackObj('back')
-  // imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : fb.canvas.imgSrc ? fb.canvas.imgSrc : null
+ 
+  var fb = frntbackObj('back')
+  imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : fb.canvas.imgSrc ? fb.canvas.imgSrc : null
 
-  console.log('fileId', fileId)
 
   await postImages(shtEnc, fileId, imgs, savImgs)
 
@@ -513,7 +507,6 @@ async function showFile(input) {
 
       if (input.id == "shtmInputFront") var frntback = 'front'
       else                              var frntback = 'back'
-      console.log(' showFile')
 
       var rtn = await displayFile (e.target.result, frntback)
       if (!rtn) return
@@ -526,11 +519,9 @@ async function showFile(input) {
 }
 
 async function displayFile (imgSrc, frntback) {
-  console.log('displayFile')
 
   var fileInfo = parseFile(imgSrc)
 
-  console.log('fileInfo', fileInfo)
 
   if (fileInfo.invalidFile) {
     
@@ -542,14 +533,12 @@ async function displayFile (imgSrc, frntback) {
   clearCanvas(frntback)
 
   if (fileInfo.type == 'data:application/pdf') {
-    console.log('displayFile pdf')
 
     var src = atob(fileInfo.data)
     showPDF(src, frntback)
     toggleEditButtons(frntback, 'pdf')
   
   } else {
-    console.log('displayFile img')
 
     await showCanvas(frntback, imgSrc)
     showControls(frntback, false)
@@ -568,12 +557,7 @@ function toggleEditButtons(frntback, fType) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
-  console.log('fb', fb)
-  console.log('fType', fType)
-
   if (fType == 'pdf') {
-
-    console.log('pdf')
 
     $(fb.options.edit).attr("hidden",true);
     $(fb.options.share).attr("hidden",false);
@@ -583,7 +567,6 @@ function toggleEditButtons(frntback, fType) {
     $(fb.options.pagesPDF).attr("hidden",false);
 
   } else if (fType == 'img') {
-    console.log('img')
 
     $(fb.options.edit).attr("hidden",false);
     $(fb.options.share).attr("hidden",false);
@@ -593,7 +576,6 @@ function toggleEditButtons(frntback, fType) {
     $(fb.options.pagesPDF).attr("hidden",true);
 
   } else {
-    console.log('none')
 
     $(fb.options.share).attr("hidden",true);
     $(fb.options.delete).attr("hidden",true);
@@ -735,13 +717,8 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
 async function updateImages(fileId, imgIdx, vals, removeImage) {
 
-  console.log("updateImages")
-
-
   var shtTitle = fileId
   var row = imgIdx
-
-  console.log('updateImages vals', vals)
 
   await clearImage(shtTitle, row)         // always clear existing image
 
@@ -1070,8 +1047,6 @@ async function editImage(frntback) {
 
   $(fb.edit.row).find("*").off("click.editListener")
 
-  console.log('fb', fb)
-
   $(fb.options.row).addClass('d-none')
   $(fb.edit.row).removeClass('d-none')
 
@@ -1309,7 +1284,8 @@ function clearCanvas(frntback) {
 
   $(fb.canvas).remove()
 
-  $('<canvas id="shtmCanvasFront" style="display:none"></canvas>').appendTo(fb.colContainer);
+  if (fb.frntback == "Front") $('<canvas id="shtmCanvasFront" style="display:none"></canvas>').appendTo(fb.colContainer);
+  else                        $('<canvas id="shtmCanvasBack" style="display:none"></canvas>').appendTo(fb.colContainer);
 
   $(fb.options.row).removeClass('d-none')
   $(fb.edit.row).addClass('d-none')
@@ -1356,7 +1332,6 @@ function frntbackObj(fb) {
 
     frntback:       fb,
     colContainer:   colContainer,
-    image:          image,
     canvas:         canvas,
 
     options:  {

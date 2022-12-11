@@ -280,34 +280,84 @@ and left sides of the text */
                   <div class="divider">Back</div>
                 </div>
               </div>
-              
               <div class="row my-3">
                 <div class="col">
                   <button type="button" class="btn btn-primary" onclick="document.getElementById('shtmInputBack').click()">Choose File</button>
                   <input id="shtmInputBack" class="form-control d-none" onchange="showFile(this)" type="file"  name="shtmInputBack">
                 </div>
-                
-                <div class="col">
+                <div class="col text-end">
                   <button class="btn btn-primary" onclick="startCamera('back')">Start Camera</button>
                 </div>
-                <div class="col text-end">
-                  <button  type="button" class="btn btn-secondary" onclick="$('#shtmImgBack').attr('src', '#').addClass('d-none')">Remove File</button>
+              </div>
+              
+              <div class="row my-3">
+                <div id="shtmBack" class="col text-center">
+                  <canvas  id="shtmCanvasBack" style="display:none"></canvas>
                 </div>
               </div>
 
-              <div class="row my-3">
-                <div class="col text-center">
-                  <img  id="shtmImgBack" name="shtmImgBack" width="100%"></img>
+              <div id="shtmImgOptionsBack" class="row my-3 mx-0 px-0">
+
+                <div class="col pe-0">    
+                  <div id="pdfPrevBack" class="cursor-pointer text-center" data-toggle="tooltip" title="Previous Page"><i class="material-icons"><span class="material-icons">navigate_before</span></i></div>
                 </div>
+
+                <div class="col px-0">    
+                  <div id="pdfPagesBack" class="text-center" ></div>
+                </div>
+
+                <div class="col ps-0">    
+                  <div id="pdfNextBack" class="cursor-pointer text-center" data-toggle="tooltip" title="Next Page"><i class="material-icons"><span class="material-icons">navigate_next</span></i></div>
+                </div>
+                
+                <div class="col">    
+                  <div id="editImageBack" class="cursor-pointer text-center" onclick="editImage('back')" data-toggle="tooltip" title="Edit Image"><i class="material-icons">edit</i></div>
+                </div>
+
+                <div class="col">    
+                  <div id="shareImageBack" class="cursor-pointer text-center" onclick="shareImage('back')" data-toggle="tooltip" title="Share Image"><i class="material-icons">share</i></div>
+                </div>
+
+                <div class="col">    
+                  <div id="deleteImageBack" class="cursor-pointer text-center" onclick="deleteImage('back')" data-toggle="tooltip" title="Delete Image"><i class="material-icons">delete</i></div>
+                </div>
+
               </div>
 
-              <div class="row my-3">
-                <div class="col text-end">
-                  <div class="cursor-pointer" onclick="clockwise('back')"><i class="material-icons">rotate_right</i></div>
+              <div id="shtmImgEditBack" class="row my-3 d-none">
+                
+                <div class="col">    
+                  <div id="clockwiseBack" class="cursor-pointer text-center" onclick="clockwise('back')" data-toggle="tooltip" title="Rotate Image Right"><i class="material-icons">rotate_right</i></div>
                 </div>
-                <div class="col text-begin">    
-                  <div class="cursor-pointer" onclick="counterclockwise('back')"><i class="material-icons">rotate_left</i></div>
+                
+                <div class="col">    
+                  <div id="counterclockwiseBack" class="cursor-pointer text-center" onclick="counterclockwise('back')" data-toggle="tooltip" title="Rotate Image Left"><i class="material-icons">rotate_left</i></div>
                 </div>
+                
+                <div class="col">    
+                  <div id="setupCropBack" class="cursor-pointer text-center" data-toggle="tooltip" title="Crop Image"><i class="material-icons">crop</i></div>
+                </div>
+
+                <div class="col">    
+                  <div id="cropImageBack" class="cursor-pointer text-center"  data-toggle="tooltip" title="Crop Image"><i class="material-icons">crop_original</i></div>
+                </div>
+
+                <div class="col">    
+                  <div id="contrastImageBack" class="cursor-pointer text-center" onclick="contrast('back')" data-toggle="tooltip" title="Contrast Image"><i class="material-icons">contrast</i></div>
+                </div>
+
+                <!-- <div class="col">    
+                  <div id="restoreImageBack" class="cursor-pointer text-center" data-toggle="tooltip" title="Restore Image"><i class="material-icons">restore_page</i></div>
+                </div> -->
+
+                <div class="col">    
+                  <div id="cancelEditImageBack" class="cursor-pointer text-center" data-toggle="tooltip" title="Cancel Edit"><i class="material-icons">cancel</i></div>
+                </div>
+
+               <div class="col">    
+                  <div id="saveImageBack" class="cursor-pointer text-center" data-toggle="tooltip" title="Save Image"><i class="material-icons">save</i></div>
+                </div>
+
               </div>
 
          </div>
