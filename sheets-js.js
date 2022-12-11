@@ -595,9 +595,9 @@ function toggleEditButtons(frntback, fType) {
 
     $(fb.options.edit).attr("hidden",true);
     $(fb.options.share).attr("hidden",false);
-    $(fb.options.save).attr("hidden",false);
-    $(fb.options.prevpagePDF).attr("hidden",false);
-    $(fb.options.nextpagePDF).attr("hidden",false);
+    $(fb.options.delete).attr("hidden",false);
+    $(fb.options.prevPagePDF).attr("hidden",false);
+    $(fb.options.nextPagePDF).attr("hidden",false);
     $(fb.options.pagesPDF).attr("hidden",false);
 
   } else if (fType == 'img') {
@@ -605,19 +605,19 @@ function toggleEditButtons(frntback, fType) {
 
     $(fb.options.edit).attr("hidden",false);
     $(fb.options.share).attr("hidden",false);
-    $(fb.options.save).attr("hidden",false);
-    $(fb.options.prevpagePDF).attr("hidden",true);
-    $(fb.options.nextpagePDF).attr("hidden",true);
+    $(fb.options.delete).attr("hidden",false);
+    $(fb.options.prevPagePDF).attr("hidden",true);
+    $(fb.options.nextPagePDF).attr("hidden",true);
     $(fb.options.pagesPDF).attr("hidden",true);
 
   } else {
-    console.log('nonw')
+    console.log('none')
 
     $(fb.options.share).attr("hidden",true);
-    $(fb.options.save).attr("hidden",true);
+    $(fb.options.delete).attr("hidden",true);
     $(fb.options.edit).attr("hidden",true);
-    $(fb.options.prevpagePDF).attr("hidden",true);
-    $(fb.options.nextpagePDF).attr("hidden",true);
+    $(fb.options.prevPagePDF).attr("hidden",true);
+    $(fb.options.nextPagePDF).attr("hidden",true);
     $(fb.options.pagesPDF).attr("hidden",true);
 
   }
@@ -1343,9 +1343,9 @@ function frntbackObj(fb) {
       var editImage         = document.getElementById("editImageFront")
       var shareImage        = document.getElementById("#shareImageFront")
       var deleteImage       = document.getElementById("#deleteImageFront")
-      var prevpagePDF       = document.getElementById("#pdf-prev")
-      var nextpagePDF       = document.getElementById("#pdf-next")
-      var pagesPDF          = document.getElementById("#pdf-pages")
+      var prevPagePDF       = document.getElementById("#pdfPrevFront")
+      var nextPagePDF       = document.getElementById("#pdfNextFront")
+      var pagesPDF          = document.getElementById("#pdfPagesFront")
     
 
     var edit                = document.getElementById("shtmImgEditFront")
@@ -1373,13 +1373,12 @@ function frntbackObj(fb) {
 
     options:  {
 
-      
       row:          options,
       edit:         editImage,
       share:        shareImage,
       delete:       deleteImage,
-      prevpagePDF:  prevpagePDF,
-      nextpagePDF:  nextpagePDF,
+      prevPagePDF:  prevPagePDF,
+      nextPagePDF:  nextPagePDF,
       pagesPDF:     pagesPDF
 
     },
