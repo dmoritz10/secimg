@@ -1311,6 +1311,7 @@ function frntbackObj(fb) {
 
   if (fb == 'front') {
 
+    var frntback            = "front"
     var colContainer        = document.getElementById("shtmFront")
     var canvas              = document.getElementById("shtmCanvasFront")
 
@@ -1332,16 +1333,32 @@ function frntbackObj(fb) {
 
   } else {
 
-    var image = document.getElementById("shtmImgBack")
-    var canvas = document.getElementById("shtmCanvasBack")
-    var options = document.getElementById("shtmImgOptionsBack")
-    var edit = document.getElementById("shtmImgEditBack")
+    var frntback            = "back"
+    var colContainer        = document.getElementById("shtmBack")
+    var canvas              = document.getElementById("shtmCanvasBack")
+
+    var options             = document.getElementById("shtmImgOptionsBack")
+      var editz             = document.getElementById("editImageBack")
+      var share             = document.getElementById("shareImageBack")
+      var deletez           = document.getElementById("deleteImageBack")
+      var prevPagePDF       = document.getElementById("pdfPrevBack")
+      var nextPagePDF       = document.getElementById("pdfNextBack")
+      var pagesPDF          = document.getElementById("pdfPagesBack")
+    
+
+    var edit                = document.getElementById("shtmImgEditBack")
+      var setupCrop         = document.getElementById("setupCropBack")
+      var cropImage         = document.getElementById("cropImageBack")
+      var contrastImage     = document.getElementById("contrastImageBack")
+      var cancelEditImage   = document.getElementById("cancelEditImageBack")
+      var saveImage         = document.getElementById("saveImageBack")
+
   
   }
 
   return {
 
-    frntback:       fb,
+    frntback:       frntback,
     colContainer:   colContainer,
     canvas:         canvas,
 
