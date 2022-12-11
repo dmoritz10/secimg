@@ -213,7 +213,7 @@ async function editSheet(arrIdx) {
 
   if (imgs[0])  {
     
-    var rtn = await displayFile (imgSrc, 'front')
+    var rtn = await displayFile (imgs[0], 'front')
     if (!rtn) return
 
   } 
@@ -592,10 +592,10 @@ function parseFile(f) {
 
   return {
 
-    type: parseFileType[0],
-    base: base,
-    data: data, 
-    validFile: true
+    type:       parseFileType[0],
+    base:       base,
+    data:       data, 
+    validFile:  true
 
   }
 
