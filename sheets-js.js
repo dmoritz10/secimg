@@ -609,7 +609,6 @@ async function showCanvas(frntback, src) {
   if (typeof frntback === 'string') var fb = frntbackObj(frntback)
   else                              var fb = frntback
 
-  // $(fb.canvas).removeClass('d-none');
   $(fb.canvas).css("display", "");
   var canvas = initCnvas(fb);
   canvas.preserveObjectStacking = true;
@@ -636,26 +635,18 @@ function showControls(frntback, bool) {
 
 }
 
-async function getPdfData(pdfData) {
-
-
-
-
-
-}
-
 function getImgURL(canvas) {
 
   let img = canvas.item(0)
 
-  let widthz = img.width * img.scaleX
-  let heightz = img.height * img.scaleY
-  let width = img.aCoords.tr.x - img.aCoords.tl.x
-  let height = img.aCoords.bl.y - img.aCoords.tl.y
-  let top = img.aCoords.tl.y 
-  let left = img.aCoords.tl.x 
+//   let widthz = img.width * img.scaleX
+//   let heightz = img.height * img.scaleY
+//   let width = img.aCoords.tr.x - img.aCoords.tl.x
+//   let height = img.aCoords.bl.y - img.aCoords.tl.y
+//   let top = img.aCoords.tl.y 
+//   let left = img.aCoords.tl.x 
 
-console.log('img', top, left, width, height,  widthz, heightz)
+// console.log('img', top, left, width, height,  widthz, heightz)
 
   var bRect = img.getBoundingRect()
 

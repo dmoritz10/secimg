@@ -24,8 +24,6 @@ _fb = frntbackObj(frntback)
 // total pages in pdf
 _TOTAL_PAGES = _PDF_DOC.numPages;
 
-// Hide the pdf loader and show pdf container
-
 // show the first page
 showPage(1);
 }
@@ -34,14 +32,6 @@ showPage(1);
 async function showPage(page_no) {
 _PAGE_RENDERING_IN_PROGRESS = 1;
 _CURRENT_PAGE = page_no;
-
-// disable Previous & Next buttons while page is being loaded
-// document.querySelector("#pdf-next").disabled = true;
-// document.querySelector("#pdf-prev").disabled = true;
-
-// // while page is being rendered hide the canvas and show a loading message
-// document.querySelector("#pdf-canvas").style.display = 'none';
-// document.querySelector("#page-loader").style.display = 'block';
 
 // update current page
 document.querySelector("#navPages").innerHTML = page_no + '/' + _TOTAL_PAGES;
@@ -63,6 +53,7 @@ var scale_required = $(_fb.colContainer).width() / pdf_original_width;
 
 // get viewport to render the page at required scale
 var viewport = page.getViewport({ scale: scale_required });
+
 console.log('viewport',viewport)
 console.log('scale_required',scale_required)
 console.log('_fb.colContainer.width',$(_fb.colContainer).width())
@@ -72,10 +63,6 @@ _fb.canvas.height = viewport.height;
 _fb.canvas.width = viewport.width;
 
 console.log('page', pdf_original_width, scale_required, page.getViewport)
-
-// setting page loader height for smooth experience
-// document.querySelector("#page-loader").style.height =  fb.canvas.height + 'px';
-// document.querySelector("#page-loader").style.lineHeight = fb.canvas.height + 'px';
 
 // page is rendered on <canvas> element
 var render_context = {
@@ -95,13 +82,6 @@ catch(error) {
 
 _PAGE_RENDERING_IN_PROGRESS = 0;
 
-// re-enable Previous & Next buttons
-// document.querySelector("#pdf-next").disabled = false;
-// document.querySelector("#pdf-prev").disabled = false;
-
-// show the canvas and hide the page loader
-// document.querySelector("#pdf-canvas").style.display = 'block';
-// document.querySelector("#page-loader").style.display = 'none';
 }
 
 // click on the "Previous" page button
