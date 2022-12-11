@@ -1071,7 +1071,7 @@ async function editImage(frntback) {
 
     if (selectionRect) {
       canvas.remove(selectionRect);
-      canvas.renderAll();
+      // canvas.renderAll();
       return
     }
 
