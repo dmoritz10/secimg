@@ -1069,9 +1069,11 @@ async function editImage(frntback) {
 
   function addSelectionRect() {
 
-
+    if (selectionRect) {}
       canvas.remove(selectionRect);
-      // canvas.renderAll();
+      canvas.renderAll();
+      return
+  }
 
     selectionRect = new fabric.Rect({
       fill: "rgba(0,0,0,0.3)",
@@ -1126,6 +1128,7 @@ async function editImage(frntback) {
 
       // remove the mask layer
       canvas.remove(selectionRect);
+      selectionRect = null
 
       // init new image instance
       var cropped = new Image();
