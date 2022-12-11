@@ -568,6 +568,8 @@ async function displayFile (imgSrc, frntback) {
   }
 
   frntbackObj(frntback).canvas.imgSrc = imgSrc
+
+  return true
   
 }
 
