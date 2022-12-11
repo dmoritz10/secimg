@@ -36,7 +36,7 @@ _PAGE_RENDERING_IN_PROGRESS = 1;
 _CURRENT_PAGE = page_no;
 
 // update current page
-document.getElementById(_fb.options.pagesPDF).innerHTML = page_no + '/' + _TOTAL_PAGES;
+document.getElementById(pdfPagesFront).innerHTML = page_no + '/' + _TOTAL_PAGES;
 
 // get handle of page
 try {
@@ -87,13 +87,13 @@ _PAGE_RENDERING_IN_PROGRESS = 0;
 }
 
 // click on the "Previous" page button
-document.getElementById(_fb.options.prevPagePDF).addEventListener('click', function() {
+document.getElementById(pdfPrevFront).addEventListener('click', function() {
 if(_CURRENT_PAGE != 1)
     showPage(--_CURRENT_PAGE);
 });
 
 // click on the "Next" page button
-document.getElementById(_fb.options.nextPagePDF).addEventListener('click', function() {
+document.getElementById(pdfNextFront).addEventListener('click', function() {
 if(_CURRENT_PAGE != _TOTAL_PAGES)
     showPage(++_CURRENT_PAGE);
 });
