@@ -106,9 +106,9 @@ async function makeThumb(pdfData) {
   let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
   let pdfDoc = await loadingTask.promise;
   let page = await pdfDoc.getPage(1);
-  let canvas = buildThumb(page)
+  let imgSrc = buildThumb(page)
 
-  return canvas.toDataURL('image/jpeg', 1)
+  return imgSrc
 
 }
 
@@ -139,7 +139,7 @@ function buildThumb(page) {
     viewport: viewport
   };
   return page.render(renderContext).promise.then(function() {
-    return canvas;
+    return canvas.toDataURL('image/jpeg', 1);
   });
 }
 
