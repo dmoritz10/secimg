@@ -59,7 +59,7 @@ async function showSheet(idx) {
       
       let c = document.createElement('canvas');
       showPDF(imgs[0], c)
-      let img = c.canvas.toDataURL({ format: 'jpeg', quality: 1, })
+      let img = c.toDataURL({ format: 'jpeg', quality: 1, })
       val = '<span><img class="showImg" src=' + img + "></embed></span>"
       icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
 
