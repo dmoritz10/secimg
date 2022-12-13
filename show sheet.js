@@ -57,12 +57,8 @@ async function showSheet(idx) {
 
     if (fileInfo.type == 'data:application/pdf') {
       
-      let c = document.createElement('canvas');
-      let src = atob(fileInfo.data)
-      showPDF(src, c)
-      console.log('c', $(c))
+      var img = await makeThumb(src)
 
-      let img = c.toDataURL('image/jpeg', 1)
       val = '<span><img class="showImg" src=' + img + "></embed></span>"
       icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
       c.remove()
@@ -103,6 +99,48 @@ async function showSheet(idx) {
 
 
 } 
+
+async function makeThumb(src) {
+
+  let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
+  let pdfDoc = await loadingTask.promise;
+  let page = await pdfDoc.getPage(1);
+  let canvas = buildThumb(page)
+
+  return canvas.toDataURL('image/jpeg', 1)
+
+}
+
+function buildThumb(page) {
+  var desiredWidth = 400;
+  var viewport = page.getViewport({ scale: 1, });
+  var scale = desiredWidth / viewport.width;
+  var viewport = page.getViewport({ scale: scale, });
+  console.log("Viewport:", viewport)
+  // Support HiDPI-screens.
+  var outputScale = window.devicePixelRatio || 1;
+
+  var canvas = document.createElement("canvas");
+  var context = canvas.getContext('2d');
+
+  canvas.width = Math.floor(viewport.width * outputScale);
+  canvas.height = Math.floor(viewport.height * outputScale);
+  canvas.style.width = Math.floor(viewport.width) + "px";
+  canvas.style.height =  Math.floor(viewport.height) + "px";
+  console.log(canvas)
+  var transform = outputScale !== 1
+    ? [outputScale, 0, 0, outputScale, 0, 0]
+    : null;
+
+  var renderContext = {
+    canvasContext: context,
+    transform: transform,
+    viewport: viewport
+  };
+  return page.render(renderContext).promise.then(function() {
+    return canvas;
+  });
+}
 
 function openImg(img) {
 
