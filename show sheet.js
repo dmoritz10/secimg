@@ -101,7 +101,7 @@ async function showSheet(idx) {
 
 } 
 
-async function makeThumb(src) {
+async function makeThumb(pdfData) {
 
   let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
   let pdfDoc = await loadingTask.promise;
