@@ -58,9 +58,10 @@ async function showSheet(idx) {
     if (fileInfo.type == 'data:application/pdf') {
       
       let c = document.createElement('canvas');
-      console.log('c', c)
       let src = atob(fileInfo.data)
       showPDF(src, c)
+      console.log('c', $(c))
+
       let img = c.toDataURL('image/jpeg', 1)
       val = '<span><img class="showImg" src=' + img + "></embed></span>"
       icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
