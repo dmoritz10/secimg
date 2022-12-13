@@ -57,6 +57,7 @@ async function showSheet(idx) {
 
     if (fileInfo.type == 'data:application/pdf') {
       
+      let src = atob(fileInfo.data)
       var img = await makeThumb(src)
 
       val = '<span><img class="showImg" src=' + img + "></embed></span>"
@@ -112,7 +113,7 @@ async function makeThumb(src) {
 }
 
 function buildThumb(page) {
-  var desiredWidth = 400;
+  var desiredWidth = 200;
   var viewport = page.getViewport({ scale: 1, });
   var scale = desiredWidth / viewport.width;
   var viewport = page.getViewport({ scale: scale, });
