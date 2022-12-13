@@ -524,19 +524,14 @@ async function displayFile (imgSrc, frntback) {
 
   var fileInfo = parseFile(imgSrc)
 
-
   if (fileInfo.invalidFile) {
-    
     toast(fileInfo.invalidFile, 5000)
     return null
-
   }
 
   if (fileInfo.type == 'data:application/pdf' && frntback == 'back') {
-    
     toast('Cannot put .pdf file on Back', 5000)
     return null
-
   }
 
   clearCanvas(frntback)

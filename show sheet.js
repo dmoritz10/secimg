@@ -50,9 +50,28 @@ async function showSheet(idx) {
   var icon
 
   console.log('showSheet', imgs)
-        
-  imgs[0] ? val = '<span><img class="showImg" src=' + imgs[0] + "></embed></span>" : val=''
-  icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
+
+  if (imgs[0]) {
+
+    var fileInfo = parseFile(imgs[0])
+
+    if (fileInfo.type == 'data:application/pdf') {
+      
+      let c = document.createElement('canvas');
+      showPDF(imgs[0], c)
+      let img = c.canvas.toDataURL({ format: 'jpeg', quality: 1, })
+      val = '<span><img class="showImg" src=' + imgs + "></embed></span>"
+      icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
+
+    } else {
+    
+      val = '<span><img class="showImg" src=' + imgs[0] + "></embed></span>"
+      icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
+
+    }
+
+  } else val = ''
+
   sht.push(['Front', val, icon])
 
   imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
@@ -87,6 +106,14 @@ function openImg(img) {
   newTab.document.body.innerHTML = '<img src=' + img + '>'
 
 }
+
+function openPDF(img) {
+
+  var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
+  win.document.body.innerHTML = 'iframe width="100%" height="100%" src=' + img + '></iframe>';
+
+}
+
 
 function browseDocument(dir) {
 
