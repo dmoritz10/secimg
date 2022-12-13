@@ -62,7 +62,6 @@ async function showSheet(idx) {
 
       val = '<span><img class="showImg" src=' + img + "></embed></span>"
       icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
-      c.remove()
 
     } else {
     
