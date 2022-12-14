@@ -56,12 +56,15 @@ async function showSheet(idx) {
     var fileInfo = parseFile(imgs[0])
 
     if (fileInfo.type == 'data:application/pdf') {
+
+      const blob = base64ToBlob( fileInfo.data, 'application/pdf' );
+      const url = URL.createObjectURL( blob );
       
       let src = atob(fileInfo.data)
       var img = await makeThumb(src)
 
       val = '<span><img class="showImg" src=' + img + "></embed></span>"
-      icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
+      icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + url + "'" + ')"><span class="material-icons">open_in_new</span></div>'
 
     } else {
     
@@ -99,6 +102,17 @@ async function showSheet(idx) {
 
 
 } 
+
+function base64ToBlob( base64, type = "application/octet-stream" ) {
+  const binStr = atob( base64 );
+  const len = binStr.length;
+  const arr = new Uint8Array(len);
+  for (let i = 0; i < len; i++) {
+    arr[ i ] = binStr.charCodeAt( i );
+  }
+  return new Blob( [ arr ], { type: type } );
+}
+
 
 async function makeThumb(pdfData) {
 
@@ -155,6 +169,7 @@ function openPDF(img) {
   win.document.body.innerHTML = '<iframe width="100%" height="100%" src=' + img + '></iframe>';
 
 }
+
 
 
 function browseDocument(dir) {
