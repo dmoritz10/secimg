@@ -57,8 +57,8 @@ async function showSheet(idx) {
 
     if (fileInfo.type == 'data:application/pdf') {
 
-      const blob = base64ToBlob( fileInfo.data, 'application/pdf' );
-      const url = URL.createObjectURL( blob );
+      // const blob = base64ToBlob( fileInfo.data, 'application/pdf' );
+      // const url = URL.createObjectURL( blob );
       
       let src = atob(fileInfo.data)
       var img = await makeThumb(src)
