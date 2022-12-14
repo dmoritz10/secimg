@@ -169,7 +169,8 @@ function openPDF(img) {
   // win.document.body.innerHTML = '<iframe width="100%" height="100%" src=' + img + '></iframe>';
  
   var i = document.getElementById('iframeSheet')
-  $(i);removeClass('d-none')
+  $(i).removeClass('d-none')
+  $('#tblSheet').addClass('d-none')
   i.width="100%"
   i.src = img
 
