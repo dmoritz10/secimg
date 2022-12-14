@@ -151,7 +151,7 @@ function openImg(img) {
 
 function openPDF(img) {
 
-  var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
+  var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=480,top="+(screen.height-200)+",left="+(screen.width-400));
   win.document.body.innerHTML = '<iframe width="100%" height="100%" src=' + img + '></iframe>';
 
 }
