@@ -78,7 +78,7 @@ async function showSheet(idx) {
   sht.push(['Front', val, icon])
 
   imgs[1] ? val = '<span><img class="showImg" src=' + imgs[1] + "></embed></span>" : val=''
-  icon = '<div class="label cursor-pointer" onClick="openImg(' + "'" + imgs[1] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
+  icon = '<div class="label cursor-pointer" onClick="openImg('  + imgs[1] + ')"><span class="material-icons">open_in_new</span></div>'
 
   sht.push(['Back', val, icon])
   
