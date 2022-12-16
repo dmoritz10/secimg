@@ -125,6 +125,22 @@ async function makeThumb(pdfData) {
 
 }
 
+async function pdfToImg(pdfData) {
+
+  let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
+  let pdfDoc = await loadingTask.promise;
+
+  var imgSrc
+  for (let i=0;i<pdfDoc.numPages;i++) {
+    let page = await pdfDoc.getPage(I+1);
+    imgSrc += buildThumb(page)
+
+  }
+
+  return imgSrc
+
+}
+
 function buildThumb(page) {
   var desiredWidth = 200;
   var viewport = page.getViewport({ scale: 1, });
@@ -165,8 +181,11 @@ function openImg(img) {
 
 function openPDF(img) {
 
-  var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=480,top="+(screen.height-200)+",left="+(screen.width-400));
-  win.document.body.innerHTML = '<iframe width="100%" height="100%" src=' + img + '></iframe>';
+  var img = pdfToImg(pdfData)
+  openImg(img)
+
+  // var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=480,top="+(screen.height-200)+",left="+(screen.width-400));
+  // win.document.body.innerHTML = '<iframe width="100%" height="100%" src=' + img + '></iframe>';
  
   // var i = document.getElementById('iframeSheet')
   // $(i).removeClass('d-none')
