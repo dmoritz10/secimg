@@ -137,7 +137,7 @@ async function pdfToImg(pdfData) {
   var imgSrc = ''
 
   for (let i=0;i<pdfDoc.numPages;i++) {
-    let page = await pdfDoc.getPage(i+1);
+    let page = await pdfDoc.getPage(i);
 
     imgSrc += '<img src=' + await buildThumb(page)  + '>'
 
