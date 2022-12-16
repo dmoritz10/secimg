@@ -179,7 +179,7 @@ function openImg(img) {
 
 }
 
-function openPDF(img) {
+function openPDF(pdfData) {
 
   var img = pdfToImg(pdfData)
   openImg(img)
