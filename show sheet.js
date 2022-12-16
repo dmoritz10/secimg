@@ -129,7 +129,7 @@ async function pdfToImg(pdfData) {
 
   let src = atob(pdfData)
 
-  let loadingTask  = pdfjsLib.getDocument({ data: src });
+  let loadingTask  = await pdfjsLib.getDocument({ data: src });
   let pdfDoc = await loadingTask.promise;
 
   var imgSrc
