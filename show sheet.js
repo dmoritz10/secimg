@@ -182,9 +182,9 @@ function openImg(img) {
 
 }
 
-function openPDF(pdfData) {
+async function openPDF(pdfData) {
 
-  var img = pdfToImg(pdfData)
+  var img = await pdfToImg(pdfData)
   openImg(img)
 
   // var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=480,top="+(screen.height-200)+",left="+(screen.width-400));
