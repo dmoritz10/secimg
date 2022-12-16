@@ -132,17 +132,13 @@ async function pdfToImg(pdfData) {
   let loadingTask  = await pdfjsLib.getDocument({ data: src });
   let pdfDoc = await loadingTask.promise;
 
-  console.log('pdfDoc', pdfDoc)
-
-  var imgSrc = "<div>Hi Dan</div>"
+  var imgSrc = ""
 
   for (let i=0;i<pdfDoc.numPages;i++) {
     let page = await pdfDoc.getPage(i+1);
     let thumb = await buildThumb(page)
 
     imgSrc += "<img src=" + thumb   + ">"
-
-    console.log('pdftoimg', i, thumb)
 
   }
 
@@ -191,7 +187,8 @@ function openImg(img) {
 async function openPDF(pdfData) {
 
   var img = await pdfToImg(pdfData)
-  openImg(img)
+  var newTab = window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+  newTab.document.body.innerHTML = img
 
   // var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=480,top="+(screen.height-200)+",left="+(screen.width-400));
   // win.document.body.innerHTML = '<iframe width="100%" height="100%" src=' + img + '></iframe>';
