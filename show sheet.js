@@ -64,7 +64,7 @@ async function showSheet(idx) {
       var img = await makeThumb(src)
 
       val = '<span><img class="showImg" src=' + img + "></embed></span>"
-      icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + imgs[0] + "'" + ')"><span class="material-icons">open_in_new</span></div>'
+      icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + src + "'" + ')"><span class="material-icons">open_in_new</span></div>'
 
     } else {
     
@@ -131,6 +131,7 @@ async function pdfToImg(pdfData) {
   let pdfDoc = await loadingTask.promise;
 
   var imgSrc
+
   for (let i=0;i<pdfDoc.numPages;i++) {
     let page = await pdfDoc.getPage(I+1);
     imgSrc += buildThumb(page)
