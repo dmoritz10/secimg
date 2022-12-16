@@ -186,8 +186,13 @@ function openImg(img) {
 
 async function openPDF(pdfData) {
 
+  var y = window.outerHeight / 2 + window.screenY - ( h / 2)
+    var x = window.outerWidth / 2 + window.screenX - ( w / 2)
+
+  console.log('widths', window.outerWidth, window.screenY)
+
   var img = await pdfToImg(pdfData)
-  var newTab = window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+  var newTab = window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes, width=" + w + ", height=" + h + ", top=" + y + ", left=" + x + ")";
   newTab.document.body.innerHTML = img
 
   // var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=480,top="+(screen.height-200)+",left="+(screen.width-400));
