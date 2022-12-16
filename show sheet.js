@@ -134,7 +134,7 @@ async function pdfToImg(pdfData) {
 
   console.log('pdfDoc', pdfDoc)
 
-  var imgSrc
+  var imgSrc = ''
 
   for (let i=0;i<pdfDoc.numPages;i++) {
     let page = await pdfDoc.getPage(i+1);
