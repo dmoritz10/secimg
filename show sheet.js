@@ -64,7 +64,7 @@ async function showSheet(idx) {
       var img = await makeThumb(src)
 
       val = '<span><img class="showImg" src=' + img + "></embed></span>"
-      icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + src + "'" + ')"><span class="material-icons">open_in_new</span></div>'
+      icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + fileInfo.data + "'" + ')"><span class="material-icons">open_in_new</span></div>'
 
     } else {
     
@@ -127,7 +127,9 @@ async function makeThumb(pdfData) {
 
 async function pdfToImg(pdfData) {
 
-  let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
+  let src = atob(pdfData)
+
+  let loadingTask  = pdfjsLib.getDocument({ data: src });
   let pdfDoc = await loadingTask.promise;
 
   var imgSrc
