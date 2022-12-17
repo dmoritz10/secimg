@@ -49,8 +49,6 @@ async function showSheet(idx) {
   var val
   var icon
 
-  console.log('showSheet', imgs)
-
   if (imgs[0]) {
 
     var fileInfo = parseFile(imgs[0])
@@ -142,8 +140,6 @@ async function pdfToImg(pdfData) {
 
   }
 
-  imgSrc += "</div>"
-
   return imgSrc
 
 }
@@ -181,42 +177,29 @@ async function buildThumb(page, desiredWidth = 300) {
 
 function openImg(img) {
 
-  var w = window.outerWidth
-  var h = window.outerHeight
-  var y = window.outerHeight / 2 + window.screenY - ( h / 2)
-  var x = window.outerWidth / 2 + window.screenX - ( w / 2)
-  var newTab = window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes, width=" + w + ", height=" + h + ", top=" + y + ", left=" + x + ")");
-  // var newTab = window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
+  var newTab = makeTab()
   newTab.document.body.innerHTML = '<img src=' + img + " width='100%' height='auto'>" + '>'
 
 }
 
 async function openPDF(pdfData) {
 
-  var w = window.outerWidth
-  var h = window.outerHeight
-  var y = window.outerHeight / 2 + window.screenY - ( h / 2)
-    var x = window.outerWidth / 2 + window.screenX - ( w / 2)
-
-  console.log('widths', window.outerWidth, window.screenX)
-  console.log('Heights', window.outerHeight, window.screenY)
-
   var img = await pdfToImg(pdfData)
-  var newTab = window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes, width=" + w + ", height=" + h + ", top=" + y + ", left=" + x + ")");
+  var newTab = makeTab()
   newTab.document.body.innerHTML = img
-
-  // var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=480,top="+(screen.height-200)+",left="+(screen.width-400));
-  // win.document.body.innerHTML = '<iframe width="100%" height="100%" src=' + img + '></iframe>';
- 
-  // var i = document.getElementById('iframeSheet')
-  // $(i).removeClass('d-none')
-  // $('#tblSheet').addClass('d-none')
-  // // i.width="100%"
-  // i.src = img
 
 }
 
+function makeTab() {
 
+  var w = window.outerWidth
+  var h = window.outerHeight
+  var y = window.outerHeight / 2 + window.screenY - ( h / 2)
+  var x = window.outerWidth / 2 + window.screenX - ( w / 2)
+
+  window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes, width=" + w + ", height=" + h + ", top=" + y + ", left=" + x + ")");
+
+}
 
 function browseDocument(dir) {
 
