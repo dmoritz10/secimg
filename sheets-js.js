@@ -184,7 +184,9 @@ async function editSheet(arrIdx) {
 
   modal(true)
 
- 
+  clearCanvas(frntbackObj('front'))
+  clearCanvas(frntbackObj('back'))
+  
   $("#sheet-form")[0].reset();
 
   $('#shtmSheetName').html(shtTitle)
@@ -208,8 +210,7 @@ async function editSheet(arrIdx) {
   
   $('#btnShtmDelete').removeClass('d-none')
 
-  clearCanvas(frntbackObj('front'))
-  clearCanvas(frntbackObj('back'))
+  
 
   if (imgs[0])  {
     
