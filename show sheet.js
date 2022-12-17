@@ -184,8 +184,8 @@ function openImg(img) {
 
 async function openPDF(pdfData) {
 
-  var newTab = makeTab()
   var img = await pdfToImg(pdfData)
+  var newTab = makeTab()
   newTab.document.body.innerHTML = img
 
 }
