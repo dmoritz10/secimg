@@ -197,7 +197,7 @@ function makeTab() {
   var y = window.outerHeight / 2 + window.screenY - ( h / 2)
   var x = window.outerWidth / 2 + window.screenX - ( w / 2)
 
-  window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes, width=" + w + ", height=" + h + ", top=" + y + ", left=" + x + ")");
+  return window.open("", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes, width=" + w + ", height=" + h + ", top=" + y + ", left=" + x + ")");
 
 }
 
