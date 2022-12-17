@@ -138,7 +138,7 @@ async function pdfToImg(pdfData) {
     let page = await pdfDoc.getPage(i+1);
     let thumb = await buildThumb(page, 400)
 
-    imgSrc += "<img src=" + thumb   + " width='100%' height='auto'>"
+    imgSrc += "<img src=" + thumb   + " width='100%' height='auto' border: 1px solid black;>"
 
   }
 
