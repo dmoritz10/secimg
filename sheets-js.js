@@ -282,10 +282,10 @@ async function btnShtmSubmitSheetHtml() {
   var savImgs = []
 
   var fb = frntbackObj('front')
-  imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
+  imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : '#')
  
   var fb = frntbackObj('back')
-  imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
+  imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : '#')
 
 
   await postImages(shtEnc, fileId, imgs, savImgs)
