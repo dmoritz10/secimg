@@ -282,6 +282,11 @@ async function btnShtmSubmitSheetHtml() {
   var savImgs = []
 
   var fb = frntbackObj('front')
+
+  console.log('fb.canvas', fb.canvas)
+  console.log('fb.canvas.fCanvas', fb.canvas.fCanvas)
+  console.log('fb.canvas.fCanvas true', fb.canvas.fCanvas == true)
+  console.log('fb.canvas.imgSrc true', fb.canvas.imgSrc == true)
   imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
  
   var fb = frntbackObj('back')
@@ -659,6 +664,7 @@ function showControls(frntback, bool) {
 }
 
 function getImgURL(canvas) {
+  console.log('getImgUrl', canvas)
 
   let img = canvas.item(0)
 
