@@ -703,6 +703,8 @@ async function postImages(shtEnc, fileId, imgs, pwd = currUser.pwd) {
     
     if (img) {
 
+      console.log('postImages', i)
+
       var idx = 0
       var encPromiseArr = []
 
