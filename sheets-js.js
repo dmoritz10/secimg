@@ -186,7 +186,7 @@ async function editSheet(arrIdx) {
 
   clearCanvas(frntbackObj('front'))
   clearCanvas(frntbackObj('back'))
-  
+
   $("#sheet-form")[0].reset();
 
   $('#shtmSheetName').html(shtTitle)
@@ -282,10 +282,10 @@ async function btnShtmSubmitSheetHtml() {
   var savImgs = []
 
   var fb = frntbackObj('front')
-  imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : fb.canvas.imgSrc ? fb.canvas.imgSrc : null
+  imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
  
   var fb = frntbackObj('back')
-  imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : fb.canvas.imgSrc ? fb.canvas.imgSrc : null
+  imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
 
 
   await postImages(shtEnc, fileId, imgs, savImgs)
@@ -1044,7 +1044,7 @@ function updateImgPreview(canvas, img) {
 
 function deleteImage(frntback) {
 
-  clearCanvas(frntbackObj(frntback))
+  clearCanvas(fb)
 
 }
 
