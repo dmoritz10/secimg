@@ -61,7 +61,7 @@ async function showSheet(idx) {
       let src = atob(fileInfo.data)
       var img = await makeThumb(src)
 
-      val = '<span><img class="showImg" src=' + img + "></embed></span>"
+      val = '<span><img class="showImg" src=' + img    + " width='100%' height='auto' style='border: 1px solid black;'></embed></span>"
       icon = '<div class="label cursor-pointer" onClick="openPDF(' + "'" + fileInfo.data + "'" + ')"><span class="material-icons">open_in_new</span></div>'
 
     } else {
