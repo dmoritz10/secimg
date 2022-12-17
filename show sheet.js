@@ -148,7 +148,7 @@ async function pdfToImg(pdfData) {
 
 }
 
-async function buildThumb(page, desiredWidth = 200) {
+async function buildThumb(page, desiredWidth = 300) {
   var viewport = page.getViewport({ scale: 1, });
   var scale = desiredWidth / viewport.width;
   var viewport = page.getViewport({ scale: scale, });
@@ -175,6 +175,7 @@ async function buildThumb(page, desiredWidth = 200) {
   };
   return await page.render(renderContext).promise.then(function() {
     return canvas.toDataURL('image/jpeg', 1);
+    
   });
 }
 
