@@ -119,7 +119,7 @@ async function makeThumb(pdfData) {
   let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
   let pdfDoc = await loadingTask.promise;
   let page = await pdfDoc.getPage(1);
-  let imgSrc = buildThumb(page)
+  let imgSrc = buildThumb(page, 300)
 
   return imgSrc
 
@@ -138,7 +138,7 @@ async function pdfToImg(pdfData) {
     let page = await pdfDoc.getPage(i+1);
     let thumb = await buildThumb(page, 400)
 
-    imgSrc += "<img src=" + thumb   + " width='100%' height='auto' border: 1px solid black;>"
+    imgSrc += "<img src=" + thumb   + " width='100%' height='auto' style='border: 1px solid black;'>"
 
   }
 
