@@ -279,23 +279,16 @@ async function btnShtmSubmitSheetHtml() {
   await updateSheetRow(valsEnc, shtIdx)
 
   var imgs = []
+  var savImgs = []
 
   var fb = frntbackObj('front')
-
-  console.log('fb.canvas', fb.canvas)
-  console.log('fb.canvas.fCanvas', fb.canvas.fCanvas)
-  console.log('fb.canvas.fCanvas true', fb.canvas.fCanvas == true)
-  console.log('fb.canvas.imgSrc true', fb.canvas.imgSrc == true)
-
-  // imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
-  imgs[0] = fb.canvas.fCanvas ? console.log('hi dan') : (fb.canvas.imgSrc ? console.log('ho dan') : console.log('this and that'))
+  imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
  
   var fb = frntbackObj('back')
-  console.log('back')
   imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
 
 
-  await postImages(shtEnc, fileId, imgs)
+  await postImages(shtEnc, fileId, imgs, savImgs)
 
   clearCanvas(frntbackObj('front'))
   clearCanvas(frntbackObj('back'))
@@ -695,20 +688,20 @@ function getImgURL(canvas) {
 }
 
 
-async function postImages(shtEnc, fileId, imgs, pwd = currUser.pwd) {
+async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
   for (var i=0;i<2;i++) {             // 0 = front image, 1 = back image
 
     var img = imgs[i]
     
-    if (img) {
-
-      console.log('postImages', i)
+    if (img && img != savImgs[i]) {
 
       var idx = 0
       var encPromiseArr = []
 
       var removeImage = img.slice(-1) == '#'
+
+      console.log('removeIMage', img, removeImage)
 
       while (idx < img.length) {
 
