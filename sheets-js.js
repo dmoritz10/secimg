@@ -1044,7 +1044,7 @@ function updateImgPreview(canvas, img) {
 
 function deleteImage(frntback) {
 
-  clearCanvas(fb)
+  clearCanvas(frntback)
 
 }
 
