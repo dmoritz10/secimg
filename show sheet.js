@@ -132,11 +132,11 @@ async function pdfToImg(pdfData) {
   let loadingTask  = await pdfjsLib.getDocument({ data: src });
   let pdfDoc = await loadingTask.promise;
 
-  var imgSrc = '<div style="display: grid; grid-template-columns: [first-col] 100%; grid-template-rows: [first-row] 300px"></div>'
+  var imgSrc = ''
 
   for (let i=0;i<pdfDoc.numPages;i++) {
     let page = await pdfDoc.getPage(i+1);
-    let thumb = await buildThumb(page)
+    let thumb = await buildThumb(page, 400)
 
     imgSrc += "<img src=" + thumb   + " width='100%' height='auto'>"
 
@@ -148,8 +148,7 @@ async function pdfToImg(pdfData) {
 
 }
 
-async function buildThumb(page) {
-  var desiredWidth = 200;
+async function buildThumb(page, desiredWidth = 200) {
   var viewport = page.getViewport({ scale: 1, });
   var scale = desiredWidth / viewport.width;
   var viewport = page.getViewport({ scale: scale, });
