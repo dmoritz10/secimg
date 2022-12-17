@@ -286,9 +286,12 @@ async function btnShtmSubmitSheetHtml() {
   console.log('fb.canvas.fCanvas', fb.canvas.fCanvas)
   console.log('fb.canvas.fCanvas true', fb.canvas.fCanvas == true)
   console.log('fb.canvas.imgSrc true', fb.canvas.imgSrc == true)
-  imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
+
+  // imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
+  imgs[0] = fb.canvas.fCanvas ? console.log('hi dan') : (fb.canvas.imgSrc ? console.log('ho dan') : console.log('this and that'))
  
   var fb = frntbackObj('back')
+  console.log('back')
   imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : null)
 
 
