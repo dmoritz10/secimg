@@ -132,7 +132,7 @@ async function pdfToImg(pdfData) {
   let loadingTask  = await pdfjsLib.getDocument({ data: src });
   let pdfDoc = await loadingTask.promise;
 
-  var imgSrc = ""
+  var imgSrc = <div style="display: grid; grid-template-columns: [first-col] 100%; grid-template-rows: [first-row] 300px"></div>
 
   for (let i=0;i<pdfDoc.numPages;i++) {
     let page = await pdfDoc.getPage(i+1);
@@ -141,6 +141,8 @@ async function pdfToImg(pdfData) {
     imgSrc += "<img src=" + thumb   + ">"
 
   }
+
+  imgSrc += "</div>"
 
   return imgSrc
 
