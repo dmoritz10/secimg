@@ -1205,7 +1205,7 @@ async function editImage(frntback) {
       $(fb.edit.row).addClass('d-none')
 
       toggleEditButtons(frntback, 'img')
-
+imgSrc
     });
 
   }
