@@ -123,46 +123,46 @@ var openShts = async function (shts) {
 
     }
 
-  await checkAuth()
+    await checkAuth()
 
-  gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: spreadsheetId, ranges: shtRngs})
+    gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: spreadsheetId, ranges: shtRngs})
 
-  .then(async function(response) {
+    .then(async function(response) {
 
-    console.log('getresponse', response)
-    
-    var allShts = response.result.valueRanges
+      console.log('getresponse', response)
+      
+      var allShts = response.result.valueRanges
 
-    var arr = []
+      var arr = []
 
-    for (s in allShts) {
-    
-      var shtVals = allShts[s].values
+      for (s in allShts) {
+      
+        var shtVals = allShts[s].values
 
-      var colHdrs = shtVals[0]
-      var vals = shtVals.slice(1)
-      var rowCnt = vals ? vals.length : 0
+        var colHdrs = shtVals[0]
+        var vals = shtVals.slice(1)
+        var rowCnt = vals ? vals.length : 0
 
-      var shtTitle = allShts[s].range.split('!')[0].replace(/'/g,"")
+        var shtTitle = allShts[s].range.split('!')[0].replace(/'/g,"")
 
-      arr[shtTitle] =  {  
-        colHdrs:      colHdrs,
-        vals:         shtVals.slice(1),
-        columnCount:  colHdrs.length,
-        rowCount:     rowCnt
+        arr[shtTitle] =  {  
+          colHdrs:      colHdrs,
+          vals:         shtVals.slice(1),
+          columnCount:  colHdrs.length,
+          rowCount:     rowCnt
+        }
+        
       }
-      
-    }
 
-    resolve(arr)
-      
-  },
+      resolve(arr)
+        
+    },
 
-    function(response) {
+      function(response) {
 
-      console.log('Error: ' + shtTitle + ' - ' + response.result.error.message);
-          
-    });
+        console.log('Error: ' + shtTitle + ' - ' + response.result.error.message);
+            
+      });
 
   })
 
@@ -394,6 +394,8 @@ async function updateOption(key, val) {
 
       }
     );
+
+    console.log('gapi update result', result)
 
 }
 
