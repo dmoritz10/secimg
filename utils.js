@@ -379,10 +379,10 @@ async function updateOption(key, val) {
   var gapiResult = await gapi.client.sheets.spreadsheets.values.update(params, resource)
 
     .then(
-      // async response => {
+      async response => {
         return response
-      // },
-,
+      },
+
       async reason => {
 
         console.log('updateOption')
