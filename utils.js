@@ -395,7 +395,7 @@ async function updateOption(key, val) {
       }
     );
 
-    console.log('gapi update result', result)
+    console.log('gapi update result', gapiResult)
 
 }
 
