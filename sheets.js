@@ -174,7 +174,7 @@ async function setFavorite(arrIdx) {
 
   var shtIdx = shtIdxArr[arrIdx]
 
-  await updateSheetRow(shtVals[arrIdx], shtIdx)
+  await updateSheetRow(shtVals[arrIdx], shtIdx, shtTitle)
 
   updateUI(shtVals[arrIdx], arrIdx)
 
@@ -276,7 +276,7 @@ async function btnShtmSubmitSheetHtml() {
 
   var valsEnc = shtEnc ? await encryptArr(vals) : vals
 
-  await updateSheetRow(valsEnc, shtIdx)
+  await updateSheetRow(valsEnc, shtIdx, shtTitle)
 
   var imgs = []
   var savImgs = []
