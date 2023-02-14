@@ -92,7 +92,6 @@ jQuery(function ($) {
             // })
 
             $('#btnHMChangePwd')            .click(btnHMChangePwdHtml);
-            $('#btnSignout')                .click(btnSignoutHtml);
             $('#btnNewSheet')               .click(btnNewSheetHtml);
 
             
