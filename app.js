@@ -85,10 +85,6 @@ jQuery(function ($) {
 
 		bindEvents: function () {
 
-            // Auth tab
-          
-            $('#btnAuth')                   .button().click(btnAuthHtml);
-         
             // Home tab
 
             // $('#hmSelectDropDown').on('show.bs.dropdown', function () {
