@@ -91,9 +91,9 @@ jQuery(function ($) {
             //     btnHMMoreVertHtml()
             // })
 
-            $('#btnHMChangePwd')   .click(btnHMChangePwdHtml);
-            $('#btnSignout')                .button().click(btnSignoutHtml);
-            $('#btnNewSheet')                .button().click(btnNewSheetHtml);
+            $('#btnHMChangePwd')            .click(btnHMChangePwdHtml);
+            $('#btnSignout')                .click(btnSignoutHtml);
+            $('#btnNewSheet')               .click(btnNewSheetHtml);
 
             
 
