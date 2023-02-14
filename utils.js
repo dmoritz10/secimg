@@ -75,8 +75,6 @@ var openShts = async function (shts) {
 
     }
 
-    await checkAuth()
-
     gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: spreadsheetId, ranges: shtRngs})
 
     .then(async function(response) {
