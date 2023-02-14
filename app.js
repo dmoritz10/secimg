@@ -190,6 +190,4 @@ jQuery(function ($) {
 
     App.init();
 
-    console.log('version 2')
-
 });

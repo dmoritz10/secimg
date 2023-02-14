@@ -412,8 +412,6 @@ async function updateUI (valsEnc, arrIdx) {
 }
 async function btnAddSheetHtml() {
 
-  alert('btnAddSheetHtml')
-
   $("#sheet-form")[0].reset();
   $('#shtmModalTitle').html('')
   $("#sheet-modal").modal('show');
