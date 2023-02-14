@@ -5,16 +5,6 @@
 <link rel="manifest" href="manifest.json">
 
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1">
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-
-<!-- <meta http-equiv='cache-control' content='no-cache'> 
-<meta http-equiv='expires' content='0'> 
-<meta http-equiv='pragma' content='no-cache'> -->
-
-
-<script src="https://apis.google.com/js/platform.js"></script>
-
-<!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
@@ -36,15 +26,14 @@
 
 <body>
 
-
-
-  
-
 <script>
 
   $(async function () {
 
     console.log('start code load')
+
+    var g = await import('./gothic.js');
+    Goth = g.default
 
     // load html files
     
@@ -118,7 +107,6 @@
       <div class="m-0 p-0 tab-pane fade show active disable-scrollbars" id="Auth" >
 
         <div class="load-html" data-source="auth"></div>
-        <div class="load-script d-none" data-source="auth.js"></div>
                
       </div> 
 
@@ -154,6 +142,9 @@
   <div class="load-script d-none" data-source="app.js"></div>
   <div class="load-script d-none" data-source="enc.js"></div>
   <div class="load-script d-none" data-source="sheets-pdf.js"></div>
+
+  <div class="load-script d-none" data-source="auth.js"></div>
+
  
 </body>
 </html>
