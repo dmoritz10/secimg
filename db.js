@@ -699,7 +699,7 @@ return { fileId: files[0].id, msg: 'ok' }
 
 }
 
-async function deleteDriveFile {
+async function deleteDriveFile(fileId) {
 
   let response = await gapi.client.drive.files.delete({fileId : fileId})
 
