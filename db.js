@@ -358,8 +358,6 @@ async function updateSheetHdr(vals, shtTitle) {
     "values": [vals]    
   }
 
-    console.log('update', shtIdx)
-
     var rng = calcRngA1(1, 1, 1, vals.length)
 
     var params = {
@@ -404,7 +402,7 @@ async function updateSheetHdr(vals, shtTitle) {
                                               console.log('after gapi updateSheetHdr')
 
     return response
-    
+
 }
 
 async function deleteSheetRow(idx, sheetName) {
