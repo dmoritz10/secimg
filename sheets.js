@@ -316,7 +316,9 @@ async function buildImageFile() {
 
 // rename sheet to that provided by user
 
-var response = renameSheet(fileId, fileId)
+
+
+var response = await renameDriveFile(fileId, fileId)
 
 // const rq = {"requests" : [
 //   {

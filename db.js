@@ -445,8 +445,8 @@ async function renameSheet(shtId, shtTitle) {
 
         } else {
             
-          console.error('error updating row "' + shtTitle + '": ' + reason.result.error.message);
-          bootbox.alert('error updating row "' + shtTitle + '": ' + reason.result.error.message);
+          console.error('error updating row'  + '": ' + reason.result.error.message);
+          bootbox.alert('error updating row'  + '": ' + reason.result.error.message);
 
             return null
 
@@ -777,6 +777,46 @@ async function deleteDriveFile(fileId) {
         } else {
             
             bootbox.alert('gapi deleteDriveFile error: ' + shtTitle + ' - ' + response.result.error.message);
+            return null
+
+        }
+            
+    })
+        
+                                                console.log('after gapi')
+  
+  return response
+
+}
+
+async function renameDriveFile(fileId, fileName) {
+
+  let response = await gapi.client.drive.files.update({fileId : fileId, resource: { name: fileName}})
+
+    .then(async response => {               console.log('gapi renameDriveFile first try', response)
+        
+        return response})
+
+    .catch(async err  => {                  console.log('gapi renameDriveFile catch', err)
+        
+        if (err.result.error.code == 401 || err.result.error.code == 403) {
+            await Goth.token()              // for authorization errors obtain an access token
+            let retryResponse = await gapi.client.drive.files.update({fileId : fileId, resource: { name: fileName}})
+                .then(async retry => {      console.log('gapi renameDriveFile retry', retry) 
+                    
+                    return retry})
+
+                .catch(err  => {            console.log('gapi renameDriveFile error2', err)
+                    
+                    bootbox.alert('gapi renameDriveFile error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                    return null });         // cancelled by user, timeout, etc.
+
+            return retryResponse
+
+        } else {
+            
+            bootbox.alert('gapi renameDriveFile error: ' + response.result.error.message);
             return null
 
         }
