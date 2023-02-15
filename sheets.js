@@ -684,7 +684,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
       console.log('postImage encArr', i, img.length, encArr[0].length, encArr.length)
 
-      await updateImages(fileId, i, encArr, removeImage)
+      await updateImages(fileId, i*1 + 1, encArr, removeImage)
 
     }
 
@@ -700,7 +700,7 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 
   if (!removeImage) {                     // user has elected to add an image
 
-    var response = await updateSheetRow(vals, imgIdx - 1, shtTitle)
+    var response = await updateSheetRow(vals, imgIdx - 2, shtTitle)
 
     // var rng = calcRngA1(row, 1, 1, vals.length)
 
