@@ -264,7 +264,7 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
       valueInputOption: 'RAW'
     };
 
-    let response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+    var response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
       .then(async response => {               console.log('gapi updateSheetRow first try', response)
           
           return response})
@@ -311,7 +311,7 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
       insertDataOption: 'INSERT_ROWS'
     };
 
-    let response = await gapi.client.sheets.spreadsheets.values.append(params, resource)
+    var response = await gapi.client.sheets.spreadsheets.values.append(params, resource)
       .then(async response => {               console.log('gapi updateSheetRow first try', response)
           
           return response})
@@ -368,7 +368,7 @@ async function updateSheetHdr(vals, shtTitle) {
       valueInputOption: 'RAW'
     };
 
-    let response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+    var response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
       .then(async response => {               console.log('gapi updateSheetHdr first try', response)
           
           return response})
@@ -404,6 +404,7 @@ async function updateSheetHdr(vals, shtTitle) {
                                               console.log('after gapi updateSheetHdr')
 
     return response
+    
 }
 
 async function deleteSheetRow(idx, sheetName) {
