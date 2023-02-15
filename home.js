@@ -246,7 +246,7 @@ async function btnNewSheetHtml() {
 
   // rename sheet to that provided by user
 
-  var response = renameSheet(sht.result.sheetId, title)
+  var response = await renameSheet(sht.result.sheetId, title)
 
     // const rq = {"requests" : [
     //   {
@@ -279,7 +279,7 @@ async function btnNewSheetHtml() {
   var hdrs = newShtHdrs
   var encHdrs = await encryptArr(hdrs)
 
-  var response = updateSheetHdr(encHdrs, title)
+  var response = await updateSheetHdr(encHdrs, title)
   
   // var resource = {
   //   "majorDimension": "ROWS",
