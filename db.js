@@ -1,4 +1,6 @@
-// database access
+//  database access
+
+//  Sheets
 
 var openShts = async function (shts) {
 
@@ -633,6 +635,8 @@ async function getSheetId(shtTitle) {
   return null
 }
 
+//  Drive
+
 async function listDriveFiles(sheetName) {
 
   let q = "name = '" + sheetName +
@@ -696,6 +700,52 @@ if (files.length > 1)
     return { fileId: null, msg: "'" + sheetName + "' not unique" }
 
 return { fileId: files[0].id, msg: 'ok' }
+
+}
+
+async function createDriveFile() {
+
+  let resource = {                  
+      name : 'Sheet',
+      mimeType: 'application/vnd.google-apps.spreadsheet',
+      parents: ['1eAwbR_yzsEaEpBEpFA0Pqp8KGP2XszDY']
+    }
+
+  let response = await gapi.client.drive.files.create({resource: resource})
+
+    .then(async response => {               console.log('gapi createDriveFile first try', response)
+        
+        return response})
+
+    .catch(async err  => {                  console.log('gapi createDriveFile catch', err)
+        
+        if (err.result.error.code == 401 || err.result.error.code == 403) {
+            await Goth.token()              // for authorization errors obtain an access token
+            let retryResponse = await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId: spreadsheetId, resource: request})
+                .then(async retry => {      console.log('gapi createDriveFile retry', retry) 
+                    
+                    return retry})
+
+                .catch(err  => {            console.log('gapi createDriveFile error2', err)
+                    
+                    bootbox.alert('gapi createDriveFile error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                    return null });         // cancelled by user, timeout, etc.
+
+            return retryResponse
+
+        } else {
+            
+            bootbox.alert('gapi createDriveFile error: ' +  response.result.error.message);
+            return null
+
+        }
+            
+    })
+        
+                                                console.log('after gapi')
+  
+  return response
 
 }
 

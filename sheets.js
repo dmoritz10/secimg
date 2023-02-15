@@ -308,51 +308,40 @@ async function buildImageFile() {
   // Rename title = sheetId
   // Return sheetId
 
-  var fileIdx = await gapi.client.drive.files.create({
+  var response = await createDriveFile()
 
-    resource : {                  
-                  name : 'Sheet',
-                  mimeType: 'application/vnd.google-apps.spreadsheet',
-                  parents: ['1eAwbR_yzsEaEpBEpFA0Pqp8KGP2XszDY']
+  console.log('createDriveFeile', response)
 
-                }
-
-}).then(function(response) {
-    console.log(response);
-    return response
-    
-});
-
-console.log(fileIdx)
-
-var fileId = fileIdx.result.id
+  var fileId = response.result.id
 
 // rename sheet to that provided by user
 
-const rq = {"requests" : [
-  {
-    updateSpreadsheetProperties: {
-    properties: {
-     title: fileId,
-    },
-    fields: 'title'
-    }
-   }]}
- ;
+var response = renameSheet(fileId, fileId)
+
+// const rq = {"requests" : [
+//   {
+//     updateSpreadsheetProperties: {
+//     properties: {
+//      title: fileId,
+//     },
+//     fields: 'title'
+//     }
+//    }]}
+//  ;
  
-await gapi.client.sheets.spreadsheets.batchUpdate({
-  spreadsheetId: fileId,
-  resource: rq})
+// await gapi.client.sheets.spreadsheets.batchUpdate({
+//   spreadsheetId: fileId,
+//   resource: rq})
 
-  .then(response => {
+//   .then(response => {
 
-    console.log('rename complete')
-    console.log(response)
+//     console.log('rename complete')
+//     console.log(response)
 
-  }, function (reason) {
-    console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
-    alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
-  });
+//   }, function (reason) {
+//     console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
+//     alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
+//   });
 
 
   return fileId
