@@ -432,14 +432,14 @@ async function getSheets() {
 
             } else {
                 
-                bootbox.alert('gapi deleteSheetRow error: ' + shtTitle + ' - ' + response.result.error.message);
+                bootbox.alert('gapi getSheets error: ' + shtTitle + ' - ' + response.result.error.message);
                 return null
 
             }
                 
         })
         
-                                                console.log('after gapi')
+                                                console.log('after gapi getSheets')
   
         return response
 

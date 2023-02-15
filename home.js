@@ -3,8 +3,10 @@ async function loadSheets() {
 
   console.log('loadSheets begin')
 
-    var sheets = await getSheets()
+    var shts = await getSheets()
 
+    var sheets = shts.result.sheets
+    
     console.log('loadSheets', sheets, sheets == true)
 
 
