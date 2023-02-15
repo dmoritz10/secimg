@@ -1,9 +1,11 @@
 
 async function loadSheets() {
 
+  console.log('loadSheets begin')
+
     var sheets = await getSheets()
 
-    console.log('loadSheets', sheets)
+    console.log('loadSheets', sheets, sheets == true)
 
 
     if (sheets) {
@@ -17,6 +19,7 @@ async function loadSheets() {
       var nbrSheets = 0
       var nbrDocuments = 0
 
+      console.log('sheets.length', sheets.length)
     
       for (var j = 0; j < sheets.length; j++) {
 
