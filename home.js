@@ -32,6 +32,8 @@ async function loadSheets() {
 
         var ele = $tblSheets.clone();
 
+        console.log('1', sht.gridProperties.columnCount , newShtHdrs.length, sht.gridProperties.columnCount == newShtHdrs.length)
+
         if (sht.gridProperties.columnCount == newShtHdrs.length
               && sht.title != 'template'
             ) {
@@ -40,6 +42,8 @@ async function loadSheets() {
 
           secSht[sht.title].enc = enc.enc
           secSht[sht.title].isSecSht = enc.isSecSht
+
+          console.log('enc', enc)
 
 
           if (enc.isSecSht) {
