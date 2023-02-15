@@ -273,6 +273,9 @@ async function btnNewSheetHtml() {
   
   var hdrs = newShtHdrs
   var encHdrs = await encryptArr(hdrs)
+
+  var response = updateSheetHdr(encHdrs, title)
+  
   var resource = {
     "majorDimension": "ROWS",
     "values": [encHdrs]
@@ -280,20 +283,20 @@ async function btnNewSheetHtml() {
 
   var rng = calcRngA1(1, 1, 1, 11)
 
-  var params = {
-    spreadsheetId: spreadsheetId,
-    range: "'" + title + "'!" + rng,
-    valueInputOption: 'RAW'
-  };
+  // var params = {
+  //   spreadsheetId: spreadsheetId,
+  //   range: "'" + title + "'!" + rng,
+  //   valueInputOption: 'RAW'
+  // };
 
-  await gapi.client.sheets.spreadsheets.values.update(params, resource)
-    .then(function (response) {
-      console.log('Sheet update successful')
-      console.log(response)
-    }, function (reason) {
-      console.error('error updating sheet "' + "1" + '": ' + reason.result.error.message);
-      alert('error updating sheet "' + '1' + '": ' + reason.result.error.message);
-    });
+  // await gapi.client.sheets.spreadsheets.values.update(params, resource)
+  //   .then(function (response) {
+  //     console.log('Sheet update successful')
+  //     console.log(response)
+  //   }, function (reason) {
+  //     console.error('error updating sheet "' + "1" + '": ' + reason.result.error.message);
+  //     alert('error updating sheet "' + '1' + '": ' + reason.result.error.message);
+  //   });
 
   secSht[title] = {
     id:   sht.sheetId,

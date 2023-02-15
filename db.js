@@ -347,6 +347,63 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
 
   }
 
+  return response
+
+}
+
+async function updateSheetHdr(vals, shtTitle) {
+
+  var resource = {
+    "majorDimension": "ROWS",
+    "values": [vals]    
+  }
+
+    console.log('update', shtIdx)
+
+    var rng = calcRngA1(1, 1, 1, vals.length)
+
+    var params = {
+      spreadsheetId: spreadsheetId,
+      range: "'" + shtTitle + "'!" + rng,
+      valueInputOption: 'RAW'
+    };
+
+    let response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+      .then(async response => {               console.log('gapi updateSheetRow first try', response)
+          
+          return response})
+
+      .catch(async err  => {                  console.log('gapi updateSheetRow catch', err)
+          
+          if (err.result.error.code == 401 || err.result.error.code == 403) {
+              await Goth.token()              // for authorization errors obtain an access token
+              let retryResponse = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+                  .then(async retry => {      console.log('gapi updateSheetRow retry', retry) 
+                      
+                      return retry})
+
+                  .catch(err  => {            console.log('gapi updateSheetRow error2', err)
+                      
+                      bootbox.alert('gapi updateSheetRow error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                      return null });         // cancelled by user, timeout, etc.
+
+              return retryResponse
+
+          } else {
+              
+            console.error('error updating row "' + trpTitle + '": ' + reason.result.error.message);
+            bootbox.alert('error updating row "' + trpTitle + '": ' + reason.result.error.message);
+
+              return null
+
+          }
+              
+      })
+      
+                                              console.log('after gapi updateSheetRow')
+
+    return response
 }
 
 async function deleteSheetRow(idx, sheetName) {
@@ -445,6 +502,34 @@ async function getSheets() {
 
 }
 
+async function getSheetId(shtTitle) {
+
+  var sheets = await gapi.client.sheets.spreadsheets.get({
+        
+    spreadsheetId: spreadsheetId
+  
+  }).then(function(response) {
+    
+    return response.result.sheets
+  
+  }, function(response) {
+    console.log('Error: ' + response.result.error.message);
+    return null
+
+  });
+
+
+  for (var j = 0; j < sheets.length; j++) {
+
+    var sht = sheets[j].properties
+
+    if (sht.title == shtTitle) return sht.sheetId
+
+  }
+
+  return null
+}
+
 async function listDriveFiles(sheetName) {
 
   let q = "name = '" + sheetName +
@@ -493,6 +578,7 @@ async function listDriveFiles(sheetName) {
 
 }
 
+
 async function getSSId(sheetName) {
 
 var response = await listDriveFiles(sheetName)
@@ -511,30 +597,3 @@ return { fileId: files[0].id, msg: 'ok' }
 
 }
 
-async function getSheetId(shtTitle) {
-
-  var sheets = await gapi.client.sheets.spreadsheets.get({
-        
-    spreadsheetId: spreadsheetId
-  
-  }).then(function(response) {
-    
-    return response.result.sheets
-  
-  }, function(response) {
-    console.log('Error: ' + response.result.error.message);
-    return null
-
-  });
-
-
-  for (var j = 0; j < sheets.length; j++) {
-
-    var sht = sheets[j].properties
-
-    if (sht.title == shtTitle) return sht.sheetId
-
-  }
-
-  return null
-}
