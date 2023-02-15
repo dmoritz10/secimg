@@ -250,7 +250,7 @@ async function btnNewSheetHtml() {
 
   // rename sheet to that provided by user
 
-  var response = await renameSheet(sht.result.sheetId, title)
+  var response = await renameSheet(sht.sheetId, title)
 
     // const rq = {"requests" : [
     //   {
