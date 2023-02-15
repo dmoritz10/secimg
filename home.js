@@ -222,7 +222,9 @@ async function btnNewSheetHtml() {
 
   // create new sheet by copying template sheet.  It has exactly 8 columns and 1 row.
 
-  var sht = await copySheet(secSht['template'].id)
+  var newSht = await copySheet(secSht['template'].id)
+  
+  var sht = newSht.result
 
   console.log('sht', sht)
   
@@ -312,6 +314,7 @@ async function btnNewSheetHtml() {
     enc:  true
   }
     
+  console.log('secSht', secSht)
 
   loadSheets()
 
