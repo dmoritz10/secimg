@@ -369,20 +369,20 @@ async function updateSheetHdr(vals, shtTitle) {
     };
 
     let response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
-      .then(async response => {               console.log('gapi updateSheetRow first try', response)
+      .then(async response => {               console.log('gapi updateSheetHdr first try', response)
           
           return response})
 
-      .catch(async err  => {                  console.log('gapi updateSheetRow catch', err)
+      .catch(async err  => {                  console.log('gapi updateSheetHdr catch', err)
           
           if (err.result.error.code == 401 || err.result.error.code == 403) {
               await Goth.token()              // for authorization errors obtain an access token
               let retryResponse = await gapi.client.sheets.spreadsheets.values.update(params, resource)
-                  .then(async retry => {      console.log('gapi updateSheetRow retry', retry) 
+                  .then(async retry => {      console.log('gapi updateSheetHdr retry', retry) 
                       
                       return retry})
 
-                  .catch(err  => {            console.log('gapi updateSheetRow error2', err)
+                  .catch(err  => {            console.log('gapi updateSheetHdr error2', err)
                       
                       bootbox.alert('gapi updateSheetRow error: ' + err.result.error.code + ' - ' + err.result.error.message);
 
@@ -401,7 +401,7 @@ async function updateSheetHdr(vals, shtTitle) {
               
       })
       
-                                              console.log('after gapi updateSheetRow')
+                                              console.log('after gapi updateSheetHdr')
 
     return response
 }
