@@ -1,19 +1,7 @@
 
 async function loadSheets() {
 
-    var sheets = await gapi.client.sheets.spreadsheets.get({
-        
-        spreadsheetId: spreadsheetId
-      
-      }).then(function(response) {
-        
-        return response.result.sheets
-      
-      }, function(response) {
-        console.log('Error: ' + response.result.error.message);
-        return null
-    
-      });
+    var sheets = await getSheets()
 
     console.log('loadSheets', sheets)
 

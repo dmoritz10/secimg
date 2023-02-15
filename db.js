@@ -406,6 +406,45 @@ async function deleteSheetRow(idx, sheetName) {
 
 }
 
+async function getSheets() {
+
+  let response = await gapi.client.sheets.spreadsheets.get({spreadsheetId: spreadsheetId})
+        .then(async response => {               console.log('gapi getSheets first try', response)
+            
+            return response})
+
+        .catch(async err  => {                  console.log('gapi getSheets catch', err)
+            
+            if (err.result.error.code == 401 || err.result.error.code == 403) {
+                await Goth.token()              // for authorization errors obtain an access token
+                let retryResponse = gapi.client.sheets.spreadsheets.get({spreadsheetId: spreadsheetId})
+                    .then(async retry => {      console.log('gapi getSheets retry', retry) 
+                        
+                        return retry})
+
+                    .catch(err  => {            console.log('gapi getSheets error2', err)
+                        
+                        bootbox.alert('gapi getSheets error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                        return null });         // cancelled by user, timeout, etc.
+
+                return retryResponse
+
+            } else {
+                
+                bootbox.alert('gapi deleteSheetRow error: ' + shtTitle + ' - ' + response.result.error.message);
+                return null
+
+            }
+                
+        })
+        
+                                                console.log('after gapi')
+  
+        return response
+
+}
+
 async function listDriveFiles(sheetName) {
 
   let q = "name = '" + sheetName +
