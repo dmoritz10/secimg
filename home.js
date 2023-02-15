@@ -276,12 +276,12 @@ async function btnNewSheetHtml() {
 
   var response = updateSheetHdr(encHdrs, title)
   
-  var resource = {
-    "majorDimension": "ROWS",
-    "values": [encHdrs]
-  }
+  // var resource = {
+  //   "majorDimension": "ROWS",
+  //   "values": [encHdrs]
+  // }
 
-  var rng = calcRngA1(1, 1, 1, 11)
+  // var rng = calcRngA1(1, 1, 1, 11)
 
   // var params = {
   //   spreadsheetId: spreadsheetId,
