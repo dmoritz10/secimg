@@ -310,41 +310,13 @@ async function buildImageFile() {
 
   var response = await createDriveFile()
 
-  console.log('createDriveFeile', response)
+  console.log('createDriveFile', response)
 
   var fileId = response.result.id
 
-// rename sheet to that provided by user
+  // rename sheet to that provided by user
 
-
-
-var response = await renameDriveFile(fileId, fileId)
-
-// const rq = {"requests" : [
-//   {
-//     updateSpreadsheetProperties: {
-//     properties: {
-//      title: fileId,
-//     },
-//     fields: 'title'
-//     }
-//    }]}
-//  ;
- 
-// await gapi.client.sheets.spreadsheets.batchUpdate({
-//   spreadsheetId: fileId,
-//   resource: rq})
-
-//   .then(response => {
-
-//     console.log('rename complete')
-//     console.log(response)
-
-//   }, function (reason) {
-//     console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
-//     alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
-//   });
-
+  var response = await renameDriveFile(fileId, fileId)
 
   return fileId
 
@@ -712,7 +684,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
       console.log('postImage encArr', i, img.length, encArr[0].length, encArr.length)
 
-      await updateImages(fileId, i*1+1, encArr, removeImage)
+      await updateImages(fileId, i, encArr, removeImage)
 
     }
 
@@ -723,35 +695,35 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 async function updateImages(fileId, imgIdx, vals, removeImage) {
 
   var shtTitle = fileId
-  var row = imgIdx
 
-  await clearImage(shtTitle, row)         // always clear existing image
+  await clearImage(shtTitle, imgIdx)         // always clear existing image
 
+  if (!removeImage) {                     // user has elected to add an image
 
-  if (!removeImage) {               // user has elected to add an image
+    var response = await updateSheetRow(vals, imgIdx - 1, shtTitle)
 
-    var rng = calcRngA1(row, 1, 1, vals.length)
+    // var rng = calcRngA1(row, 1, 1, vals.length)
 
-    var params = {
-      spreadsheetId: fileId,
-      range: "'" + "Sheet1" + "'!" + rng,
-      valueInputOption: 'RAW'
-    };
+    // var params = {
+    //   spreadsheetId: fileId,
+    //   range: "'" + "Sheet1" + "'!" + rng,
+    //   valueInputOption: 'RAW'
+    // };
 
-    var resource = {
-      "majorDimension": "ROWS",
-      "values": [vals]    
-    }
+    // var resource = {
+    //   "majorDimension": "ROWS",
+    //   "values": [vals]    
+    // }
 
-    await gapi.client.sheets.spreadsheets.values.update(params, resource)
-      .then(async function (response) {
-        console.log('update successful')
-      },
+    // await gapi.client.sheets.spreadsheets.values.update(params, resource)
+    //   .then(async function (response) {
+    //     console.log('update successful')
+    //   },
 
-        function (reason) {
-          console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-          bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-        });
+    //     function (reason) {
+    //       console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+    //       bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
+    //     });
 
   }
 
