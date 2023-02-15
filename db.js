@@ -681,7 +681,6 @@ async function listDriveFiles(sheetName) {
 
 }
 
-
 async function getSSId(sheetName) {
 
 var response = await listDriveFiles(sheetName)
@@ -697,6 +696,46 @@ if (files.length > 1)
     return { fileId: null, msg: "'" + sheetName + "' not unique" }
 
 return { fileId: files[0].id, msg: 'ok' }
+
+}
+
+async function deleteDriveFile {
+
+  let response = await gapi.client.drive.files.delete({fileId : fileId})
+
+    .then(async response => {               console.log('gapi deleteDriveFile first try', response)
+        
+        return response})
+
+    .catch(async err  => {                  console.log('gapi deleteDriveFile catch', err)
+        
+        if (err.result.error.code == 401 || err.result.error.code == 403) {
+            await Goth.token()              // for authorization errors obtain an access token
+            let retryResponse = await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId: spreadsheetId, resource: request})
+                .then(async retry => {      console.log('gapi deleteDriveFile retry', retry) 
+                    
+                    return retry})
+
+                .catch(err  => {            console.log('gapi deleteDriveFile error2', err)
+                    
+                    bootbox.alert('gapi listDriveFiles error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                    return null });         // cancelled by user, timeout, etc.
+
+            return retryResponse
+
+        } else {
+            
+            bootbox.alert('gapi deleteDriveFile error: ' + shtTitle + ' - ' + response.result.error.message);
+            return null
+
+        }
+            
+    })
+        
+                                                console.log('after gapi')
+  
+  return response
 
 }
 

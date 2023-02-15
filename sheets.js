@@ -436,45 +436,49 @@ async function btnDeleteSheetHtml() {
 
   console.log('btnShtmDelete',idx,$('#shtmArrIdx').val(), shtIdxArr)
 
-  var request = {
-    "requests":
-      [
-        {
-          "deleteDimension": {
-            "range": {
-              "sheetId": shtId,
-              "dimension": "ROWS",
-              "startIndex": idx + 1,
-              "endIndex": idx + 2
-            }
-          }
-        }
-      ]
-  }
+  var response = deleteSheetRow(idx, shtTitle)
+
+  secSht[shtTitle].rows--
+
+  // var request = {
+  //   "requests":
+  //     [
+  //       {
+  //         "deleteDimension": {
+  //           "range": {
+  //             "sheetId": shtId,
+  //             "dimension": "ROWS",
+  //             "startIndex": idx + 1,
+  //             "endIndex": idx + 2
+  //           }
+  //         }
+  //       }
+  //     ]
+  // }
 
 
-  await gapi.client.sheets.spreadsheets.batchUpdate({
-    spreadsheetId: spreadsheetId,
-    resource: request
+  // await gapi.client.sheets.spreadsheets.batchUpdate({
+  //   spreadsheetId: spreadsheetId,
+  //   resource: request
 
-  }).then(response => {
+  // }).then(response => {
 
-    secSht[shtTitle].rows--
+  //   secSht[shtTitle].rows--
 
-    console.log('delete complete - ', idx)
-    console.log(response)
+  //   console.log('delete complete - ', idx)
+  //   console.log(response)
 
-  })
+  // })
 
-  await gapi.client.drive.files.delete({
-                
-        fileId : $('#shtmFileId').val()
+  var response = await deleteDriveFile($('#shtmFileId').val())
 
-}).then(function(response) {
-    console.log(response);
-    return response
+//   await gapi.client.drive.files.delete({fileId : $('#shtmFileId').val()})
+
+// .then(function(response) {
+//     console.log(response);
+//     return response
     
-});
+// });
 
   $("#sheet-modal").modal('hide');
 
