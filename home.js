@@ -221,53 +221,58 @@ async function btnNewSheetHtml() {
   }
 
   // create new sheet by copying template sheet.  It has exactly 8 columns and 1 row.
-  var params = {
-    spreadsheetId: spreadsheetId,  
-    sheetId: secSht['template'].id,  
-  };
 
-  var copySheetToAnotherSpreadsheetRequestBody = {
-    destinationSpreadsheetId: spreadsheetId
-  };
-
-  var sht = await gapi.client.sheets.spreadsheets.sheets.copyTo(params, copySheetToAnotherSpreadsheetRequestBody)
+  var sht = await copySheet(secSht['template'].id)
   
-    .then(function(response) {
-      console.log(response.result);
-      return response.result
-      }, function(reason) {
-        console.error('error: ' + reason.result.error.message);
-        return null
-      })
+  // var params = {
+  //   spreadsheetId: spreadsheetId,  
+  //   sheetId: secSht['template'].id,  
+  // };
+
+  // var copySheetToAnotherSpreadsheetRequestBody = {
+  //   destinationSpreadsheetId: spreadsheetId
+  // };
+
+  // var sht = await gapi.client.sheets.spreadsheets.sheets.copyTo(params, copySheetToAnotherSpreadsheetRequestBody)
+  
+  //   .then(function(response) {
+  //     console.log(response.result);
+  //     return response.result
+  //     }, function(reason) {
+  //       console.error('error: ' + reason.result.error.message);
+  //       return null
+  //     })
 
 
   // rename sheet to that provided by user
 
-  const rq = {"requests" : [
-    {
-     updateSheetProperties: {
-      properties: {
-       sheetId: sht.sheetId,
-       title: title,
-      },
-      fields: 'title'
-      }
-     }]}
-   ;
-   
-  await gapi.client.sheets.spreadsheets.batchUpdate({
-    spreadsheetId: spreadsheetId,
-    resource: rq})
+  var response = renameSheet(sht.result.sheetId, title)
 
-    .then(response => {
+    // const rq = {"requests" : [
+    //   {
+    //    updateSheetProperties: {
+    //     properties: {
+    //      sheetId: sht.sheetId,
+    //      title: title,
+    //     },
+    //     fields: 'title'
+    //     }
+    //    }]}
+    //  ;
+    
+    // await gapi.client.sheets.spreadsheets.batchUpdate({
+    //   spreadsheetId: spreadsheetId,
+    //   resource: rq})
 
-      console.log('rename complete')
-      console.log(response)
+    //   .then(response => {
 
-    }, function (reason) {
-      console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
-      alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
-    });
+    //     console.log('rename complete')
+    //     console.log(response)
+
+    //   }, function (reason) {
+    //     console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
+    //     alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
+    //   });
 
   // Put encrypted header row in new sheet
   

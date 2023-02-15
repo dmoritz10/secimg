@@ -405,6 +405,110 @@ async function updateSheetHdr(vals, shtTitle) {
 
 }
 
+async function renameSheet(shtId, shtTitle) {
+
+  const rq = {"requests" : [
+    {
+     updateSheetProperties: {
+      properties: {
+       sheetId: shtId,
+       title: shtTitle,
+      },
+      fields: 'title'
+      }
+     }]}
+   ;
+    
+  var response = await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId: spreadsheetId, resource: rq})
+    .then(async response => {               console.log('gapi renameSheet first try', response)
+        
+        return response})
+
+    .catch(async err  => {                  console.log('gapi renameSheet catch', err)
+        
+        if (err.result.error.code == 401 || err.result.error.code == 403) {
+            await Goth.token()              // for authorization errors obtain an access token
+            let retryResponse = await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId: spreadsheetId, resource: rq})
+                .then(async retry => {      console.log('gapi renameSheet retry', retry) 
+                    
+                    return retry})
+
+                .catch(err  => {            console.log('gapi renameSheet error2', err)
+                    
+                    bootbox.alert('gapi renameSheet error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                    return null });         // cancelled by user, timeout, etc.
+
+            return retryResponse
+
+        } else {
+            
+          console.error('error updating row "' + shtTitle + '": ' + reason.result.error.message);
+          bootbox.alert('error updating row "' + shtTitle + '": ' + reason.result.error.message);
+
+            return null
+
+        }
+            
+    })
+    
+                                            console.log('after gapi renameSheet')
+
+  return response
+
+}
+
+async function copySheet(shtId) {
+
+  var params = {
+    spreadsheetId: spreadsheetId,  
+    sheetId: shtId,  
+  };
+
+  var copySheetToAnotherSpreadsheetRequestBody = {
+    destinationSpreadsheetId: spreadsheetId
+  };
+
+    
+  var response = await gapi.client.sheets.spreadsheets.sheets.copyTo(params, copySheetToAnotherSpreadsheetRequestBody)
+    .then(async response => {               console.log('gapi copySheet first try', response)
+        
+        return response})
+
+    .catch(async err  => {                  console.log('gapi copySheet catch', err)
+        
+        if (err.result.error.code == 401 || err.result.error.code == 403) {
+            await Goth.token()              // for authorization errors obtain an access token
+            let retryResponse = await gapi.client.sheets.spreadsheets.sheets.copyTo(params, copySheetToAnotherSpreadsheetRequestBody)
+                .then(async retry => {      console.log('gapi copySheet retry', retry) 
+                    
+                    return retry})
+
+                .catch(err  => {            console.log('gapi copySheet error2', err)
+                    
+                    bootbox.alert('gapi updateSheetRow error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                    return null });         // cancelled by user, timeout, etc.
+
+            return retryResponse
+
+        } else {
+            
+          console.error('error copying sheet "' + shtId + '": ' + reason.result.error.message);
+          bootbox.alert('error copying sheet "' + shtId + '": ' + reason.result.error.message);
+
+            return null
+
+        }
+            
+    })
+    
+                                            console.log('after gapi copySheet')
+
+  return response
+
+}
+
 async function deleteSheetRow(idx, sheetName) {
 
   var shtId = await getSheetId(sheetName)
