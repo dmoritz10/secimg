@@ -288,8 +288,8 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
 
           } else {
               
-            console.error('error updating row "' + trpTitle + '": ' + reason.result.error.message);
-            bootbox.alert('error updating row "' + trpTitle + '": ' + reason.result.error.message);
+            console.error('error updating row: ' + reason.result.error.message);
+            bootbox.alert('error updating row: ' + reason.result.error.message);
 
               return null
 
