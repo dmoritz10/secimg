@@ -277,8 +277,8 @@ async function btnShtmSubmitSheetHtml() {
   var valsEnc = shtEnc ? await encryptArr(vals) : vals
 
   if (arrIdx > -1)  await updateSheetRow(valsEnc, shtIdx, shtTitle)
-  else              await updateSheetRow(valsEnc, shtTitle)
-  
+  else              await appendSheetRow(valsEnc, shtTitle)
+
   var imgs = []
   var savImgs = []
 
