@@ -253,8 +253,6 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
     "values": [vals]    
   }
 
-  if (shtIdx > -1) {
-
     console.log('update', shtIdx)
 
     var row = shtIdx * 1 + 2
@@ -301,7 +299,16 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
       
                                               console.log('after gapi updateSheetRow')
 
-  } else {
+  return response
+
+}
+
+async function appendSheetRow(vals, shtTitle) {
+
+  var resource = {
+    "majorDimension": "ROWS",
+    "values": [vals]    
+  }
 
     var row = 2
     var rng = calcRngA1(row, 1, 1, vals.length)
@@ -346,8 +353,6 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
       })
         
                                                 console.log('after gapi updateSheetRow')
-
-  }
 
   return response
 
