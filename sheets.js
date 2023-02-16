@@ -669,7 +669,7 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
       var removeImage = img.slice(-1) == '#'
 
-      console.log('removeIMage', img, removeImage)
+      console.log('removeIMage', removeImage)
 
       while (idx < img.length) {
 

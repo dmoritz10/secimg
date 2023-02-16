@@ -154,8 +154,8 @@ async function updateOption(key, val) {
 
         } else {
             
-            console.log('error updating option "' + key + '": ' + reason.result.error.message);
-            bootbox.alert('error updating option "' + key + '": ' + reason.result.error.message);
+            console.log('error updating option "' + key + '": ' + response.result.error.message);
+            bootbox.alert('error updating option "' + key + '": ' + response.result.error.message);
 
             return null
 
@@ -288,8 +288,8 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
 
           } else {
               
-            console.error('error updating row: ' + reason.result.error.message);
-            bootbox.alert('error updating row: ' + reason.result.error.message);
+            console.error('error updating row: ' + response.result.error.message);
+            bootbox.alert('error updating row: ' + response.result.error.message);
 
               return null
 
@@ -336,8 +336,8 @@ async function appendSheetRow(vals, shtTitle) {
 
                   .catch(err  => {            console.log('gapi updateSheetRow error2', err)
                       
-                      console.error('error appending row "' + trpTitle + '": ' + reason.result.error.message);
-                      bootbox.alert('error appending row "' + trpTitle + '": ' + reason.result.error.message);
+                      console.error('error appending row "' + shtTitle + '": ' + response.result.error.message);
+                      bootbox.alert('error appending row "' + shtTitle + '": ' + response.result.error.message);
                       
                       return null });         // cancelled by user, timeout, etc.
 
@@ -397,8 +397,8 @@ async function updateSheetHdr(vals, shtTitle) {
 
           } else {
               
-            console.error('error updating row "' + trpTitle + '": ' + reason.result.error.message);
-            bootbox.alert('error updating row "' + trpTitle + '": ' + reason.result.error.message);
+            console.error('error updating row "' + shtTitle + '": ' + response.result.error.message);
+            bootbox.alert('error updating row "' + shtTitle + '": ' + response.result.error.message);
 
               return null
 
@@ -450,8 +450,8 @@ async function renameSheet(shtId, shtTitle) {
 
         } else {
             
-          console.error('error updating row'  + '": ' + reason.result.error.message);
-          bootbox.alert('error updating row'  + '": ' + reason.result.error.message);
+          console.error('error updating row'  + '": ' + response.result.error.message);
+          bootbox.alert('error updating row'  + '": ' + response.result.error.message);
 
             return null
 
@@ -501,8 +501,8 @@ async function copySheet(shtId) {
 
         } else {
             
-          console.error('error copying sheet "' + shtId + '": ' + reason.result.error.message);
-          bootbox.alert('error copying sheet "' + shtId + '": ' + reason.result.error.message);
+          console.error('error copying sheet "' + shtId + '": ' + response.result.error.message);
+          bootbox.alert('error copying sheet "' + shtId + '": ' + response.result.error.message);
 
             return null
 
