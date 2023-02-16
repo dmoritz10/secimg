@@ -246,9 +246,7 @@ async function updateSheet(title, vals) {
 
 } 
 
-async function updateSheetRow(vals, shtIdx, shtTitle) {
-
-  console.log('updateSheetRow',vals, shtIdx, shtTitle)
+async function updateSheetRow(vals, shtIdx, shtTitle, ssId = spreadsheetId) {
 
   var resource = {
     "majorDimension": "ROWS",
@@ -260,10 +258,8 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
     var row = shtIdx * 1 + 2
     var rng = calcRngA1(row, 1, 1, vals.length)
 
-    console.log('rng', rng)
-
     var params = {
-      spreadsheetId: spreadsheetId,
+      spreadsheetId: ssId,
       range: "'" + shtTitle + "'!" + rng,
       valueInputOption: 'RAW'
     };
