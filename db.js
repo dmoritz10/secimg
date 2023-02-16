@@ -51,7 +51,7 @@ var openShts = async function (shts) {
 
             } else {
                 
-                bootbox.alert('gapi openShts error: ' + shtTitle + ' - ' + response.result.error.message);
+                bootbox.alert('gapi openShts error: ' + shtTitle + ' - ' + err.result.error.message);
                 return null
 
             }
@@ -154,8 +154,8 @@ async function updateOption(key, val) {
 
         } else {
             
-            console.log('error updating option "' + key + '": ' + response.result.error.message);
-            bootbox.alert('error updating option "' + key + '": ' + response.result.error.message);
+            console.log('error updating option "' + key + '": ' + err.result.error.message);
+            bootbox.alert('error updating option "' + key + '": ' + err.result.error.message);
 
             return null
 
@@ -230,7 +230,7 @@ async function updateSheet(title, vals) {
 
             } else {
                 
-                bootbox.alert('gapi updateSheet error: ' + shtTitle + ' - ' + response.result.error.message);
+                bootbox.alert('gapi updateSheet error: ' + shtTitle + ' - ' + err.result.error.message);
                 return null
 
             }
@@ -248,6 +248,8 @@ async function updateSheet(title, vals) {
 
 async function updateSheetRow(vals, shtIdx, shtTitle) {
 
+  console.log('updateSheetRow',vals, shtIdx, shtTitle)
+
   var resource = {
     "majorDimension": "ROWS",
     "values": [vals]    
@@ -257,6 +259,8 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
 
     var row = shtIdx * 1 + 2
     var rng = calcRngA1(row, 1, 1, vals.length)
+
+    console.log('rng', rng)
 
     var params = {
       spreadsheetId: spreadsheetId,
@@ -288,8 +292,8 @@ async function updateSheetRow(vals, shtIdx, shtTitle) {
 
           } else {
               
-            console.error('error updating row: ' + response.result.error.message);
-            bootbox.alert('error updating row: ' + response.result.error.message);
+            console.error('error updating row: ' + err.result.error.message);
+            bootbox.alert('error updating row: ' + err.result.error.message);
 
               return null
 
@@ -336,8 +340,8 @@ async function appendSheetRow(vals, shtTitle) {
 
                   .catch(err  => {            console.log('gapi updateSheetRow error2', err)
                       
-                      console.error('error appending row "' + shtTitle + '": ' + response.result.error.message);
-                      bootbox.alert('error appending row "' + shtTitle + '": ' + response.result.error.message);
+                      console.error('error appending row "' + shtTitle + '": ' + err.result.error.message);
+                      bootbox.alert('error appending row "' + shtTitle + '": ' + err.result.error.message);
                       
                       return null });         // cancelled by user, timeout, etc.
 
@@ -345,7 +349,7 @@ async function appendSheetRow(vals, shtTitle) {
 
           } else {
               
-              bootbox.alert('gapi updateSheetRow error: ' + shtTitle + ' - ' + response.result.error.message);
+              bootbox.alert('gapi updateSheetRow error: ' + shtTitle + ' - ' + err.result.error.message);
               return null
 
           }
@@ -397,8 +401,8 @@ async function updateSheetHdr(vals, shtTitle) {
 
           } else {
               
-            console.error('error updating row "' + shtTitle + '": ' + response.result.error.message);
-            bootbox.alert('error updating row "' + shtTitle + '": ' + response.result.error.message);
+            console.error('error updating row "' + shtTitle + '": ' + err.result.error.message);
+            bootbox.alert('error updating row "' + shtTitle + '": ' + err.result.error.message);
 
               return null
 
@@ -450,8 +454,8 @@ async function renameSheet(shtId, shtTitle) {
 
         } else {
             
-          console.error('error updating row'  + '": ' + response.result.error.message);
-          bootbox.alert('error updating row'  + '": ' + response.result.error.message);
+          console.error('error updating row'  + '": ' + err.result.error.message);
+          bootbox.alert('error updating row'  + '": ' + err.result.error.message);
 
             return null
 
@@ -501,8 +505,8 @@ async function copySheet(shtId) {
 
         } else {
             
-          console.error('error copying sheet "' + shtId + '": ' + response.result.error.message);
-          bootbox.alert('error copying sheet "' + shtId + '": ' + response.result.error.message);
+          console.error('error copying sheet "' + shtId + '": ' + err.result.error.message);
+          bootbox.alert('error copying sheet "' + shtId + '": ' + err.result.error.message);
 
             return null
 
@@ -560,7 +564,7 @@ async function deleteSheetRow(idx, sheetName) {
 
             } else {
                 
-                bootbox.alert('gapi deleteSheetRow error: ' + shtTitle + ' - ' + response.result.error.message);
+                bootbox.alert('gapi deleteSheetRow error: ' + shtTitle + ' - ' + err.result.error.message);
                 return null
 
             }
@@ -599,7 +603,7 @@ async function getSheets() {
 
             } else {
                 
-                bootbox.alert('gapi getSheets error: ' + shtTitle + ' - ' + response.result.error.message);
+                bootbox.alert('gapi getSheets error: ' + shtTitle + ' - ' + err.result.error.message);
                 return null
 
             }
@@ -622,8 +626,8 @@ async function getSheetId(shtTitle) {
     
     return response.result.sheets
   
-  }, function(response) {
-    console.log('Error: ' + response.result.error.message);
+  }, function(err) {
+    console.log('Error: ' + err.result.error.message);
     return null
 
   });
@@ -677,7 +681,7 @@ async function listDriveFiles(sheetName) {
 
         } else {
             
-            bootbox.alert('gapi listDriveFiles error: ' + shtTitle + ' - ' + response.result.error.message);
+            bootbox.alert('gapi listDriveFiles error: ' + shtTitle + ' - ' + err.result.error.message);
             return null
 
         }
@@ -741,7 +745,7 @@ async function createDriveFile() {
 
         } else {
             
-            bootbox.alert('gapi createDriveFile error: ' +  response.result.error.message);
+            bootbox.alert('gapi createDriveFile error: ' +  err.result.error.message);
             return null
 
         }
@@ -781,7 +785,7 @@ async function deleteDriveFile(fileId) {
 
         } else {
             
-            bootbox.alert('gapi deleteDriveFile error: ' + shtTitle + ' - ' + response.result.error.message);
+            bootbox.alert('gapi deleteDriveFile error: ' + shtTitle + ' - ' + err.result.error.message);
             return null
 
         }
@@ -821,7 +825,7 @@ async function renameDriveFile(fileId, fileName) {
 
         } else {
             
-            bootbox.alert('gapi renameDriveFile error: ' + response.result.error.message);
+            bootbox.alert('gapi renameDriveFile error: ' + err.result.error.message);
             return null
 
         }

@@ -695,11 +695,13 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
 async function updateImages(fileId, imgIdx, vals, removeImage) {
 
+  console.log('updateImages', fileId, imgIdx, vals, removeImage)
+
   var shtTitle = fileId
 
-  await clearImage(shtTitle, imgIdx)         // always clear existing image
+  await clearImage(shtTitle, imgIdx)          // always clear existing image
 
-  if (!removeImage) {                     // user has elected to add an image
+  if (!removeImage) {                         // user has elected to add an image
 
     var response = await updateSheetRow(vals, imgIdx - 2, shtTitle)
 
