@@ -757,7 +757,7 @@ async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
 
     var objSht = await openShts(
       [
-          { title: shtTitle, type: "all" }
+          { title: 'Sheet1', type: "all" }, shtTitle
       ])
 
     var vals = objSht[title].vals

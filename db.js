@@ -2,7 +2,7 @@
 
 //  Sheets
 
-var openShts = async function (shts) {
+var openShts = async function (shts, ssId = spreadsheetId) {
 
 
     return new Promise(async resolve => {
@@ -27,7 +27,7 @@ var openShts = async function (shts) {
   
       }
 
-      let response = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: spreadsheetId, ranges: shtRngs})
+      let response = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: shtRngs})
         .then(async response => {               console.log('gapi openShts first try', response)
             
             return response})
@@ -36,7 +36,7 @@ var openShts = async function (shts) {
             
             if (err.result.error.code == 401 || err.result.error.code == 403) {
                 await Goth.token()              // for authorization errors obtain an access token
-                let retryResponse = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: spreadsheetId, ranges: shtRngs})
+                let retryResponse = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: shtRngs})
                     .then(async retry => {      console.log('gapi openShts retry', retry) 
                         
                         return retry})
