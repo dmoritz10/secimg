@@ -104,10 +104,10 @@ function readOption(key, defaultReturn = '') {
   
 }
 
-async function getSheetRange(rng, shtTitle, ssId = spreadsheetId) {
+async function getSheetRange(rng, sht, ssId = spreadsheetId) {
 
     var range = {
-      range: "'" + shtTitle + "'!" + rng,
+      range: "'" + sht + "'!" + rng,
       valueInputOption: 'RAW'
     };
 
