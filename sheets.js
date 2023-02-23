@@ -698,7 +698,7 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
   var shtTitle = fileId
 
   // await clearImage(shtTitle, imgIdx)          // always clear existing image
-  var rtn = await clearSheetRange(imgIdx + ':' + imgIdx, 'Sheets1', ssId = spreadsheetId)
+  var rtn = await clearSheetRange(imgIdx + ':' + imgIdx, 'Sheet1', ssId = spreadsheetId)
 
   if (!removeImage) {                         // user has elected to add an image
 
