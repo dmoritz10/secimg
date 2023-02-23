@@ -114,7 +114,7 @@ async function getSheetRange(rng, sht, ssId = spreadsheetId) {
 
     console.log('getSheetRange', range)
 
-    var response = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: range})
+    var response = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: "'" + sht + "'!" + rng})
       .then(async response => {               console.log('gapi getSheetRange first try', response)
           
           return response})
@@ -123,7 +123,7 @@ async function getSheetRange(rng, sht, ssId = spreadsheetId) {
           
           if (err.result.error.code == 401 || err.result.error.code == 403) {
               await Goth.token()              // for authorization errors obtain an access token
-              let retryResponse = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: range})
+              let retryResponse = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: "'" + sht + "'!" + rng})
                   .then(async retry => {      console.log('gapi getSheetRange retry', retry) 
                       
                       return retry})
