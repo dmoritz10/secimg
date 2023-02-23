@@ -280,7 +280,6 @@ async function btnShtmSubmitSheetHtml() {
   else              await appendSheetRow(valsEnc, shtTitle)
 
   var imgs = []
-  var savImgs = []
 
   var fb = frntbackObj('front')
   imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : '#')
@@ -289,7 +288,7 @@ async function btnShtmSubmitSheetHtml() {
   imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : '#')
 
 
-  await postImages(shtEnc, fileId, imgs, savImgs)
+  await postImages(shtEnc, fileId, imgs)
 
   clearCanvas(frntbackObj('front'))
   clearCanvas(frntbackObj('back'))
@@ -656,13 +655,13 @@ function getImgURL(canvas) {
 }
 
 
-async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
+async function postImages(shtEnc, fileId, imgs, pwd = currUser.pwd) {
 
   for (var i=0;i<2;i++) {             // 0 = front image, 1 = back image
 
     var img = imgs[i]
     
-    if (img && img != savImgs[i]) {
+    if (img) {
 
       var idx = 0
       var encPromiseArr = []
