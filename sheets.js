@@ -735,26 +735,32 @@ async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
   console.time("fetchImages")
   console.log("fetchImages")
 
-  var rng = calcRngA1(1, 1, 2, 1000)
+  // var rng = calcRngA1(1, 1, 2, 1000)
 
-  var params = {
-    spreadsheetId: shtTitle,
-    range: "'" + "Sheet1" + "'!" + rng
-  };
+  // var params = {
+  //   spreadsheetId: shtTitle,
+  //   range: "'" + "Sheet1" + "'!" + rng
+  // };
 
-  var vals = await gapi.client.sheets.spreadsheets.values.get(params)
-    .then(function(response) {
+  // var vals = await gapi.client.sheets.spreadsheets.values.get(params)
+  //   .then(function(response) {
       
-      console.timeLog("fetchImages")
-      console.log("fetchImages", response);
-      return response.result.values
+  //     console.timeLog("fetchImages")
+  //     console.log("fetchImages", response);
+  //     return response.result.values
 
-    }, function(reason) {
-      console.error('error: ' + reason.result.error.message);
-    });
+  //   }, function(reason) {
+  //     console.error('error: ' + reason.result.error.message);
+  //   });
 
-    console.log("fetchImages pre return", shtTitle, "'" + "Sheet1" + "'!" + rng, vals);
+  //   console.log("fetchImages pre return", shtTitle, "'" + "Sheet1" + "'!" + rng, vals);
 
+    var objSht = await openShts(
+      [
+          { title: shtTitle, type: "all" }
+      ])
+
+    var vals = objSht[title].vals
 
     if (!vals) return [null, null]
     console.log("fetchImages post return", vals);
