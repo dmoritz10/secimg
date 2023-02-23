@@ -697,34 +697,12 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 
   var shtTitle = fileId
 
-  await clearImage(shtTitle, imgIdx)          // always clear existing image
+  // await clearImage(shtTitle, imgIdx)          // always clear existing image
+  var rtn = await clearSheetRange(imgIdx + ':' + imgIdx, 'Sheets1', ssId = spreadsheetId)
 
   if (!removeImage) {                         // user has elected to add an image
 
     var response = await updateSheetRow(vals, imgIdx - 2, 'Sheet1', shtTitle)
-
-    // var rng = calcRngA1(row, 1, 1, vals.length)
-
-    // var params = {
-    //   spreadsheetId: fileId,
-    //   range: "'" + "Sheet1" + "'!" + rng,
-    //   valueInputOption: 'RAW'
-    // };
-
-    // var resource = {
-    //   "majorDimension": "ROWS",
-    //   "values": [vals]    
-    // }
-
-    // await gapi.client.sheets.spreadsheets.values.update(params, resource)
-    //   .then(async function (response) {
-    //     console.log('update successful')
-    //   },
-
-    //     function (reason) {
-    //       console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-    //       bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-    //     });
 
   }
 
@@ -735,54 +713,32 @@ async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
   console.time("fetchImages")
   console.log("fetchImages")
 
-  var rng = calcRngA1(1, 1, 2, 1000)
-
-  // var params = {
-  //   spreadsheetId: shtTitle,
-  //   range: "'" + "Sheet1" + "'!" + rng
-  // };
-
-  // var vals = await gapi.client.sheets.spreadsheets.values.get(params)
-  //   .then(function(response) {
-      
-  //     console.timeLog("fetchImages")
-  //     console.log("fetchImages", response);
-  //     return response.result.values
-
-  //   }, function(reason) {
-  //     console.error('error: ' + reason.result.error.message);
-  //   });
-
-  //   console.log("fetchImages pre return", shtTitle, "'" + "Sheet1" + "'!" + rng, vals);
-
   
-    
-    var rtn = await getSheetRange("1:2", "Sheet1", shtTitle)
-    var vals = rtn.result.valueRanges[0].values
+  var rtn = await getSheetRange("1:2", "Sheet1", shtTitle)
+  var vals = rtn.result.valueRanges[0].values
 
-    if (!vals) return [null, null]
-    console.log("fetchImages post return", vals);
+  if (!vals) return [null, null]
+  console.log("fetchImages post return", vals);
 
-    rtn = []
+  rtn = []
 
-    for (let i in vals) {
+  for (let i in vals) {
 
-      var val = vals[i]
+    var val = vals[i]
 
-      if (val.length == 0 ) rtn.push(null)
-      else {
+    if (val.length == 0 ) rtn.push(null)
+    else {
 
-        if (shtEnc) {
-          var decVals = val.map( ele => decryptMessage(ele, pwd))
+      if (shtEnc) {
+        var decVals = val.map( ele => decryptMessage(ele, pwd))
 
-          var decArr = await Promise.all(decVals)
-        } else
-          var decArr = val
+        var decArr = await Promise.all(decVals)
+      } else
+        var decArr = val
 
         rtn.push(decArr.join(''))
-      }
-  }
-  
+    }
+  }       
 
   console.timeEnd("fetchImages")
 

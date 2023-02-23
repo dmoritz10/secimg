@@ -106,14 +106,6 @@ function readOption(key, defaultReturn = '') {
 
 async function getSheetRange(rng, sht, ssId = spreadsheetId) {
 
-    // var range = {
-    //   range: "'" + sht + "'!" + rng,
-    //   valueInputOption: 'RAW'
-    // };
-    var range = "'" + sht + "'!" + rng
-
-    console.log('getSheetRange', range)
-
     var response = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: ["'" + sht + "'!" + rng]})
       .then(async response => {               console.log('gapi getSheetRange first try', response)
           
@@ -150,6 +142,53 @@ async function getSheetRange(rng, sht, ssId = spreadsheetId) {
                                               console.log('after gapi getSheetRange')
 
   return response
+
+}
+
+async function clearSheetRange(rng, sht, ssId = spreadsheetId) {
+
+  var params = {
+    spreadsheetId: ssId, 
+    range: "'" + sht + "'!" + rng
+  };
+
+
+  var response = await gapi.client.sheets.spreadsheets.values.clear(params)
+    .then(async response => {               console.log('gapi getSheetRange first try', response)
+        
+        return response})
+
+    .catch(async err  => {                  console.log('gapi getSheetRange catch', err)
+        
+        if (err.result.error.code == 401 || err.result.error.code == 403) {
+            await Goth.token()              // for authorization errors obtain an access token
+            let retryResponse = await gapi.client.sheets.spreadsheets.values.clear(params)
+                .then(async retry => {      console.log('gapi getSheetRange retry', retry) 
+                    
+                    return retry})
+
+                .catch(err  => {            console.log('gapi getSheetRange error2', err)
+                    
+                    bootbox.alert('gapi getSheetRange error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                    return null });         // cancelled by user, timeout, etc.
+
+            return retryResponse
+
+        } else {
+            
+          console.error('error reading sheet: ' + err.result.error.message);
+          bootbox.alert('error reading sheet: ' + err.result.error.message);
+
+            return null
+
+        }
+            
+    })
+    
+                                            console.log('after gapi getSheetRange')
+
+return response
 
 }
 
