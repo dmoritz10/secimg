@@ -757,7 +757,7 @@ async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
 
   
     
-    var rtn = await getSheetRange(rng, "Sheet1", shtTitle)
+    var rtn = await getSheetRange("1:2", "Sheet1", shtTitle)
     var vals = rtn.result.valueRanges[0].values
 
     if (!vals) return [null, null]
