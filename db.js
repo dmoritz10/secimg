@@ -106,10 +106,11 @@ function readOption(key, defaultReturn = '') {
 
 async function getSheetRange(rng, sht, ssId = spreadsheetId) {
 
-    var range = {
-      range: "'" + sht + "'!" + rng,
-      valueInputOption: 'RAW'
-    };
+    // var range = {
+    //   range: "'" + sht + "'!" + rng,
+    //   valueInputOption: 'RAW'
+    // };
+    var range = "'" + sht + "'!" + rng
 
     var response = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: range})
       .then(async response => {               console.log('gapi getSheetRange first try', response)
