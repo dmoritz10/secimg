@@ -2,96 +2,6 @@
 
 //  Sheets
 
-var openShts = async function (shts, ssId = spreadsheetId) {
-
-
-    return new Promise(async resolve => {
-  
-      shtRngs = []
-      
-      for (s in shts) {
-  
-        var sheet = shts[s]
-  
-        switch (sheet.type) {
-  
-          case "headers":
-            shtRngs.push("'" + sheet.title + "'!1:1")
-            break;
-  
-          case "all"  :
-            shtRngs.push("'" + sheet.title + "'!A1:ZZ100000")
-            break;
-  
-        }
-  
-      }
-
-      let response = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: shtRngs})
-        .then(async response => {               console.log('gapi openShts first try', response)
-            
-            return response})
-
-        .catch(async err  => {                  console.log('gapi openShts catch', err)
-            
-            if (err.result.error.code == 401 || err.result.error.code == 403) {
-                await Goth.token()              // for authorization errors obtain an access token
-                let retryResponse = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: shtRngs})
-                    .then(async retry => {      console.log('gapi openShts retry', retry) 
-                        
-                        return retry})
-
-                    .catch(err  => {            console.log('gapi openShts error2', err)
-                        
-                        bootbox.alert('gapi openShts error: ' + err.result.error.code + ' - ' + err.result.error.message);
-
-                        return null });         // cancelled by user, timeout, etc.
-
-                return retryResponse
-
-            } else {
-                
-                bootbox.alert('gapi openShts error: ' + shtTitle + ' - ' + err.result.error.message);
-                return null
-
-            }
-                
-        })
-        
-                                                console.log('after gapi openShts')
-  
-  
-      var allShts = response.result.valueRanges
-  
-      console.log('openShts', response)
-  
-      var arr = []
-  
-      for (s in allShts) {
-      
-        var shtVals = allShts[s].values
-  
-        var colHdrs = shtVals[0]
-        var vals = shtVals.slice(1)
-        var rowCnt = vals ? vals.length : 0
-  
-        var shtTitle = allShts[s].range.split('!')[0].replace(/'/g,"")
-  
-        arr[shtTitle] =  {  
-          colHdrs:      colHdrs,
-          vals:         shtVals.slice(1),
-          columnCount:  colHdrs.length,
-          rowCount:     rowCnt
-        }
-        
-      }
-  
-      resolve(arr)
-  
-    })
-  
-}
-  
 function readOption(key, defaultReturn = '') {
 
     if (!arrOptions[key]) return defaultReturn
@@ -102,6 +12,160 @@ function readOption(key, defaultReturn = '') {
   
     return rtn
   
+}
+
+async function updateOption(key, val) {
+
+  if (typeof val === "object") {
+    var strVal = JSON.stringify(val)
+  } else {
+    var strVal = val
+  }
+
+  arrOptions[key] = strVal
+
+  var resource = {
+    "majorDimension": "ROWS",
+    "values": [[
+      key,
+      strVal
+    ]]
+  }
+
+  var row = optionsIdx[key] + 2
+
+  var params = {
+    spreadsheetId: spreadsheetId,
+    range: "'Settings'!A" + row + ":B" + row,
+    valueInputOption: 'RAW'
+  };
+
+  let response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+    .then(async response => {               console.log('gapi updateOption first try', response)
+        
+        return response})
+
+    .catch(async err  => {                  console.log('gapi updateOption catch', err)
+        
+        if (err.result.error.code == 401 || err.result.error.code == 403) {
+            await Goth.token()              // for authorization errors obtain an access token
+            let retryResponse = await gapi.client.sheets.spreadsheets.values.update(params, resource)
+                .then(async retry => {      console.log('gapi updateOption retry', retry) 
+                    
+                    return retry})
+
+                .catch(err  => {            console.log('gapi updateOption error2', err)
+                    
+                    bootbox.alert('gapi updateOption error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                    return null });         // cancelled by user, timeout, etc.
+
+            return retryResponse
+
+        } else {
+            
+            console.log('error updating option "' + key + '": ' + err.result.error.message);
+            bootbox.alert('error updating option "' + key + '": ' + err.result.error.message);
+
+            return null
+
+        }
+            
+    })
+    
+                                            console.log('after gapi updateOption')      
+
+}
+
+// var openShts = async function (shts, ssId = spreadsheetId) {
+async function openShts(shts, ssId = spreadsheetId) {
+
+
+  return new Promise(async resolve => {
+
+    shtRngs = []
+    
+    for (s in shts) {
+
+      var sheet = shts[s]
+
+      switch (sheet.type) {
+
+        case "headers":
+          shtRngs.push("'" + sheet.title + "'!1:1")
+          break;
+
+        case "all"  :
+          shtRngs.push("'" + sheet.title + "'!A1:ZZ100000")
+          break;
+
+      }
+
+    }
+
+    let response = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: shtRngs})
+      .then(async response => {               console.log('gapi openShts first try', response)
+          
+          return response})
+
+      .catch(async err  => {                  console.log('gapi openShts catch', err)
+          
+          if (err.result.error.code == 401 || err.result.error.code == 403) {
+              await Goth.token()              // for authorization errors obtain an access token
+              let retryResponse = await gapi.client.sheets.spreadsheets.values.batchGet({spreadsheetId: ssId, ranges: shtRngs})
+                  .then(async retry => {      console.log('gapi openShts retry', retry) 
+                      
+                      return retry})
+
+                  .catch(err  => {            console.log('gapi openShts error2', err)
+                      
+                      bootbox.alert('gapi openShts error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                      return null });         // cancelled by user, timeout, etc.
+
+              return retryResponse
+
+          } else {
+              
+              bootbox.alert('gapi openShts error: ' + shtTitle + ' - ' + err.result.error.message);
+              return null
+
+          }
+              
+      })
+      
+                                              console.log('after gapi openShts')
+
+
+    var allShts = response.result.valueRanges
+
+    console.log('openShts', response)
+
+    var arr = []
+
+    for (s in allShts) {
+    
+      var shtVals = allShts[s].values
+
+      var colHdrs = shtVals[0]
+      var vals = shtVals.slice(1)
+      var rowCnt = vals ? vals.length : 0
+
+      var shtTitle = allShts[s].range.split('!')[0].replace(/'/g,"")
+
+      arr[shtTitle] =  {  
+        colHdrs:      colHdrs,
+        vals:         shtVals.slice(1),
+        columnCount:  colHdrs.length,
+        rowCount:     rowCnt
+      }
+      
+    }
+
+    resolve(arr)
+
+  })
+
 }
 
 async function getSheetRange(rng, sht, ssId = spreadsheetId) {
@@ -189,69 +253,6 @@ async function clearSheetRange(rng, sht, ssId = spreadsheetId) {
                                             console.log('after gapi clearSheetRange')
 
 return response
-
-}
-
-async function updateOption(key, val) {
-
-  if (typeof val === "object") {
-    var strVal = JSON.stringify(val)
-  } else {
-    var strVal = val
-  }
-
-  arrOptions[key] = strVal
-
-  var resource = {
-    "majorDimension": "ROWS",
-    "values": [[
-      key,
-      strVal
-    ]]
-  }
-
-  var row = optionsIdx[key] + 2
-
-  var params = {
-    spreadsheetId: spreadsheetId,
-    range: "'Settings'!A" + row + ":B" + row,
-    valueInputOption: 'RAW'
-  };
-
-  let response = await gapi.client.sheets.spreadsheets.values.update(params, resource)
-    .then(async response => {               console.log('gapi updateOption first try', response)
-        
-        return response})
-
-    .catch(async err  => {                  console.log('gapi updateOption catch', err)
-        
-        if (err.result.error.code == 401 || err.result.error.code == 403) {
-            await Goth.token()              // for authorization errors obtain an access token
-            let retryResponse = await gapi.client.sheets.spreadsheets.values.update(params, resource)
-                .then(async retry => {      console.log('gapi updateOption retry', retry) 
-                    
-                    return retry})
-
-                .catch(err  => {            console.log('gapi updateOption error2', err)
-                    
-                    bootbox.alert('gapi updateOption error: ' + err.result.error.code + ' - ' + err.result.error.message);
-
-                    return null });         // cancelled by user, timeout, etc.
-
-            return retryResponse
-
-        } else {
-            
-            console.log('error updating option "' + key + '": ' + err.result.error.message);
-            bootbox.alert('error updating option "' + key + '": ' + err.result.error.message);
-
-            return null
-
-        }
-            
-    })
-    
-                                            console.log('after gapi updateOption')      
 
 }
 
@@ -446,6 +447,63 @@ async function appendSheetRow(vals, shtTitle) {
 
 }
 
+async function deleteSheetRow(idx, sheetName) {
+
+  var shtId = await getSheetId(sheetName)
+
+  var request = {
+    "requests":
+      [
+        {
+          "deleteDimension": {
+            "range": {
+              "sheetId": shtId,
+              "dimension": "ROWS",
+              "startIndex": idx,
+              "endIndex": idx + 1
+            }
+          }
+        }
+      ]
+  }
+
+  let response = await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId: spreadsheetId, resource: request})
+        .then(async response => {               console.log('gapi deleteSheetRow first try', response)
+            
+            return response})
+
+        .catch(async err  => {                  console.log('gapi deleteSheetRow catch', err)
+            
+            if (err.result.error.code == 401 || err.result.error.code == 403) {
+                await Goth.token()              // for authorization errors obtain an access token
+                let retryResponse = await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId: spreadsheetId, resource: request})
+                    .then(async retry => {      console.log('gapi deleteSheetRow retry', retry) 
+                        
+                        return retry})
+
+                    .catch(err  => {            console.log('gapi deleteSheetRow error2', err)
+                        
+                        bootbox.alert('gapi deleteSheetRow error: ' + err.result.error.code + ' - ' + err.result.error.message);
+
+                        return null });         // cancelled by user, timeout, etc.
+
+                return retryResponse
+
+            } else {
+                
+                bootbox.alert('gapi deleteSheetRow error: ' + shtTitle + ' - ' + err.result.error.message);
+                return null
+
+            }
+                
+        })
+        
+                                                console.log('after gapi')
+  
+        return response
+
+}
+
 async function updateSheetHdr(vals, shtTitle) {
 
   var resource = {
@@ -601,63 +659,6 @@ async function copySheet(shtId) {
                                             console.log('after gapi copySheet')
 
   return response
-
-}
-
-async function deleteSheetRow(idx, sheetName) {
-
-  var shtId = await getSheetId(sheetName)
-
-  var request = {
-    "requests":
-      [
-        {
-          "deleteDimension": {
-            "range": {
-              "sheetId": shtId,
-              "dimension": "ROWS",
-              "startIndex": idx,
-              "endIndex": idx + 1
-            }
-          }
-        }
-      ]
-  }
-
-  let response = await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId: spreadsheetId, resource: request})
-        .then(async response => {               console.log('gapi deleteSheetRow first try', response)
-            
-            return response})
-
-        .catch(async err  => {                  console.log('gapi deleteSheetRow catch', err)
-            
-            if (err.result.error.code == 401 || err.result.error.code == 403) {
-                await Goth.token()              // for authorization errors obtain an access token
-                let retryResponse = await gapi.client.sheets.spreadsheets.batchUpdate({spreadsheetId: spreadsheetId, resource: request})
-                    .then(async retry => {      console.log('gapi deleteSheetRow retry', retry) 
-                        
-                        return retry})
-
-                    .catch(err  => {            console.log('gapi deleteSheetRow error2', err)
-                        
-                        bootbox.alert('gapi deleteSheetRow error: ' + err.result.error.code + ' - ' + err.result.error.message);
-
-                        return null });         // cancelled by user, timeout, etc.
-
-                return retryResponse
-
-            } else {
-                
-                bootbox.alert('gapi deleteSheetRow error: ' + shtTitle + ' - ' + err.result.error.message);
-                return null
-
-            }
-                
-        })
-        
-                                                console.log('after gapi')
-  
-        return response
 
 }
 
