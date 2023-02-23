@@ -172,7 +172,7 @@ async function setFavorite(arrIdx) {
     }
   }
 
-  var shtIdx = shtIdxArr[arrIdx]
+  var shtIdx = shtIdxArr[arrIdx] * 1 + 2
 
   await updateSheetRow(shtVals[arrIdx], shtIdx, shtTitle)
 
@@ -276,7 +276,7 @@ async function btnShtmSubmitSheetHtml() {
 
   var valsEnc = shtEnc ? await encryptArr(vals) : vals
 
-  if (arrIdx > -1)  await updateSheetRow(valsEnc, shtIdx, shtTitle)
+  if (arrIdx > -1)  await updateSheetRow(valsEnc, shtIdx * 1 + 2, shtTitle)
   else              await appendSheetRow(valsEnc, shtTitle)
 
   var imgs = []
@@ -399,7 +399,7 @@ async function btnDeleteSheetHtml() {
 
   console.log('btnShtmDelete',idx,$('#shtmArrIdx').val(), shtIdxArr)
 
-  var response = deleteSheetRow(idx, shtTitle)
+  var response = deleteSheetRow(idx + 1, shtTitle)
 
   secSht[shtTitle].rows--
 
@@ -699,9 +699,9 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
   // await clearImage(shtTitle, imgIdx)          // always clear existing image
   var rtn = await clearSheetRange(imgIdx + ':' + imgIdx, 'Sheet1', shtTitle)
 
-  if (!removeImage) {                         // user has elected to add an image
+  if (!removeImage) {                            
 
-    var response = await updateSheetRow(vals, imgIdx - 2, 'Sheet1', shtTitle)
+    var response = await updateSheetRow(vals, imgIdx, 'Sheet1', shtTitle)
 
   }
 
@@ -711,7 +711,6 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
   console.time("fetchImages")
   console.log("fetchImages")
-
   
   var rtn = await getSheetRange("1:2", "Sheet1", shtTitle)
   var vals = rtn.result.valueRanges[0].values

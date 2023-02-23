@@ -343,7 +343,7 @@ async function updateSheetRow(vals, shtIdx, shtTitle, ssId = spreadsheetId) {
 
     console.log('update', shtIdx)
 
-    var row = shtIdx * 1 + 2
+    var row = shtIdx
     var rng = calcRngA1(row, 1, 1, vals.length)
 
     var params = {
@@ -616,8 +616,8 @@ async function deleteSheetRow(idx, sheetName) {
             "range": {
               "sheetId": shtId,
               "dimension": "ROWS",
-              "startIndex": idx + 1,
-              "endIndex": idx + 2
+              "startIndex": idx,
+              "endIndex": idx + 1
             }
           }
         }
