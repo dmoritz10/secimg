@@ -154,22 +154,22 @@ async function clearSheetRange(rng, sht, ssId = spreadsheetId) {
 
 
   var response = await gapi.client.sheets.spreadsheets.values.clear(params)
-    .then(async response => {               console.log('gapi getSheetRange first try', response)
+    .then(async response => {               console.log('gapi clearSheetRange first try', response)
         
         return response})
 
-    .catch(async err  => {                  console.log('gapi getSheetRange catch', err)
+    .catch(async err  => {                  console.log('gapi clearSheetRange catch', err)
         
         if (err.result.error.code == 401 || err.result.error.code == 403) {
             await Goth.token()              // for authorization errors obtain an access token
             let retryResponse = await gapi.client.sheets.spreadsheets.values.clear(params)
-                .then(async retry => {      console.log('gapi getSheetRange retry', retry) 
+                .then(async retry => {      console.log('gapi clearSheetRange retry', retry) 
                     
                     return retry})
 
-                .catch(err  => {            console.log('gapi getSheetRange error2', err)
+                .catch(err  => {            console.log('gapi clearSheetRange error2', err)
                     
-                    bootbox.alert('gapi getSheetRange error: ' + err.result.error.code + ' - ' + err.result.error.message);
+                    bootbox.alert('gapi clearSheetRange error: ' + err.result.error.code + ' - ' + err.result.error.message);
 
                     return null });         // cancelled by user, timeout, etc.
 
@@ -177,8 +177,8 @@ async function clearSheetRange(rng, sht, ssId = spreadsheetId) {
 
         } else {
             
-          console.error('error reading sheet: ' + err.result.error.message);
-          bootbox.alert('error reading sheet: ' + err.result.error.message);
+          console.error('error clearing sheet: ' + err.result.error.message);
+          bootbox.alert('error clearing sheet: ' + err.result.error.message);
 
             return null
 
@@ -186,7 +186,7 @@ async function clearSheetRange(rng, sht, ssId = spreadsheetId) {
             
     })
     
-                                            console.log('after gapi getSheetRange')
+                                            console.log('after gapi clearSheetRange')
 
 return response
 
