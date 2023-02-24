@@ -27,7 +27,6 @@ var confirm = function (msg) {
   });
 }
 
-
 var prompt = function (title, inputType) {
 
   return new Promise(resolve => {
@@ -50,12 +49,15 @@ var prompt = function (title, inputType) {
   });
 }
 
-function parseDateISOString(s) {
-  let ds = s.split(/\D/).map(s => parseInt(s));
-  ds[1] = ds[1] - 1; // adjust month
-  return new Date(...ds);
-}
+function toast(e, delay = 5000) {
 
+  $("#toast-content").html(e)
+
+  $("#myToast").toast({delay: delay});
+
+  $("#myToast").toast('show');
+
+}
 
 function calcRngA1(r, col, nbrRows, nbrCols) {
 
@@ -81,7 +83,6 @@ function calcRngA1(r, col, nbrRows, nbrCols) {
 
 }
 
-
 function toObject(arr) {
   var rv = { };
   for (var i = 0; i < arr.length; ++i)
@@ -106,6 +107,12 @@ function makeObj(courseInfo, cols) {
 
 }
 
+function formatDate(d) {
+
+  return (d.getMonth()+1)+'/'+ d.getDate()+'/'+d.getFullYear()
+
+}
+
 function formattime(dte){
 
    if (isNaN(Date.parse(dte))) return
@@ -118,6 +125,36 @@ function formattime(dte){
   var mm = (zero + time.getMinutes()).slice( - 2);
   var ss = (zero + time.getSeconds()).slice( - 2);
   return hh +':' + mm +':' + ss;
+}
+
+function msToHHMMSS(ms) {
+
+  ms = Math.abs(ms)
+
+  let seconds = Math.floor((ms / 1000) % 60);
+  let minutes = Math.floor((ms / 1000 / 60) % 60);
+  let hours = Math.floor((ms / 1000 / 3600) % 24)
+
+  if (hours) hours = (hours < 10) ? "0" + hours : hours
+  else hours = false
+  if (hours) minutes = (minutes < 10) ? "0" + minutes : minutes
+  else minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+  var hhmmss = []
+
+  if (hours) hhmmss.push(hours)
+  hhmmss.push(minutes)
+  hhmmss.push(seconds)
+
+  return hhmmss.join(':');
+
+}
+
+function parseDateISOString(s) {
+  let ds = s.split(/\D/).map(s => parseInt(s));
+  ds[1] = ds[1] - 1; // adjust month
+  return new Date(...ds);
 }
 
 function formatNumber (str) { 
@@ -133,17 +170,6 @@ function formatNumber (str) {
   return x1 + x2; 
 
 };
-
-function toast(e, delay = 5000) {
-
-  $("#toast-content").html(e)
-
-  $("#myToast").toast({delay: delay});
-
-  $("#myToast").toast('show');
-
-}
-
 
 function promiseRun (func) {
 
@@ -172,12 +198,6 @@ function gotoTab(tabName) {
   $( '.tab-content > div.active' ).removeClass( 'active show' );
   
   $tab.addClass( 'active show' );
-
-}
-
-function formatDate(d) {
-
-  return (d.getMonth()+1)+'/'+ d.getDate()+'/'+d.getFullYear()
 
 }
 
@@ -212,30 +232,6 @@ function setupFormValidation() {
 
 function validateUrl(value) {
   return /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value);
-}
-
-function msToHHMMSS(ms) {
-
-  ms = Math.abs(ms)
-
-  let seconds = Math.floor((ms / 1000) % 60);
-  let minutes = Math.floor((ms / 1000 / 60) % 60);
-  let hours = Math.floor((ms / 1000 / 3600) % 24)
-
-  if (hours) hours = (hours < 10) ? "0" + hours : hours
-  else hours = false
-  if (hours) minutes = (minutes < 10) ? "0" + minutes : minutes
-  else minutes;
-  seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-  var hhmmss = []
-
-  if (hours) hhmmss.push(hours)
-  hhmmss.push(minutes)
-  hhmmss.push(seconds)
-
-  return hhmmss.join(':');
-
 }
 
 function is2dArray(array){
