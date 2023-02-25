@@ -52,7 +52,7 @@ jQuery(function ($) {
 			this.serviceWorker()
                 console.log('serviceworker')
 
-                authorize()
+      authorize()
                 console.log('authorize')
 
 			this.bindEvents();
@@ -94,9 +94,6 @@ jQuery(function ($) {
             $('#btnHMChangePwd')            .click(btnHMChangePwdHtml);
             $('#btnNewSheet')               .click(btnNewSheetHtml);
 
-            
-
-          
             // Sheets
             $('#btnShtSelect')            .click(btnShtSelectHtml);
             
