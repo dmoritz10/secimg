@@ -36,9 +36,7 @@ async function loadSheets() {
               && sht.title != 'template'
             ) {
 
-          var enc = await testEncrypted(sht.title)
           var enc = await testEncrypted(sht.title, "Document")
-
 
           secSht[sht.title].enc = enc.enc
           secSht[sht.title].isSecSht = enc.isSecSht
