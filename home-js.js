@@ -51,6 +51,8 @@ async function loadSheets() {
             ) {
 
           var enc = await testEncrypted(sht.title)
+          var enc = await testEncrypted(sht.title, "Document")
+
 
           secSht[sht.title].enc = enc.enc
           secSht[sht.title].isSecSht = enc.isSecSht
@@ -64,13 +66,13 @@ async function loadSheets() {
               ele.find('#btnCrypt')[0].innerHTML = "decrypt"
               ele.find('#btnCrypt').addClass('btn-success')
               ele.find('#btnCrypt').removeClass('btn-danger')
-              ele.find('#btnCrypt')[0].setAttribute("onclick", "decryptSheet('" + sht.title + "')");
+              ele.find('#btnCrypt')[0].setAttribute("onclick", "decryptSheet('" + sht.title + "','Document')");
 
             } else {
               ele.find('#btnCrypt')[0].innerHTML = "encrypt"
               ele.find('#btnCrypt').removeClass('btn-success')
               ele.find('#btnCrypt').addClass('btn-danger')
-              ele.find('#btnCrypt')[0].setAttribute("onclick", "encryptSheet('" + sht.title + "')");
+              ele.find('#btnCrypt')[0].setAttribute("onclick", "encryptSheet('" + sht.title + "','Document')");
             }
 
             ele.find('#hmShowSheet')[0].setAttribute("onclick", "listSheet('" + sht.title + "')");
