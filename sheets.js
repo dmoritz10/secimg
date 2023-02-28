@@ -172,9 +172,9 @@ async function setFavorite(arrIdx) {
     }
   }
 
-  var shtIdx = shtIdxArr[arrIdx]
+  var shtIdx = shtIdxArr[arrIdx] * 1 + 2
 
-  await updateSheetRow(shtVals[arrIdx], shtIdx)
+  await updateSheetRow(shtVals[arrIdx], shtIdx, shtTitle)
 
   updateUI(shtVals[arrIdx], arrIdx)
 
@@ -276,10 +276,10 @@ async function btnShtmSubmitSheetHtml() {
 
   var valsEnc = shtEnc ? await encryptArr(vals) : vals
 
-  await updateSheetRow(valsEnc, shtIdx)
+  if (arrIdx > -1)  await updateSheetRow(valsEnc, shtIdx * 1 + 2, shtTitle)
+  else              await appendSheetRow(valsEnc, shtTitle)
 
   var imgs = []
-  var savImgs = []
 
   var fb = frntbackObj('front')
   imgs[0] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : '#')
@@ -288,7 +288,7 @@ async function btnShtmSubmitSheetHtml() {
   imgs[1] = fb.canvas.fCanvas ? getImgURL(fb.canvas.fCanvas) : (fb.canvas.imgSrc ? fb.canvas.imgSrc : '#')
 
 
-  await postImages(shtEnc, fileId, imgs, savImgs)
+  await postImages(shtEnc, fileId, imgs)
 
   clearCanvas(frntbackObj('front'))
   clearCanvas(frntbackObj('back'))
@@ -308,52 +308,15 @@ async function buildImageFile() {
   // Rename title = sheetId
   // Return sheetId
 
-  var fileIdx = await gapi.client.drive.files.create({
+  var response = await createDriveFile()
 
-    resource : {                  
-                  name : 'Sheet',
-                  mimeType: 'application/vnd.google-apps.spreadsheet',
-                  parents: ['1eAwbR_yzsEaEpBEpFA0Pqp8KGP2XszDY']
+  console.log('createDriveFile', response)
 
-                }
+  var fileId = response.result.id
 
-}).then(function(response) {
-    console.log(response);
-    return response
-    
-});
+  // rename sheet to that provided by user
 
-console.log(fileIdx)
-
-var fileId = fileIdx.result.id
-
-// rename sheet to that provided by user
-
-const rq = {"requests" : [
-  {
-    updateSpreadsheetProperties: {
-    properties: {
-     title: fileId,
-    },
-    fields: 'title'
-    }
-   }]}
- ;
- 
-await gapi.client.sheets.spreadsheets.batchUpdate({
-  spreadsheetId: fileId,
-  resource: rq})
-
-  .then(response => {
-
-    console.log('rename complete')
-    console.log(response)
-
-  }, function (reason) {
-    console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
-    alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
-  });
-
+  var response = await renameDriveFile(fileId, fileId)
 
   return fileId
 
@@ -436,45 +399,49 @@ async function btnDeleteSheetHtml() {
 
   console.log('btnShtmDelete',idx,$('#shtmArrIdx').val(), shtIdxArr)
 
-  var request = {
-    "requests":
-      [
-        {
-          "deleteDimension": {
-            "range": {
-              "sheetId": shtId,
-              "dimension": "ROWS",
-              "startIndex": idx + 1,
-              "endIndex": idx + 2
-            }
-          }
-        }
-      ]
-  }
+  var response = deleteSheetRow(idx + 1, shtTitle)
+
+  secSht[shtTitle].rows--
+
+  // var request = {
+  //   "requests":
+  //     [
+  //       {
+  //         "deleteDimension": {
+  //           "range": {
+  //             "sheetId": shtId,
+  //             "dimension": "ROWS",
+  //             "startIndex": idx + 1,
+  //             "endIndex": idx + 2
+  //           }
+  //         }
+  //       }
+  //     ]
+  // }
 
 
-  await gapi.client.sheets.spreadsheets.batchUpdate({
-    spreadsheetId: spreadsheetId,
-    resource: request
+  // await gapi.client.sheets.spreadsheets.batchUpdate({
+  //   spreadsheetId: spreadsheetId,
+  //   resource: request
 
-  }).then(response => {
+  // }).then(response => {
 
-    secSht[shtTitle].rows--
+  //   secSht[shtTitle].rows--
 
-    console.log('delete complete - ', idx)
-    console.log(response)
+  //   console.log('delete complete - ', idx)
+  //   console.log(response)
 
-  })
+  // })
 
-  await gapi.client.drive.files.delete({
-                
-        fileId : $('#shtmFileId').val()
+  var response = await deleteDriveFile($('#shtmFileId').val())
 
-}).then(function(response) {
-    console.log(response);
-    return response
+//   await gapi.client.drive.files.delete({fileId : $('#shtmFileId').val()})
+
+// .then(function(response) {
+//     console.log(response);
+//     return response
     
-});
+// });
 
   $("#sheet-modal").modal('hide');
 
@@ -688,20 +655,20 @@ function getImgURL(canvas) {
 }
 
 
-async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
+async function postImages(shtEnc, fileId, imgs, pwd = currUser.pwd) {
 
   for (var i=0;i<2;i++) {             // 0 = front image, 1 = back image
 
     var img = imgs[i]
     
-    if (img && img != savImgs[i]) {
+    if (img) {
 
       var idx = 0
       var encPromiseArr = []
 
       var removeImage = img.slice(-1) == '#'
 
-      console.log('removeIMage', img, removeImage)
+      console.log('removeIMage', removeImage)
 
       while (idx < img.length) {
 
@@ -717,46 +684,24 @@ async function postImages(shtEnc, fileId, imgs, savImgs, pwd = currUser.pwd) {
 
       console.log('postImage encArr', i, img.length, encArr[0].length, encArr.length)
 
-      await updateImages(fileId, i*1+1, encArr, removeImage)
+      await updateImages(fileId, i*1 + 1, encArr, removeImage)
 
     }
 
-  }
+  }updateImages
 
 }
 
 async function updateImages(fileId, imgIdx, vals, removeImage) {
 
   var shtTitle = fileId
-  var row = imgIdx
 
-  await clearImage(shtTitle, row)         // always clear existing image
+  // await clearImage(shtTitle, imgIdx)          // always clear existing image
+  var rtn = await clearSheetRange(imgIdx + ':' + imgIdx, 'Sheet1', shtTitle)
 
+  if (!removeImage) {                            
 
-  if (!removeImage) {               // user has elected to add an image
-
-    var rng = calcRngA1(row, 1, 1, vals.length)
-
-    var params = {
-      spreadsheetId: fileId,
-      range: "'" + "Sheet1" + "'!" + rng,
-      valueInputOption: 'RAW'
-    };
-
-    var resource = {
-      "majorDimension": "ROWS",
-      "values": [vals]    
-    }
-
-    await gapi.client.sheets.spreadsheets.values.update(params, resource)
-      .then(async function (response) {
-        console.log('update successful')
-      },
-
-        function (reason) {
-          console.error('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-          bootbox.alert('error updating sheet "' + shtTitle + '": ' + reason.result.error.message);
-        });
+    var response = await updateSheetRow(vals, imgIdx, 'Sheet1', shtTitle)
 
   }
 
@@ -766,51 +711,32 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
   console.time("fetchImages")
   console.log("fetchImages")
+  
+  var rtn = await getSheetRange("1:2", "Sheet1", shtTitle)
+  var vals = rtn.result.valueRanges[0].values
 
-  var rng = calcRngA1(1, 1, 2, 1000)
+  if (!vals) return [null, null]
+  console.log("fetchImages post return", vals);
 
-  var params = {
-    spreadsheetId: shtTitle,
-    range: "'" + "Sheet1" + "'!" + rng
-  };
+  rtn = []
 
-  var vals = await gapi.client.sheets.spreadsheets.values.get(params)
-    .then(function(response) {
-      
-      console.timeLog("fetchImages")
-      console.log("fetchImages", response);
-      return response.result.values
+  for (let i in vals) {
 
-    }, function(reason) {
-      console.error('error: ' + reason.result.error.message);
-    });
+    var val = vals[i]
 
-    console.log("fetchImages pre return", shtTitle, "'" + "Sheet1" + "'!" + rng, vals);
+    if (val.length == 0 ) rtn.push(null)
+    else {
 
+      if (shtEnc) {
+        var decVals = val.map( ele => decryptMessage(ele, pwd))
 
-    if (!vals) return [null, null]
-    console.log("fetchImages post return", vals);
-
-    rtn = []
-
-    for (let i in vals) {
-
-      var val = vals[i]
-
-      if (val.length == 0 ) rtn.push(null)
-      else {
-
-        if (shtEnc) {
-          var decVals = val.map( ele => decryptMessage(ele, pwd))
-
-          var decArr = await Promise.all(decVals)
-        } else
-          var decArr = val
+        var decArr = await Promise.all(decVals)
+      } else
+        var decArr = val
 
         rtn.push(decArr.join(''))
-      }
-  }
-  
+    }
+  }       
 
   console.timeEnd("fetchImages")
 

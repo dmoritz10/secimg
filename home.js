@@ -1,24 +1,9 @@
 
 async function loadSheets() {
 
-    await checkAuth()
+    var shts = await getSheets()
 
-    var sheets = await gapi.client.sheets.spreadsheets.get({
-        
-        spreadsheetId: spreadsheetId
-      
-      }).then(function(response) {
-        
-        return response.result.sheets
-      
-      }, function(response) {
-        console.log('Error: ' + response.result.error.message);
-        return null
-    
-      });
-
-    console.log('loadSheets', sheets)
-
+    var sheets = shts.result.sheets
 
     if (sheets) {
 
@@ -31,7 +16,6 @@ async function loadSheets() {
       var nbrSheets = 0
       var nbrDocuments = 0
 
-    
       for (var j = 0; j < sheets.length; j++) {
 
         var sht = sheets[j].properties
@@ -46,6 +30,8 @@ async function loadSheets() {
 
         var ele = $tblSheets.clone();
 
+        console.log('1', sht.gridProperties.columnCount , newShtHdrs.length, sht.gridProperties.columnCount == newShtHdrs.length)
+
         if (sht.gridProperties.columnCount == newShtHdrs.length
               && sht.title != 'template'
             ) {
@@ -56,7 +42,6 @@ async function loadSheets() {
 
           secSht[sht.title].enc = enc.enc
           secSht[sht.title].isSecSht = enc.isSecSht
-
 
           if (enc.isSecSht) {
 
@@ -104,12 +89,6 @@ async function loadSheets() {
 
 async function goHome() {
 
-  var signinStatus = await gapi.auth2.getAuthInstance().isSignedIn.get()
-   if (!signinStatus) {
-     gotoTab('Auth')
-     return
-   }
-  
   gotoTab('Home')
 
 }
@@ -244,79 +223,91 @@ async function btnNewSheetHtml() {
   }
 
   // create new sheet by copying template sheet.  It has exactly 8 columns and 1 row.
-  var params = {
-    spreadsheetId: spreadsheetId,  
-    sheetId: secSht['template'].id,  
-  };
 
-  var copySheetToAnotherSpreadsheetRequestBody = {
-    destinationSpreadsheetId: spreadsheetId
-  };
-
-  var sht = await gapi.client.sheets.spreadsheets.sheets.copyTo(params, copySheetToAnotherSpreadsheetRequestBody)
+  var newSht = await copySheet(secSht['template'].id)
   
-    .then(function(response) {
-      console.log(response.result);
-      return response.result
-      }, function(reason) {
-        console.error('error: ' + reason.result.error.message);
-        return null
-      })
+  var sht = newSht.result
+
+  console.log('sht', sht)
+  
+  // var params = {
+  //   spreadsheetId: spreadsheetId,  
+  //   sheetId: secSht['template'].id,  
+  // };
+
+  // var copySheetToAnotherSpreadsheetRequestBody = {
+  //   destinationSpreadsheetId: spreadsheetId
+  // };
+
+  // var sht = await gapi.client.sheets.spreadsheets.sheets.copyTo(params, copySheetToAnotherSpreadsheetRequestBody)
+  
+  //   .then(function(response) {
+  //     console.log(response.result);
+  //     return response.result
+  //     }, function(reason) {
+  //       console.error('error: ' + reason.result.error.message);
+  //       return null
+  //     })
 
 
   // rename sheet to that provided by user
 
-  const rq = {"requests" : [
-    {
-     updateSheetProperties: {
-      properties: {
-       sheetId: sht.sheetId,
-       title: title,
-      },
-      fields: 'title'
-      }
-     }]}
-   ;
-   
-  await gapi.client.sheets.spreadsheets.batchUpdate({
-    spreadsheetId: spreadsheetId,
-    resource: rq})
+  var response = await renameSheet(sht.sheetId, title)
 
-    .then(response => {
+    // const rq = {"requests" : [
+    //   {
+    //    updateSheetProperties: {
+    //     properties: {
+    //      sheetId: sht.sheetId,
+    //      title: title,
+    //     },
+    //     fields: 'title'
+    //     }
+    //    }]}
+    //  ;
+    
+    // await gapi.client.sheets.spreadsheets.batchUpdate({
+    //   spreadsheetId: spreadsheetId,
+    //   resource: rq})
 
-      console.log('rename complete')
-      console.log(response)
+    //   .then(response => {
 
-    }, function (reason) {
-      console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
-      alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
-    });
+    //     console.log('rename complete')
+    //     console.log(response)
+
+    //   }, function (reason) {
+    //     console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
+    //     alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
+    //   });
 
   // Put encrypted header row in new sheet
   
   var hdrs = newShtHdrs
   var encHdrs = await encryptArr(hdrs)
-  var resource = {
-    "majorDimension": "ROWS",
-    "values": [encHdrs]
-  }
 
-  var rng = calcRngA1(1, 1, 1, 11)
+  var response = await updateSheetHdr(encHdrs, title)
+  
+  // var resource = {
+  //   "majorDimension": "ROWS",
+  //   "values": [encHdrs]
+  // }
 
-  var params = {
-    spreadsheetId: spreadsheetId,
-    range: "'" + title + "'!" + rng,
-    valueInputOption: 'RAW'
-  };
+  // var rng = calcRngA1(1, 1, 1, 11)
 
-  await gapi.client.sheets.spreadsheets.values.update(params, resource)
-    .then(function (response) {
-      console.log('Sheet update successful')
-      console.log(response)
-    }, function (reason) {
-      console.error('error updating sheet "' + "1" + '": ' + reason.result.error.message);
-      alert('error updating sheet "' + '1' + '": ' + reason.result.error.message);
-    });
+  // var params = {
+  //   spreadsheetId: spreadsheetId,
+  //   range: "'" + title + "'!" + rng,
+  //   valueInputOption: 'RAW'
+  // };
+
+  // await gapi.client.sheets.spreadsheets.values.update(params, resource)
+  //   .then(function (response) {
+  //     console.log('Sheet update successful')
+  //     console.log(response)
+  //   }, function (reason) {
+  //     console.error('error updating sheet "' + "1" + '": ' + reason.result.error.message);
+  //     alert('error updating sheet "' + '1' + '": ' + reason.result.error.message);
+  //   });
 
   secSht[title] = {
     id:   sht.sheetId,
@@ -325,6 +316,7 @@ async function btnNewSheetHtml() {
     enc:  true
   }
     
+  console.log('secSht', secSht)
 
   loadSheets()
 
