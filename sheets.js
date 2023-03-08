@@ -710,7 +710,9 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 
 async function fetchImages(shtEnc, shtTitle, pwd = currUser.pwd) {
   console.time("fetchImages")
-  console.log("fetchImages")
+  console.log("fetchImages", shtEnc, shtTitle, pwd)
+
+
   
   var rtn = await getSheetRange("1:2", "Sheet1", shtTitle)
   var vals = rtn.result.valueRanges[0].values
