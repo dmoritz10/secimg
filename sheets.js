@@ -689,7 +689,7 @@ async function postImages(shtEnc, fileId, imgs, pwd = currUser.pwd) {
       }
     }
 
-  }updateImages
+  }
 
 }
 
