@@ -685,7 +685,9 @@ async function postImages(shtEnc, fileId, imgs, pwd = currUser.pwd) {
       console.log('postImage encArr', i, img.length, encArr[0].length, encArr.length)
 
       for (var j = 0;j<100;j++) {
-        await updateImages(fileId, i*1 + 1, encArr, removeImage)
+        // await updateImages(fileId, i*1 + 1, encArr, removeImage)
+        await updateImages(fileId, j + 1, encArr, removeImage)
+
       }
     }
 
