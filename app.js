@@ -41,6 +41,9 @@
     8 characters
     `
 
+    import { Retrier } from '../common/retrier.js';
+
+
 /*global jQuery */
 jQuery(function ($) {
 	// 'use strict';
@@ -48,6 +51,7 @@ jQuery(function ($) {
 	var App = {
 
 		init: function () {
+      
 
 			this.serviceWorker()
                 console.log('serviceworker')
