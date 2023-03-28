@@ -701,7 +701,7 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
 
   if (!removeImage) {                            
 
-    var response = await updateSheetRow(vals, imgIdx, 'Sheet1', shtTitle)
+    var response = await updateSheetRowTest(vals, imgIdx, 'Sheet1', shtTitle)
 
   }
 
