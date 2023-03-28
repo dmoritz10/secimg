@@ -41,7 +41,6 @@
     8 characters
     `
 
-    import { Retrier } from '../common/retrier.js';
 
 
 /*global jQuery */
