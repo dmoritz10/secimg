@@ -686,7 +686,7 @@ async function postImages(shtEnc, fileId, imgs, pwd = currUser.pwd) {
 
       for (var j = 0;j<100;j++) {
         // await updateImages(fileId, i*1 + 1, encArr, removeImage)
-        await updateImages(fileId, j + 1, [j+1], removeImage)
+        await updateImages(fileId, j + 1, [new Date().toISOString()], removeImage)
 
       }
     }
