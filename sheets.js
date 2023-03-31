@@ -700,15 +700,14 @@ async function updateImages(fileId, imgIdx, vals, removeImage) {
   var shtTitle = fileId
 
   // await clearImage(shtTitle, imgIdx)          // always clear existing image
-  // var rtn = await clearSheetRange(imgIdx + ':' + imgIdx, 'Sheet1', shtTitle)
-  var rtn = await clearSheetRangeTest(imgIdx + ':' + imgIdx, 'Sheet1', shtTitle)
+  var rtn = await clearSheetRange(imgIdx + ':' + imgIdx, 'Sheet1', shtTitle)
 
-  console.log('updateImages clear', imgIdx, rtn)
+  console.log('updateImages cleared', imgIdx, rtn)
   
   if (!removeImage) {                            
 
-    var response = await updateSheetRowTest(vals, imgIdx, 'Sheet1', shtTitle)
-    console.log('updateImages update', imgIdx, response)
+    var response = await updateSheetRow(vals, imgIdx, 'Sheet1', shtTitle)
+    console.log('updateImages updated', imgIdx, response)
 
   }
 
