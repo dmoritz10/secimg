@@ -399,7 +399,7 @@ async function btnDeleteSheetHtml() {
 
   console.log('btnShtmDelete',idx,$('#shtmArrIdx').val(), shtIdxArr)
 
-  var response = await deleteSheetRow(idx + 1, shtTitle)
+  var response = await deleteSheetRow(idx + 2, shtTitle)
 
   secSht[shtTitle].rows--
 
