@@ -399,49 +399,11 @@ async function btnDeleteSheetHtml() {
 
   console.log('btnShtmDelete',idx,$('#shtmArrIdx').val(), shtIdxArr)
 
-  var response = deleteSheetRow(idx + 1, shtTitle)
+  var response = await deleteSheetRow(idx + 1, shtTitle)
 
   secSht[shtTitle].rows--
 
-  // var request = {
-  //   "requests":
-  //     [
-  //       {
-  //         "deleteDimension": {
-  //           "range": {
-  //             "sheetId": shtId,
-  //             "dimension": "ROWS",
-  //             "startIndex": idx + 1,
-  //             "endIndex": idx + 2
-  //           }
-  //         }
-  //       }
-  //     ]
-  // }
-
-
-  // await gapi.client.sheets.spreadsheets.batchUpdate({
-  //   spreadsheetId: spreadsheetId,
-  //   resource: request
-
-  // }).then(response => {
-
-  //   secSht[shtTitle].rows--
-
-  //   console.log('delete complete - ', idx)
-  //   console.log(response)
-
-  // })
-
   var response = await deleteDriveFile($('#shtmFileId').val())
-
-//   await gapi.client.drive.files.delete({fileId : $('#shtmFileId').val()})
-
-// .then(function(response) {
-//     console.log(response);
-//     return response
-    
-// });
 
   $("#sheet-modal").modal('hide');
 

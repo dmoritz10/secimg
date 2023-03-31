@@ -228,55 +228,9 @@ async function btnNewSheetHtml() {
 
   console.log('sht', sht)
   
-  // var params = {
-  //   spreadsheetId: spreadsheetId,  
-  //   sheetId: secSht['template'].id,  
-  // };
-
-  // var copySheetToAnotherSpreadsheetRequestBody = {
-  //   destinationSpreadsheetId: spreadsheetId
-  // };
-
-  // var sht = await gapi.client.sheets.spreadsheets.sheets.copyTo(params, copySheetToAnotherSpreadsheetRequestBody)
-  
-  //   .then(function(response) {
-  //     console.log(response.result);
-  //     return response.result
-  //     }, function(reason) {
-  //       console.error('error: ' + reason.result.error.message);
-  //       return null
-  //     })
-
-
   // rename sheet to that provided by user
 
   var response = await renameSheet(sht.sheetId, title)
-
-    // const rq = {"requests" : [
-    //   {
-    //    updateSheetProperties: {
-    //     properties: {
-    //      sheetId: sht.sheetId,
-    //      title: title,
-    //     },
-    //     fields: 'title'
-    //     }
-    //    }]}
-    //  ;
-    
-    // await gapi.client.sheets.spreadsheets.batchUpdate({
-    //   spreadsheetId: spreadsheetId,
-    //   resource: rq})
-
-    //   .then(response => {
-
-    //     console.log('rename complete')
-    //     console.log(response)
-
-    //   }, function (reason) {
-    //     console.error('error updating sheet "' + "title" + '": ' + reason.result.error.message);
-    //     alert('error updating sheet "' + 'title' + '": ' + reason.result.error.message);
-    //   });
 
   // Put encrypted header row in new sheet
   
