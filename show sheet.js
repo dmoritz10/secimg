@@ -1,5 +1,7 @@
 async function showSheet(idx) {
-
+  console.log('pdfjslib', pdfjsLib)
+  pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.mjs';
+  
 
   if (idx === null) return                  // null is from browseDocument
 
