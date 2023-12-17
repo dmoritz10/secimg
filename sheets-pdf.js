@@ -10,11 +10,8 @@ async function showPDF(pdf_url, frntback) {
 // get handle of pdf document
 
 var pdfData = pdf_url
-console.log('pdfjslib', pdfjsLib)
-pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.mjs';
 
-// pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
-// pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://www.jsdelivr.com/package/npm/pdfjs-dist';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.mjs';
 
 try {
     let loadingTask  = pdfjsLib.getDocument({ data: pdfData });

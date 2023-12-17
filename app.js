@@ -183,8 +183,6 @@ jQuery(function ($) {
                 const utcOffsetString = utcOffsetSign + (utcOffsetHr.toString.length == 1 ? `0${utcOffsetHr}` : `${utcOffsetHr}`) + ':00';
                 return date.toISOString().replace('Z', utcOffsetString);
             };    
-            
-
 		}
 	};
 
