@@ -15,7 +15,7 @@ console.log('pdfjslib', pdfjsLib)
 // pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://www.jsdelivr.com/package/npm/pdfjs-dist';
 
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJSWorker
+pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.mjs';
 
 try {
     let loadingTask  = pdfjsLib.getDocument({ data: pdfData });
